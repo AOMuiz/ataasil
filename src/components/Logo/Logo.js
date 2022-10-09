@@ -1,11 +1,13 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import { WEIGHTS } from '../../constants';
+import React from "react";
+import styled from "styled-components";
+import { WEIGHTS } from "../../utils/constants";
 
 const Logo = (props) => {
   return (
     <Link href="/">
-      <Wrapper {...props}>Sole&amp;Ankle</Wrapper>
+      <Wrapper {...props}>
+        <img src="./assets/images/logo.svg" alt="ataasil logo" />
+      </Wrapper>
     </Link>
   );
 };
