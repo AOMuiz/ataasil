@@ -28,7 +28,7 @@ export default class MyDocument extends Document {
   }
   render() {
     return (
-      <Html>
+      <Html dir="rtl">
         <Head />
         <body>
           <Main />
