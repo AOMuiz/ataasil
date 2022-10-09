@@ -15,6 +15,7 @@ export default class MyDocument extends Document {
 
       return {
         ...initialProps,
+        locale: ctx?.locale || "ar",
         styles: (
           <>
             {initialProps.styles}
@@ -27,8 +28,15 @@ export default class MyDocument extends Document {
     }
   }
   render() {
+    // const { locale } = this.props.__NEXT_DATA__;
+    // console.log(locale);
+    // const dir = locale === "ar" ? "rtl" : "ltr";
     return (
-      <Html dir="rtl">
+      <Html
+        dir={this.props.locale === "ar" ? "rtl" : "ltr"}
+        lang={this.props.locale}
+      >
+        {/* <Html dir={dir} lang={locale}> */}
         <Head />
         <body>
           <Main />
