@@ -5,6 +5,9 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   i18n,
+  compiler: {
+    styledComponents: true,
+  },
 };
 
 module.exports = nextConfig;
