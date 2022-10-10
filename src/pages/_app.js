@@ -7,10 +7,12 @@ import { useEffect } from "react";
 function MyApp({ Component, pageProps }) {
   const { locale } = useRouter();
   const dir = locale === "ar" ? "rtl" : "ltr";
+  const lang = locale == "ar" ? "ar" : "en";
 
   useEffect(() => {
     document.documentElement.dir = dir;
-  }, [dir]);
+    document.documentElement.lang = lang;
+  }, [dir, lang]);
 
   return <Component {...pageProps} />;
 }
