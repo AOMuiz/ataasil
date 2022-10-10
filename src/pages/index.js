@@ -5,6 +5,7 @@ import Logo from "../components/Logo";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Navbar from "../components/Navbar/Navbar";
 
 const courseCard = {
   ar: {
@@ -32,23 +33,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <div
-          style={{
-            padding: "4px",
-            marginRight: "4px",
-          }}
-        >
+        <Navbar />
+        <div className="p-2 m-2">
           <span>Current Language: </span>
-          <span
-            style={{
-              borderRadius: "3px",
-              backgroundColor: "blue",
-              color: "white",
-              padding: "2px",
-            }}
-          >
-            {locale}
-          </span>
+          <span className="border-2 text-white p-1 bg-blue-500">{locale}</span>
         </div>
         <div className="flex text-lg font-medium">
           <p>Select Language: </p>
@@ -97,7 +85,7 @@ export default function Home() {
 
 export const getServerSideProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ["common"])),
+    ...(await serverSideTranslations(locale, ["common", "navbar"])),
   },
 });
 
