@@ -1,13 +1,25 @@
 import React from "react";
 import styled from "styled-components";
-import { Search, Menu, ShoppingBag, ChevronDown, X } from "react-icons";
+import {
+  AiFillYoutube,
+  AiOutlineSearch,
+  AiOutlineTwitter,
+  AiFillInstagram,
+  FaFacebookF,
+  AiOutlineShopping,
+  BiChevronDown,
+  AiOutlineClose,
+} from "react-icons";
 
 const icons = {
-  search: Search,
-  menu: Menu,
-  "shopping-bag": ShoppingBag,
-  "chevron-down": ChevronDown,
-  close: X,
+  search: AiOutlineSearch,
+  twitter: AiOutlineTwitter,
+  youtube: AiFillYoutube,
+  instagram: AiFillInstagram,
+  facebook: FaFacebookF,
+  "shopping-bag": AiOutlineShopping,
+  "chevron-down": BiChevronDown,
+  close: AiOutlineClose,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
