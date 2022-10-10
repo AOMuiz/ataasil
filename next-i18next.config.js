@@ -1,6 +1,6 @@
 // used for SSR (getServerSideProps)
-// const path = require('path')
-// const localePath = path.resolve('./public/locales')
+// const path = require("path");
+// const localePath = path.resolve("./public/locales");
 
 module.exports = {
   debug: process.env.NODE_ENV === "development",
