@@ -38,26 +38,7 @@ export default function Home() {
           <span>Current Language: </span>
           <span className="border-2 text-white p-1 bg-blue-500">{locale}</span>
         </div>
-        <div className="flex text-lg font-medium">
-          <p>Select Language: </p>
-          <SelectLanguage>
-            <ul className="flex gap-2">
-              {locales.map((loc) => (
-                <li key={loc} className="border-2 p-2">
-                  <Link
-                    activeClassName={locale === loc}
-                    href={asPath}
-                    locale={loc}
-                  >
-                    {loc}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </SelectLanguage>
-        </div>
       </div>
-
       <main>
         <Logo />
         <div className="py-3">
