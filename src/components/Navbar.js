@@ -8,7 +8,7 @@ import {
   AiFillInstagram,
   FaFacebookF,
 } from "react-icons";
-import Icon from "../Icon";
+import Icon from "./Icon";
 
 const Navbar = () => {
   const { locale, locales, defaultLocale, asPath } = useRouter();
