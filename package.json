@@ -2,7 +2,7 @@
   "name": "ataasil",
   "version": "0.1.0",
   "private": true,
-  "license": "",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
