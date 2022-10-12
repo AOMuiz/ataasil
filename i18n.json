@@ -1,0 +1,7 @@
+{
+  "locales": ["ar", "en-US"],
+  "defaultLocale": "ar",
+  "pages": {
+    "*": ["index"]
+  }
+}
