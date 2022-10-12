@@ -7,23 +7,9 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Navbar from "../components/Navbar/Navbar";
 
-const courseCard = {
-  ar: {
-    title: "كتاب التوحيد للشيخ عثيمين",
-    summary:
-      "لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك الت",
-  },
-  en: {
-    title: "The book of Tawhid of Sheikh Uthaymeen",
-    summary:
-      "But it is necessary to make clear to you that all these misconceptions",
-  },
-};
-
 export default function Home() {
   const { locale, locales, defaultLocale, asPath } = useRouter();
   const { t } = useTranslation("common");
-  const { title, summary } = courseCard[locale];
 
   return (
     <div className="p-5">
@@ -42,17 +28,6 @@ export default function Home() {
       <main>
         <Logo />
         <div className="py-3">
-          <p className="font-bold text-lg">
-            Translation coming from local object
-          </p>
-          <Text className="font-bold underline text-3xl my-4">{title}</Text>
-          <Text>{summary}</Text>
-        </div>
-
-        <div className="py-3">
-          <p className="font-bold text-lg">
-            Translation coming from next-i18next
-          </p>
           <Text className="font-bold underline text-3xl my-4">
             {t("title")}
           </Text>
