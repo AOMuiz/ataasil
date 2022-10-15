@@ -1,9 +1,8 @@
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 import "../../styles/globals.css";
-import { appWithTranslation } from "next-i18next";
 import { useEffect } from "react";
-import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   const { locale } = useRouter();
@@ -26,4 +25,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default appWithTranslation(MyApp);
+export default MyApp;
