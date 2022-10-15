@@ -1,5 +1,5 @@
-import Head from "next/head";
 import useTranslation from "next-translate/useTranslation";
+import Head from "next/head";
 
 export default function Home() {
   const { t } = useTranslation("index");
