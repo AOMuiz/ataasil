@@ -5,11 +5,11 @@ import {
   AiOutlineSearch,
   AiOutlineTwitter,
   AiFillInstagram,
-  FaFacebookF,
-  AiOutlineShopping,
-  BiChevronDown,
   AiOutlineClose,
-} from "react-icons";
+  AiOutlineShopping,
+} from "react-icons/ai";
+import { BiChevronDown } from "react-icons/bi";
+import { FaFacebookF } from "react-icons/fa";
 
 const icons = {
   search: AiOutlineSearch,

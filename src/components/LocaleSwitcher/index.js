@@ -12,14 +12,8 @@ const LocaleSwitcher = () => {
     <div>
       <div className="inline-flex bg-white border rounded-md ">
         <span className="px-4 py-1 hover:text-gray-700 hover:bg-gray-50 rounded-l-md flex">
-          {/* <img
-            src="/assets/images/ar-flag.png"
-            alt="flag"
-            className="w-full"
-          /> */}
           {locale === "ar" ? "العربية" : "English"}
         </span>
-
         <div className="relative">
           <button
             onClick={onChangeLanguage}
