@@ -12,5 +12,10 @@
   "header": {
     "Home": "مسكن",
     "about": "حول"
+  },
+  "navbar": {
+    "Join us": "",
+    "corporate training": "",
+    "blog": ""
   }
 }

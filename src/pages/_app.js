@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
-
-import "../../styles/globals.css";
+import "tailwindcss/tailwind.css";
 import { useEffect } from "react";
 import { Provider } from "react-redux";
 import store from "../redux/store";
+import GlobalStyles from "../components/GlobalStyles";
 
 function MyApp({ Component, pageProps }) {
   const { locale } = useRouter();
@@ -23,6 +23,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <Provider store={store}>
+        <GlobalStyles />
         <Component {...pageProps} />
       </Provider>
     </>

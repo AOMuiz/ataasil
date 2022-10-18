@@ -26,6 +26,7 @@ body,
   font-family: var(--font);
 }
 `;
+console.log(theme);
 
 const GlobalStyles = () => (
   <>

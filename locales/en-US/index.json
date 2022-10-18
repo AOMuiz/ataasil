@@ -1,4 +1,10 @@
 {
+  "home": {
+    "hero": {
+      "summary": "But I must show you that all these misconceptions about the condemnation of ecstasy and the glorification of pain have already arisen, and I will show you",
+      "title": "The Book of Tawheed by Sheikh Uthaymeen"
+    }
+  },
   "about": {
     "description": "About the description",
     "title": "About the address"
@@ -7,10 +13,9 @@
     "Home": "residence",
     "about": "Around"
   },
-  "home": {
-    "hero": {
-      "summary": "But I must show you that all these misconceptions about the condemnation of ecstasy and the glorification of pain have already arisen, and I will show you",
-      "title": "The Book of Tawheed by Sheikh Uthaymeen"
-    }
+  "navbar": {
+    "Join us": "Join us",
+    "corporate training": "Corporate Training",
+    "blog": "Blog"
   }
 }
