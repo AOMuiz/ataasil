@@ -9,6 +9,7 @@ module.exports = {
       fontFamily: {
         sans: ["Almarai", "sans-serif"],
       },
+      colors: {},
     },
   },
   plugins: [],
