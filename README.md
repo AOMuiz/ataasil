@@ -13,14 +13,16 @@ Prerequisites include Node.JS v16 and yarn. See Gatsby's Development Environment
 - `Nodejs version 16`
 - `Yarn`
 
-First, clone this repo :
-`git clone https://github.com/AOMuiz/ataasil`
+1. First, clone this repo :
+   `git clone https://github.com/AOMuiz/ataasil`
 
 Navigate to the root folder and install all dependencies :
 
 - `yarn` or `npm install`
 
-First, run the development server:
+2. Run the development server:
+
+- Terminal run
 
 ```bash
 npm run dev
@@ -28,11 +30,36 @@ npm run dev
 yarn dev
 ```
 
-Start Development Mode :
-
-- `yarn dev` or `npm dev`
 - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - Happy Hacking!
+
+## Folder Structure
+
+```
+|-- src/
+    |-- components/
+    |-- config/
+    |-- assets/
+        |-- fonts/
+        |-- icon/
+        |-- images/
+    |-- hooks/
+    |-- redux/
+    |-- pages/
+        |-- home/
+        |-- news-detail/
+    |-- utils/
+        |-- lib/
+        |-- index.js
+    |-- App.js
+```
+
+- `shared/assets`: Folder to put assets like fonts, icons and images
+- `components`: Folder to put all shared Component
+- `config` : Folder to put all of ours constant like `api url`, `mock`, `themes`, `default news item`, `default images` and all others constant data that dont changed.
+- `utils` : Folder to put our helpers function like Consume API and formating data or others helpers.
+- `hooks` : Folder to put all of ours custom hooks/logic for component.
+- `pages` : Folder to put our different screens for our app such as `home screen`.
 
 ## Technologies Used
 
