@@ -1,5 +1,7 @@
 # Ataasil university
 
+## A brief description of the project
+
 Attaasil University is an online based university that set out the goal of benefitting mankind with the knowledge of the Qur'an and Sunnah In Shaa Allah
 
 ## Preview
@@ -31,8 +33,6 @@ Start Development Mode :
 - `yarn dev` or `npm dev`
 - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - Happy Hacking!
-
-## A brief description of the project
 
 ## Technologies Used
 
