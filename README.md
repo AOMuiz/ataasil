@@ -36,9 +36,11 @@ yarn dev
 ## Folder Structure
 
 ```
+|-- locales/
+  |-- ar/
+  |-- en-US/
 |-- src/
     |-- components/
-    |-- config/
     |-- assets/
         |-- fonts/
         |-- icon/
@@ -46,18 +48,21 @@ yarn dev
     |-- hooks/
     |-- redux/
     |-- pages/
-        |-- home/
-        |-- news-detail/
+     |-- index.js/
+     |-- about/
+        |-- index.js
     |-- utils/
         |-- lib/
         |-- index.js
+        |-- constants.js
+        |-- helpers.js
     |-- App.js
 ```
 
+- `locales`:
 - `shared/assets`: Folder to put assets like fonts, icons and images
 - `components`: Folder to put all shared Component
-- `config` : Folder to put all of ours constant like `api url`, `mock`, `themes`, `default news item`, `default images` and all others constant data that dont changed.
-- `utils` : Folder to put our helpers function like Consume API and formating data or others helpers.
+- `utils` : Folder to put our helpers function like Consume API and formating data or others helpers and utilities.
 - `hooks` : Folder to put all of ours custom hooks/logic for component.
 - `pages` : Folder to put our different screens for our app such as `home screen`.
 
