@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { Provider } from "react-redux";
 import store from "../redux/store";
 import GlobalStyles from "../components/GlobalStyles";
+import Navbar from "../components/Navbar";
 
 function MyApp({ Component, pageProps }) {
   const { locale } = useRouter();
@@ -24,7 +25,10 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Provider store={store}>
         <GlobalStyles />
-        <Component {...pageProps} />
+        <>
+          <Navbar />
+          <Component {...pageProps} />
+        </>
       </Provider>
     </>
   );
