@@ -18,15 +18,13 @@ Prerequisites include Node.JS v16 and yarn. See Gatsby's Development Environment
 
 Navigate to the root folder and install all dependencies :
 
-- `yarn` or `npm install`
+- `yarn`
 
 2. Run the development server:
 
 - Terminal run
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
