@@ -74,7 +74,7 @@ understand.
 - `Fix: issue with login buttton not showing`
 - `Chore: removed unsued code in utils`
 - `Feat: Added simple about page sample to test nextjs routing`
-- ` Chore or Refactore: move navbar into the _app file for general access on all pages`
+- ` Refactor: move navbar into the _app file for general access on all pages`
 
 These can serve as a good subject before expanding further on the what and why
 within the commit message body.
