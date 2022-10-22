@@ -61,6 +61,6 @@ const LocaleSwitcher = () => {
 export default LocaleSwitcher;
 
 const Dropdown = styled.button(({ isListOpen }) => [
-  isListOpen ? tw`hidden` : tw`block`,
-  tw`absolute z-10 w-56 mt-3 origin-top-right bg-white border border-gray-100 rounded-md shadow-lg content-start`,
+  isListOpen ? tw`block` : tw`hidden`,
+  tw`absolute z-10 w-56 mt-3 origin-top-right bg-white border border-gray-100 rounded-md shadow-lg text-align[start]`,
 ]);

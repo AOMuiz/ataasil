@@ -7,7 +7,7 @@ const Navbar = () => {
   const { t } = useTranslation("index");
   return (
     <>
-      <nav tw="bg-white flex px-8 font-bold justify-between py-3 border-b-2 border-gray-400 ">
+      <nav tw="bg-white flex px-8 font-bold justify-between py-3 border-b-2 border-gray-400">
         <div tw="flex justify-between gap-4 text-gray-700 items-baseline">
           <p tw="cursor-pointer">{t("navbar.Join us")}</p>
           <p tw="cursor-pointer">{t("navbar.corporate training")}</p>
