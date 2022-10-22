@@ -41,7 +41,9 @@ All types of contributions are encouraged and valued. See the [Table of Contents
   - [Issue and Pull Request Labels](#issue-and-pull-request-labels)
 - [Join The Project Team](#join-the-project-team)
 
-## Code of Conduct
+## Code of Conductpull-request#resolving-conversations).
+
+- If you run into any merge issues,
 
 This project and everyone participating in it is governed by the
 [Ataasil University Code of Conduct](https://github.com/AOMuiz/ataasilblob/master/CODE_OF_CONDUCT.md).
