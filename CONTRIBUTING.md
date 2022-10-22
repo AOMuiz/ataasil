@@ -4,6 +4,8 @@
 
 First off, thanks for taking the time to contribute! ❤️
 
+In this guide you will get an overview of the contribution workflow from opening an issue, creating a PR, reviewing, and merging the PR.
+
 All types of contributions are encouraged and valued. See the [Table of Contents](#table-of-contents) for different ways to help and details about how this project handles them. Please make sure to read the relevant section before making your contribution. It will make it a lot easier for us maintainers and smooth out the experience for all involved. The community looks forward to your contributions. 🎉
 
 > And if you like the project, but just don't have time to contribute, that's fine. There are other easy ways to support the project and show your appreciation, which we would also be very happy about:
@@ -17,6 +19,14 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 - [Code of Conduct](#code-of-conduct)
 - [I Have a Question](#i-have-a-question)
 - [I Want To Contribute](#i-want-to-contribute)
+- [New contributor guide](#new-contributor-guide)
+  - [Issues](#issues)
+    - [Create a new issue](#create-a-new-issue)
+    - [Solve an issue](#solve-an-issue)
+  - [Make Changes](#make-changes)
+    - [Make Changes Locally](#make-changes-locally)
+  - [Commit Your Update](#commit-your-update)
+  - [Pull Request](#pull-request)
   - [Reporting Bugs](#reporting-bugs)
   - [Suggesting Enhancements](#suggesting-enhancements)
   - [Your First Code Contribution](#your-first-code-contribution)
@@ -71,6 +81,67 @@ Depending on how large the project is, you may want to outsource the questioning
 > ### Legal Notice <!-- omit in toc -->
 >
 > When contributing to this project, you must agree that you have authored 100% of the content, that you have the necessary rights to the content and that the content you contribute may be provided under the project license.
+
+## New contributor guide
+
+To get an overview of the project, read the [README](README.md). Here are some resources to help you get started with open source contributions:
+
+- [Finding ways to contribute to open source on GitHub](https://docs.github.com/en/get-started/exploring-projects-on-github/finding-ways-to-contribute-to-open-source-on-github)
+- [Set up Git](https://docs.github.com/en/get-started/quickstart/set-up-git)
+- [GitHub flow](https://docs.github.com/en/get-started/quickstart/github-flow)
+- [Collaborating with pull requests](https://docs.github.com/en/github/collaborating-with-pull-requests)
+
+### Issues
+
+#### Create a new issue
+
+If you spot a problem with the project, [search if an issue already exists](https://docs.github.com/en/github/searching-for-information-on-github/searching-on-github/searching-issues-and-pull-requests#search-by-the-title-body-or-comments). If a related issue doesn't exist, you can open a new issue using a relevant [issue form](https://github.com/AOMuiz/ataasil/issues/new/choose).
+
+#### Solve an issue
+
+Scan through our [existing issues](https://github.com/AOMuiz/ataasil/issues) to find one that interests you. You can narrow down the search using `labels` as filters. See [Labels](/contributing/how-to-use-labels.md) for more information. As a general rule, we don’t assign issues to anyone. If you find an issue to work on, you are welcome to open a PR with a fix.
+
+### Make Changes
+
+#### Make changes locally
+
+1. [Install Git LFS](https://docs.github.com/en/github/managing-large-files/versioning-large-files/installing-git-large-file-storage).
+
+2. Cone the repository.
+
+- Using GitHub Desktop:
+
+  - [Getting started with GitHub Desktop](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/getting-started-with-github-desktop) will guide you through setting up Desktop.
+  - Once Desktop is set up, you can use it to [clone the repo](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/cloning-and-forking-repositories-from-github-desktop)!
+
+- Using the command line:
+  - [Clone the repo](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo#fork-an-example-repository) so that you can make your changes without affecting the original project until you're ready to merge them.
+
+3. Install or update to **Node.js v16**. For more information, see [the development guide](contributing/development.md).
+
+4. Create a working branch and start with your changes!
+
+### Commit your update
+
+Commit the changes once you are happy with them. Don't forget to [self-review](/contributing/self-review.md) to speed up the review process:zap:.
+
+### Pull Request
+
+When you're finished with the changes, create a pull request, also known as a PR.
+
+- Fill the "Ready for review" template so that we can review your PR. This template helps reviewers understand your changes as well as the purpose of your pull request.
+- Don't forget to [link PR to issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) if you are solving one.
+- Enable the checkbox to [allow maintainer edits](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/allowing-changes-to-a-pull-request-branch-created-from-a-fork) so the branch can be updated for a merge.
+  Once you submit your PR, a Ataasl's team member will review your proposal. We may ask questions or request additional information.
+- We may ask for changes to be made before a PR can be merged, either using [suggested changes](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/incorporating-feedback-in-your-pull-request) or pull request comments. You can apply suggested changes directly through the UI. You can make any other changes in your fork, then commit them to your branch.
+- As you update your PR and apply changes, mark each conversation as [resolved](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request#resolving-conversations).
+- If you run into any merge issues, checkout this [git tutorial](https://github.com/skills/resolve-merge-conflicts) to help you resolve merge conflicts and other issues.
+
+### Your PR is merged!
+
+Congratulations :tada::tada: The GitHub team thanks you :sparkles:.
+
+Once your PR is merged, your contributions will be publicly visible on the [Ataasil](https://docs.github.com/en).
 
 ### Reporting Bugs
 
@@ -158,14 +229,14 @@ include Setup of env, IDE and typical getting started instructions?
 
 The process described here has several goals:
 
-- Maintain Atom's quality
+- Maintain Ataasil code quality
 - Fix problems that are important to users
-- Engage the community in working toward the best possible Atom
-- Enable a sustainable system for Atom's maintainers to review contributions
+- Engage the community in working toward the best possible Ataasil
+- Enable a sustainable system for Ataasil's maintainers to review contributions
 
 Please follow these steps to have your contribution considered by the maintainers:
 
-1. Follow all instructions in [the template](PULL_REQUEST_TEMPLATE.md)
+1. Follow all instructions in [the template](pull_request_template.md)
 2. Follow the [styleguides](#styleguides)
 3. After you submit your pull request, verify that all [status checks](https://help.github.com/articles/about-status-checks/) are passing <details><summary>What if the status checks are failing?</summary>If a status check is failing, and you believe that the failure is unrelated to your change, please leave a comment on the pull request explaining why you believe the failure is unrelated. A maintainer will re-run the status check for you. If we conclude that the failure was a false positive, then we will open an issue to track that problem with our status check suite.</details>
 
@@ -196,8 +267,8 @@ Updating, improving and correcting the documentation
   - :green_heart: `:green_heart:` when fixing the CI build
   - :white_check_mark: `:white_check_mark:` when adding tests
   - :lock: `:lock:` when dealing with security
-  - :arrow_up: `:arrow_up:` when upgrading dependencies
-  - :arrow_down: `:arrow_down:` when downgrading dependencies
+  - :arrow_up: `:arrow_up:` or upgrade - when upgrading dependencies
+  - :arrow_down: `:arrow_down:` or downgrade - when downgrading dependencies
   - :shirt: `:shirt:` when removing linter warnings
 
 ### JavaScript Styleguide
@@ -222,7 +293,6 @@ All JavaScript code is linted with [Prettier](https://prettier.io/).
 
 - Place requires in the following order:
   - Built in Node Modules (such as `path`)
-  - Built in Atom and Electron Modules (such as `atom`, `remote`)
   - Local Modules (using relative paths)
 - Place class properties in the following order:
   - Class methods and properties (methods starting with `static`)
@@ -241,12 +311,12 @@ This section lists the labels we use to help us track and manage issues and pull
 
 #### Pull Request Labels
 
-| Label name         | Description                                                                              |
-| ------------------ | ---------------------------------------------------------------------------------------- |
-| `work-in-progress` | Pull requests which are still being worked on, more changes will follow.                 |
-| `needs-review`     | Pull requests which need code review, and approval from maintainers or Atom core team.   |
-| `under-review`     | Pull requests which need to be updated based on review comments and then reviewed again. |
-| `needs-testing`    | Pull requests which need manual testing.                                                 |
+| Label name         | Description                                                                                 |
+| ------------------ | ------------------------------------------------------------------------------------------- |
+| `work-in-progress` | Pull requests which are still being worked on, more changes will follow.                    |
+| `needs-review`     | Pull requests which need code review, and approval from maintainers or Ataasil's core team. |
+| `under-review`     | Pull requests which need to be updated based on review comments and then reviewed again.    |
+| `needs-testing`    | Pull requests which need manual testing.                                                    |
 
 ## Join The Project Team
 
