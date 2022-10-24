@@ -2,17 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import {
   AiFillYoutube,
-  AiOutlineSearch,
   AiOutlineTwitter,
   AiFillInstagram,
   AiOutlineClose,
   AiOutlineShopping,
+  AiOutlineMenu,
 } from "react-icons/ai";
-import { BiChevronDown } from "react-icons/bi";
+import { BiChevronDown, BiSearchAlt } from "react-icons/bi";
 import { FaFacebookF } from "react-icons/fa";
 
 const icons = {
-  search: AiOutlineSearch,
+  search: BiSearchAlt,
   twitter: AiOutlineTwitter,
   youtube: AiFillYoutube,
   instagram: AiFillInstagram,
@@ -20,6 +20,7 @@ const icons = {
   "shopping-bag": AiOutlineShopping,
   "chevron-down": BiChevronDown,
   close: AiOutlineClose,
+  menu: AiOutlineMenu,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
