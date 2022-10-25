@@ -1,8 +1,11 @@
+import useTranslation from "next-translate/useTranslation";
 import React from "react";
 import Icon from "../Icon";
 import Logo from "../Svg/logo";
 
 const BottomNav = () => {
+  const { t } = useTranslation("index");
+
   return (
     <div tw="flex px-16 py-4 justify-between items-center">
       <div tw="flex items-center gap-6">
@@ -11,7 +14,8 @@ const BottomNav = () => {
           <span tw="p-2">
             <Icon id={"menu"} />
           </span>
-          <span>منتجاتنا</span>
+          {/* fix padding here for english */}
+          <span tw="text-black pl-2">{t("navbar.menu")}</span>
         </p>
       </div>
       <div
@@ -21,14 +25,14 @@ const BottomNav = () => {
         <Icon id={"search"} tw="text-primary-P300 px-3" size={20} />
         <input
           type="text"
-          tw="bg-gray-G20 outline-none"
-          placeholder="ابحث في المنصة"
+          tw="bg-gray-G20 outline-none w-full placeholder:text-black placeholder:font-light placeholder:py-1"
+          placeholder={t("navbar.search placeholder")}
         />
       </div>
-      <div tw="flex items-center justify-evenly gap-6">
-        <p tw="cursor-pointer">تسجيل الدخول</p>
-        <p tw="rounded-full bg-primary-P300 w-auto  text-center text-white px-5 py-2 cursor-pointer">
-          انضم التأصيل
+      <div tw="flex items-center justify-evenly gap-6 font-bold">
+        <p tw="cursor-pointer text-gray-G30">{t("navbar.sign in")}</p>
+        <p tw="rounded-full bg-primary-P300 w-auto  text-center text-white px-4 py-2 cursor-pointer">
+          {t("navbar.sign up")}
         </p>
       </div>
     </div>
