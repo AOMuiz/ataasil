@@ -16,6 +16,10 @@
   "navbar": {
     "Join us": "انضم إلينا",
     "corporate training": "التدريب المؤسسي",
-    "blog": "المدونة"
+    "blog": "المدونة",
+    "menu": "منتجاتنا",
+    "sign in": "تسجيل الدخول",
+    "sign up": "انضم التأصيل",
+    "search placeholder": "ابحث في المنصة"
   }
 }

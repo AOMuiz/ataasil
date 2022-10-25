@@ -16,6 +16,10 @@
   "navbar": {
     "Join us": "Join us",
     "corporate training": "Corporate Training",
-    "blog": "Blog"
+    "blog": "Blog",
+    "menu": "Menu",
+    "sign in": "Sign In",
+    "sign up": "Sign Up",
+    "search placeholder": "Search the platform"
   }
 }
