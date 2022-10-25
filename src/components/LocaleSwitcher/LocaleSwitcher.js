@@ -11,15 +11,15 @@ const LocaleSwitcher = () => {
   };
   return (
     <div>
-      <div tw="inline-flex bg-white border rounded-md">
-        <span tw="px-4 py-1 hover:text-gray-700 hover:bg-gray-50 rounded-l-md flex">
+      <div tw="inline-flex bg-white">
+        <span tw="px-2 py-1 hover:text-gray-700 hover:bg-gray-50 rounded-l-md flex">
           {locale === "ar" ? "العربية" : "English"}
         </span>
         <div tw="relative">
           <button
             onClick={onChangeLanguage}
             type="button"
-            tw="inline-flex items-center justify-center h-full px-2 text-gray-600 border-l border-gray-100 hover:text-gray-700 rounded-r-md hover:bg-gray-50"
+            tw="inline-flex items-center justify-center h-full px-1 text-gray-600 hover:text-gray-700 rounded-md hover:bg-gray-50"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
