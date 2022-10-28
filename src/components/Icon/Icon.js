@@ -7,6 +7,7 @@ import {
   AiFillInstagram,
   AiOutlineClose,
   AiOutlineShopping,
+  AiFillStar,
 } from "react-icons/ai";
 import { BiChevronDown } from "react-icons/bi";
 import { FaFacebookF } from "react-icons/fa";
@@ -20,6 +21,7 @@ const icons = {
   "shopping-bag": AiOutlineShopping,
   "chevron-down": BiChevronDown,
   close: AiOutlineClose,
+  star: AiFillStar,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
