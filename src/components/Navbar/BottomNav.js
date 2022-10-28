@@ -15,7 +15,7 @@ const BottomNav = () => {
             <Icon id={"menu"} />
           </span>
           {/* fix padding here for english */}
-          <span className="text-black pie-2">{t("navbar.menu")}</span>
+          <span className="text-black pl-2">{t("navbar.menu")}</span>
         </p>
       </div>
       <div
