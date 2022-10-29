@@ -20,14 +20,7 @@ const HeroCarousel = () => {
           هذه الأمة
         </p>
         <div className="absolute top-0 right-0">
-          <Image
-            src={pen}
-            alt="hero pen"
-            style={{
-              objectFit: "contain",
-              maxHeight: "70%",
-            }}
-          />
+          <Image src={pen} alt="hero pen" objectFit="fill" height={500} />
         </div>
       </div>
     </HeroContainer>
