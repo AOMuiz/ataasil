@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import testimonialImg from "/public/assets/images/content-img.png";
 import Icon from "../Icon";
 
@@ -12,8 +11,12 @@ const TestimonialCard = () => {
       </p>
       <div className="border mb-7"></div>
       <div className="flex gap-3 p">
-        <div className="flex bg-amber-300 rounded-lg w-fit p-4 text-center">
-          <Image src={testimonialImg} alt="testimonial image" />
+        <div className="flex bg-amber-200 rounded-lg w-fit p-4 text-center">
+          <Image
+            src={testimonialImg}
+            alt="testimonial image"
+            objectFit="contain"
+          />
         </div>
         <div>
           <div className="flex gap-1 mb-2">
