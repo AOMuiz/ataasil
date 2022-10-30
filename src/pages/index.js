@@ -1,5 +1,6 @@
 import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
+import Help from "../components/Help";
 import Testimonials from "../components/Testimonials/Index";
 import WhyUs from "../components/WhyUs";
 
@@ -14,6 +15,7 @@ export default function Home() {
       </Head>
       <WhyUs />
       <Testimonials />
+      <Help />
       <h2 tw="text-[40px]">{t("home.hero.title")}</h2>
     </div>
   );
