@@ -7,7 +7,7 @@ const BottomNav = () => {
   const { t } = useTranslation("index");
 
   return (
-    <div tw="flex px-16 py-4 justify-between items-center shadow-sm">
+    <div tw="flex px-20 py-4 justify-between items-center shadow-sm">
       <div tw="flex items-center gap-6">
         <Logo width={80} height={60} tw="cursor-pointer" />
         <p tw="flex justify-center items-center border-2 border-primary-P300 rounded-full px-2 h-auto py-1 cursor-pointer">
