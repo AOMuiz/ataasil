@@ -1,5 +1,6 @@
 import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
+import CourseCards from "../components/CourseCards";
 
 export default function Home() {
   const { t } = useTranslation("index");
@@ -11,6 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h2 tw="text-[40px]">{t("home.hero.title")}</h2>
+      <CourseCards />
     </div>
   );
 }
