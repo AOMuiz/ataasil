@@ -10,6 +10,7 @@ import {
 } from "react-icons/ai";
 import { BiChevronDown } from "react-icons/bi";
 import { FaFacebookF } from "react-icons/fa";
+import { HiOutlineBookOpen, HiOutlineClock } from "react-icons/hi";
 
 const icons = {
   search: AiOutlineSearch,
@@ -20,6 +21,8 @@ const icons = {
   "shopping-bag": AiOutlineShopping,
   "chevron-down": BiChevronDown,
   close: AiOutlineClose,
+  book: HiOutlineBookOpen,
+  clock: HiOutlineClock,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
