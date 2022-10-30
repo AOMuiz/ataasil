@@ -9,7 +9,7 @@ const Help = () => {
       <p className="font-bold text-3xl pb-5">{t("home.help.need help")}</p>
       <div className="flex justify-between items-center text-lg text-gray-G30">
         <p>{t("home.help.summary")}</p>
-        <button className="bg-primary-P300 p-3 rounded-full text-white">
+        <button className="bg-primary-P300 py-3 px-5 rounded-full text-white">
           {t("home.help.action")}
         </button>
       </div>
