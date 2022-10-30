@@ -6,8 +6,8 @@ import Icon from "../Icon";
 
 const Testimonials = () => {
   return (
-    <div className="p-10">
-      <p className="font-bold text-lg mb-10">قالوا عنا</p>
+    <div className="py-10 px-20">
+      <p className="font-bold text-3xl mb-10">قالوا عنا</p>
       <div className="flex gap-6">
         <TestimonialCard />
         <TestimonialCard />
