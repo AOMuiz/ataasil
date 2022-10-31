@@ -12,7 +12,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h2 tw="text-[40px]">{t("home.hero.title")}</h2>
-      <CourseCards />
+      <div tw="flex gap-4">
+        <CourseCards />
+        <CourseCards />
+        <CourseCards />
+        <CourseCards />
+      </div>
     </div>
   );
 }

@@ -1,16 +1,15 @@
 import useTranslation from "next-translate/useTranslation";
 import React from "react";
 import Image from "next/image";
-import cardImage from "../../../public/assets/images/card-img.png";
-import ownerIcon1 from "../../../public/assets/images/owner-icon.svg";
-import ownerIcon from "../../../public/assets/images/owner.png";
+import cardImage from "/public/assets/images/card-img.png";
+import ownerIcon from "/public/assets/images/owner.png";
 import Icon from "../Icon";
 
 const CourseCards = () => {
   const { t } = useTranslation("index");
 
   return (
-    <div tw=" w-[284.09px] h-[430px] rounded-[30px] bg-[#FFFFFF] shadow-[0px 4px 10px rgba(0, 0, 0, 0.1)]">
+    <div tw=" w-[284.09px] rounded-[30px] bg-[#FFFFFF] shadow-md">
       <Image src={cardImage} alt="" />
       <div tw="p-3">
         <div tw="flex justify-between">
@@ -32,7 +31,7 @@ const CourseCards = () => {
             <Image src={ownerIcon} alt="" />
             <p>{t("coursecards.owner")}</p>
           </div>
-          <p tw="cursor-pointer">{t("coursecards.amount")}</p>
+          <p tw="cursor-pointer text-[#31C0CC]">{t("coursecards.amount")}</p>
         </div>
       </div>
     </div>
