@@ -14,7 +14,7 @@ export default function Home() {
       </Head>
       <h2 tw="text-[40px]">{t("home.hero.title")}</h2>
       <div tw="flex gap-4"></div>
-      <div tw="flex gap-4">
+      <div>
         <CourseCards />
       </div>
       <InterestCard />
