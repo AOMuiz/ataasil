@@ -7,7 +7,7 @@ import dots2 from "/public/assets/images/Group 58.png";
 const WhyUs = () => {
   return (
     <div className="bg-neutral-N20 px-20 py-10">
-      <p className="font-bold text-3xl mb-5">لماذا جامعة التأصيل</p>
+      <p className="font-bold text-3xl mb-8">لماذا جامعة التأصيل</p>
       <div className="grid grid-cols-2 gap-8 justify-between">
         <section className="flex flex-col gap-3">
           <div className="bg-white relative px-7 py-5">
@@ -53,7 +53,7 @@ const WhyUs = () => {
               src={dots1}
               alt="dots"
               style={{
-                paddingBottom: "2px",
+                paddingBottom: "4px",
               }}
             />
           </div>
