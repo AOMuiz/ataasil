@@ -6,7 +6,7 @@ import CourseNav from "./coursenav";
 
 const CourseCards = () => {
   return (
-    <div tw="flex flex-col bg-[#F5F6F7] w-full py-10">
+    <div tw="flex flex-col bg-neutral-N30 w-full py-10">
       <div tw="px-60">
         <SectionTitle />
       </div>
