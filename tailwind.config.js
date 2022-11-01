@@ -21,6 +21,7 @@ module.exports = {
           P300: "#31c0cc",
           P400: "#22868f",
           P500: "#1e757c",
+          P600: "#039BE5",
         },
         secondary: {
           S50: "#e7e8ee",

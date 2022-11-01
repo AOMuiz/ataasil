@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import styled from "styled-components";
 import {
   AiFillYoutube,
@@ -10,6 +10,8 @@ import {
   AiFillStar,
   AiFillLinkedin,
 } from "react-icons/ai";
+import { HiOutlineBookOpen, HiOutlineClock } from "react-icons/hi";
+import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
 import { BiChevronDown, BiSearchAlt } from "react-icons/bi";
 import { FaFacebookF, FaGreaterThan, FaLessThan } from "react-icons/fa";
 
@@ -23,6 +25,10 @@ const icons = {
   "shopping-bag": AiOutlineShopping,
   "chevron-down": BiChevronDown,
   close: AiOutlineClose,
+  book: HiOutlineBookOpen,
+  clock: HiOutlineClock,
+  right: BsArrowRight,
+  left: BsArrowLeft,
   menu: AiOutlineMenu,
   star: AiFillStar,
   "greater-than": FaGreaterThan,
