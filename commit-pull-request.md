@@ -93,7 +93,7 @@ The first word should be capitalized unless the message begins with symbol, acro
 This is primary intended to serve as a space saving measure, but also aids in
 driving the subject line to be as short and concise as possible.
 
-## Use the imperative mood in the subject line
+## Use imperative mood in your commit message subject
 
 Imperative mood just means “spoken or written as if giving a command or instruction”. A few examples:
 
