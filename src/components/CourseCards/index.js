@@ -9,7 +9,7 @@ const CourseCards = () => {
   return (
     <div tw="flex flex-col bg-neutral-N30 w-full py-10">
       <div tw="px-60">
-        <div tw="text-3xl	font-bold">{t("coursecards.main topic")}</div>
+        <p tw="text-3xl	font-bold">{t("coursecards.main topic")}</p>
       </div>
       <div tw="flex gap-3 justify-center">
         <SectionCategory />
