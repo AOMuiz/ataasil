@@ -5,6 +5,17 @@
       "conference": "conference",
       "title": "Introduction to Islamic teachings and lifestyle",
       "summary": "The purpose of the introductory course is to build your foundation for Islamic monotheism and the correct belief of the Companions of the Prophet."
+    },
+    "help": {
+      "need help": "Do you have questions?",
+      "summary": "You may find the answer to the FAQ on the Help Center page",
+      "action": "Help Center"
+    },
+    "whyus": {
+      "title": "Why Choose Us"
+    },
+    "testimonials": {
+      "title": "Testimonials"
     }
   },
   "about": {

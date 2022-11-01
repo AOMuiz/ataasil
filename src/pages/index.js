@@ -1,6 +1,9 @@
 import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 import Hero from "../components/Hero";
+import Help from "../components/Help";
+import Testimonials from "../components/Testimonials/Index";
+import WhyUs from "../components/WhyUs";
 
 export default function Home() {
   const { t } = useTranslation("index");
@@ -12,6 +15,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
+      <WhyUs />
+      <Testimonials />
+      <Help />
     </div>
   );
 }
