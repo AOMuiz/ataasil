@@ -7,14 +7,12 @@ import {
   AiOutlineClose,
   AiOutlineShopping,
   AiOutlineMenu,
-} from "react-icons/ai";
-import { BiChevronDown, BiSearchAlt } from "react-icons/bi";
-import { FaFacebookF } from "react-icons/fa";
   AiFillStar,
   AiFillLinkedin,
 } from "react-icons/ai";
-import { BiChevronDown } from "react-icons/bi";
+import { BiChevronDown, BiSearchAlt } from "react-icons/bi";
 import { FaFacebookF, FaGreaterThan, FaLessThan } from "react-icons/fa";
+
 const icons = {
   search: BiSearchAlt,
   twitter: AiOutlineTwitter,
