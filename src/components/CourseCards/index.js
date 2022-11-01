@@ -1,6 +1,6 @@
 import React from "react";
 import CourseCard from "./coursecard";
-import SectionCategory from "./sectioncategory";
+import SectionCategory from "./SectionCategory";
 import Icon from "../Icon";
 import useTranslation from "next-translate/useTranslation";
 
