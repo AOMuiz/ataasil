@@ -12,7 +12,7 @@ const CourseCard = () => {
     <div>
       <div tw=" w-[284.09px] rounded-[30px] bg-[#FFFFFF] shadow-md">
         <Image src={cardImage} alt="" />
-        <div tw="p-3">
+        <div tw="p-6">
           <div tw="flex justify-between">
             <div tw=" flex items-center cursor-pointer gap-2">
               <Icon id={"book"} tw="cursor-pointer" size="20" />

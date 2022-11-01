@@ -8,10 +8,11 @@ const CourseCards = () => {
   const { t } = useTranslation("index");
   return (
     <div tw="flex flex-col bg-neutral-N30 w-full py-10">
-      <div tw="px-60">
+      <div tw="px-20">
         <p tw="text-3xl	font-bold">{t("coursecards.main topic")}</p>
       </div>
-      <div tw="flex gap-3 justify-center">
+      <div tw="flex gap-6 px-20">
+        <SectionCategory />
         <SectionCategory />
         <SectionCategory />
         <SectionCategory />
@@ -21,14 +22,15 @@ const CourseCards = () => {
         <SectionCategory />
       </div>
       <section>
-        <div tw="flex gap-3 justify-center">
+        <div tw="flex gap-6 px-20">
+          <CourseCard />
           <CourseCard />
           <CourseCard />
           <CourseCard />
           <CourseCard />
         </div>
-        <div>
-          <div tw="flex gap-2 flex-row-reverse">
+        <div tw="px-20">
+          <div tw="flex gap-2 flex-row-reverse py-10">
             <Icon
               id={"left"}
               color={"white"}
