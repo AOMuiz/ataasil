@@ -3,6 +3,17 @@
     "hero": {
       "summary": "But I must show you that all these misconceptions about the condemnation of ecstasy and the glorification of pain have already arisen, and I will show you",
       "title": "The Book of Tawheed by Sheikh Uthaymeen"
+    },
+    "help": {
+      "need help": "Do you have questions?",
+      "summary": "You may find the answer to the FAQ on the Help Center page",
+      "action": "Help Center"
+    },
+    "whyus": {
+      "title": "Why Choose Us"
+    },
+    "testimonials": {
+      "title": "Testimonials"
     }
   },
   "about": {

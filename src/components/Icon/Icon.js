@@ -7,19 +7,25 @@ import {
   AiFillInstagram,
   AiOutlineClose,
   AiOutlineShopping,
+  AiFillStar,
+  AiFillLinkedin,
 } from "react-icons/ai";
 import { BiChevronDown } from "react-icons/bi";
-import { FaFacebookF } from "react-icons/fa";
+import { FaFacebookF, FaGreaterThan, FaLessThan } from "react-icons/fa";
 
 const icons = {
   search: AiOutlineSearch,
   twitter: AiOutlineTwitter,
   youtube: AiFillYoutube,
+  linkedIn: AiFillLinkedin,
   instagram: AiFillInstagram,
   facebook: FaFacebookF,
   "shopping-bag": AiOutlineShopping,
   "chevron-down": BiChevronDown,
   close: AiOutlineClose,
+  star: AiFillStar,
+  "greater-than": FaGreaterThan,
+  "less-than": FaLessThan,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
