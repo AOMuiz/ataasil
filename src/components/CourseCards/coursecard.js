@@ -9,8 +9,8 @@ const CourseCard = () => {
   const { t } = useTranslation("index");
 
   return (
-    <div>
-      <div tw=" w-[284.09px] rounded-[30px] bg-[#FFFFFF] shadow-md">
+    <>
+      <article tw=" w-[284.09px] rounded-[30px] bg-white shadow-md">
         <Image src={cardImage} alt="" />
         <div tw="p-6">
           <div tw="flex justify-between">
@@ -35,8 +35,8 @@ const CourseCard = () => {
             <p tw="cursor-pointer text-[#31C0CC]">{t("coursecards.amount")}</p>
           </div>
         </div>
-      </div>
-    </div>
+      </article>
+    </>
   );
 };
 
