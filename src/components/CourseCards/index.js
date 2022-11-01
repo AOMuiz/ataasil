@@ -7,7 +7,7 @@ import useTranslation from "next-translate/useTranslation";
 const CourseCards = () => {
   const { t } = useTranslation("index");
   return (
-    <div className="flex flex-col bg-neutral-N30 w-full py-10 px-20">
+    <div className="flex flex-col bg-neutral-N30 w-full py-10 px-20 pt-28">
       <div>
         <p className="text-3xl font-bold">{t("coursecards.main topic")}</p>
       </div>
