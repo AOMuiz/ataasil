@@ -12,7 +12,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
-      <h2 tw="text-[40px]">{t("home.hero.title")}</h2>
     </div>
   );
 }
