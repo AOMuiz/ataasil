@@ -1,8 +1,10 @@
 {
   "home": {
     "hero": {
-      "summary": "But I must show you that all these misconceptions about the condemnation of ecstasy and the glorification of pain have already arisen, and I will show you",
-      "title": "The Book of Tawheed by Sheikh Uthaymeen"
+      "date": "11.09.2022",
+      "conference": "conference",
+      "title": "Introduction to Islamic teachings and lifestyle",
+      "summary": "The purpose of the introductory course is to build your foundation for Islamic monotheism and the correct belief of the Companions of the Prophet."
     },
     "help": {
       "need help": "Do you have questions?",
@@ -27,6 +29,10 @@
   "navbar": {
     "Join us": "Join us",
     "corporate training": "Corporate Training",
-    "blog": "Blog"
+    "blog": "Blog",
+    "menu": "Menu",
+    "sign in": "Sign In",
+    "sign up": "Join Ataasil",
+    "search placeholder": "Search the platform"
   }
 }
