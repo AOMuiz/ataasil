@@ -16,7 +16,6 @@ export default function Home() {
       <WhyUs />
       <Testimonials />
       <Help />
-      <h2 tw="text-[40px]">{t("home.hero.title")}</h2>
     </div>
   );
 }

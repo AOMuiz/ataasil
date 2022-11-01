@@ -3,11 +3,14 @@ import TestimonialCard from "./TestimonialCard";
 import Image from "next/image";
 import paginationImg from "/public/assets/images/content-img.png";
 import Icon from "../Icon";
+import useTranslation from "next-translate/useTranslation";
 
 const Testimonials = () => {
+  const { t } = useTranslation("index");
+
   return (
     <div className="py-10 px-20">
-      <p className="font-bold text-3xl mb-10">قالوا عنا</p>
+      <p className="font-bold text-3xl mb-10">{t("home.testimonials.title")}</p>
       <div className="flex gap-6">
         <TestimonialCard />
         <TestimonialCard />

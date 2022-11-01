@@ -8,6 +8,12 @@
       "need help": "Do you have questions?",
       "summary": "You may find the answer to the FAQ on the Help Center page",
       "action": "Help Center"
+    },
+    "whyus": {
+      "title": "Why Choose Us"
+    },
+    "testimonials": {
+      "title": "Testimonials"
     }
   },
   "about": {

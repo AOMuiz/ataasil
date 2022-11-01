@@ -3,11 +3,14 @@ import React from "react";
 import videoImg from "/public/assets/images/pexels-katya-wolf-8716103 2.png";
 import dots1 from "/public/assets/images/Group 59.png";
 import dots2 from "/public/assets/images/Group 58.png";
+import useTranslation from "next-translate/useTranslation";
 
 const WhyUs = () => {
+  const { t } = useTranslation("index");
+
   return (
     <div className="bg-neutral-N20 px-20 py-10">
-      <p className="font-bold text-3xl mb-8">لماذا جامعة التأصيل</p>
+      <p className="font-bold text-3xl mb-8">{t("home.whyus.title")}</p>
       <div className="grid grid-cols-2 gap-8 justify-between">
         <section className="flex flex-col gap-3">
           <div className="bg-white relative px-7 py-5">
@@ -46,7 +49,7 @@ const WhyUs = () => {
             </p>
           </div>
         </section>
-        <section className="">
+        <section>
           <div className="flex gap-1">
             <div className="bg-primary-P300 rounded-tl-3xl h-auto w-16" />
             <Image
@@ -57,7 +60,7 @@ const WhyUs = () => {
               }}
             />
           </div>
-          <div className="">
+          <div>
             <Image src={videoImg} alt="why us video" />
           </div>
           <Image src={dots2} alt="dots" />

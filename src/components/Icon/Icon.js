@@ -8,6 +8,7 @@ import {
   AiOutlineClose,
   AiOutlineShopping,
   AiFillStar,
+  AiFillLinkedin,
 } from "react-icons/ai";
 import { BiChevronDown } from "react-icons/bi";
 import { FaFacebookF, FaGreaterThan, FaLessThan } from "react-icons/fa";
@@ -16,6 +17,7 @@ const icons = {
   search: AiOutlineSearch,
   twitter: AiOutlineTwitter,
   youtube: AiFillYoutube,
+  linkedIn: AiFillLinkedin,
   instagram: AiFillInstagram,
   facebook: FaFacebookF,
   "shopping-bag": AiOutlineShopping,

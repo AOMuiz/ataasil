@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import store from "../redux/store";
 import GlobalStyles from "../components/GlobalStyles";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function MyApp({ Component, pageProps }) {
   const { locale } = useRouter();
@@ -29,6 +30,7 @@ function MyApp({ Component, pageProps }) {
         <>
           <Navbar />
           <Component {...pageProps} />
+          <Footer />
         </>
       </Provider>
     </>
