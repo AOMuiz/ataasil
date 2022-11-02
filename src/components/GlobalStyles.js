@@ -24,6 +24,7 @@ body,
 #root {
   height: 100%;
   font-family: var(--font);
+  scroll-behavior: smooth;
 }
 `;
 

@@ -50,5 +50,27 @@
     "main topic": " فئة الموضوع",
     "section title": " التوحيد الإسلامي"
   },
-  "footer": {}
+  "footer": {
+    "support": {
+      "heading": "دعم",
+      "help center": "مركز المساعدة",
+      "privacy": "سياسة الخصوصية",
+      "circumstance": "الظروف",
+      "user guide": "دليل الاستخدام"
+    },
+    "about links": {
+      "heading": "نبذة عنا",
+      "connect": "تواصل معنا",
+      "about us": "نبذة عنا",
+      "Join us": "انضم إلينا",
+      "appointment": "حجز موعد شخصي"
+    },
+    "newsletter": {
+      "title": "انضم إلى نشرتنا الإخبارية للحصول على آخر تحديثات الدورات",
+      "join": "إرسال"
+    },
+    "socials": "وسائل التواصل الاجتماعي",
+    "download app": "حمل تطبيقنا",
+    "copyright": "جميع الحقوق محفوظة لجامعة التأصيل"
+  }
 }

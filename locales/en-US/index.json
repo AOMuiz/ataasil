@@ -50,5 +50,26 @@
     "main topic": "Topic Category",
     "section title": "The Islamic Tawhid"
   },
-  "footer": {}
+  "footer": {
+    "about links": {
+      "heading": "About us",
+      "connect": "Connect with us",
+      "about us": "About us",
+      "Join us": "Join us",
+      "appointment": "Book a personal appointment"
+    },
+    "support": {
+      "heading": "Support",
+      "help center": "Help Center",
+      "privacy": "privacy policy",
+      "circumstance": "Circumstances",
+      "user guide": "User's Manual"
+    },
+    "download app": "Download our app",
+    "copyright": "All rights reserved to Al-Taseel University",
+    "newsletter": {
+      "title": "Join our newsletter to get the latest course updates",
+      "join": "send"
+    }
+  }
 }
