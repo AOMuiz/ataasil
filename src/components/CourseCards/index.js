@@ -3,13 +3,14 @@ import CourseCard from "./coursecard";
 import SectionCategory from "./SectionCategory";
 import Icon from "../Icon";
 import useTranslation from "next-translate/useTranslation";
+import SectionHeader from "../SectionHeader";
 
 const CourseCards = () => {
   const { t } = useTranslation("index");
   return (
-    <div className="flex flex-col bg-neutral-N30 w-full py-10 px-20 pt-28">
+    <div className="flex flex-col bg-neutral-N20 w-full py-10 px-20 pt-28">
       <div>
-        <p className="text-3xl font-bold">{t("coursecards.main topic")}</p>
+        <SectionHeader title={t("coursecards.main topic")} />
       </div>
       <div className="flex gap-4">
         <SectionCategory />

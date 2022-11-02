@@ -4,13 +4,14 @@ import videoImg from "/public/assets/images/pexels-katya-wolf-8716103 2.png";
 import dots1 from "/public/assets/images/Group 59.png";
 import dots2 from "/public/assets/images/Group 58.png";
 import useTranslation from "next-translate/useTranslation";
+import SectionHeader from "./SectionHeader";
 
 const WhyUs = () => {
   const { t } = useTranslation("index");
 
   return (
     <div className="bg-neutral-N20 px-20 py-10">
-      <p className="font-bold text-3xl mb-8">{t("home.whyus.title")}</p>
+      <SectionHeader title={t("home.whyus.title")} />
       <div className="grid grid-cols-2 gap-8 justify-between">
         <section className="flex flex-col gap-3">
           <div className="bg-white relative px-7 py-5">
