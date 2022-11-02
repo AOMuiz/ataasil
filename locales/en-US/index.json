@@ -16,6 +16,11 @@
     },
     "testimonials": {
       "title": "Testimonials"
+    },
+    "interestcard": {
+      "header": "where do you find your concern, directives and wishes",
+      "begin": "Begin",
+      "contents": "The purpose of the introductory course is to build your foundation for Islamic monotheism and the correct belief of the Companions of the Prophet. \nThe purpose of the introductory course is to build your foundation for Islamic monotheism and the correct belief of the Companions of the Prophet. \nThe purpose of the introductory course is to build your foundation for Islamic monotheism and the correct belief of the Companions of the Prophet. \nThe purpose of the introductory course is to build your foundation for Islamic monotheism and the correct belief of the Companions of the Prophet."
     }
   },
   "about": {
@@ -45,9 +50,5 @@
     "main topic": "Topic Category",
     "section title": "The Islamic Tawhid"
   },
-  "interestcard": {
-    "header": "where do you find your concern, directives and wishes",
-    "begin": "Begin",
-    "contents": "The purpose of the introductory course is to build your foundation for Islamic monotheism and the correct belief of the Companions of the Prophet. \nThe purpose of the introductory course is to build your foundation for Islamic monotheism and the correct belief of the Companions of the Prophet. \nThe purpose of the introductory course is to build your foundation for Islamic monotheism and the correct belief of the Companions of the Prophet. \nThe purpose of the introductory course is to build your foundation for Islamic monotheism and the correct belief of the Companions of the Prophet."
-  }
+  "footer": {}
 }
