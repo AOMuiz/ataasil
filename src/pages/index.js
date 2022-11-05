@@ -4,7 +4,7 @@ import CourseCards from "../components/CourseCards";
 import InterestCard from "../components/InterestCard";
 import Hero from "../components/Hero";
 import Help from "../components/Help";
-import Testimonials from "../components/Testimonials/Index";
+import Testimonials from "../components/Testimonials";
 import WhyUs from "../components/WhyUs";
 
 export default function Home() {
