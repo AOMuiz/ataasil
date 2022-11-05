@@ -1,10 +1,10 @@
 import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
-import CourseCards from "../components/CourseCards";
+import CourseCards from "../components/courseCards";
 import InterestCard from "../components/InterestCard";
 import Hero from "../components/Hero";
 import Help from "../components/Help";
-import Testimonials from "../components/Testimonials";
+import Testimonials from "../components/testimonials";
 import WhyUs from "../components/WhyUs";
 
 export default function Home() {
