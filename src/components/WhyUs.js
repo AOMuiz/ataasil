@@ -50,21 +50,22 @@ const WhyUs = () => {
             </p>
           </div>
         </section>
-        <section>
-          <div className="flex gap-1">
-            <div className="bg-primary-P300 rounded-tl-3xl h-auto w-16" />
+        <section className="flex flex-col">
+          <div className="flex gap-1 items-end">
+            <div className="bg-primary-P300 rounded-tl-3xl h-[72px] w-28" />
+            <Image src={dots1} alt="dots" className="pb-1" />
+          </div>
+          <div className="basis-full mb-1">
             <Image
-              src={dots1}
-              alt="dots"
-              style={{
-                paddingBottom: "4px",
-              }}
+              src={videoImg}
+              alt="why us video"
+              layout="responsive"
+              className="h-full leading-[0]"
             />
           </div>
-          <div>
-            <Image src={videoImg} alt="why us video" />
+          <div className="self-end">
+            <Image src={dots2} alt="dots" className="leading-[0] h-full" />
           </div>
-          <Image src={dots2} alt="dots" />
         </section>
       </div>
     </div>
