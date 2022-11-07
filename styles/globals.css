@@ -3,21 +3,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-html {
-  --color-white: hsl(0deg 0% 100%);
-  --color-primary: hsla(185, 61%, 50%, 1);
-  --color-secondary: hsl(240deg 60% 63%);
-  --color-grey-500: hsla(237, 16%, 27%, 1);
-  --color-grey-100: hsla(210, 11%, 96%, 1);
-
-  --color-backdrop: hsl(220deg 5% 40% / 0.8);
-  --font: "Almarai", sans-serif;
-}
-
-html,
-body,
-#root {
-  height: 100%;
-  font-family: var(--font);
-}
