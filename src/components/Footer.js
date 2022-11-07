@@ -67,13 +67,13 @@ const Footer = () => {
               {t("footer.newsletter.join")}
             </button>
           </div>
-          <div tw="flex gap-3  text-white text-xl items-center justify-center">
+          <div className="flex gap-3 text-white text-xl items-center justify-center">
             <p className="text-lg">{t("footer.socials")}</p>
-            <Icon id={"youtube"} tw="cursor-pointer" />
-            <Icon id={"linkedIn"} tw="cursor-pointer" />
-            <Icon id={"facebook"} tw="cursor-pointer" />
-            <Icon id={"instagram"} tw="cursor-pointer" />
-            <Icon id={"twitter"} tw="cursor-pointer" />
+            <Icon id={"youtube"} className="cursor-pointer" />
+            <Icon id={"linkedIn"} className="cursor-pointer" />
+            <Icon id={"facebook"} className="cursor-pointer" />
+            <Icon id={"instagram"} className="cursor-pointer" />
+            <Icon id={"twitter"} className="cursor-pointer" />
           </div>
         </div>
       </div>
