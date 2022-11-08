@@ -10,29 +10,31 @@ const CourseCard = () => {
 
   return (
     <>
-      <article tw=" w-[284.09px] rounded-[30px] bg-white shadow-md">
+      <article className="w-[284.09px] rounded-[30px] bg-white shadow-md">
         <Image src={cardImage} alt="" />
-        <div tw="p-6">
-          <div tw="flex justify-between">
-            <div tw=" flex items-center cursor-pointer gap-2">
-              <Icon id={"book"} tw="cursor-pointer" size="20" />
+        <div className="p-6">
+          <div className="flex justify-between">
+            <div className="flex items-center cursor-pointer gap-2">
+              <Icon id={"book"} className="cursor-pointer" size="20" />
               <p>{t("coursecards.topic")}</p>
             </div>
-            <div tw=" flex items-center cursor-pointer gap-2">
-              <Icon id={"clock"} tw="cursor-pointer" size="20" />
+            <div className="flex items-center cursor-pointer gap-2">
+              <Icon id={"clock"} className="cursor-pointer" size="20" />
               <p>{t("coursecards.date")}</p>
             </div>
           </div>
-          <p tw="cursor-pointer py-3 font-bold text-[18px]">
+          <p className="cursor-pointer py-3 font-bold text-lg">
             {t("coursecards.title")}
           </p>
           <p>{t("coursecards.summary")}</p>
-          <div tw="flex justify-between items-center py-3">
-            <div tw=" flex items-center cursor-pointer gap-2 ">
+          <div className="flex justify-between items-center py-3">
+            <div className="flex items-center cursor-pointer gap-2 ">
               <Image src={ownerIcon} alt="" />
               <p>{t("coursecards.owner")}</p>
             </div>
-            <p tw="cursor-pointer text-[#31C0CC]">{t("coursecards.amount")}</p>
+            <p className="cursor-pointer text-primary-P300">
+              {t("coursecards.amount")}
+            </p>
           </div>
         </div>
       </article>

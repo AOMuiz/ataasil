@@ -57,23 +57,23 @@ const Footer = () => {
           <p className="text-white font-bold text-lg w-auto">
             {t("footer.newsletter.title")}
           </p>
-          <div className="relative my-2">
+          <div className="relative my-6 h-14">
             <input
               type="text"
               placeholder="أدخل عنوان بريدك الإلكتروني"
-              className="p-4 outline-none placeholder:p-2 w-full my-5 rounded-l-full"
+              className="h-full outline-none placeholder:py-2 placeholder:px-4 w-full rounded-l-full"
             />
-            <button className="bg-primary-P300  py-4 px-5 rounded-full text-white absolute left-0 -bottom-2 -translate-y-1/2">
+            <button className="bg-primary-P300 px-5 rounded-full text-white absolute left-0 -bottom-7 -translate-y-1/2 text-xl h-full">
               {t("footer.newsletter.join")}
             </button>
           </div>
-          <div tw="flex gap-3  text-white text-xl items-center justify-center">
+          <div className="flex gap-3 text-white text-xl items-center justify-center">
             <p className="text-lg">{t("footer.socials")}</p>
-            <Icon id={"youtube"} tw="cursor-pointer" />
-            <Icon id={"linkedIn"} tw="cursor-pointer" />
-            <Icon id={"facebook"} tw="cursor-pointer" />
-            <Icon id={"instagram"} tw="cursor-pointer" />
-            <Icon id={"twitter"} tw="cursor-pointer" />
+            <Icon id={"youtube"} className="text-2xl cursor-pointer" />
+            <Icon id={"linkedIn"} className="text-2xl cursor-pointer" />
+            <Icon id={"facebook"} className="text-2xl cursor-pointer" />
+            <Icon id={"instagram"} className="text-2xl cursor-pointer" />
+            <Icon id={"twitter"} className="text-2xl cursor-pointer" />
           </div>
         </div>
       </div>
