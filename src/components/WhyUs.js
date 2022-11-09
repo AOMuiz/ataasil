@@ -58,8 +58,8 @@ const WhyUs = () => {
               allowfullscreen
             ></iframe>
           </div>
-          <div className="self-end">
-            <Image src={dots2} alt="dots" className="leading-[0] h-full" />
+          <div className="self-end leading-[0]">
+            <Image src={dots2} alt="dots" className="h-full" />
           </div>
         </section>
       </div>
