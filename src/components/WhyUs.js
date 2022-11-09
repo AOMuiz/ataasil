@@ -55,13 +55,21 @@ const WhyUs = () => {
             <div className="bg-primary-P300 rounded-tl-3xl h-[72px] w-28" />
             <Image src={dots1} alt="dots" className="pb-1" />
           </div>
-          <div className="basis-full mb-1">
-            <Image
+          <div className="basis-full mb-1 rounded-md">
+            {/* <Image
               src={videoImg}
               alt="why us video"
               layout="responsive"
-              className="h-full leading-[0]"
-            />
+              className="h-full "
+            /> */}
+            <iframe
+              className="h-full w-full leading-[0]"
+              src="https://www.youtube.com/embed/sPxy6kwUCNE"
+              title="why us video player"
+              frameborder="0"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope;"
+              allowfullscreen
+            ></iframe>
           </div>
           <div className="self-end">
             <Image src={dots2} alt="dots" className="leading-[0] h-full" />
