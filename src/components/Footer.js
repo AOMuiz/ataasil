@@ -5,6 +5,7 @@ import Icon from "./Icon";
 import googleplay from "/public/assets/images/googleplay.png";
 import appstore from "/public/assets/images/appstore.png";
 import useTranslation from "next-translate/useTranslation";
+import Link from "next/link";
 
 const Footer = () => {
   const { t } = useTranslation("index");
@@ -12,7 +13,9 @@ const Footer = () => {
     <section className="bg-[#3A3B50] px-20 py-10">
       <div className="grid grid-flow-col-dense pb-5 gap-8">
         <div>
-          <LogoDark />
+          <Link href={"/"}>
+            <LogoDark />
+          </Link>
           <p className="text-white my-3">{t("footer.download app")}</p>
           <div className="flex gap-3">
             <Image src={googleplay} alt="googleplay" />
@@ -23,10 +26,10 @@ const Footer = () => {
           <p className="font-bold mb-4">{t("footer.about links.heading")}</p>
           <ul>
             <li className="cursor-pointer pb-1">
-              {t("footer.about links.connect")}
+              <Link href={"contact"}>{t("footer.about links.connect")}</Link>
             </li>
             <li className="cursor-pointer pb-1">
-              {t("footer.about links.about us")}
+              <Link href={"/about"}>{t("footer.about links.about us")}</Link>
             </li>
             <li className="cursor-pointer pb-1">
               {t("footer.about links.Join us")}

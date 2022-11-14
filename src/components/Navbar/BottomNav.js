@@ -1,4 +1,5 @@
 import useTranslation from "next-translate/useTranslation";
+import Link from "next/link";
 import React from "react";
 import Icon from "../Icon";
 import Logo from "../Svg/Logo";
@@ -9,7 +10,9 @@ const BottomNav = () => {
   return (
     <div className="flex px-20 py-5 justify-between items-center shadow-sm">
       <div className="flex items-center gap-6">
-        <Logo width={80} height={60} className="cursor-pointer" />
+        <Link href={"/"}>
+          <Logo width={80} height={60} className="cursor-pointer" />
+        </Link>
         <p className="flex justify-center items-center border-2 border-primary-P300 rounded-full py-2 px-3 h-auto cursor-pointer gap-3">
           <span>
             <Icon id={"menu"} />
@@ -26,7 +29,9 @@ const BottomNav = () => {
         />
       </div>
       <div className="flex items-center justify-evenly gap-6 font-bold">
-        <p className="cursor-pointer text-gray-G30">{t("navbar.sign in")}</p>
+        <p className="cursor-pointer text-gray-G30">
+          <Link href={"signin"}>{t("navbar.sign in")}</Link>
+        </p>
         <p className="rounded-full bg-primary-P300 w-auto  text-center text-white px-6 py-3 cursor-pointer">
           {t("navbar.sign up")}
         </p>
