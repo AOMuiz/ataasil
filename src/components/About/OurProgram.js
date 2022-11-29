@@ -11,7 +11,7 @@ const OurProgram = () => {
       <SectionHeader title={"عن برامج ومنتجات جامعة التأصل"} />
       <div className="flex gap-10">
         <div className="flex-1 flex self-center">
-          <div className="rounded-lg -translate-x-1/2 translate-y-1/4 z-[3] h-full w-full">
+          <div className="rounded-lg -translate-x-1/2 translate-y-1/4 ltr:translate-x-1/2 ltr:translate-y-1/4  z-[3] h-full w-full">
             <Image
               src={dudani}
               alt=""
