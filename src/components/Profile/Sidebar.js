@@ -11,18 +11,18 @@ const routes = [
     icon: "home",
   },
   {
-    slug: "/profile/user",
+    slug: "/profile/settings",
     label: "إعدادات الحساب",
     icon: "user",
   },
   {
-    slug: "/profile/book",
-    label: "نظرة عامة",
-    icon: "book",
+    slug: "/profile/certificates",
+    label: "الشهادات",
+    icon: "certificate",
   },
   {
-    slug: "/profile/testimonials",
-    label: "الشهادات",
+    slug: "/profile/purchases",
+    label: "المشتريات السابقة",
     icon: "dollar",
   },
   {
@@ -41,7 +41,7 @@ const routes = [
     icon: "favorite",
   },
   {
-    slug: "/profile/bookmark",
+    slug: "/profile/bookmarks",
     label: "الإشارات المرجعية",
     icon: "bookmark",
   },

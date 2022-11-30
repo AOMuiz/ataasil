@@ -22,6 +22,7 @@ import { BsArrowRight, BsArrowLeft, BsBookmark } from "react-icons/bs";
 import { BiChevronDown, BiSearchAlt, BiHomeAlt, BiUser } from "react-icons/bi";
 import { FaFacebookF, FaGreaterThan, FaLessThan } from "react-icons/fa";
 import { MdOutlineDashboard } from "react-icons/md";
+import { TbNotes } from "react-icons/tb";
 
 const icons = {
   search: BiSearchAlt,
@@ -49,6 +50,7 @@ const icons = {
   favorite: AiOutlineHeart,
   dollar: AiOutlineDollarCircle,
   bell: HiOutlineBell,
+  certificate: TbNotes,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
