@@ -51,7 +51,7 @@ const Sidebar = () => {
   const router = useRouter();
   return (
     <div className="bg-neutral-N20 basis-[20vw] py-6 h-full">
-      <div className="flex justify-center items-center my-3">
+      <div className="flex justify-center items-center my-3 mx-2">
         <p className="bg-primary-P300 h-12 w-12 rounded-full text-center flex justify-center text-3xl font-semibold">
           ع
         </p>
