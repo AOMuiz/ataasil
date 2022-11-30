@@ -7,7 +7,6 @@ import store from "../redux/store";
 import GlobalStyles from "../components/GlobalStyles";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { IndexLayout } from "../layout";
 
 function MyApp({ Component, pageProps }) {
   const { locale } = useRouter();
