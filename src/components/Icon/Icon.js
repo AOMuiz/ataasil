@@ -9,15 +9,19 @@ import {
   AiOutlineMenu,
   AiFillStar,
   AiFillLinkedin,
+  AiOutlineHeart,
+  AiOutlineDollarCircle,
 } from "react-icons/ai";
 import {
   HiOutlineBookOpen,
   HiOutlineClock,
   HiOutlineLocationMarker,
+  HiOutlineBell,
 } from "react-icons/hi";
-import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
-import { BiChevronDown, BiSearchAlt } from "react-icons/bi";
+import { BsArrowRight, BsArrowLeft, BsBookmark } from "react-icons/bs";
+import { BiChevronDown, BiSearchAlt, BiHomeAlt, BiUser } from "react-icons/bi";
 import { FaFacebookF, FaGreaterThan, FaLessThan } from "react-icons/fa";
+import { MdOutlineDashboard } from "react-icons/md";
 
 const icons = {
   search: BiSearchAlt,
@@ -38,6 +42,13 @@ const icons = {
   "greater-than": FaGreaterThan,
   "less-than": FaLessThan,
   location: HiOutlineLocationMarker,
+  dashboard: MdOutlineDashboard,
+  home: BiHomeAlt,
+  user: BiUser,
+  bookmark: BsBookmark,
+  favorite: AiOutlineHeart,
+  dollar: AiOutlineDollarCircle,
+  bell: HiOutlineBell,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
