@@ -7,11 +7,14 @@ import store from "../redux/store";
 import GlobalStyles from "../components/GlobalStyles";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { IndexLayout } from "../layout";
 
 function MyApp({ Component, pageProps }) {
   const { locale } = useRouter();
   const dir = locale === "ar" ? "rtl" : "ltr";
   const lang = locale == "ar" ? "ar" : "en";
+
+  // const Layout = Component.Layout || IndexLayout;
 
   useEffect(() => {
     document.documentElement.dir = dir;
@@ -29,7 +32,16 @@ function MyApp({ Component, pageProps }) {
         <GlobalStyles />
         <>
           <Navbar />
-          <Component {...pageProps} />
+          {Component.PageLayout ? (
+            <Component.PageLayout>
+              <Component {...pageProps} />
+            </Component.PageLayout>
+          ) : (
+            <Component {...pageProps} />
+          )}
+          {/* <Layout>
+            <Component {...pageProps} />
+          </Layout> */}
           <Footer />
         </>
       </Provider>

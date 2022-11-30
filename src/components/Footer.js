@@ -26,7 +26,7 @@ const Footer = () => {
           <p className="font-bold mb-4">{t("footer.about links.heading")}</p>
           <ul>
             <li className="cursor-pointer pb-1">
-              <Link href={"contact"}>{t("footer.about links.connect")}</Link>
+              <Link href={"/contact"}>{t("footer.about links.connect")}</Link>
             </li>
             <li className="cursor-pointer pb-1">
               <Link href={"/about"}>{t("footer.about links.about us")}</Link>
