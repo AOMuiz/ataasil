@@ -5,6 +5,54 @@ import Icon from "../Icon";
 import useTranslation from "next-translate/useTranslation";
 import SectionHeader from "../SectionHeader";
 
+const courses = [
+  {
+    title: "كتاب التوحيد للشيخ العثيمين",
+    date: "3 أشهر",
+    topic: "التوحيد",
+    summary:
+      "لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك الت",
+    amount: "$120",
+    owner: "الشيخ المدخلي",
+  },
+  {
+    title: "كتاب التوحيد للشيخ العثيمين",
+    date: "3 أشهر",
+    topic: "التوحيد",
+    summary:
+      "لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك الت",
+    amount: "$120",
+    owner: "الشيخ المدخلي",
+  },
+  {
+    title: "كتاب التوحيد للشيخ العثيمين",
+    date: "3 أشهر",
+    topic: "التوحيد",
+    summary:
+      "لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك الت",
+    amount: "$120",
+    owner: "الشيخ المدخلي",
+  },
+  {
+    title: "كتاب التوحيد للشيخ العثيمين",
+    date: "3 أشهر",
+    topic: "التوحيد",
+    summary:
+      "لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك الت",
+    amount: "$120",
+    owner: "الشيخ المدخلي",
+  },
+  {
+    title: "كتاب التوحيد للشيخ العثيمين",
+    date: "3 أشهر",
+    topic: "التوحيد",
+    summary:
+      "لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك الت",
+    amount: "$120",
+    owner: "الشيخ المدخلي",
+  },
+];
+
 const CourseCards = () => {
   const { t } = useTranslation("index");
   return (
@@ -12,7 +60,7 @@ const CourseCards = () => {
       <div>
         <SectionHeader title={t("coursecards.main topic")} />
       </div>
-      <div className="flex gap-4">
+      <div className="flex gap-4 overflow-x-auto">
         <SectionCategory />
         <SectionCategory />
         <SectionCategory />
@@ -22,7 +70,7 @@ const CourseCards = () => {
         <SectionCategory />
       </div>
       <section>
-        <div className="flex gap-6">
+        <div className="flex gap-6 overflow-x-auto py-2">
           <CourseCard />
           <CourseCard />
           <CourseCard />
