@@ -53,9 +53,9 @@ const WhyUs = () => {
               className="h-full w-full leading-[0]"
               src="https://www.youtube.com/embed/sPxy6kwUCNE"
               title="why us video player"
-              frameborder="0"
+              frameBorder="0"
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope;"
-              allowfullscreen
+              allowFullScreen
             ></iframe>
           </div>
           <div className="self-end leading-[0]">
