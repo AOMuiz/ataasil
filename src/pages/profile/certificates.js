@@ -1,5 +1,6 @@
 import React from "react";
 import SectionCategory from "../../components/CourseCards/SectionCategory";
+import Icon from "../../components/Icon";
 import ProfileLayout from "../../layout/profileLayout";
 
 const Certificates = () => {
@@ -13,6 +14,15 @@ const Certificates = () => {
           <SectionCategory content={"برامج تدريبية"} />
           <SectionCategory content={"مسارات تدريبية"} />
           <SectionCategory content={"مؤتمرات إلكترونية"} />
+        </div>
+        <div className="flex flex-col justify-center items-center">
+          <Icon
+            id={"certificate"}
+            size={250}
+            strokeWidth={0.5}
+            className="text-gray-G30 opacity-10"
+          />
+          <p className="text-3xl font-light text-gray-G30">لا توجد شهادات</p>
         </div>
       </div>
     </section>
