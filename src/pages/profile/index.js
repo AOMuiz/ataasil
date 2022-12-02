@@ -1,9 +1,9 @@
-import React from "react";
 import ProfileLayout from "../../layout/profileLayout";
 import SectionHeader from "../../components/SectionHeader";
 import CourseCard from "../../components/CourseCards/CourseCard";
 import SectionCategory from "../../components/CourseCards/SectionCategory";
 import Icon from "../../components/Icon";
+import SectionDivider from "../../components/SectionDivider";
 
 const Profile = () => {
   return (
@@ -17,13 +17,13 @@ const Profile = () => {
       </div>
       <div>
         <SectionHeader title={"المنتجات المقترحة"} />
-        <div className="border-2 border-[#E7E7E7]"></div>
+        <SectionDivider />
         <div className="w-min">
           <div className="flex justify-between items-center">
             <div className="flex gap-4 overflow-x-auto">
-              <SectionCategory />
-              <SectionCategory />
-              <SectionCategory />
+              <SectionCategory content={"التوحيد الإسلامي"} active />
+              <SectionCategory content={"التوحيد الإسلامي"} />
+              <SectionCategory content={"التوحيد الإسلامي"} />
             </div>
             <p className="flex gap-3 items-center text-primary-P300 text-lg">
               عرض الكل
