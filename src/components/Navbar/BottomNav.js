@@ -11,7 +11,7 @@ const BottomNav = () => {
   return (
     <div className="flex px-20 py-5 justify-between items-center shadow-sm">
       <div className="flex items-center gap-6">
-        <Link href={"/"}>
+        <Link href={"/"} passHref={true}>
           <Logo width={80} height={60} className="cursor-pointer" />
         </Link>
         <p className="flex justify-center items-center border-2 border-primary-P300 rounded-full py-2 px-3 h-auto cursor-pointer gap-3">

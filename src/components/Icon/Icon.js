@@ -17,6 +17,7 @@ import {
   HiOutlineClock,
   HiOutlineLocationMarker,
   HiOutlineBell,
+  HiPencil,
 } from "react-icons/hi";
 import { BsArrowRight, BsArrowLeft, BsBookmark } from "react-icons/bs";
 import { BiChevronDown, BiSearchAlt, BiHomeAlt, BiUser } from "react-icons/bi";
@@ -51,6 +52,7 @@ const icons = {
   dollar: AiOutlineDollarCircle,
   bell: HiOutlineBell,
   certificate: TbNotes,
+  pencil: HiPencil,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
