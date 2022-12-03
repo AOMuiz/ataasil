@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import SectionHeader from "../SectionHeader";
 import maskgroup from "/public/assets/images/Mask group.png";

@@ -1,5 +1,3 @@
-import React from "react";
-import { styled } from "twin.macro";
 import HeroCard from "./HeroCard";
 import HeroCarousel from "./HeroCarousel";
 

@@ -1,4 +1,3 @@
-import React from "react";
 import useTranslation from "next-translate/useTranslation";
 import Icon from "../Icon";
 import LocaleSwitcher from "../LocaleSwitcher/LocaleSwitcher";

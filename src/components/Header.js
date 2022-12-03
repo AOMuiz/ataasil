@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import tw, { styled } from "twin.macro";
 // import LogoDark from "./Svg/LogoDark";
 

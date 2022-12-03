@@ -1,6 +1,5 @@
 import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
-import React from "react";
 import CtaButton from "../CtaButton";
 import Icon from "../Icon";
 import Logo from "../Svg/Logo";

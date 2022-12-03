@@ -1,4 +1,3 @@
-import React from "react";
 import LogoDark from "./Svg/LogoDark";
 import Image from "next/image";
 import Icon from "./Icon";

@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import book from "/public/assets/images/book-islamic.png";
 import useTranslation from "next-translate/useTranslation";

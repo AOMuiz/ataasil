@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import pen from "/public/assets/images/hero_pen-img.png";
 import bg_img from "/public/assets/images/hero_bg.png";
