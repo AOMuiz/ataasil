@@ -62,6 +62,7 @@ const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
   }
 
   return (
+    // fix dom nexting of div inside other element when using the icon component
     <Wrapper strokeWidth={strokeWidth} {...delegated}>
       <Component color={color} size={size} />
     </Wrapper>

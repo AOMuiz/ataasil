@@ -1,10 +1,11 @@
 import CtaButton from "../CtaButton";
 import SectionDivider from "../SectionDivider";
+import SubHeading from "./SubHeading";
 
 const ChangePassword = () => {
   return (
-    <div>
-      <p className="text-2xl font-bold my-7">تغيير كلمة المرور</p>
+    <section>
+      <SubHeading content={"تغيير كلمة المرور"} />
       <SectionDivider />
       <div>
         <div className="flex gap-4 my-6">
@@ -43,7 +44,7 @@ const ChangePassword = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
