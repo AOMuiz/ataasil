@@ -21,7 +21,7 @@ import {
 import { BsArrowRight, BsArrowLeft, BsBookmark } from "react-icons/bs";
 import { BiChevronDown, BiSearchAlt, BiHomeAlt, BiUser } from "react-icons/bi";
 import { FaFacebookF, FaGreaterThan, FaLessThan } from "react-icons/fa";
-import { MdOutlineDashboard } from "react-icons/md";
+import { MdOutlineDashboard, MdOutlineCancel } from "react-icons/md";
 import { TbNotes } from "react-icons/tb";
 
 const icons = {
@@ -34,6 +34,7 @@ const icons = {
   "shopping-bag": AiOutlineShopping,
   "chevron-down": BiChevronDown,
   close: AiOutlineClose,
+  cancel: MdOutlineCancel,
   book: HiOutlineBookOpen,
   clock: HiOutlineClock,
   right: BsArrowRight,
@@ -62,7 +63,7 @@ const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
   }
 
   return (
-    // fix dom nexting of div inside other element when using the icon component
+    // fix dom nesting of div inside other element when using the icon component
     <Wrapper strokeWidth={strokeWidth} {...delegated}>
       <Component color={color} size={size} />
     </Wrapper>
