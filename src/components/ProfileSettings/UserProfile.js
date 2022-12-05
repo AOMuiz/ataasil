@@ -28,13 +28,16 @@ const UserProfile = () => {
         </div>
         <InfoContainer className="h-80 overflow-y-scroll">
           <div className="mx-4 flex flex-col gap-5">
-            <ChangeProfileInput value={"الاسم الكامل"} label={"الاسم الكامل"} />
             <ChangeProfileInput
-              value={"الاسم الكامل بالانجليزية"}
+              defaultValue={"الاسم الكامل"}
+              label={"الاسم الكامل"}
+            />
+            <ChangeProfileInput
+              defaultValue={"الاسم الكامل بالانجليزية"}
               label={"الاسم الكامل بالانجليزية"}
             />
             <ChangeProfileInput
-              value={"البريد الإلكتروني"}
+              defaultValue={"البريد الإلكتروني"}
               label={"البريد الإلكتروني"}
             />
             <div>
@@ -68,7 +71,7 @@ const UserProfile = () => {
   );
 };
 
-const ChangeProfileInput = ({ label, value }) => (
+const ChangeProfileInput = ({ label, value, ...otherAttributes }) => (
   <div>
     <label
       htmlFor=""
@@ -81,6 +84,7 @@ const ChangeProfileInput = ({ label, value }) => (
         type="text"
         className="placeholder:py-1 text-neutral-N70 px-2 py-1 bg-[#F9F9F9] outline-none"
         value={value}
+        {...otherAttributes}
       />
       <span className="bg-[#F9F9F9] h-full p-2 border-r-2 ltr:border-l-2 ltr:border-r-0">
         <Icon id={"pencil"} size={20} />
