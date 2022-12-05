@@ -1,4 +1,5 @@
 import CtaButton from "../CtaButton";
+import FormInput from "../FormInput";
 import SectionDivider from "../SectionDivider";
 import SubHeading from "./SubHeading";
 
@@ -10,36 +11,29 @@ const ChangePassword = () => {
       <div>
         <div className="flex gap-4 my-6">
           <div className="flex-1 flex flex-col">
-            <label htmlFor="" className="py-2">
-              كلمة المرور الحالية
-            </label>
-            <input
-              type="text"
+            <FormInput
+              label="كلمة المرور الحالية"
               placeholder="كلمة المرور الحالية"
-              className="rounded border-2 bg-[#F9F9F9] py-4 placeholder:py-1 px-2"
             />
           </div>
           <div className="flex-1 flex flex-col">
-            <label htmlFor="" className="py-2">
-              كلمة المرور الجديدة
-            </label>
-            <input
-              type="text"
+            <FormInput
+              label="كلمة المرور الجديدة"
               placeholder="كلمة المرور الجديدة"
-              className="rounded border-2 bg-[#F9F9F9] py-4 placeholder:py-1 px-2"
             />
           </div>
           <div className="flex-1 flex flex-col">
-            <label htmlFor="" className="py-2">
-              تثبيت كلمة المرور الجديدة
-            </label>
-            <input
+            {/* <input
               type="text"
-              placeholder="تثبيت كلمة المرور الجديدة"
+              placeholder=""
               className="rounded border-2 bg-[#F9F9F9] py-4 placeholder:py-1 px-2"
+            /> */}
+            <FormInput
+              label="تثبيت كلمة المرور الجديدة"
+              placeholder="تثبيت كلمة المرور الجديدة"
             />
           </div>
-          <div className="self-end mb-2">
+          <div className="self-end mb-1">
             <CtaButton>إعادة تعيين</CtaButton>
           </div>
         </div>
