@@ -12,7 +12,7 @@ const Footer = () => {
     <section className="bg-[#3A3B50] px-20 py-10">
       <div className="grid grid-flow-col-dense pb-5 gap-8">
         <div>
-          <Link href={"/"}>
+          <Link href={"/"} passHref={true}>
             <LogoDark />
           </Link>
           <p className="text-white my-3">{t("footer.download app")}</p>
