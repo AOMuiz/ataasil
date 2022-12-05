@@ -10,13 +10,14 @@ import {
   AiFillLinkedin,
   AiOutlineHeart,
   AiOutlineDollarCircle,
+  AiOutlineCloudUpload,
 } from "react-icons/ai";
 import {
   HiOutlineBookOpen,
   HiOutlineClock,
   HiOutlineLocationMarker,
   HiOutlineBell,
-  HiPencil,
+  HiOutlinePencil,
 } from "react-icons/hi";
 import { BsArrowRight, BsArrowLeft, BsBookmark } from "react-icons/bs";
 import { BiChevronDown, BiSearchAlt, BiHomeAlt, BiUser } from "react-icons/bi";
@@ -52,7 +53,8 @@ const icons = {
   dollar: AiOutlineDollarCircle,
   bell: HiOutlineBell,
   certificate: TbNotes,
-  pencil: HiPencil,
+  pencil: HiOutlinePencil,
+  upload: AiOutlineCloudUpload,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
