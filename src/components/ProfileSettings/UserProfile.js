@@ -10,7 +10,7 @@ const UserProfile = () => {
     <div>
       <p className="text-2xl font-bold my-7">الملف الشخصي</p>
       <SectionDivider />
-      <div className="flex my-6 gap-6">
+      <div className="grid grid-flow-col my-6 gap-6">
         <div className="h-80 bg-neutral-N20 rounded-md p-8 flex flex-col gap-8 items-center justify-center">
           <div className="border-spacing-5 border-white border-[6px] bg-primary-P300 rounded-full h-28 w-28 flex items-center justify-center">
             <Image
@@ -51,6 +51,43 @@ const UserProfile = () => {
             </div>
           </div>
         </InfoContainer>
+        <div className="grid grid-cols-2 gap-x-2">
+          <div className="flex flex-col">
+            <label htmlFor="" className="py-2">
+              الجوال
+            </label>
+            <input
+              type="text"
+              id=""
+              required
+              placeholder="رقم الجوال"
+              className="rounded border-2 bg-[#F9F9F9] py-3 placeholder:py-1 px-2"
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="" className="py-2">
+              الكود
+            </label>
+            <input
+              type="text"
+              id=""
+              required
+              placeholder="00234"
+              className="rounded border-2 bg-[#F9F9F9] py-3 placeholder:py-1 px-2"
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="" className="py-2">
+              تاريخ الميلاد
+            </label>
+            <input
+              type="date"
+              id=""
+              placeholder="00234"
+              className="rounded border-2 bg-[#F9F9F9] py-3 placeholder:py-1 px-2"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -64,13 +101,13 @@ const ChangeProfileInput = ({ label, value }) => (
     >
       {label}
     </label>
-    <div className="flex items-center rounded border-2 bg-[#F9F9F9] gap-2 ">
+    <div className="flex items-center rounded border-2 bg-[#F9F9F9] ">
       <input
         type="text"
         className="placeholder:py-1 text-neutral-N70 px-2 py-1 bg-[#F9F9F9] outline-none"
         value={value}
       />
-      <span className="h-full p-2 border-r-2 ltr:border-l-2 ltr:border-r-0">
+      <span className="bg-[#F9F9F9] h-full p-2 border-r-2 ltr:border-l-2 ltr:border-r-0">
         <Icon id={"pencil"} size={20} />
       </span>
     </div>
@@ -80,6 +117,7 @@ const ChangeProfileInput = ({ label, value }) => (
 export default UserProfile;
 
 const InfoContainer = styled.div`
+  scrollbar-gutter: stable;
   &::-webkit-scrollbar {
     width: 6px;
     background: #f9f9f9;
