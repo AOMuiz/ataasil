@@ -1,5 +1,6 @@
 import Image from "next/image";
 import tw, { styled } from "twin.macro";
+import FormInput from "../../components/FormInput";
 import CtaButton from "../CtaButton";
 import Icon from "../Icon";
 import SectionDivider from "../SectionDivider";
@@ -51,41 +52,15 @@ const UserProfile = () => {
             </div>
           </div>
         </InfoContainer>
-        <div className="grid grid-cols-2 gap-x-2">
+        <div className="grid grid-cols-2 gap-x-2 w-3/4">
           <div className="flex flex-col">
-            <label htmlFor="" className="py-2">
-              الجوال
-            </label>
-            <input
-              type="text"
-              id=""
-              required
-              placeholder="رقم الجوال"
-              className="rounded border-2 bg-[#F9F9F9] py-3 placeholder:py-1 px-2"
-            />
+            <FormInput label="الجوال" placeholder="رقم الجوال" />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="" className="py-2">
-              الكود
-            </label>
-            <input
-              type="text"
-              id=""
-              required
-              placeholder="00234"
-              className="rounded border-2 bg-[#F9F9F9] py-3 placeholder:py-1 px-2"
-            />
+            <FormInput label="الكود" placeholder="00234" />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="" className="py-2">
-              تاريخ الميلاد
-            </label>
-            <input
-              type="date"
-              id=""
-              placeholder="00234"
-              className="rounded border-2 bg-[#F9F9F9] py-3 placeholder:py-1 px-2"
-            />
+            <FormInput type="date" placeholder="00234" label="تاريخ الميلاد" />
           </div>
         </div>
       </div>

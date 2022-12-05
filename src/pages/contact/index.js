@@ -1,13 +1,15 @@
 import Image from "next/image";
-import React from "react";
 import tw, { styled } from "twin.macro";
-import Header from "../../components/Header";
-import Icon from "../../components/Icon";
-import SectionHeader from "../../components/SectionHeader";
+
 import irfan from "/public/assets/images/irfan-rahat.png";
 import michaela from "/public/assets/images/pexels-michaela.png";
 import captcha from "/public/assets/images/captcha.png";
+
+import Header from "../../components/Header";
+import Icon from "../../components/Icon";
+import SectionHeader from "../../components/SectionHeader";
 import CtaButton from "../../components/CtaButton";
+import FormInput from "../../components/FormInput";
 
 const ContactUs = () => {
   return (
@@ -46,61 +48,24 @@ const ContactUs = () => {
         <p className="text-center my-8 text-3xl">تواصل معنا</p>
         <div className="flex gap-4 mb-2">
           <div className="flex-1 flex flex-col">
-            <label htmlFor="" className="py-2">
-              الاسم الكامل
-            </label>
-            <input
-              type="text"
-              id=""
-              placeholder="الاسم الكامل"
-              className="rounded border-2 bg-[#F9F9F9] py-3 placeholder:py-1 px-2"
-            />
+            <FormInput placeholder="الاسم الكامل" label="الاسم الكامل" />
           </div>
           <div className="flex-1 flex flex-col">
-            <label htmlFor="" className="py-2">
-              البريد الإلكتروني
-            </label>
-            <input
-              type="text"
-              id=""
+            <FormInput
+              label="البريد الإلكتروني"
               placeholder="البريد الإلكتروني"
-              className="rounded border-2 bg-[#F9F9F9] py-3 placeholder:py-1 px-2"
             />
           </div>
         </div>
         <div className="flex gap-4 mb-2">
           <div className="basis-2/4 flex flex-col">
-            <label htmlFor="" className="py-2">
-              الموضوع
-            </label>
-            <input
-              type="text"
-              id=""
-              placeholder="الموضوع"
-              className="rounded border-2 bg-[#F9F9F9] py-3 placeholder:py-1 px-2"
-            />
+            <FormInput label="الموضوع" placeholder="الموضوع" />
           </div>
           <div className="basis-1/4 flex flex-col">
-            <label htmlFor="" className="py-2">
-              الجوال
-            </label>
-            <input
-              type="text"
-              id=""
-              placeholder="رقم الجوال"
-              className="rounded border-2 bg-[#F9F9F9] py-3 placeholder:py-1 px-2"
-            />
+            <FormInput label="الجوال" placeholder="رقم الجوال" />
           </div>
-          <div className="basis-auto flex flex-col">
-            <label htmlFor="" className="py-2">
-              الكود
-            </label>
-            <input
-              type="text"
-              id=""
-              placeholder="00234"
-              className="rounded border-2 bg-[#F9F9F9] py-3 placeholder:py-1 px-2"
-            />
+          <div className="basis-auto flex flex-col ">
+            <FormInput label="الكود" htmlFor="" placeholder="00234" />
           </div>
         </div>
         <div className="flex gap-4 mb-2">
@@ -124,13 +89,9 @@ const ContactUs = () => {
         </div>
         <div className="flex gap-4 mb-2">
           <div className="flex-1 flex flex-col">
-            <label htmlFor="" className="py-2">
-              رقم الإقامة / رقم الهوية
-            </label>
-            <input
-              type="text"
+            <FormInput
+              label="رقم الإقامة / رقم الهوية"
               placeholder="رقم الإقامة / رقم الهوية"
-              className="rounded border-2 bg-[#F9F9F9] py-3 placeholder:py-1 px-2"
             />
           </div>
         </div>
