@@ -27,57 +27,15 @@ const UserProfile = () => {
         </div>
         <InfoContainer className="h-80 overflow-y-scroll">
           <div className="mx-4 flex flex-col gap-5">
-            <div>
-              <label
-                htmlFor=""
-                className="inline-block mb-3 font-bold text-sm text-gray-G30"
-              >
-                الاسم الكامل
-              </label>
-              <div className="flex items-center rounded border-2 bg-[#F9F9F9] gap-2 ">
-                <input
-                  type="text"
-                  className="placeholder:py-1 text-neutral-N70 px-2 py-1 bg-[#F9F9F9] outline-none"
-                  value="الاسم الكامل"
-                />
-                <span className="h-full p-2 border-r-2 ltr:border-l-2 ltr:border-r-0">
-                  <Icon id={"pencil"} size={20} />
-                </span>
-              </div>
-            </div>
-            <div>
-              <label htmlFor="" className="inline-block mb-3 font-bold text-sm">
-                الاسم الكامل بالانجليزية
-              </label>
-              <div className="flex items-center rounded border-2 bg-[#F9F9F9] gap-2 ">
-                <input
-                  type="text"
-                  className="placeholder:py-1 text-neutral-N70 px-2 py-1 bg-[#F9F9F9] outline-none"
-                  value="الاسم الكامل بالانجليزية"
-                />
-                <span className="h-full p-2 border-r-2 ltr:border-l-2 ltr:border-r-0">
-                  <Icon id={"pencil"} size={20} />
-                </span>
-              </div>
-            </div>
-            <div>
-              <label
-                htmlFor=""
-                className="inline-block mb-3 text-sm text-gray-G3 font-bold"
-              >
-                البريد الإلكتروني
-              </label>
-              <div className="flex items-center rounded border-2 bg-[#F9F9F9] gap-2 ">
-                <input
-                  type="text"
-                  className="placeholder:py-1 text-neutral-N70 px-2 py-1 bg-[#F9F9F9] outline-none"
-                  value="البريد الإلكتروني"
-                />
-                <span className="h-full p-2 border-r-2 ltr:border-l-2 ltr:border-r-0">
-                  <Icon id={"pencil"} size={20} />
-                </span>
-              </div>
-            </div>
+            <ChangeProfileInput value={"الاسم الكامل"} label={"الاسم الكامل"} />
+            <ChangeProfileInput
+              value={"الاسم الكامل بالانجليزية"}
+              label={"الاسم الكامل بالانجليزية"}
+            />
+            <ChangeProfileInput
+              value={"البريد الإلكتروني"}
+              label={"البريد الإلكتروني"}
+            />
             <div>
               <label
                 htmlFor=""
@@ -97,6 +55,27 @@ const UserProfile = () => {
     </div>
   );
 };
+
+const ChangeProfileInput = ({ label, value }) => (
+  <div>
+    <label
+      htmlFor=""
+      className="inline-block mb-3 font-bold text-sm text-gray-G30"
+    >
+      {label}
+    </label>
+    <div className="flex items-center rounded border-2 bg-[#F9F9F9] gap-2 ">
+      <input
+        type="text"
+        className="placeholder:py-1 text-neutral-N70 px-2 py-1 bg-[#F9F9F9] outline-none"
+        value={value}
+      />
+      <span className="h-full p-2 border-r-2 ltr:border-l-2 ltr:border-r-0">
+        <Icon id={"pencil"} size={20} />
+      </span>
+    </div>
+  </div>
+);
 
 export default UserProfile;
 
