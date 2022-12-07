@@ -43,7 +43,7 @@ const UserProfile = () => {
             <div>
               <label
                 htmlFor=""
-                className="inline-block mb-3 text-sm text-gray-G3 font-bold"
+                className="text-gray-G30 inline-block mb-3 text-sm text-gray-G3 font-bold"
               >
                 قطاع الوظيفة
               </label>

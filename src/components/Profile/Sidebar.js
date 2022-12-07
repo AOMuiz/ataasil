@@ -1,9 +1,8 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import tw, { styled } from "twin.macro";
-import Icon from "../Icon";
+import NavItem from "./NavItem";
 
-const routes = [
+const sideMenu = [
   {
     slug: "/profile",
     label: "نظرة عامة",
@@ -28,6 +27,12 @@ const routes = [
     slug: "/profile/dashboard",
     label: "المنتجات",
     icon: "dashboard",
+    children: [
+      "البرامج التدريبية",
+      "المؤتمرات الإلكترونية",
+      "الإضاءات الإثرائية",
+      "المسارات التدريبية",
+    ],
   },
   {
     slug: "/profile/notifications",
@@ -57,15 +62,12 @@ const Sidebar = () => {
         <p className="text-lg font-bold my-4 mx-4">عبد الله عبد الرحمان</p>
       </div>
       <ul className="flex flex-col gap-4">
-        {routes.map((item, key) => (
-          <SidebarItem key={key} active={router.pathname === item.slug}>
-            <Link href={`${item.slug}`}>
-              <span className="flex items-center gap-3 w-full">
-                <Icon id={`${item.icon}`} size={35} />
-                {item.label}
-              </span>
-            </Link>
-          </SidebarItem>
+        {sideMenu.map((item, key) => (
+          <NavItem
+            key={`${item.label}-${key}`}
+            item={item}
+            active={router.pathname === item.slug}
+          />
         ))}
       </ul>
     </div>

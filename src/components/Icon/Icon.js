@@ -12,6 +12,7 @@ import {
   AiOutlineDollarCircle,
   AiOutlineCloudUpload,
 } from "react-icons/ai";
+
 import {
   HiOutlineBookOpen,
   HiOutlineClock,
@@ -19,8 +20,16 @@ import {
   HiOutlineBell,
   HiOutlinePencil,
 } from "react-icons/hi";
+
 import { BsArrowRight, BsArrowLeft, BsBookmark } from "react-icons/bs";
-import { BiChevronDown, BiSearchAlt, BiHomeAlt, BiUser } from "react-icons/bi";
+import {
+  BiChevronDown,
+  BiSearchAlt,
+  BiHomeAlt,
+  BiUser,
+  BiChevronUp,
+} from "react-icons/bi";
+
 import { FaFacebookF, FaGreaterThan, FaLessThan } from "react-icons/fa";
 import { MdOutlineDashboard, MdOutlineCancel } from "react-icons/md";
 import { TbNotes } from "react-icons/tb";
@@ -34,6 +43,7 @@ const icons = {
   facebook: FaFacebookF,
   "shopping-bag": AiOutlineShopping,
   "chevron-down": BiChevronDown,
+  "chevron-up": BiChevronUp,
   close: AiOutlineClose,
   cancel: MdOutlineCancel,
   book: HiOutlineBookOpen,
