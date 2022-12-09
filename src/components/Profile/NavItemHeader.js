@@ -68,7 +68,6 @@ const NavItemHeaderChevron = styled.div`
     props.expanded &&
     `:first-child {
     transform: rotate(180deg);
-    color: red;
   }`}
 `;
 

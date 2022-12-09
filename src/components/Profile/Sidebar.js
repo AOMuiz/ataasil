@@ -35,12 +35,12 @@ const sideMenu = [
       },
       {
         label: "المؤتمرات الإلكترونية",
-        slug: "/profile/dashboard/conferences",
+        slug: "/profile/dashboard/webinars",
         icon: "",
       },
       {
         label: "الإضاءات الإثرائية",
-        slug: "/profile/dashboard/lights",
+        slug: "/profile/dashboard/knowledge-enrichment",
       },
       {
         label: "المسارات التدريبية",
