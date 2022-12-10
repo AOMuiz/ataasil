@@ -4,9 +4,9 @@ import { useState } from "react";
 import { styled } from "twin.macro";
 import Icon from "../Icon";
 import UnstyledButton from "../UnstyledButton";
-import { SidebarItem } from "./NavItem";
+import { StyledSidebarItem } from "./SidebarItem";
 
-const NavItemHeader = ({ item }) => {
+const SidebarItemHeader = ({ item }) => {
   const router = useRouter();
   const { label, icon, slug: headerToPath, subnav } = item;
   const [expanded, setExpand] = useState(
@@ -21,14 +21,14 @@ const NavItemHeader = ({ item }) => {
   return (
     <SideBarWithSubContainer>
       <div className="flex items-center w-full justify-between">
-        <SidebarItem>
+        <StyledSidebarItem>
           <Link href={`${headerToPath}`}>
             <p className="flex gap-3 items-center">
               <Icon id={`${icon}`} size={35} />
               <span>{label}</span>
             </p>
           </Link>
-        </SidebarItem>
+        </StyledSidebarItem>
         <UnstyledButton onClick={onExpandChange}>
           <NavItemHeaderChevron expanded={expanded}>
             <Icon id={"chevron-down"} size={24} />
@@ -48,7 +48,7 @@ const NavItemHeader = ({ item }) => {
   );
 };
 
-export default NavItemHeader;
+export default SidebarItemHeader;
 
 const SideBarWithSubContainer = styled.div`
   height: fit-content;
