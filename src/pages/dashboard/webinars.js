@@ -4,7 +4,7 @@ import tw, { styled } from "twin.macro";
 
 const Webinars = () => {
   return (
-    <section className="py-12">
+    <section className="py-12 h-full">
       <div className="my-10">
         <SectionHeader title={"المنتجات"} />
       </div>

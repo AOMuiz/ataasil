@@ -7,7 +7,7 @@ import SectionDivider from "../../components/SectionDivider";
 
 const Profile = () => {
   return (
-    <section className="py-12">
+    <section className="py-12 h-full">
       <div className="mb-20">
         <p className="text-2xl my-6">مرحبا عبد الله</p>
         <p className="text-lg text-gray-G30">
