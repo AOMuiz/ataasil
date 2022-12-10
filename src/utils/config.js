@@ -1,61 +1,61 @@
 export const sideMenu = [
   {
-    slug: "/profile",
+    slug: "/dashboard",
     label: "نظرة عامة",
     icon: "home",
   },
   {
-    slug: "/profile/settings",
+    slug: "/dashboard/settings",
     label: "إعدادات الحساب",
     icon: "user",
   },
   {
-    slug: "/profile/certificates",
+    slug: "/dashboard/certificates",
     label: "الشهادات",
     icon: "certificate",
   },
   {
-    slug: "/profile/purchases",
+    slug: "/dashboard/purchases",
     label: "المشتريات السابقة",
     icon: "dollar",
   },
   {
-    slug: "/profile/dashboard",
+    slug: "/dashboard/programs",
     label: "المنتجات",
     icon: "dashboard",
     subnav: [
       {
         label: "البرامج التدريبية",
-        slug: "/profile/dashboard",
+        slug: "/dashboard/programs",
         icon: "",
       },
       {
         label: "المؤتمرات الإلكترونية",
-        slug: "/profile/dashboard/webinars",
+        slug: "/dashboard/webinars",
         icon: "",
       },
       {
         label: "الإضاءات الإثرائية",
-        slug: "/profile/dashboard/knowledge-enrichment",
+        slug: "/dashboard/knowledge-enrichment",
       },
       {
         label: "المسارات التدريبية",
-        slug: "/profile/dashboard/tracks",
+        slug: "/dashboard/tracks",
       },
     ],
   },
   {
-    slug: "/profile/notifications",
+    slug: "/dashboard/notifications",
     label: "الإشعارات",
     icon: "bell",
   },
   {
-    slug: "/profile/favorites",
+    slug: "/dashboard/favorites",
     label: "المفضلة",
     icon: "favorite",
   },
   {
-    slug: "/profile/bookmarks",
+    slug: "/dashboard/bookmarks",
     label: "الإشارات المرجعية",
     icon: "bookmark",
   },

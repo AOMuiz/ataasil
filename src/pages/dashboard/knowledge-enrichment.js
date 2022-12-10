@@ -1,4 +1,4 @@
-import ProfileLayout from "../../../layout/profileLayout";
+import ProfileLayout from "../../layout/profileLayout";
 
 const KnowledgeEnrichment = () => {
   return <div>KnowledgeEnrichment</div>;

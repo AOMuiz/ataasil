@@ -1,4 +1,3 @@
-import React from "react";
 import Sidebar from "../components/Profile/Sidebar";
 
 const ProfileLayout = ({ children }) => {

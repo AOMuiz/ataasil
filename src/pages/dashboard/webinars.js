@@ -1,5 +1,5 @@
-import SectionHeader from "../../../components/SectionHeader";
-import ProfileLayout from "../../../layout/profileLayout";
+import SectionHeader from "../../components/SectionHeader";
+import ProfileLayout from "../../layout/profileLayout";
 import tw, { styled } from "twin.macro";
 
 const Webinars = () => {

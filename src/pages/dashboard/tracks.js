@@ -1,6 +1,6 @@
-import ProfileLayout from "../../../layout/profileLayout";
-import SectionHeader from "../../../components/SectionHeader";
-import SectionDivider from "../../../components/SectionDivider";
+import ProfileLayout from "../../layout/profileLayout";
+import SectionHeader from "../../components/SectionHeader";
+import SectionDivider from "../../components/SectionDivider";
 
 const Tracks = () => {
   return (

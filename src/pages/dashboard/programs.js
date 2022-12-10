@@ -1,8 +1,8 @@
-import ProfileLayout from "../../../layout/profileLayout";
-import SectionHeader from "../../../components/SectionHeader";
-import SectionDivider from "../../../components/SectionDivider";
+import ProfileLayout from "../../layout/profileLayout";
+import SectionHeader from "../../components/SectionHeader";
+import SectionDivider from "../../components/SectionDivider";
 
-const Index = () => {
+const Programs = () => {
   return (
     <section className="py-12">
       <div className="my-10">
@@ -14,6 +14,6 @@ const Index = () => {
   );
 };
 
-Index.PageLayout = ProfileLayout;
+Programs.PageLayout = ProfileLayout;
 
-export default Index;
+export default Programs;
