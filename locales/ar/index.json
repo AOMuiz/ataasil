@@ -87,6 +87,12 @@
     "email": "البريد الإلكتروني *",
     "email confirmation": "تأكيد البريد الإلكتروني *",
     "password": "كلمة المرور *",
-    "password confirmation": "تأكيد كلمة المرور *"
+    "password confirmation": "تأكيد كلمة المرور *",
+    "email notification": "تعطيل تنبيهات البريد الإلكتروني",
+    "text notification": "تعطيل تنبيهات الرسائل النصية",
+    "agreement": "أوافق على شروط الخدمة وأوافق أيضا على سياسة الخصوصية *",
+    "create account": "إنشاء حساب",
+    "program": "أحدث البرامج التدريبية",
+    "account": "هل لديك حساب؟    تسجيل الدخول"
   }
 }

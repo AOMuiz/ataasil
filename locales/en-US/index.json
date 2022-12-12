@@ -87,6 +87,12 @@
     "email": "email address",
     "email confirmation": "confirm email address",
     "password": "password",
-    "password confirmation": "confirm password"
+    "password confirmation": "confirm password",
+    "email notification": "disable email notification",
+    "text notification": "disable text message notification",
+    "agreement": " I agree to the conditions of service and I also agree to the policy",
+    "create account": "create an account",
+    "program": "Latest Training Program",
+    "account": "do you have an account, login "
   }
 }
