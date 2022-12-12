@@ -1,10 +1,11 @@
 import ProfileLayout from "../../layout/profileLayout";
 import SectionHeader from "../../components/SectionHeader";
 import SectionDivider from "../../components/SectionDivider";
+import { Container } from ".";
 
 const KnowledgeEnrichment = () => {
   return (
-    <section className="py-12 h-full">
+    <Container>
       <div className="my-10">
         <SectionHeader title={"المنتجات"} />
       </div>
@@ -15,7 +16,7 @@ const KnowledgeEnrichment = () => {
           لم تقم بعد بمشاهدة أي إضاءة إثرائية
         </p>
       </div>
-    </section>
+    </Container>
   );
 };
 

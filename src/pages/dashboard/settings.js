@@ -4,10 +4,11 @@ import NotificationSetting from "../../components/ProfileSettings/NotificationSe
 import UserProfile from "../../components/ProfileSettings/UserProfile";
 import SectionHeader from "../../components/SectionHeader";
 import ProfileLayout from "../../layout/profileLayout";
+import { Container } from ".";
 
 const User = () => {
   return (
-    <div className="py-12">
+    <Container>
       <div className="my-10">
         <SectionHeader title={"إعدادت الحساب"} />
       </div>
@@ -15,7 +16,7 @@ const User = () => {
       <Interests />
       <NotificationSetting />
       <ChangePassword />
-    </div>
+    </Container>
   );
 };
 

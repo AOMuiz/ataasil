@@ -1,10 +1,11 @@
 import SectionHeader from "../../components/SectionHeader";
 import ProfileLayout from "../../layout/profileLayout";
 import tw, { styled } from "twin.macro";
+import { Container } from ".";
 
 const Webinars = () => {
   return (
-    <section className="py-12 h-full">
+    <Container>
       <div className="my-10">
         <SectionHeader title={"المنتجات"} />
       </div>
@@ -19,7 +20,7 @@ const Webinars = () => {
           لم تقم بالتسجيل في احد المؤتمرات حتى الآن
         </p>
       </div>
-    </section>
+    </Container>
   );
 };
 

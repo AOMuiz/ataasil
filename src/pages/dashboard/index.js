@@ -4,10 +4,11 @@ import CourseCard from "../../components/CourseCards/CourseCard";
 import SectionCategory from "../../components/CourseCards/SectionCategory";
 import Icon from "../../components/Icon";
 import SectionDivider from "../../components/SectionDivider";
+import tw from "twin.macro";
 
 const Profile = () => {
   return (
-    <section className="py-12 h-full">
+    <Container>
       <div className="mb-20">
         <p className="text-2xl my-6">مرحبا عبد الله</p>
         <p className="text-lg text-gray-G30">
@@ -53,10 +54,12 @@ const Profile = () => {
           </div>
         </div>
       </div>
-    </section>
+    </Container>
   );
 };
 
 Profile.PageLayout = ProfileLayout;
 
 export default Profile;
+
+export const Container = tw.section`py-12 h-full`;

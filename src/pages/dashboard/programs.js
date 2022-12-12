@@ -1,16 +1,21 @@
 import ProfileLayout from "../../layout/profileLayout";
 import SectionHeader from "../../components/SectionHeader";
 import SectionDivider from "../../components/SectionDivider";
+import { Container } from ".";
+import CourseCard from "../../components/CourseCards/CourseCard";
 
 const Programs = () => {
   return (
-    <section className="py-12 h-full">
+    <Container>
       <div className="my-10">
         <SectionHeader title={"المنتجات"} />
         <p className="text-2xl my-10">البرامج التدريبية</p>
       </div>
       <SectionDivider />
-    </section>
+      <div className="mt-4">
+        <CourseCard />
+      </div>
+    </Container>
   );
 };
 
