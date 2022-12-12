@@ -11,7 +11,7 @@ const LoginPage = () => {
   <>
    <div className="flex flex-row items-center justify-between">
     <div className="w-[650px] h-[723px]">
-     <div className="flex flex-row items-center gap-5 pt-[120px] pb-[75px]">
+     <div className="flex flex-row items-center gap-5 pt-[120px] pb-16">
       <Icon
        id={"rightArrow"}
        className="cursor-pointer self-start"
@@ -23,7 +23,7 @@ const LoginPage = () => {
      </div>
 
      <div className="pr-14">
-      <p className="pb-[14px] font-bold text-sm text-[#5A5A5A] ">
+      <p className="pb-4 font-bold text-sm text-[#5A5A5A] ">
        {t("login.identity")}
       </p>
       <div className="pb-[75px]">
@@ -34,10 +34,10 @@ const LoginPage = () => {
        />
       </div>
 
-      <p className="pb-[14px] font-bold text-sm text-[#5A5A5A]">
+      <p className="pb-4 font-bold text-sm text-[#5A5A5A]">
        {t("login.password")}
       </p>
-      <div className="pb-[75px]">
+      <div className="pb-16">
        <input
         type="text"
         placeholder={t("login.password")}
@@ -45,8 +45,8 @@ const LoginPage = () => {
        />
       </div>
 
-      <div className="flex justify-start gap-[72px] items-center text-center">
-       <div className="border-2 rounded-full p-2 w-[142px] bg-[#31C0CC]">
+      <div className="flex justify-start gap-16 items-center text-center">
+       <div className="border-2 rounded-full p-2 w-36 bg-[#31C0CC]">
         <p className="font-bold text-white text-base cursor-pointer">
          {t("login.sign in")}
         </p>
@@ -72,17 +72,16 @@ const LoginPage = () => {
     </div>
    </div>
 
-   <div className="flex flex-col items-right pb-[136px]">
-    <div className="pr-14">
-     <div>
-      <p className="font-bold text-[30px] pb-[41px]">{t("login.latest")}</p>
-     </div>
-     <div className="flex flex-row items-center gap-[21px]">
-      <CourseCard />
-      <CourseCard />
-      <CourseCard />
-      <CourseCard />
-     </div>
+   <div className="flex flex-col items-start pb-32">
+    <div className="">
+     <p className="font-bold text-3xl pb-10">{t("login.latest")}</p>
+    </div>
+
+    <div className="flex flex-row items-center gap-8">
+     <CourseCard />
+     <CourseCard />
+     <CourseCard />
+     <CourseCard />
     </div>
    </div>
   </>
