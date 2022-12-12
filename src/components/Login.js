@@ -1,15 +1,15 @@
 import Image from "next/image";
-import Frame from "/public/assets/images/Frame.png";
+import Frame from "..//..//public/assets/images/Frame.png";
 import useTranslation from "next-translate/useTranslation";
-import Icon from "../../components/Icon";
-import CourseCard from "../../components/CourseCards/CourseCard";
+import Icon from "../components/Icon";
+import CourseCard from "../components/CourseCards/CourseCard";
 
 const LoginPage = () => {
  const { t } = useTranslation("index");
 
  return (
   <>
-   <div className="flex flex-row items-center justify-between">
+   <div className="flex flex-row items-center justify-between px-20">
     <div className="w-[650px] h-[723px]">
      <div className="flex flex-row items-center gap-5 pt-[120px] pb-16">
       <Icon
@@ -72,7 +72,7 @@ const LoginPage = () => {
     </div>
    </div>
 
-   <div className="flex flex-col items-start pb-32">
+   <div className="flex flex-col items-start py-32 px-20">
     <div className="">
      <p className="font-bold text-3xl pb-10">{t("login.latest")}</p>
     </div>
@@ -82,6 +82,21 @@ const LoginPage = () => {
      <CourseCard />
      <CourseCard />
      <CourseCard />
+    </div>
+
+    <div className="flex gap-2 flex-row py-10 self-end pl-24 pt-9">
+     <Icon
+      id={"right"}
+      color={"white"}
+      size={25}
+      className="bg-[#35CCBC] p-3 rounded-md h-12 w-12 cursor-pointer"
+     />
+     <Icon
+      id={"left"}
+      color={"white"}
+      size={25}
+      className="bg-[#35CCBC80] p-3 rounded-md h-12 w-12 cursor-pointer"
+     />
     </div>
    </div>
   </>
