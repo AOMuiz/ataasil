@@ -1,17 +1,16 @@
-import React from "react";
 import Image from "next/image";
 import signupframe from "/public/assets/images/sign_up_frame.png";
 import useTranslation from "next-translate/useTranslation";
 import robot from "/public/assets/images/robot.png";
-import CourseCards from "../../components/CourseCards";
+import CourseCard from "../../components/CourseCards/CourseCard";
 
 const SignUp = () => {
   const { t } = useTranslation("index");
 
   return (
-    <>
-      <div className="flex bg-neutral-N20">
-        <div className="bg-white shadow-lg	 w-1/2 px-20 py-20">
+    <div className="bg-[#E5E5E5] h-full">
+      <div className="flex">
+        <div className="bg-white shadow-lg w-1/2 px-20 py-20">
           <h1 className="font-bold	text-3xl py-4">{t("sign up page.title")}</h1>
           <div>
             <p className="py-4">{t("sign up page.nationality")}</p>
@@ -21,7 +20,6 @@ const SignUp = () => {
               className="border	w-[552px] h-[60px] p-4 rounded-md bg-primary-P700 border-black"
             />
           </div>
-
           <div className="py-6">
             <p className="py-4">{t("sign up page.job")}</p>
             <input
@@ -30,7 +28,6 @@ const SignUp = () => {
               className="border	w-[552px] h-[60px] p-4 rounded-md bg-primary-P700 border-black"
             />
           </div>
-
           <div className="py-2">
             <p className="py-4">{t("sign up page.number")}</p>
             <input
@@ -39,7 +36,6 @@ const SignUp = () => {
               className="border	w-[552px] h-[60px] p-4 rounded-md bg-primary-P700 border-black"
             />
           </div>
-
           <p className="py-4">{t("sign up page.date")}</p>
           <div className="py-2 flex gap-6">
             <div>
@@ -154,10 +150,16 @@ const SignUp = () => {
           <Image src={signupframe} alt="" />
         </div>
       </div>
-      <div>
-        <CourseCards />
+      <div className="py-12">
+        <p className="font-bold text-3xl pb-10 pr-14">{t("login.latest")}</p>
+        <div className="flex flex-row items-center justify-center gap-8">
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
