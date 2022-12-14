@@ -72,5 +72,36 @@
       "join": "send"
     },
     "socials": "Social media"
+  },
+  "login": {
+    "sign in": "Sign In",
+    "identity": "Email / National ID",
+    "password": "Password",
+    "forgot password": "Forgot password?",
+    "or": "or",
+    "create": "Create new account",
+    "latest": "Latest training programs"
+  },
+  "sign up page": {
+    "title": "Sign Up",
+    "nationality": "choose your nationality",
+    "job": "job selection",
+    "number": "national identification number",
+    "date": "date of birth - hijrah",
+    "day": "day",
+    "month": "  month",
+    "year": "year",
+    "phone number": "phone number",
+    "code": "code",
+    "email": "email address",
+    "email confirmation": "confirm email address",
+    "password": "password",
+    "password confirmation": "confirm password",
+    "email notification": "disable email notification",
+    "text notification": "disable text message notification",
+    "agreement": " I agree to the conditions of service and I also agree to the policy",
+    "create account": "create an account",
+    "program": "Latest Training Program",
+    "account": "do you have an account, login "
   }
 }
