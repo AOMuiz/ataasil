@@ -4,7 +4,7 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
-  plugins: [require("tailwindcss-logical")],
+  plugins: [require("tailwindcss-logical"), require("@tailwindcss/forms")],
   theme: {
     extend: {
       fontFamily: {

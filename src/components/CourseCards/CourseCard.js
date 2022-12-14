@@ -5,12 +5,12 @@ import ownerIcon from "/public/assets/images/owner.png";
 import cardImage from "/public/assets/images/card-img.png";
 import useTranslation from "next-translate/useTranslation";
 
-const CourseCard = () => {
+const CourseCard = ({ courseDetail }) => {
   const { t } = useTranslation("index");
 
   return (
     <>
-      <article className="w-[284.09px] rounded-[30px] bg-white shadow-md">
+      <article className="w-72 rounded-[30px] bg-white shadow-md">
         <Image src={cardImage} alt="" />
         <div className="p-6">
           <div className="flex justify-between">

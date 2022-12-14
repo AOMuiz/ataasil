@@ -1,6 +1,7 @@
 import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 import React from "react";
+import CtaButton from "../CtaButton";
 import Icon from "../Icon";
 import Logo from "../Svg/Logo";
 
@@ -32,9 +33,10 @@ const BottomNav = () => {
         <p className="cursor-pointer text-gray-G30">
           <Link href={"signin"}>{t("navbar.sign in")}</Link>
         </p>
-        <p className="rounded-full bg-primary-P300 w-auto  text-center text-white px-6 py-3 cursor-pointer">
+        {/* <p className="rounded-full bg-primary-P300 w-auto  text-center text-white px-6 py-3 cursor-pointer">
           {t("navbar.sign up")}
-        </p>
+        </p> */}
+        <CtaButton>{t("navbar.sign up")}</CtaButton>
       </div>
     </div>
   );

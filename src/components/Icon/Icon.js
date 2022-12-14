@@ -10,31 +10,35 @@ import {
  AiFillStar,
  AiFillLinkedin,
 } from "react-icons/ai";
-import { HiOutlineBookOpen, HiOutlineClock } from "react-icons/hi";
+import {
+  HiOutlineBookOpen,
+  HiOutlineClock,
+  HiOutlineLocationMarker,
+} from "react-icons/hi";
 import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
 import { BiChevronDown, BiSearchAlt } from "react-icons/bi";
 import { FaFacebookF, FaGreaterThan, FaLessThan } from "react-icons/fa";
 import { HiOutlineArrowRight } from "react-icons/hi";
 
 const icons = {
- search: BiSearchAlt,
- twitter: AiOutlineTwitter,
- youtube: AiFillYoutube,
- linkedIn: AiFillLinkedin,
- instagram: AiFillInstagram,
- facebook: FaFacebookF,
- "shopping-bag": AiOutlineShopping,
- "chevron-down": BiChevronDown,
- close: AiOutlineClose,
- book: HiOutlineBookOpen,
- clock: HiOutlineClock,
- right: BsArrowRight,
- left: BsArrowLeft,
- rightArrow: HiOutlineArrowRight,
- menu: AiOutlineMenu,
- star: AiFillStar,
- "greater-than": FaGreaterThan,
- "less-than": FaLessThan,
+  search: BiSearchAlt,
+  twitter: AiOutlineTwitter,
+  youtube: AiFillYoutube,
+  linkedIn: AiFillLinkedin,
+  instagram: AiFillInstagram,
+  facebook: FaFacebookF,
+  "shopping-bag": AiOutlineShopping,
+  "chevron-down": BiChevronDown,
+  close: AiOutlineClose,
+  book: HiOutlineBookOpen,
+  clock: HiOutlineClock,
+  right: BsArrowRight,
+  left: BsArrowLeft,
+  menu: AiOutlineMenu,
+  star: AiFillStar,
+  "greater-than": FaGreaterThan,
+  "less-than": FaLessThan,
+  location: HiOutlineLocationMarker,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
