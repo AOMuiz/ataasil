@@ -1,6 +1,5 @@
 import Image from "next/image";
-import React from "react";
-import tw, { styled } from "twin.macro";
+import { styled } from "twin.macro";
 import Header from "../../components/Header";
 import Icon from "../../components/Icon";
 import SectionHeader from "../../components/SectionHeader";

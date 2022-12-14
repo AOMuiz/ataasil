@@ -1,14 +1,13 @@
-// import React from "react";
 import styled from "styled-components";
 import {
- AiFillYoutube,
- AiOutlineTwitter,
- AiFillInstagram,
- AiOutlineClose,
- AiOutlineShopping,
- AiOutlineMenu,
- AiFillStar,
- AiFillLinkedin,
+  AiFillYoutube,
+  AiOutlineTwitter,
+  AiFillInstagram,
+  AiOutlineClose,
+  AiOutlineShopping,
+  AiOutlineMenu,
+  AiFillStar,
+  AiFillLinkedin,
 } from "react-icons/ai";
 import {
   HiOutlineBookOpen,
@@ -39,28 +38,29 @@ const icons = {
   "greater-than": FaGreaterThan,
   "less-than": FaLessThan,
   location: HiOutlineLocationMarker,
+  rightArrow: HiOutlineArrowRight,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
- const Component = icons[id];
+  const Component = icons[id];
 
- if (!Component) {
-  throw new Error(`No icon found for ID: ${id}`);
- }
+  if (!Component) {
+    throw new Error(`No icon found for ID: ${id}`);
+  }
 
- return (
-  <Wrapper strokeWidth={strokeWidth} {...delegated}>
-   <Component color={color} size={size} />
-  </Wrapper>
- );
+  return (
+    <Wrapper strokeWidth={strokeWidth} {...delegated}>
+      <Component color={color} size={size} />
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.div`
- & > svg {
-  display: block;
-  stroke-width: ${(p) =>
-   p.strokeWidth !== undefined ? p.strokeWidth + "px" : undefined};
- }
+  & > svg {
+    display: block;
+    stroke-width: ${(p) =>
+      p.strokeWidth !== undefined ? p.strokeWidth + "px" : undefined};
+  }
 `;
 
 export default Icon;
