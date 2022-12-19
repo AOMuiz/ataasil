@@ -11,6 +11,7 @@ import {
   AiOutlineHeart,
   AiOutlineDollarCircle,
   AiOutlineCloudUpload,
+  AiOutlineEye,
 } from "react-icons/ai";
 
 import {
@@ -22,6 +23,8 @@ import {
 } from "react-icons/hi";
 
 import { BsArrowRight, BsArrowLeft, BsBookmark } from "react-icons/bs";
+import { IoOptionsOutline } from "react-icons/io5";
+
 import {
   BiChevronDown,
   BiSearchAlt,
@@ -30,7 +33,7 @@ import {
   BiChevronUp,
 } from "react-icons/bi";
 
-import { FaFacebookF, FaGreaterThan, FaLessThan } from "react-icons/fa";
+import { FaFacebookF, FaGreaterThan, FaLessThan, FaSort } from "react-icons/fa";
 import { MdOutlineDashboard, MdOutlineCancel } from "react-icons/md";
 import { TbNotes } from "react-icons/tb";
 
@@ -65,6 +68,9 @@ const icons = {
   certificate: TbNotes,
   pencil: HiOutlinePencil,
   upload: AiOutlineCloudUpload,
+  options: IoOptionsOutline,
+  eyeOpen: AiOutlineEye,
+  sort: FaSort,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {

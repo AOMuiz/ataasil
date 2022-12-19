@@ -62,4 +62,4 @@ Profile.PageLayout = ProfileLayout;
 
 export default Profile;
 
-export const Container = tw.section`py-12 h-full`;
+export const Container = tw.section`py-12 px-2 h-full`;
