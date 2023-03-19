@@ -22,9 +22,6 @@ import {
   HiOutlinePencil,
 } from "react-icons/hi";
 
-import { BsArrowRight, BsArrowLeft, BsBookmark } from "react-icons/bs";
-import { IoOptionsOutline } from "react-icons/io5";
-
 import {
   BiChevronDown,
   BiSearchAlt,
@@ -33,9 +30,13 @@ import {
   BiChevronUp,
 } from "react-icons/bi";
 
+import { BsArrowRight, BsArrowLeft, BsBookmark } from "react-icons/bs";
+import { IoOptionsOutline } from "react-icons/io5";
 import { FaFacebookF, FaGreaterThan, FaLessThan, FaSort } from "react-icons/fa";
 import { MdOutlineDashboard, MdOutlineCancel } from "react-icons/md";
 import { TbNotes } from "react-icons/tb";
+import { HiOutlineArrowRight } from "react-icons/hi";
+
 
 const icons = {
   search: BiSearchAlt,
@@ -71,6 +72,7 @@ const icons = {
   options: IoOptionsOutline,
   eyeOpen: AiOutlineEye,
   sort: FaSort,
+  rightArrow: HiOutlineArrowRight,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {

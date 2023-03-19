@@ -1,15 +1,17 @@
 import Image from "next/image";
 import tw, { styled } from "twin.macro";
 
-import irfan from "/public/assets/images/irfan-rahat.png";
-import michaela from "/public/assets/images/pexels-michaela.png";
-import captcha from "/public/assets/images/captcha.png";
-
 import Header from "../../components/Header";
 import Icon from "../../components/Icon";
 import SectionHeader from "../../components/SectionHeader";
 import CtaButton from "../../components/CtaButton";
 import FormInput from "../../components/FormInput";
+
+import irfan from "/public/assets/images/irfan-rahat.png";
+import michaela from "/public/assets/images/pexels-michaela.png";
+import captcha from "/public/assets/images/captcha.png";
+
+
 
 const ContactUs = () => {
   return (
