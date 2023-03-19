@@ -14,21 +14,21 @@ const CourseCard = ({ courseDetail }) => {
         <Image src={cardImage} alt="" />
         <div className="p-6">
           <div className="flex justify-between">
-            <div className="flex items-center cursor-pointer gap-2">
+            <div className="flex cursor-pointer items-center gap-2">
               <Icon id={"book"} className="cursor-pointer" size="20" />
               <p>{t("coursecards.topic")}</p>
             </div>
-            <div className="flex items-center cursor-pointer gap-2">
+            <div className="flex cursor-pointer items-center gap-2">
               <Icon id={"clock"} className="cursor-pointer" size="20" />
               <p>{t("coursecards.date")}</p>
             </div>
           </div>
-          <p className="cursor-pointer py-3 font-bold text-lg">
+          <p className="cursor-pointer py-3 text-lg font-bold">
             {t("coursecards.title")}
           </p>
           <p>{t("coursecards.summary")}</p>
-          <div className="flex justify-between items-center py-3">
-            <div className="flex items-center cursor-pointer gap-2 ">
+          <div className="flex items-center justify-between py-3">
+            <div className="flex cursor-pointer items-center gap-2 ">
               <Image src={ownerIcon} alt="" />
               <p>{t("coursecards.owner")}</p>
             </div>

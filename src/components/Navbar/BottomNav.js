@@ -8,23 +8,25 @@ const BottomNav = () => {
   const { t } = useTranslation("index");
 
   return (
-    <div className="flex px-20 py-5 justify-between items-center shadow-sm">
+    <div className="flex items-center justify-between px-20 py-5 shadow-sm">
       <div className="flex items-center gap-6">
-        <Link href={"/"}>
-          <Logo width={80} height={60} className="cursor-pointer" />
+        <Link href={"/"} passHref legacyBehavior>
+          <a>
+            <Logo width={80} height={60} className="cursor-pointer" />
+          </a>
         </Link>
-        <p className="flex justify-center items-center border-2 border-primary-P300 rounded-full py-2 px-3 h-auto cursor-pointer gap-3">
+        <p className="flex h-auto cursor-pointer items-center justify-center gap-3 rounded-full border-2 border-primary-P300 py-2 px-3">
           <span>
             <Icon id={"menu"} />
           </span>
           <span className="text-black">{t("navbar.menu")}</span>
         </p>
       </div>
-      <div className="flex items-center basis-1/3 bg-gray-G20 h-auto rounded-full overflow-hidden w-auto">
-        <Icon id={"search"} className="text-primary-P300 px-3" size={20} />
+      <div className="flex h-auto w-auto basis-1/3 items-center overflow-hidden rounded-full bg-gray-G20">
+        <Icon id={"search"} className="px-3 text-primary-P300" size={20} />
         <input
           type="text"
-          className="bg-gray-G20 outline-none w-full placeholder:text-black placeholder:font-light placeholder:py-1 py-3 h-full"
+          className="h-full w-full bg-gray-G20 py-3 outline-none placeholder:py-1 placeholder:font-light placeholder:text-black"
           placeholder={t("navbar.search placeholder")}
         />
       </div>

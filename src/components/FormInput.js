@@ -8,7 +8,7 @@ const FormInput = ({ label, htmlFor, type, value, ...otherAttributes }) => (
     <input
       type={`${type ? type : "text"}`}
       value={value}
-      className="rounded border-2 bg-[#F9F9F9] py-3 placeholder:py-1 px-2"
+      className="rounded border-2 bg-[#F9F9F9] py-3 px-2 placeholder:py-1"
       {...otherAttributes}
     />
   </>

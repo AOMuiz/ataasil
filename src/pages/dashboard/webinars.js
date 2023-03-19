@@ -9,14 +9,14 @@ const Webinars = () => {
       <div className="my-10">
         <SectionHeader title={"المنتجات"} />
       </div>
-      <p className="text-2xl my-8">المؤتمرات الإلكترونية</p>
-      <div className="flex gap-4 rounded-full border py-2 border-gray-G20 w-fit px-4 items-center">
+      <p className="my-8 text-2xl">المؤتمرات الإلكترونية</p>
+      <div className="flex w-fit items-center gap-4 rounded-full border border-gray-G20 py-2 px-4">
         <CategoryItem active>المؤتمرات القادمة</CategoryItem>
         <CategoryItem>المؤتمرات السابقة - مسجلة</CategoryItem>
         <CategoryItem>المؤتمرات السابقة - قيد البث</CategoryItem>
       </div>
       <div className="h-full">
-        <p className="font-light text-xl text-center pt-28 text-gray-G30">
+        <p className="pt-28 text-center text-xl font-light text-gray-G30">
           لم تقم بالتسجيل في احد المؤتمرات حتى الآن
         </p>
       </div>

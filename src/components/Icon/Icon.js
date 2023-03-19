@@ -37,7 +37,6 @@ import { MdOutlineDashboard, MdOutlineCancel } from "react-icons/md";
 import { TbNotes } from "react-icons/tb";
 import { HiOutlineArrowRight } from "react-icons/hi";
 
-
 const icons = {
   search: BiSearchAlt,
   twitter: AiOutlineTwitter,

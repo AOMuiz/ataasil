@@ -12,14 +12,14 @@ const Purchases = () => {
     <Container>
       <div className="my-10">
         <SectionHeader title={"المشتريات السابقة"} />
-        <div className="flex justify-between items-center w-11/12">
-          <p className="text-2xl my-10">1 من عمليات الشراء</p>
-          <div className=" flex justify-between items-center gap-4">
+        <div className="flex w-11/12 items-center justify-between">
+          <p className="my-10 text-2xl">1 من عمليات الشراء</p>
+          <div className=" flex items-center justify-between gap-4">
             <UnstyledButton>
               <Icon
                 id={"options"}
                 size={24}
-                className="bg-gray-G20 p-2 rounded-full"
+                className="rounded-full bg-gray-G20 p-2"
                 color="#5A5A5A"
               />
             </UnstyledButton>
@@ -27,16 +27,16 @@ const Purchases = () => {
               <Icon
                 id={"sort"}
                 size={24}
-                className="bg-gray-G20 p-2 rounded-full"
+                className="rounded-full bg-gray-G20 p-2"
                 color="#5A5A5A"
               />
             </UnstyledButton>
           </div>
         </div>
       </div>
-      <div className="bg-gray-G20 rounded-xl shadow px-6 w-11/12">
+      <div className="w-11/12 rounded-xl bg-gray-G20 px-6 shadow">
         <div className="flex justify-between">
-          <p className="font-bold text-lg py-5">رقم عملية الشراء : 1</p>
+          <p className="py-5 text-lg font-bold">رقم عملية الشراء : 1</p>
           <UnstyledButton>
             <Icon id={"chevron-up"} size={24} />
           </UnstyledButton>

@@ -1,5 +1,5 @@
 const SectionHeader = ({ title }) => {
-  return <p className="font-bold text-3xl mb-8">{title}</p>;
+  return <p className="mb-8 text-3xl font-bold">{title}</p>;
 };
 
 export default SectionHeader;

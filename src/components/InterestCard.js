@@ -7,11 +7,11 @@ import SectionHeader from "./SectionHeader";
 const InterestCard = () => {
   const { t } = useTranslation("index");
   return (
-    <div className="flex justify-between items-center gap-20 px-20 py-10">
+    <div className="flex items-center justify-between gap-20 px-20 py-10">
       <div className="w-fit max-w-[600px]">
         <SectionHeader title={t("home.interestcard.header")} />
         <p className="py-16">{t("home.interestcard.contents")}</p>
-        <div className="flex gap-4 items-center justify-center cursor-pointer rounded-3xl w-28 bg-primary-P600 p-4 text-white ">
+        <div className="flex w-28 cursor-pointer items-center justify-center gap-4 rounded-3xl bg-primary-P600 p-4 text-white ">
           <p>{t("home.interestcard.begin")}</p>
           <Icon id={"left"} />
         </div>

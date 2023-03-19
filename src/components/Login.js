@@ -10,10 +10,10 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="px-20 bg-[#E5E5E5] pt-16">
+      <div className="bg-[#E5E5E5] px-20 pt-16">
         <div className="flex flex-row items-center justify-between bg-white">
           <div className="w-[650px]">
-            <div className="flex flex-row items-center pr-7 gap-5">
+            <div className="flex flex-row items-center gap-5 pr-7">
               <Icon
                 id={"rightArrow"}
                 className="cursor-pointer self-start"
@@ -23,39 +23,39 @@ const LoginPage = () => {
               <SectionHeader title={t("login.sign in")} />
             </div>
             <div className="pr-20">
-              <p className="pb-4 font-bold text-sm text-[#5A5A5A] ">
+              <p className="pb-4 text-sm font-bold text-[#5A5A5A] ">
                 {t("login.identity")}
               </p>
               <div className="pb-[75px]">
                 <input
                   type="text"
                   placeholder={t("login.identity")}
-                  className="p-4 border-2 rounded-lg bg-[#E5E5E5] placeholder:placeholder-[#5A5A5A] placeholder:text-lg outline-none w-[462px]"
+                  className="w-[462px] rounded-lg border-2 bg-[#E5E5E5] p-4 outline-none placeholder:text-lg placeholder:placeholder-[#5A5A5A]"
                 />
               </div>
-              <p className="pb-4 font-bold text-sm text-[#5A5A5A]">
+              <p className="pb-4 text-sm font-bold text-[#5A5A5A]">
                 {t("login.password")}
               </p>
               <div className="pb-16">
                 <input
                   type="text"
                   placeholder={t("login.password")}
-                  className="p-4 border-2 rounded-lg bg-[#E5E5E5] placeholder:placeholder-[#5A5A5A] placeholder:text-lg outline-none w-[462px]"
+                  className="w-[462px] rounded-lg border-2 bg-[#E5E5E5] p-4 outline-none placeholder:text-lg placeholder:placeholder-[#5A5A5A]"
                 />
               </div>
-              <div className="flex justify-start gap-16 items-center text-center">
-                <div className="border-2 rounded-full p-2 w-36 bg-[#31C0CC]">
-                  <p className="font-bold text-white text-base cursor-pointer">
+              <div className="flex items-center justify-start gap-16 text-center">
+                <div className="w-36 rounded-full border-2 bg-[#31C0CC] p-2">
+                  <p className="cursor-pointer text-base font-bold text-white">
                     {t("login.sign in")}
                   </p>
                 </div>
                 <div>
-                  <p className="text-[#5A5A5A] font-bold text-sm">
-                    <span className="hover:underline cursor-pointer">
+                  <p className="text-sm font-bold text-[#5A5A5A]">
+                    <span className="cursor-pointer hover:underline">
                       {t("login.forgot password")}
                     </span>
                     &nbsp; {t("login.or")} &nbsp;
-                    <span className="hover:underline cursor-pointer">
+                    <span className="cursor-pointer hover:underline">
                       {t("login.create")}
                     </span>
                   </p>
@@ -69,7 +69,7 @@ const LoginPage = () => {
         </div>
         <div className="flex flex-col items-center justify-center py-28 ">
           <div className="self-start">
-            <p className="font-bold text-3xl pb-10">{t("login.latest")}</p>
+            <p className="pb-10 text-3xl font-bold">{t("login.latest")}</p>
           </div>
           <div className="flex flex-row items-center justify-center gap-8">
             <CourseCard />
@@ -77,18 +77,18 @@ const LoginPage = () => {
             <CourseCard />
             <CourseCard />
           </div>
-          <div className="flex gap-2 flex-row py-10 self-end pt-9">
+          <div className="flex flex-row gap-2 self-end py-10 pt-9">
             <Icon
               id={"right"}
               color={"white"}
               size={25}
-              className="bg-[#35CCBC] p-3 rounded-md h-12 w-12 cursor-pointer"
+              className="h-12 w-12 cursor-pointer rounded-md bg-[#35CCBC] p-3"
             />
             <Icon
               id={"left"}
               color={"white"}
               size={25}
-              className="bg-[#35CCBC80] p-3 rounded-md h-12 w-12 cursor-pointer"
+              className="h-12 w-12 cursor-pointer rounded-md bg-[#35CCBC80] p-3"
             />
           </div>
         </div>

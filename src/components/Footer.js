@@ -10,19 +10,19 @@ const Footer = () => {
   const { t } = useTranslation("index");
   return (
     <section className="bg-[#3A3B50] px-20 py-10">
-      <div className="grid grid-flow-col-dense pb-5 gap-8">
+      <div className="grid grid-flow-col-dense gap-8 pb-5">
         <div>
           <Link href={"/"} passHref={true}>
             <LogoDark />
           </Link>
-          <p className="text-white my-3">{t("footer.download app")}</p>
+          <p className="my-3 text-white">{t("footer.download app")}</p>
           <div className="flex gap-3">
             <Image src={googleplay} alt="googleplay" />
             <Image src={appstore} alt="appstore" />
           </div>
         </div>
-        <div className="text-white text-lg">
-          <p className="font-bold mb-4">{t("footer.about links.heading")}</p>
+        <div className="text-lg text-white">
+          <p className="mb-4 font-bold">{t("footer.about links.heading")}</p>
           <ul>
             <li className="cursor-pointer pb-1">
               <Link href={"/contact"}>{t("footer.about links.connect")}</Link>
@@ -39,7 +39,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="text-lg text-white">
-          <p className="font-bold mb-4">{t("footer.support.heading")}</p>
+          <p className="mb-4 font-bold">{t("footer.support.heading")}</p>
           <ul>
             <li className="cursor-pointer pb-1">
               {t("footer.support.help center")}
@@ -56,32 +56,32 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <p className="text-white font-bold text-lg w-auto">
+          <p className="w-auto text-lg font-bold text-white">
             {t("footer.newsletter.title")}
           </p>
           <div className="relative my-6 h-14">
             <input
               type="text"
               placeholder="أدخل عنوان بريدك الإلكتروني"
-              className="h-full outline-none placeholder:py-2 placeholder:px-4 w-full rounded-l-full"
+              className="h-full w-full rounded-l-full outline-none placeholder:py-2 placeholder:px-4"
             />
-            <button className="bg-primary-P300 px-5 rounded-full text-white absolute left-0 -bottom-7 -translate-y-1/2 text-xl h-full">
+            <button className="absolute left-0 -bottom-7 h-full -translate-y-1/2 rounded-full bg-primary-P300 px-5 text-xl text-white">
               {t("footer.newsletter.join")}
             </button>
           </div>
-          <div className="flex gap-3 text-white text-xl items-center justify-center">
+          <div className="flex items-center justify-center gap-3 text-xl text-white">
             <p className="text-lg">{t("footer.socials")}</p>
-            <Icon id={"youtube"} className="text-2xl cursor-pointer" />
-            <Icon id={"linkedIn"} className="text-2xl cursor-pointer" />
-            <Icon id={"facebook"} className="text-2xl cursor-pointer" />
-            <Icon id={"instagram"} className="text-2xl cursor-pointer" />
-            <Icon id={"twitter"} className="text-2xl cursor-pointer" />
+            <Icon id={"youtube"} className="cursor-pointer text-2xl" />
+            <Icon id={"linkedIn"} className="cursor-pointer text-2xl" />
+            <Icon id={"facebook"} className="cursor-pointer text-2xl" />
+            <Icon id={"instagram"} className="cursor-pointer text-2xl" />
+            <Icon id={"twitter"} className="cursor-pointer text-2xl" />
           </div>
         </div>
       </div>
       <div>
         <div className="border border-white"></div>
-        <p className="text-lg text-center text-white mt-5">
+        <p className="mt-5 text-center text-lg text-white">
           {t("footer.copyright")}
           <span>&#169;</span> 2022
         </p>

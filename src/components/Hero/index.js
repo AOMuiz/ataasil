@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <div className="relative">
       <HeroCarousel />
-      <div className="flex gap-5 text-sm px-20 absolute bottom-0 translate-y-2/4">
+      <div className="absolute bottom-0 flex translate-y-2/4 gap-5 px-20 text-sm">
         <HeroCard />
         <HeroCard />
         <HeroCard />

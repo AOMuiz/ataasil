@@ -20,10 +20,10 @@ const SidebarItemHeader = ({ item }) => {
 
   return (
     <SideBarWithSubContainer>
-      <div className="flex items-center w-full justify-between">
+      <div className="flex w-full items-center justify-between">
         <StyledSidebarItem>
           <Link href={`${headerToPath}`}>
-            <p className="flex gap-3 items-center">
+            <p className="flex items-center gap-3">
               <Icon id={`${icon}`} size={35} />
               <span>{label}</span>
             </p>

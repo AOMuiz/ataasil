@@ -12,7 +12,7 @@ const WhyUs = () => {
   return (
     <div className="bg-neutral-N20 px-20 py-10">
       <SectionHeader title={t("home.whyus.title")} />
-      <div className="grid grid-cols-2 gap-8 justify-between">
+      <div className="grid grid-cols-2 justify-between gap-8">
         <section className="flex flex-col gap-3">
           <SectionListCard
             title={"محتوى تدريبي مميز"}
@@ -37,11 +37,11 @@ const WhyUs = () => {
           />
         </section>
         <section className="flex flex-col">
-          <div className="flex gap-1 items-end">
-            <div className="bg-primary-P300 rounded-tl-3xl h-[72px] w-28" />
+          <div className="flex items-end gap-1">
+            <div className="h-[72px] w-28 rounded-tl-3xl bg-primary-P300" />
             <Image src={dots1} alt="dots" className="pb-1" />
           </div>
-          <div className="basis-full mb-1 rounded-md">
+          <div className="mb-1 basis-full rounded-md">
             {/* <Image
               src={videoImg}
               alt="why us video"
