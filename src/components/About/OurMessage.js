@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import SectionHeader from "../SectionHeader";
 import dots1 from "/public/assets/images/Group 59.png";

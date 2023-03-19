@@ -1,6 +1,5 @@
 import useTranslation from "next-translate/useTranslation";
 import Image from "next/image";
-import React from "react";
 import Icon from "./Icon";
 import interest_image from "/public/assets/images/interest_img.png";
 import SectionHeader from "./SectionHeader";

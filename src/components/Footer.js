@@ -1,4 +1,3 @@
-import React from "react";
 import LogoDark from "./Svg/LogoDark";
 import Image from "next/image";
 import Icon from "./Icon";
@@ -13,7 +12,7 @@ const Footer = () => {
     <section className="bg-[#3A3B50] px-20 py-10">
       <div className="grid grid-flow-col-dense pb-5 gap-8">
         <div>
-          <Link href={"/"}>
+          <Link href={"/"} passHref={true}>
             <LogoDark />
           </Link>
           <p className="text-white my-3">{t("footer.download app")}</p>
@@ -26,7 +25,7 @@ const Footer = () => {
           <p className="font-bold mb-4">{t("footer.about links.heading")}</p>
           <ul>
             <li className="cursor-pointer pb-1">
-              <Link href={"contact"}>{t("footer.about links.connect")}</Link>
+              <Link href={"/contact"}>{t("footer.about links.connect")}</Link>
             </li>
             <li className="cursor-pointer pb-1">
               <Link href={"/about"}>{t("footer.about links.about us")}</Link>

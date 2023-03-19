@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import videoImg from "/public/assets/images/pexels-katya-wolf-8716103 2.png";
 import dots1 from "/public/assets/images/Group 59.png";
 import dots2 from "/public/assets/images/Group 58.png";
@@ -53,9 +52,9 @@ const WhyUs = () => {
               className="h-full w-full leading-[0]"
               src="https://www.youtube.com/embed/sPxy6kwUCNE"
               title="why us video player"
-              frameborder="0"
+              frameBorder="0"
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope;"
-              allowfullscreen
+              allowFullScreen
             ></iframe>
           </div>
           <div className="self-end leading-[0]">

@@ -1,5 +1,3 @@
-import * as React from "react";
-
 const LogoDark = ({ width = 147, height = 113, className, ...others }) => (
   <svg
     width={width}

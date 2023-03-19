@@ -61,13 +61,13 @@ const CourseCards = () => {
         <SectionHeader title={t("coursecards.main topic")} />
       </div>
       <div className="flex gap-4 overflow-x-auto">
-        <SectionCategory />
-        <SectionCategory />
-        <SectionCategory />
-        <SectionCategory />
-        <SectionCategory />
-        <SectionCategory />
-        <SectionCategory />
+        <SectionCategory content={t("coursecards.section title")} active />
+        <SectionCategory content={t("coursecards.section title")} />
+        <SectionCategory content={t("coursecards.section title")} />
+        <SectionCategory content={t("coursecards.section title")} />
+        <SectionCategory content={t("coursecards.section title")} />
+        <SectionCategory content={t("coursecards.section title")} />
+        <SectionCategory content={t("coursecards.section title")} />
       </div>
       <section>
         <div className="flex gap-6 overflow-x-auto py-2">

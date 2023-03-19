@@ -13,6 +13,8 @@ function MyApp({ Component, pageProps }) {
   const dir = locale === "ar" ? "rtl" : "ltr";
   const lang = locale == "ar" ? "ar" : "en";
 
+  // const Layout = Component.Layout || IndexLayout;
+
   useEffect(() => {
     document.documentElement.dir = dir;
     document.documentElement.lang = lang;
@@ -29,7 +31,16 @@ function MyApp({ Component, pageProps }) {
         <GlobalStyles />
         <>
           <Navbar />
-          <Component {...pageProps} />
+          {Component.PageLayout ? (
+            <Component.PageLayout>
+              <Component {...pageProps} />
+            </Component.PageLayout>
+          ) : (
+            <Component {...pageProps} />
+          )}
+          {/* <Layout>
+            <Component {...pageProps} />
+          </Layout> */}
           <Footer />
         </>
       </Provider>

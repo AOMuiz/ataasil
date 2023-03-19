@@ -1,4 +1,3 @@
-import React from "react";
 import TestimonialCard from "./TestimonialCard";
 import Image from "next/image";
 import paginationImg from "/public/assets/images/content-img.png";
