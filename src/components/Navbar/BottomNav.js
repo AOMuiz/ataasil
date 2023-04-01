@@ -15,12 +15,12 @@ const BottomNav = () => {
             <Logo width={80} height={60} className="cursor-pointer" />
           </a>
         </Link>
-        <p className="flex h-auto cursor-pointer items-center justify-center gap-3 rounded-full border-2 border-primary-P300 py-2 px-3">
+        <div className="flex h-auto cursor-pointer items-center justify-center gap-3 rounded-full border-2 border-primary-P300 py-2 px-3">
           <span>
             <Icon id={"menu"} />
           </span>
           <span className="text-black">{t("navbar.menu")}</span>
-        </p>
+        </div>
       </div>
       <div className="flex h-auto w-auto basis-1/3 items-center overflow-hidden rounded-full bg-gray-G20">
         <Icon id={"search"} className="px-3 text-primary-P300" size={20} />

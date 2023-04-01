@@ -12,7 +12,7 @@ const WhyUs = () => {
   return (
     <div className="bg-neutral-N20 px-20 py-10">
       <SectionHeader title={t("home.whyus.title")} />
-      <div className="grid grid-cols-2 justify-between gap-8">
+      <div className="grid grid-cols-2 justify-between gap-8 md:grid-cols-1">
         <section className="flex flex-col gap-3">
           <SectionListCard
             title={"محتوى تدريبي مميز"}
@@ -36,7 +36,7 @@ const WhyUs = () => {
             number={"03"}
           />
         </section>
-        <section className="flex flex-col">
+        <section className="flex flex-col md:min-h-[350px]">
           <div className="flex items-end gap-1">
             <div className="h-[72px] w-28 rounded-tl-3xl bg-primary-P300" />
             <Image src={dots1} alt="dots" className="pb-1" />
@@ -52,7 +52,6 @@ const WhyUs = () => {
               className="h-full w-full leading-[0]"
               src="https://www.youtube.com/embed/sPxy6kwUCNE"
               title="why us video player"
-              frameBorder="0"
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope;"
               allowFullScreen
             ></iframe>

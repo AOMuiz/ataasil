@@ -10,9 +10,9 @@ const Footer = () => {
   const { t } = useTranslation("index");
   return (
     <section className="bg-[#3A3B50] px-20 py-10">
-      <div className="grid grid-flow-col-dense gap-8 pb-5">
+      <div className="2md:grid-flow-col-[revert] grid grid-flow-col-dense gap-8 pb-5 2md:grid-flow-row">
         <div>
-          <Link href={"/"} passHref={true}>
+          <Link href={"/"} passHref legacyBehavior>
             <LogoDark />
           </Link>
           <p className="my-3 text-white">{t("footer.download app")}</p>

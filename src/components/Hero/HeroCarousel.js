@@ -14,12 +14,12 @@ const HeroCarousel = () => {
         objectFit="contain"
       />
       <div className="h-3/4">
-        <p tw="absolute bottom-1/3 right-1/4 font-extrabold text-2xl text-white">
+        <p className="absolute bottom-1/3 right-1/4 text-2xl font-extrabold text-white">
           العلم الأصيل الذي نزل من النبي صلى الله عليه وسلم إلى أصحابه وعلماء
           هذه الأمة
         </p>
         <div className="absolute top-0 right-0">
-          <Image src={pen} alt="hero pen" objectFit="fill" height={500} />
+          <Image src={pen} alt="hero pen" objectFit="fill" height={450} />
         </div>
       </div>
     </HeroContainer>
