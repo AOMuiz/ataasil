@@ -64,7 +64,7 @@ const SignUp = () => {
             <div className="flex-1 py-2">
               <p className="py-4">{t("sign up page.phone number")}</p>
               <input
-                type="text"
+                type="number"
                 placeholder={t("sign up page.phone number")}
                 className="h-[60px] w-full rounded-md border bg-primary-P700 p-4 "
               />
@@ -72,7 +72,7 @@ const SignUp = () => {
             <div className="flex-1 py-2">
               <p className="py-4">{t("sign up page.code")}</p>
               <input
-                type="text"
+                type="number"
                 placeholder={t("sign up page.number")}
                 className="h-[60px] w-full rounded-md border bg-primary-P700 p-4"
               />
@@ -81,7 +81,8 @@ const SignUp = () => {
           <div className="py-6">
             <p className="py-4">{t("sign up page.email")}</p>
             <input
-              type="text"
+              type="email"
+              required
               placeholder={t("sign up page.email")}
               className="h-[60px]	 w-full rounded-md border bg-primary-P700 p-4"
             />
@@ -89,7 +90,8 @@ const SignUp = () => {
           <div className="py-6">
             <p className="py-4">{t("sign up page.email confirmation")}</p>
             <input
-              type="text"
+              type="email"
+              required
               placeholder={t("sign up page.email confirmation")}
               className="h-[60px]	 w-full rounded-md border bg-primary-P700 p-4"
             />
@@ -97,7 +99,8 @@ const SignUp = () => {
           <div className="py-6">
             <p className="py-4">{t("sign up page.password")}</p>
             <input
-              type="text"
+              required
+              type="password"
               placeholder={t("sign up page.password")}
               className="h-[60px]	 w-full rounded-md border  bg-primary-P700 p-4"
             />
@@ -105,12 +108,12 @@ const SignUp = () => {
           <div className="py-6">
             <p className="py-4">{t("sign up page.password confirmation")}</p>
             <input
-              type="text"
+              required
+              type="password"
               placeholder={t("sign up page.password confirmation")}
               className="h-[60px]	w-full rounded-md border  bg-primary-P700 p-4"
             />
           </div>
-
           <div className="my-10 flex h-32 max-w-[329px] items-center justify-around rounded-md border border-black bg-primary-P700">
             <div>
               <Image src={robot} alt="" />

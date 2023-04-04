@@ -39,7 +39,7 @@ const LoginPage = () => {
               </p>
               <div className="pb-16 md:pb-6">
                 <input
-                  type="text"
+                  type="password"
                   placeholder={t("login.password")}
                   className="w-full rounded-lg border-2 bg-primary-P700 p-4 outline-none placeholder:text-lg placeholder:placeholder-gray-G30 2md:w-2/3 md:w-full"
                 />

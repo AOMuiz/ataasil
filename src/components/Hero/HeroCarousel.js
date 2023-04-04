@@ -15,7 +15,7 @@ const HeroCarousel = () => {
       />
 
       <div className="h-3/4 md:h-[revert]">
-        <p className="absolute bottom-1/3 right-1/4 text-2xl font-extrabold text-white md:text-lg">
+        <p className="absolute bottom-1/3 right-1/4 text-2xl font-extrabold text-white md:text-lg sm:right-8">
           العلم الأصيل الذي نزل من النبي صلى الله عليه وسلم إلى أصحابه وعلماء
           هذه الأمة
         </p>
