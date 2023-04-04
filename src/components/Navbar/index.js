@@ -1,4 +1,5 @@
 import BottomNav from "./BottomNav";
+import MobileNav from "./MobileNav";
 import TopNav from "./TopNav";
 
 const Navbar = () => {
@@ -6,6 +7,7 @@ const Navbar = () => {
     <nav>
       <TopNav />
       <BottomNav />
+      <MobileNav />
     </nav>
   );
 };

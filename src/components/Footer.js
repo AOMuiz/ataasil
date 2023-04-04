@@ -9,7 +9,7 @@ import Link from "next/link";
 const Footer = () => {
   const { t } = useTranslation("index");
   return (
-    <section className="bg-[#3A3B50] px-20 py-10">
+    <section className="bg-[#3A3B50] px-20 py-10 2md:px-10 md:px-8">
       <div className="2md:grid-flow-col-[revert] grid grid-flow-col-dense gap-8 pb-5 2md:grid-flow-row">
         <div>
           <Link href={"/"} passHref legacyBehavior>
@@ -69,8 +69,8 @@ const Footer = () => {
               {t("footer.newsletter.join")}
             </button>
           </div>
-          <div className="flex items-center justify-center gap-3 text-xl text-white">
-            <p className="text-lg">{t("footer.socials")}</p>
+          <div className="flex items-center justify-center gap-3 text-xl text-white md:flex-wrap">
+            <p className="text-lg md:w-full">{t("footer.socials")}</p>
             <Icon id={"youtube"} className="cursor-pointer text-2xl" />
             <Icon id={"linkedIn"} className="cursor-pointer text-2xl" />
             <Icon id={"facebook"} className="cursor-pointer text-2xl" />

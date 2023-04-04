@@ -10,7 +10,7 @@ const WhyUs = () => {
   const { t } = useTranslation("index");
 
   return (
-    <div className="bg-neutral-N20 px-20 py-10">
+    <div className="bg-neutral-N20 px-20 py-10 2md:px-10 md:px-8">
       <SectionHeader title={t("home.whyus.title")} />
       <div className="grid grid-cols-2 justify-between gap-8 md:grid-cols-1">
         <section className="flex flex-col gap-3">

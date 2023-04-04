@@ -4,14 +4,14 @@ import Icon from "../Icon";
 
 const TestimonialCard = () => {
   return (
-    <div className="bg-gray-G10 rounded-3xl p-6">
+    <div className="min-w-[250px] rounded-3xl bg-gray-G10 p-6">
       <p className="pb-8">
         لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار النشوة
         وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف{" "}
       </p>
-      <div className="border mb-7"></div>
-      <div className="flex gap-3 p">
-        <div className="flex bg-amber-200 rounded-lg w-fit p-4 text-center">
+      <div className="mb-7 border"></div>
+      <div className="p flex gap-3">
+        <div className="flex w-fit rounded-lg bg-amber-200 p-4 text-center">
           <Image
             src={testimonialImg}
             alt="testimonial image"
@@ -19,7 +19,7 @@ const TestimonialCard = () => {
           />
         </div>
         <div>
-          <div className="flex gap-1 mb-2">
+          <div className="mb-2 flex gap-1">
             <Icon id={"star"} className="text-amber-500" />
             <Icon id={"star"} className="text-amber-500" />
             <Icon id={"star"} className="text-amber-500" />

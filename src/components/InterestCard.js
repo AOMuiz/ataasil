@@ -7,7 +7,7 @@ import SectionHeader from "./SectionHeader";
 const InterestCard = () => {
   const { t } = useTranslation("index");
   return (
-    <div className="flex items-center justify-between gap-20 px-20 py-10 md:flex-wrap">
+    <div className="flex items-center justify-between gap-20 px-20 py-10 2md:px-10 md:flex-wrap">
       <div className="w-fit max-w-[600px]">
         <SectionHeader title={t("home.interestcard.header")} />
         <p className="py-16">{t("home.interestcard.contents")}</p>
