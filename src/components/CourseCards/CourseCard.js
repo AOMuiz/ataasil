@@ -11,10 +11,9 @@ const CourseCard = ({ courseDetail }) => {
   return (
     <>
       <article className="min-w-[270px] rounded-[30px] bg-white shadow-md">
-        <div>
-          <Image src={cardImage} alt="" />
+        <div className="w-full leading-none">
+          <Image src={cardImage} alt="" layout="responsive" />
         </div>
-
         <div className="p-6">
           <div className="flex justify-between">
             <div className="flex cursor-pointer items-center gap-2">

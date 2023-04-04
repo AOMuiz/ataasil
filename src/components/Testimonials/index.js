@@ -11,7 +11,7 @@ const Testimonials = () => {
   return (
     <div className="py-10 px-20 2md:px-10 md:px-8">
       <SectionHeader title={t("home.testimonials.title")} />
-      <div className="flex gap-6 overflow-scroll">
+      <div className="flex gap-6 overflow-x-auto">
         <TestimonialCard />
         <TestimonialCard />
         <TestimonialCard />

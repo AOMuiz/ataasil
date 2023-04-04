@@ -38,7 +38,7 @@ const BottomNav = () => {
           {t("navbar.sign up")}
         </p> */}
         <CtaButton>
-          <Link href={"login"}>{t("navbar.sign up")}</Link>
+          <Link href={"signup"}>{t("navbar.sign up")}</Link>
         </CtaButton>
       </div>
     </div>
