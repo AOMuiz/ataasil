@@ -1,14 +1,23 @@
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
+import { useState } from "react";
 
 import Icon from "../Icon";
 import Logo from "../Svg/Logo";
 import LocaleSwitcher from "../LocaleSwitcher/LocaleSwitcher";
+import MobileMenuBar from "./MobileMenuBar";
+import { useToggle } from "simplified-hooks";
 
 const MobileNav = () => {
   const { t } = useTranslation("index");
+  const [showNav, setShowNav] = useState(false);
+
+  const handleShowNav = () => {
+    setShowNav(!showNav);
+  };
+
   return (
-    <nav className="hidden py-3 2md:block">
+    <nav className="relative hidden py-3 2md:block">
       <div className="flex items-center justify-between gap-3 py-2 px-10 shadow-sm md:px-5">
         <div className="flex items-center gap-6">
           <Link href={"/"} passHref legacyBehavior>
@@ -30,12 +39,17 @@ const MobileNav = () => {
             placeholder={t("navbar.search placeholder")}
           />
         </div>
-        <div className="flex h-auto cursor-pointer items-center justify-center gap-3 rounded-md border-2 border-primary-P300 bg-primary-P300 py-2 px-2">
+        <button
+          type="button"
+          onClick={handleShowNav}
+          className="flex h-auto cursor-pointer items-center justify-center gap-3 rounded-md border-2 border-primary-P300 bg-primary-P300 py-2 px-2"
+        >
           <span>
-            <Icon id={"menu"} color="white" />
+            <Icon id={showNav ? "cancel" : "menu"} color="white" />
           </span>
-        </div>
+        </button>
       </div>
+      {showNav && <MobileMenuBar />}
     </nav>
   );
 };

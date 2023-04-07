@@ -7,8 +7,8 @@ const TopNav = () => {
   const { t } = useTranslation("index");
   return (
     <>
-      <div className="flex justify-between border-b-2 border-gray-G20 bg-white px-20 py-4 font-bold 2md:hidden">
-        <div className="flex items-baseline justify-between gap-4 text-gray-G30">
+      <div className="flex  justify-between border-b-2 border-gray-G20 bg-white px-20 py-4 font-bold 2md:hidden">
+        <div className="flex items-center justify-between gap-4 text-gray-G30">
           <p className="cursor-pointer">{t("navbar.Join us")}</p>
           <p className="cursor-pointer">{t("navbar.corporate training")}</p>
           <p className="cursor-pointer">{t("navbar.blog")}</p>

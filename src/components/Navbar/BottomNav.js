@@ -3,12 +3,13 @@ import Link from "next/link";
 import CtaButton from "../CtaButton";
 import Icon from "../Icon";
 import Logo from "../Svg/Logo";
+import DesktopMenuBar from "./DesktopMenuBar";
 
 const BottomNav = () => {
   const { t } = useTranslation("index");
 
   return (
-    <div className="flex items-center justify-between px-20 py-5 shadow-sm 2md:hidden">
+    <div className="relative flex items-center justify-between px-20 py-5 shadow-sm 2md:hidden">
       <div className="flex items-center gap-6">
         <Link href={"/"} passHref legacyBehavior>
           <a>
