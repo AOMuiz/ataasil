@@ -17,8 +17,8 @@ const MobileNav = () => {
   };
 
   return (
-    <nav className="relative hidden py-3 2md:block">
-      <div className="flex items-center justify-between gap-3 py-2 px-10 shadow-sm md:px-5">
+    <nav className="relative hidden 2md:block">
+      <div className="flex items-center justify-between  gap-3 py-3 py-2 px-10 shadow-sm md:px-5">
         <div className="flex items-center gap-6">
           <Link href={"/"} passHref legacyBehavior>
             <a>

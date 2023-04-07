@@ -12,6 +12,8 @@ import {
   AiOutlineDollarCircle,
   AiOutlineCloudUpload,
   AiOutlineEye,
+  AiOutlineFileText,
+  AiOutlinePlayCircle,
 } from "react-icons/ai";
 
 import {
@@ -29,6 +31,7 @@ import {
   BiUser,
   BiChevronUp,
   BiLock,
+  BiVideo,
 } from "react-icons/bi";
 
 import { BsArrowRight, BsArrowLeft, BsBookmark } from "react-icons/bs";
@@ -76,6 +79,9 @@ const icons = {
   rightArrow: HiOutlineArrowRight,
   lock: BiLock,
   star: GiJusticeStar,
+  video: BiVideo,
+  FileText: AiOutlineFileText,
+  play:AiOutlinePlayCircle
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
