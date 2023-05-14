@@ -2,7 +2,7 @@ import React from "react";
 
 // eslint-disable-next-line react/display-name
 const LogoDark = React.forwardRef(
-  ({ onClick, href, width = 105, height = 81, className }, ref) => {
+  ({ onClick, href, width = 145, height = 111, className }, ref) => {
     return (
       <svg
         href={href}

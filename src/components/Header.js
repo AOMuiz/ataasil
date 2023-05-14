@@ -1,12 +1,19 @@
 import Image from "next/image";
 import tw, { styled } from "twin.macro";
+import { QUERIES } from "../utils/constants";
 // import LogoDark from "./Svg/LogoDark";
 
 const Header = ({ heading }) => {
   return (
     <Wrapper>
-      <p className="font-extrabold text-5xl text-white">{heading}</p>
-      <img src="/assets/images/logo-2.svg" alt="" className="w-[300px]" />
+      <p className="text-5xl font-extrabold text-white md:text-3xl">
+        {heading}
+      </p>
+      <img
+        src="/assets/images/logo-2.svg"
+        alt=""
+        className="w-[300px] md:w-[150px]"
+      />
     </Wrapper>
   );
 };
@@ -18,10 +25,14 @@ const Wrapper = styled.div`
     url("/assets/images/deepmind.png");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 300px;
+  min-height: 300px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-inline: 3rem;
-  /* background-color: yellowgreen; */
+  @media ${QUERIES.md} {
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+  }
 `;

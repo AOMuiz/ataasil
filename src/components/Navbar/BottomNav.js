@@ -3,12 +3,13 @@ import Link from "next/link";
 import CtaButton from "../CtaButton";
 import Icon from "../Icon";
 import Logo from "../Svg/Logo";
+import DesktopMenuBar from "./DesktopMenuBar";
 
 const BottomNav = () => {
   const { t } = useTranslation("index");
 
   return (
-    <div className="flex items-center justify-between px-20 py-5 shadow-sm">
+    <div className="relative flex items-center justify-between px-20 py-5 shadow-sm 2md:hidden">
       <div className="flex items-center gap-6">
         <Link href={"/"} passHref legacyBehavior>
           <a>
@@ -32,12 +33,14 @@ const BottomNav = () => {
       </div>
       <div className="flex items-center justify-evenly gap-6 font-bold">
         <p className="cursor-pointer text-gray-G30">
-          <Link href={"signin"}>{t("navbar.sign in")}</Link>
+          <Link href={"login"}>{t("navbar.sign in")}</Link>
         </p>
         {/* <p className="rounded-full bg-primary-P300 w-auto  text-center text-white px-6 py-3 cursor-pointer">
           {t("navbar.sign up")}
         </p> */}
-        <CtaButton>{t("navbar.sign up")}</CtaButton>
+        <CtaButton>
+          <Link href={"signup"}>{t("navbar.sign up")}</Link>
+        </CtaButton>
       </div>
     </div>
   );

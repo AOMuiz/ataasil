@@ -12,6 +12,8 @@ import {
   AiOutlineDollarCircle,
   AiOutlineCloudUpload,
   AiOutlineEye,
+  AiOutlineFileText,
+  AiOutlinePlayCircle,
 } from "react-icons/ai";
 
 import {
@@ -28,6 +30,8 @@ import {
   BiHomeAlt,
   BiUser,
   BiChevronUp,
+  BiLock,
+  BiVideo,
 } from "react-icons/bi";
 
 import { BsArrowRight, BsArrowLeft, BsBookmark } from "react-icons/bs";
@@ -36,6 +40,7 @@ import { FaFacebookF, FaGreaterThan, FaLessThan, FaSort } from "react-icons/fa";
 import { MdOutlineDashboard, MdOutlineCancel } from "react-icons/md";
 import { TbNotes } from "react-icons/tb";
 import { HiOutlineArrowRight } from "react-icons/hi";
+import { GiJusticeStar } from "react-icons/gi";
 
 const icons = {
   search: BiSearchAlt,
@@ -72,6 +77,11 @@ const icons = {
   eyeOpen: AiOutlineEye,
   sort: FaSort,
   rightArrow: HiOutlineArrowRight,
+  lock: BiLock,
+  star: GiJusticeStar,
+  video: BiVideo,
+  FileText: AiOutlineFileText,
+  play:AiOutlinePlayCircle
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {

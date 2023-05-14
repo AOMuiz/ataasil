@@ -56,7 +56,7 @@ const courses = [
 const CourseCards = () => {
   const { t } = useTranslation("index");
   return (
-    <div className="flex w-full flex-col bg-neutral-N20 py-10 px-20 pt-28">
+    <div className="flex w-full flex-col bg-neutral-N20 py-10 px-20 pt-28 2md:px-10 2md:py-20 md:px-6">
       <div>
         <SectionHeader title={t("coursecards.main topic")} />
       </div>
