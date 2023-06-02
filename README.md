@@ -34,17 +34,22 @@ yarn dev
 ## Folder Structure
 
 ```
-|-- locales/
-  |-- ar/
-  |-- en-US/
-|-- src/
-    |-- components/
-    |-- assets/
+|-- locales/ # folder for multilanguage/i18n related folder and configuration and translation
+    |-- ar/
+    |-- en-US/
+|-- public/
+    |-- assets/ # assets folder can contain all the static files such as images, fonts, etc.
         |-- fonts/
         |-- icon/
         |-- images/
-    |-- hooks/
+|-- src/
+    |-- components/  # all the global configuration, env variables etc. get exported from here and used in the app
+    |-- hooks/  # shared hooks used across the entire application
+    |-- config/ # all the global configuration, env variables etc. get exported from here and used in the app
+    |-- utils/  # shared utility functions
     |-- redux/
+        |-- providers         # all of the application providers
+        |-- stores            # global state stores
     |-- pages/
      |-- index.js/
      |-- about/
