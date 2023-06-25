@@ -68,6 +68,9 @@ module.exports = {
           G20: "#E7E7E7",
           G30: "#5A5A5A",
         },
+        danger: {
+          D10: "#ff0202",
+        },
       },
     },
   },
