@@ -7,6 +7,8 @@ import store from "../redux/store";
 import GlobalStyles from "../components/GlobalStyles";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "../apollo-client";
 
 function MyApp({ Component, pageProps }) {
   const { locale } = useRouter();
@@ -27,6 +29,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Ataasil University</title>
       </Head>
+      <ApolloProvider client={client}>
       <Provider store={store}>
         <GlobalStyles />
         <>
@@ -44,6 +47,7 @@ function MyApp({ Component, pageProps }) {
           <Footer />
         </>
       </Provider>
+      </ApolloProvider>
     </>
   );
 }

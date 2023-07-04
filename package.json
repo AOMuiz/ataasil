@@ -10,12 +10,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.16",
     "@radix-ui/react-menubar": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.3",
     "@reduxjs/toolkit": "^1.8.6",
     "@splidejs/react-splide": "^0.7.12",
     "autoprefixer": "^10.4.12",
     "babel-plugin-inline-react-svg": "^2.0.1",
+    "graphql": "^16.7.1",
     "next": "12.3.1",
     "next-i18next": "^12.1.0",
     "next-translate": "^1.6.0",
