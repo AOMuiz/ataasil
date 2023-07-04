@@ -4,7 +4,7 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
-  plugins: [require("tailwindcss-logical"), require("@tailwindcss/forms")],
+  plugins: [require("@tailwindcss/forms")],
   theme: {
     screens: {
       "2xl": { max: "1535px" },
@@ -90,5 +90,4 @@ module.exports = {
       },
     },
   },
-  plugins: [],
 };
