@@ -2,11 +2,7 @@
 const path = require("path");
 
 // The folders containing files importing twin.macro
-const includedDirs = [
-  path.resolve(__dirname, "src/components"),
-  path.resolve(__dirname, "src/pages"),
-  path.resolve(__dirname, "src/styles"),
-];
+const includedDirs = [path.resolve(__dirname, "src")];
 
 module.exports = function withTwin(nextConfig) {
   return {

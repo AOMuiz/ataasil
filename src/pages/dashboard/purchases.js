@@ -77,5 +77,5 @@ export default Purchases;
 
 const TableHeading = styled.th(({}) => [
   tw`text-base text-gray-G30 font-normal p-3 text-right`,
-  `text-aling:start`,
+  `text-align:start`,
 ]);
