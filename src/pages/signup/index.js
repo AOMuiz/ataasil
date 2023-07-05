@@ -96,9 +96,8 @@ const SignUp = () => {
               <option value="" className="text-gray-300">
                 -Please choose an option-
               </option>
-              <option value="private">Private Sector</option>
-              <option value="public">Public Sector</option>
-              <option value="non-employee">Non-employee</option>
+              <option value="Private">Private Sector</option>
+              <option value="Government">Public Sector</option>
             </select>
           </div>
           <div className="py-2">
@@ -182,8 +181,8 @@ const SignUp = () => {
               type="email"
               {...register("emailConfirmation")}
               required
-              name="email-confirm"
-              id="email-confirm"
+              name="emailConfirmation"
+              id="emailConfirmation"
               placeholder={t("sign up page.email confirmation")}
               className="h-[60px]	 w-full rounded-md border bg-primary-P700 p-4"
             />
@@ -209,15 +208,15 @@ const SignUp = () => {
             )}
           </div>
           <div className="py-6">
-            <label htmlFor="password-confirm" className="py-4 capitalize">
+            <label htmlFor="passwordConfirmation" className="py-4 capitalize">
               {t("sign up page.password confirmation")}
             </label>
             <input
               required
               type="password"
               {...register("passwordConfirmation")}
-              name="password-confirm"
-              id="password-confirm"
+              name="passwordConfirmation"
+              id="passwordConfirmation"
               placeholder={t("sign up page.password confirmation")}
               className="h-[60px]	w-full rounded-md border  bg-primary-P700 p-4"
             />
