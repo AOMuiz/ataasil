@@ -16,12 +16,15 @@ const SignUp = () => {
     fullName: yup.string().required("Full Name is Required"),
     nationality: yup.string().required(),
     contact: yup.string().min(5).max(15).required("Contact is required"),
+    jobSector: yup.string().required(),
     email: yup.string().email().required("Email is required"),
     emailConfirmation: yup
       .string()
       .oneOf([yup.ref("email")], "Email Must match"),
     password: yup
-      .string().min(8, "Password must be at least 8 characters").required("Password is required"),
+      .string()
+      .min(8, "Password must be at least 8 characters")
+      .required("Password is required"),
     passwordConfirmation: yup
       .string()
       .oneOf([yup.ref("password"), null], "Passwords Must match"),
@@ -84,12 +87,16 @@ const SignUp = () => {
             )}
           </div>
           <div className="py-6">
-            <label htmlFor="job-type" className="py-4 capitalize">
+            <label htmlFor="jobSector" className="py-4 capitalize">
               {t("sign up page.job")}
             </label>
             <select
-              name="job-type"
-              id="job-type"
+              name="jobSector"
+              id="jobSector"
+              {...register("jobSector")}
+              onChange={(e) =>
+                setValue("jobSector", e.target.value, { shouldValidate: true })
+              } // Using setValue
               placeholder={t("sign up page.job")}
               className="h-[60px]	w-full rounded-md border bg-primary-P700 p-4"
             >
@@ -99,6 +106,9 @@ const SignUp = () => {
               <option value="Private">Private Sector</option>
               <option value="Government">Public Sector</option>
             </select>
+            {errors.jobSector && (
+              <p tw="text-red-400">{errors.jobSector?.message}</p>
+            )}
           </div>
           <div className="py-2">
             <label htmlFor="contact" className="py-4 capitalize">
