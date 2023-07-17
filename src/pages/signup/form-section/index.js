@@ -88,7 +88,7 @@ export const FormSection = () => {
       });
 
       if (!verificationResponse) return;
-      localStorage.setItem(
+      await localStorage.setItem(
         "token",
         verificationResponse.student_register_verifyCode.token
       );
