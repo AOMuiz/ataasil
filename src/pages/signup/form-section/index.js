@@ -11,6 +11,7 @@ import {
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import robot from "/public/assets/images/robot.png";
+import { useRouter } from "next/router";
 
 export const FormSection = () => {
   const [verificationCode, setVerificationCode] = useState("");
@@ -18,8 +19,10 @@ export const FormSection = () => {
   const [createStudentAccount, { data: response, loading, error, reset }] =
     useMutation(CREATE_STUDENT_ACCOUNT);
 
-  const [verifyCode, { data: verificationResponse, verificationError }] =
+  const [verifyCode, { data: verificationResponse, error: verificationError }] =
     useMutation(VERIFY_STUDENT_EMAIL);
+
+  const router = useRouter();
 
   const schema = yup.object().shape({
     fullName: yup.string().required("Full Name is Required"),
@@ -57,7 +60,7 @@ export const FormSection = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const { email, password, jobSector, fullName, contact, day, month, year } =
       data;
     const studentInfo = {
@@ -68,21 +71,31 @@ export const FormSection = () => {
       dateOfBirth: `${year}-${month}-${day}`,
       phone: `+${contact}`,
     };
-    createStudentAccount({ variables: studentInfo });
+    try {
+      await createStudentAccount({ variables: studentInfo });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const onVerify = async () => {
-    const res = await verifyCode({
-      variables: {
-        token: response.student_register_sendCode.token,
-        code: verificationCode,
-      },
-    });
+    try {
+      await verifyCode({
+        variables: {
+          token: response.student_register_sendCode.token,
+          code: verificationCode,
+        },
+      });
 
-    localStorage.setItem(
-      "token",
-      verificationResponse.student_register_verifyCode.token
-    );
+      if (!verificationResponse) return;
+      localStorage.setItem(
+        "token",
+        verificationResponse.student_register_verifyCode.token
+      );
+      router.push("/");
+    } catch (error) {
+      console.log({ error: error.message });
+    }
   };
 
   if (response) {
