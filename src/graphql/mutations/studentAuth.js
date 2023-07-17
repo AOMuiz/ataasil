@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const CREATE_STUDENT_ACCOUNT = gql`
-  mutation Auth_student_register(
+  mutation Student_register_sendCode(
     $email: String!
     $username: String!
     $password: String!
@@ -9,7 +9,7 @@ export const CREATE_STUDENT_ACCOUNT = gql`
     $dateOfBirth: Date!
     $phone: String!
   ) {
-    auth_student_register(
+    student_register_sendCode(
       email: $email
       username: $username
       password: $password
@@ -17,33 +17,31 @@ export const CREATE_STUDENT_ACCOUNT = gql`
       dateOfBirth: $dateOfBirth
       phone: $phone
     ) {
-      error
-      success
-      token
       code
+      token
     }
   }
 `;
 
 export const VERIFY_STUDENT_EMAIL = gql`
-  mutation Auth_student_verifyEmail($token: String!, $code: String!) {
-    auth_student_verifyEmail(token: $token, code: $code) {
+  mutation Student_register_verifyCode($token: String!, $code: String!) {
+    student_register_verifyCode(token: $token, code: $code) {
       code
       success
-      error
       token
+      error
     }
   }
 `;
 
-export const REVERIFY_STUDENT_EMAIL = gql`
-  mutation auth_student_resendVerificationCode(token: $authStudentResendVerificationCodeToken2) {
-    code
-    success
-    error
-    token
-  }
-`;
+// export const REVERIFY_STUDENT_EMAIL = gql`
+//   mutation auth_student_resendVerificationCode(token: $authStudentResendVerificationCodeToken2) {
+//     code
+//     success
+//     error
+//     token
+//   }
+// `;
 
 export const AUTHENTICATE_STUDENT = gql`
   mutation Auth_student_login($email: String!, $password: String!) {
