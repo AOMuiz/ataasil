@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CtaButton from "../../../components/CtaButton";
+import CtaButton from "../../CtaButton";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -63,6 +63,16 @@ export const FormSection = () => {
   const onSubmit = async (data) => {
     const { email, password, jobSector, fullName, contact, day, month, year } =
       data;
+    console.log({
+      email,
+      password,
+      jobSector,
+      fullName,
+      contact,
+      day,
+      month,
+      year,
+    });
     const studentInfo = {
       email,
       password,
@@ -129,14 +139,14 @@ export const FormSection = () => {
       <h1 className="py-4 text-3xl font-bold">{t("sign up page.title")}</h1>
       <div>
         <label htmlFor="fullName" className="py-4 capitalize">
-          {t("sign up page.fullName")}
+          {t("sign up page.full name")}
         </label>
         <input
           type="text"
           name="fullName"
           id="fullName"
           {...register("fullName")}
-          placeholder={t("sign up page.fullName")}
+          placeholder={t("sign up page.full name")}
           className="h-[60px]	w-full rounded-md border bg-primary-P700 p-4"
         />
         {errors.fullName && <p tw="text-red-400">{errors.fullName?.message}</p>}

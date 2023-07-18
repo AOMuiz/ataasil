@@ -1,8 +1,8 @@
 import Image from "next/image";
 import useTranslation from "next-translate/useTranslation";
 import CourseCard from "../../components/CourseCards/CourseCard";
-import { FormSection } from "./form-section";
 import signupframe from "/public/assets/images/sign_up_frame.png";
+import { FormSection } from "../../components/Signup/form-section";
 
 const SignUp = () => {
   const { t } = useTranslation("index");
