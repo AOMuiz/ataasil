@@ -8,7 +8,7 @@ import { BsCart3 } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoNotificationsOutline } from "react-icons/io5";
 
-const BottomNav = ({ auth = true }) => {
+const BottomNav = ({ auth = false }) => {
   const { t } = useTranslation("index");
 
   return (
