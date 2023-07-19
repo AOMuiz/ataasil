@@ -30,6 +30,9 @@ export const VERIFY_STUDENT_EMAIL = gql`
       success
       token
       error
+      data {
+        _id
+      }
     }
   }
 `;

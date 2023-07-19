@@ -13,17 +13,12 @@ import { useState } from "react";
 import robot from "/public/assets/images/robot.png";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import VerifyEmail from "../verify-email";
 
 export const FormSection = () => {
-  const [verificationCode, setVerificationCode] = useState("");
   const { t } = useTranslation("index");
   const [createStudentAccount, { data: response, loading, error, reset }] =
     useMutation(CREATE_STUDENT_ACCOUNT);
-
-  const [verifyCode, { data: verificationResponse, error: verificationError }] =
-    useMutation(VERIFY_STUDENT_EMAIL);
-
-  const router = useRouter();
 
   const schema = yup.object().shape({
     fullName: yup.string().required("Full Name is Required"),
@@ -97,59 +92,8 @@ export const FormSection = () => {
     }
   };
 
-  const onVerify = async () => {
-    try {
-      await verifyCode({
-        variables: {
-          token: response.student_register_sendCode.token,
-          code: verificationCode,
-        },
-      });
-
-      if (!verificationResponse) return;
-      if (verificationResponse) {
-        await localStorage.setItem(
-          "token",
-          verificationResponse.student_register_verifyCode.token
-        );
-      }
-      router.push("/");
-    } catch (error) {
-      console.log({
-        error: error.message,
-      });
-      toast.error(error.message, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        theme: "light",
-      });
-    }
-  };
-
   if (response) {
-    return (
-      <div className="w-1/2 bg-white px-20 py-20 shadow-lg 2md:w-full sm:px-10">
-        <h1 className="py-4 text-3xl font-bold">Verify Code Sent</h1>
-        <input
-          type="text"
-          name="verificationCode"
-          id="verificationCode"
-          placeholder="Enter verification code"
-          className="h-[60px] w-full rounded-md border bg-primary-P700 p-4"
-          onChange={(e) => setVerificationCode(e.target.value)}
-          value={verificationCode}
-        />
-        <CtaButton
-          className="mt-3 rounded-3xl bg-[#D5D5D5] py-2 text-center text-white"
-          onClick={onVerify}
-        >
-          Verify Code
-        </CtaButton>
-      </div>
-    );
+    return <VerifyEmail response={response} />;
   }
 
   return (
