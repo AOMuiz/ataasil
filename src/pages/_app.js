@@ -9,6 +9,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "../apollo-client";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }) {
   const { locale } = useRouter();
@@ -30,23 +32,24 @@ function MyApp({ Component, pageProps }) {
         <title>Ataasil University</title>
       </Head>
       <ApolloProvider client={client}>
-      <Provider store={store}>
-        <GlobalStyles />
-        <>
-          <Navbar />
-          {Component.PageLayout ? (
-            <Component.PageLayout>
+        <Provider store={store}>
+          <GlobalStyles />
+          <ToastContainer rtl={dir === "rtl"} />
+          <>
+            <Navbar />
+            {Component.PageLayout ? (
+              <Component.PageLayout>
+                <Component {...pageProps} />
+              </Component.PageLayout>
+            ) : (
               <Component {...pageProps} />
-            </Component.PageLayout>
-          ) : (
-            <Component {...pageProps} />
-          )}
-          {/* <Layout>
+            )}
+            {/* <Layout>
             <Component {...pageProps} />
           </Layout> */}
-          <Footer />
-        </>
-      </Provider>
+            <Footer />
+          </>
+        </Provider>
       </ApolloProvider>
     </>
   );

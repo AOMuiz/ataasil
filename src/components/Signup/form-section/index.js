@@ -12,6 +12,7 @@ import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import robot from "/public/assets/images/robot.png";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 export const FormSection = () => {
   const [verificationCode, setVerificationCode] = useState("");
@@ -85,6 +86,14 @@ export const FormSection = () => {
       await createStudentAccount({ variables: studentInfo });
     } catch (error) {
       console.log(error.message);
+      toast.error(error.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        theme: "light",
+      });
     }
   };
 
@@ -98,13 +107,25 @@ export const FormSection = () => {
       });
 
       if (!verificationResponse) return;
-      await localStorage.setItem(
-        "token",
-        verificationResponse.student_register_verifyCode.token
-      );
+      if (verificationResponse) {
+        await localStorage.setItem(
+          "token",
+          verificationResponse.student_register_verifyCode.token
+        );
+      }
       router.push("/");
     } catch (error) {
-      console.log({ error: error.message });
+      console.log({
+        error: error.message,
+      });
+      toast.error(error.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        theme: "light",
+      });
     }
   };
 
