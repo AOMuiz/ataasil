@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { VERIFY_STUDENT_EMAIL } from "../../graphql/mutations/studentAuth";
+import {
+  REVERIFY_STUDENT_EMAIL,
+  VERIFY_STUDENT_EMAIL,
+} from "../../graphql/mutations/studentAuth";
 import useTranslation from "next-translate/useTranslation";
 import CtaButton from "../CtaButton";
 import { useRouter } from "next/router";
@@ -8,17 +11,27 @@ import { useMutation } from "@apollo/client";
 import { saveToken, saveUser } from "../../utils/auth";
 
 const VerifyEmail = ({ response }) => {
-  const [verificationCode, setVerificationCode] = useState("");
+  const [verificationCode, setVerificationCode] = useState(
+    response.student_register_sendCode.code
+  );
+  const [verificationToken, setVerificationToken] = useState(
+    response.student_register_sendCode.token
+  );
   const router = useRouter();
+  // 20bbb5b91d37d3a815424d9a1a85b6df8d18a599b145531cedd7183c82ac
   const { t } = useTranslation("index");
   const [verifyCode, { data: verificationResponse, error: verificationError }] =
     useMutation(VERIFY_STUDENT_EMAIL);
+  const [
+    reverifyCode,
+    { data: reverificationResponse, error: reverificationError },
+  ] = useMutation(REVERIFY_STUDENT_EMAIL);
 
   const onVerify = async () => {
     try {
       await verifyCode({
         variables: {
-          token: response.student_register_sendCode.token,
+          token: verificationToken,
           code: verificationCode,
         },
       });
@@ -44,6 +57,26 @@ const VerifyEmail = ({ response }) => {
     }
   };
 
+  const onReverify = async () => {
+    try {
+      await reverifyCode({ variables: { token: verificationToken } });
+      setVerificationCode(
+        reverificationResponse.student_register_resendCode.code
+      );
+      setVerificationToken(
+        reverificationResponse.student_register_resendCode.token
+      );
+    } catch (error) {
+      console.log({ response, verificationCode, verificationToken });
+      toast.error(error.message, {
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
+    }
+  };
+
   return (
     <div className="w-1/2 bg-white px-20 py-20 shadow-lg 2md:w-full sm:px-10">
       <h1 className="py-4 text-3xl font-bold">Verify Code Sent</h1>
@@ -56,12 +89,23 @@ const VerifyEmail = ({ response }) => {
         onChange={(e) => setVerificationCode(e.target.value)}
         value={verificationCode}
       />
-      <CtaButton
-        className="mt-3 rounded-3xl bg-[#D5D5D5] py-2 text-center text-white"
-        onClick={onVerify}
-      >
-        Verify Code
-      </CtaButton>
+      <div className="mt-2 flex items-baseline justify-between gap-3">
+        <CtaButton
+          className="mt-3 rounded-3xl bg-[#D5D5D5] py-2 text-center text-white"
+          onClick={onVerify}
+        >
+          Verify Code
+        </CtaButton>
+        <p>
+          Didn't get an email yet?{" "}
+          <span
+            className="cursor-pointer text-primary-P300"
+            onClick={onReverify}
+          >
+            Resend Code
+          </span>
+        </p>
+      </div>
     </div>
   );
 };

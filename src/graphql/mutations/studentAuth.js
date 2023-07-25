@@ -37,14 +37,16 @@ export const VERIFY_STUDENT_EMAIL = gql`
   }
 `;
 
-// export const REVERIFY_STUDENT_EMAIL = gql`
-//   mutation auth_student_resendVerificationCode(token: $authStudentResendVerificationCodeToken2) {
-//     code
-//     success
-//     error
-//     token
-//   }
-// `;
+export const REVERIFY_STUDENT_EMAIL = gql`
+  mutation Student_register_resendCode($token: String!) {
+    student_register_resendCode(token: $token) {
+      code
+      success
+      error
+      token
+    }
+  }
+`;
 
 export const AUTHENTICATE_STUDENT = gql`
   mutation Auth_student_login($email: String!, $password: String!) {

@@ -49,7 +49,6 @@ export const FormSection = () => {
     handleSubmit,
     setValue,
     reset: resetForm,
-    getValues,
     formState: { errors },
   } = useForm({
     mode: "onChange",
