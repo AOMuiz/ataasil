@@ -97,7 +97,7 @@ const VerifyEmail = ({ response }) => {
           Verify Code
         </CtaButton>
         <p>
-          Didn't get an email yet?{" "}
+          Didn&apos;t get an email yet?{" "}
           <span
             className="cursor-pointer text-primary-P300"
             onClick={onReverify}
