@@ -29,73 +29,18 @@ const VerifyEmail = () => {
   const [
     reverifyCode,
     { data: reverificationResponse, error: reverificationError },
-  ] = useMutation(REVERIFY_STUDENT_EMAIL);
+  ] = useMutation(REVERIFY_STUDENT_EMAIL, {
+    onCompleted: (data) =>
+      authStateVar({
+        ...authState,
+        verificationToken: data.student_register_resendCode.token,
+      }),
+  });
 
   const setVerificationCode = (e) => {
     setverificationCodeField(e.target.value);
     console.log(verificationCodeField);
   };
-
-  // const onVerify = async () => {
-  //   try {
-  //     await verifyCode({
-  //       variables: {
-  //         token: authState.verificationToken,
-  //         code: verificationCodeField,
-  //       },
-  //     });
-  //     console.log({
-  //       authStateToken: authState.verificationToken,
-  //       verificationCodeField,
-  //       verificationResponse,
-  //     });
-
-  //     if (verificationResponse) {
-  //       const { token, data: user } =
-  //         verificationResponse.data.student_register_verifyCode;
-  //       authStateVar({
-  //         ...authState,
-  //         verificationCode: verificationCodeField,
-  //       });
-  //       saveToken(token);
-  //       saveUser(user.id);
-  //       console.log(verificationResponse);
-  //       router.push("/dashboard");
-  //     }
-
-  //     localStorage.setItem(
-  //       "tokenNo",
-  //       JSON.stringify(
-  //         verificationResponse?.data.student_register_verifyCode.token
-  //       )
-  //     );
-  //     localStorage.setItem(
-  //       "idNo",
-  //       JSON.stringify(
-  //         verificationResponse?.data.student_register_verifyCode.data._id
-  //       )
-  //     );
-  //     toast.success("Verified: Registration completed", {
-  //       autoClose: 5000,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //     });
-  //   } catch (error) {
-  //     console.log({
-  //       authStateToken: authState.verificationToken,
-  //       verificationCodeField,
-  //       verificationError,
-  //     });
-
-  //     toast.error(error.message, {
-  //       autoClose: 5000,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //     });
-  //   }
-  // };
 
   const handleVerificationCompleted = (data) => {
     const { token, data: user } = data.student_register_verifyCode;
@@ -105,14 +50,9 @@ const VerifyEmail = () => {
     });
     saveToken(token);
     saveUser(user._id);
-    console.log(data);
     router.push("/dashboard");
-
-    // localStorage.setItem("tokenNo", JSON.stringify(token));
-    // localStorage.setItem("idNo", JSON.stringify(data._id));
-
     toast.success("Verified: Registration completed", {
-      autoClose: 5000,
+      autoClose: 4000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -120,12 +60,6 @@ const VerifyEmail = () => {
   };
 
   const handleVerificationError = (error) => {
-    console.log({
-      authStateToken: authState.verificationToken,
-      verificationCodeField,
-      verificationError: error.message,
-    });
-
     toast.error(error.message, {
       autoClose: 5000,
       hideProgressBar: false,
@@ -137,7 +71,6 @@ const VerifyEmail = () => {
   const onReverify = async () => {
     try {
       await reverifyCode({ variables: { token: authState.verificationToken } });
-      console.log({ reverificationResponse });
     } catch (error) {
       // console.log({ response, verificationToken });
       toast.error(error.message, {
@@ -176,7 +109,7 @@ const VerifyEmail = () => {
           {verificationLoading ? "Verifying..." : "Verify Code"}
         </CtaButton>
         <p>
-          Didn't get an email yet?{" "}
+          Didn&apos;t get an email yet?{" "}
           <span
             className="cursor-pointer text-primary-P300"
             onClick={onReverify}
