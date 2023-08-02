@@ -7,9 +7,11 @@ import DesktopMenuBar from "./DesktopMenuBar";
 import { BsCart3 } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoNotificationsOutline } from "react-icons/io5";
+import { isLoggedIn } from "../../utils/auth";
 
-const BottomNav = ({ auth = false }) => {
+const BottomNav = () => {
   const { t } = useTranslation("index");
+  const auth = isLoggedIn();
 
   return (
     <div className="relative flex items-center justify-between px-20 py-5 shadow-sm 2md:hidden">
@@ -54,23 +56,22 @@ const BottomNav = ({ auth = false }) => {
             <p className="rounded-full bg-primary-P300 p-4 text-center font-bold">
               AS
             </p>
-            <p className="flex items-center">
+            <div className="flex items-center">
               عبد الله ...
               <Icon id={"chevron-down"} className="px-3" size={25} />
-            </p>
+            </div>
           </div>
         </div>
       ) : (
         <div className="flex items-center justify-evenly gap-6 font-bold">
           <p className="cursor-pointer text-gray-G30">
-            <Link href={"login"}>{t("navbar.sign in")}</Link>
+            <Link href={"/login"}>{t("navbar.sign in")}</Link>
           </p>
-          {/* <p className="w-auto cursor-pointer rounded-full  bg-primary-P300 px-6 py-3 text-center text-white">
-        {t("navbar.sign up")}
-      </p> */}
-          <CtaButton>
-            <Link href={"signup"}>{t("navbar.sign up")}</Link>
-          </CtaButton>
+          <Link href={"/signup"} passHref legacyBehavior>
+            <a>
+              <CtaButton>{t("navbar.sign up")}</CtaButton>
+            </a>
+          </Link>
         </div>
       )}
     </div>

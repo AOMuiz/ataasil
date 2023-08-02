@@ -23,10 +23,10 @@ const SidebarItemHeader = ({ item }) => {
       <div className="flex w-full items-center justify-between">
         <StyledSidebarItem>
           <Link href={`${headerToPath}`}>
-            <p className="flex items-center gap-3">
+            <div className="flex items-center gap-3">
               <Icon id={`${icon}`} size={35} />
               <span>{label}</span>
-            </p>
+            </div>
           </Link>
         </StyledSidebarItem>
         <UnstyledButton onClick={onExpandChange}>

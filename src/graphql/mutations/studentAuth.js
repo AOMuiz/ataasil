@@ -28,11 +28,19 @@ export const VERIFY_STUDENT_EMAIL = gql`
     student_register_verifyCode(token: $token, code: $code) {
       code
       success
-      token
       error
       data {
         _id
+        email
+        username
+        jobSector
+        dateOfBirth
+        isAccountApproved
+        phone
+        phoneCountryCode
+        phoneRelevant
       }
+      token
     }
   }
 `;

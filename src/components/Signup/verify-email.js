@@ -1,73 +1,145 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
+import { toast } from "react-toastify";
+import { useMutation, useReactiveVar } from "@apollo/client";
+
 import {
   REVERIFY_STUDENT_EMAIL,
   VERIFY_STUDENT_EMAIL,
 } from "../../graphql/mutations/studentAuth";
-import useTranslation from "next-translate/useTranslation";
 import CtaButton from "../CtaButton";
-import { useRouter } from "next/router";
-import { toast } from "react-toastify";
-import { useMutation } from "@apollo/client";
 import { saveToken, saveUser } from "../../utils/auth";
+import { authStateVar } from "../../graphql/state";
 
-const VerifyEmail = ({ response }) => {
-  const [verificationCode, setVerificationCode] = useState(
-    response.student_register_sendCode.code
-  );
-  const [verificationToken, setVerificationToken] = useState(
-    response.student_register_sendCode.token
-  );
+const VerifyEmail = () => {
   const router = useRouter();
-  // 20bbb5b91d37d3a815424d9a1a85b6df8d18a599b145531cedd7183c82ac
   const { t } = useTranslation("index");
-  const [verifyCode, { data: verificationResponse, error: verificationError }] =
-    useMutation(VERIFY_STUDENT_EMAIL);
+  const authState = useReactiveVar(authStateVar);
+  const [verificationCodeField, setverificationCodeField] = useState("");
+
+  const [verifyCode, { loading: verificationLoading }] = useMutation(
+    VERIFY_STUDENT_EMAIL,
+    {
+      onCompleted: (data) => handleVerificationCompleted(data),
+      onError: (error) => handleVerificationError(error),
+    }
+  );
+
   const [
     reverifyCode,
     { data: reverificationResponse, error: reverificationError },
   ] = useMutation(REVERIFY_STUDENT_EMAIL);
 
-  const onVerify = async () => {
-    try {
-      await verifyCode({
-        variables: {
-          token: verificationToken,
-          code: verificationCode,
-        },
-      });
+  const setVerificationCode = (e) => {
+    setverificationCodeField(e.target.value);
+    console.log(verificationCodeField);
+  };
 
-      if (!verificationResponse) return;
-      if (verificationResponse) {
-        await saveToken(verificationResponse.student_register_verifyCode.token);
-        await saveUser(
-          verificationResponse.student_register_verifyCode.data._id
-        );
-      }
-      router.push("/dashboard");
-    } catch (error) {
-      console.log({
-        error: error.message,
-      });
-      toast.error(error.message, {
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-      });
-    }
+  // const onVerify = async () => {
+  //   try {
+  //     await verifyCode({
+  //       variables: {
+  //         token: authState.verificationToken,
+  //         code: verificationCodeField,
+  //       },
+  //     });
+  //     console.log({
+  //       authStateToken: authState.verificationToken,
+  //       verificationCodeField,
+  //       verificationResponse,
+  //     });
+
+  //     if (verificationResponse) {
+  //       const { token, data: user } =
+  //         verificationResponse.data.student_register_verifyCode;
+  //       authStateVar({
+  //         ...authState,
+  //         verificationCode: verificationCodeField,
+  //       });
+  //       saveToken(token);
+  //       saveUser(user.id);
+  //       console.log(verificationResponse);
+  //       router.push("/dashboard");
+  //     }
+
+  //     localStorage.setItem(
+  //       "tokenNo",
+  //       JSON.stringify(
+  //         verificationResponse?.data.student_register_verifyCode.token
+  //       )
+  //     );
+  //     localStorage.setItem(
+  //       "idNo",
+  //       JSON.stringify(
+  //         verificationResponse?.data.student_register_verifyCode.data._id
+  //       )
+  //     );
+  //     toast.success("Verified: Registration completed", {
+  //       autoClose: 5000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //     });
+  //   } catch (error) {
+  //     console.log({
+  //       authStateToken: authState.verificationToken,
+  //       verificationCodeField,
+  //       verificationError,
+  //     });
+
+  //     toast.error(error.message, {
+  //       autoClose: 5000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //     });
+  //   }
+  // };
+
+  const handleVerificationCompleted = (data) => {
+    const { token, data: user } = data.student_register_verifyCode;
+    authStateVar({
+      ...authState,
+      verificationCode: verificationCodeField,
+    });
+    saveToken(token);
+    saveUser(user._id);
+    console.log(data);
+    router.push("/dashboard");
+
+    // localStorage.setItem("tokenNo", JSON.stringify(token));
+    // localStorage.setItem("idNo", JSON.stringify(data._id));
+
+    toast.success("Verified: Registration completed", {
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+    });
+  };
+
+  const handleVerificationError = (error) => {
+    console.log({
+      authStateToken: authState.verificationToken,
+      verificationCodeField,
+      verificationError: error.message,
+    });
+
+    toast.error(error.message, {
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+    });
   };
 
   const onReverify = async () => {
     try {
-      await reverifyCode({ variables: { token: verificationToken } });
-      setVerificationCode(
-        reverificationResponse.student_register_resendCode.code
-      );
-      setVerificationToken(
-        reverificationResponse.student_register_resendCode.token
-      );
+      await reverifyCode({ variables: { token: authState.verificationToken } });
+      console.log({ reverificationResponse });
     } catch (error) {
-      console.log({ response, verificationCode, verificationToken });
+      // console.log({ response, verificationToken });
       toast.error(error.message, {
         autoClose: 5000,
         hideProgressBar: false,
@@ -86,15 +158,22 @@ const VerifyEmail = ({ response }) => {
         id="verificationCode"
         placeholder="Enter verification code"
         className="h-[60px] w-full rounded-md border bg-primary-P700 p-4"
-        onChange={(e) => setVerificationCode(e.target.value)}
-        value={verificationCode}
+        onChange={(e) => setVerificationCode(e)}
+        value={verificationCodeField}
       />
       <div className="mt-2 flex items-baseline justify-between gap-3">
         <CtaButton
           className="mt-3 rounded-3xl bg-[#D5D5D5] py-2 text-center text-white"
-          onClick={onVerify}
+          onClick={() =>
+            verifyCode({
+              variables: {
+                token: authState.verificationToken,
+                code: verificationCodeField,
+              },
+            })
+          }
         >
-          Verify Code
+          {verificationLoading ? "Verifying..." : "Verify Code"}
         </CtaButton>
         <p>
           Didn't get an email yet?{" "}
