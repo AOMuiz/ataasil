@@ -8,6 +8,7 @@ import { BsCart3 } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { isLoggedIn } from "../../utils/auth";
+import UserIconName from "../UserIconName";
 
 const BottomNav = () => {
   const { t } = useTranslation("index");
@@ -41,26 +42,24 @@ const BottomNav = () => {
         // {/* show this if user is authenticated */}
         <div className="flex items-center gap-10">
           <ul className="flex gap-5 text-[#D5D5D5]">
-            <li>
-              <BsCart3 size={30} />
+            <li className="cursor-pointer">
+              <Link href="/">
+                <BsCart3 size={30} />
+              </Link>
             </li>
             <li className="h-[30px] w-[2px] bg-[#D5D5D5]"></li>
-            <li>
-              <AiOutlineHeart size={30} />
+            <li className="cursor-pointer">
+              <a href="/">
+                <AiOutlineHeart size={30} />
+              </a>
             </li>
-            <li>
-              <IoNotificationsOutline size={30} />
+            <li className="cursor-pointer">
+              <Link href={"/"}>
+                <IoNotificationsOutline size={30} />
+              </Link>
             </li>
           </ul>
-          <div className="flex items-center gap-4">
-            <p className="rounded-full bg-primary-P300 p-4 text-center font-bold">
-              AS
-            </p>
-            <div className="flex items-center">
-              عبد الله ...
-              <Icon id={"chevron-down"} className="px-3" size={25} />
-            </div>
-          </div>
+          <UserIconName />
         </div>
       ) : (
         <div className="flex items-center justify-evenly gap-6 font-bold">
