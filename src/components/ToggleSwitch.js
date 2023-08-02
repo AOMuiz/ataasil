@@ -9,10 +9,10 @@ const ToggleSwitch = ({ content, iconId }) => {
 
   return (
     <Label>
-      <p className="flex gap-2">
+      <div className="flex gap-2">
         <Icon id={iconId} size={24} />
         {checked ? content : content}
-      </p>
+      </div>
       <Input type="checkbox" onChange={handleChange} />
       <Switch />
     </Label>
