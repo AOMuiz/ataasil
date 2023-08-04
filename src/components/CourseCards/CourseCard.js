@@ -16,7 +16,7 @@ const CourseCard = ({ courseDetail }) => {
         <Link href="/course">
           <div className=" relative w-full cursor-pointer overflow-hidden rounded-t-[30px] leading-none">
             <Image src={cardImage} alt="" layout="responsive" />
-            <div class=" hidden h-fit items-center justify-center bg-primary-P300 opacity-50 group-hover:absolute group-hover:inset-0 group-hover:flex group-hover:h-full ">
+            <div className="hidden h-fit items-center justify-center bg-primary-P300 opacity-50 group-hover:absolute group-hover:inset-0 group-hover:flex group-hover:h-full ">
               <BsFillPlayCircleFill size={80} color="" />
             </div>
           </div>

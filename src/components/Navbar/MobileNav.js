@@ -5,6 +5,7 @@ import { useState } from "react";
 import Icon from "../Icon";
 import Logo from "../Svg/Logo";
 import MobileMenuBar from "./MobileMenuBar";
+import { BsCart3 } from "react-icons/bs";
 
 const MobileNav = () => {
   const { t } = useTranslation("index");
@@ -37,6 +38,9 @@ const MobileNav = () => {
             placeholder={t("navbar.search placeholder")}
           />
         </div>
+        <button>
+          <BsCart3 size={30} />
+        </button>
         <button
           type="button"
           onClick={handleShowNav}
