@@ -44,7 +44,9 @@ const BottomNav = () => {
           <ul className="flex gap-5 text-[#D5D5D5]">
             <li className="cursor-pointer">
               <Link href="/" passHref legacyBehavior>
-                <BsCart3 size={30} />
+                <a>
+                  <BsCart3 size={30} />
+                </a>
               </Link>
             </li>
             <li className="h-[30px] w-[2px] bg-[#D5D5D5]"></li>
@@ -54,8 +56,10 @@ const BottomNav = () => {
               </a>
             </li>
             <li className="cursor-pointer">
-              <Link passHref href={"/"}>
-                <IoNotificationsOutline size={30} />
+              <Link href={"/"} legacyBehavior>
+                <a>
+                  <IoNotificationsOutline size={30} />
+                </a>
               </Link>
             </li>
           </ul>

@@ -10,6 +10,10 @@ export function getToken() {
   return JSON.parse(localStorage.getItem("token"));
 }
 
+export function getUser() {
+  return JSON.parse(localStorage.getItem("user"));
+}
+
 export function isLoggedIn() {
   let token;
   let user;
@@ -22,4 +26,9 @@ export function isLoggedIn() {
     return true;
   }
   return false;
+}
+
+export function logoutTask() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
 }

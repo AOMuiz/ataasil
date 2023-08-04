@@ -1,15 +1,14 @@
 import Image from "next/image";
-import CtaButton from "../../CtaButton";
+import { useMutation } from "@apollo/client";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import useTranslation from "next-translate/useTranslation";
-import { CREATE_STUDENT_ACCOUNT } from "../../../graphql/mutations/studentAuth";
-import { useMutation } from "@apollo/client";
-import { useState } from "react";
-import robot from "/public/assets/images/robot.png";
-import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+
+import CtaButton from "../../CtaButton";
+import { CREATE_STUDENT_ACCOUNT } from "../../../graphql/mutations/studentAuth";
+import robot from "/public/assets/images/robot.png";
 import VerifyEmail from "../verify-email";
 import { authStateVar } from "../../../graphql/state";
 
@@ -93,7 +92,6 @@ export const FormSection = () => {
     authStateVar({
       verificationToken: response.student_register_sendCode.token,
     });
-    console.log(authStateVar());
     return <VerifyEmail response={response} />;
   }
 
