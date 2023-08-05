@@ -29,18 +29,13 @@ export const VERIFY_STUDENT_EMAIL = gql`
       code
       success
       error
+      token
       data {
         _id
         email
         username
-        jobSector
-        dateOfBirth
         isAccountApproved
-        phone
-        phoneCountryCode
-        phoneRelevant
       }
-      token
     }
   }
 `;

@@ -4,28 +4,35 @@ import React from "react";
 import Icon from "../Icon";
 import LocaleSwitcher from "../LocaleSwitcher/LocaleSwitcher";
 import { useLockBodyScroll } from "../../hooks/useLockBodyScroll";
+import { isLoggedIn } from "../../utils/auth";
+import UserIconName from "../UserIconName";
 
 const MobileMenuBar = () => {
   const { t } = useTranslation("index");
   useLockBodyScroll();
+  const auth = isLoggedIn();
 
   return (
     <div className="absolute left-0 right-0 z-10 h-screen bg-gray-200 bg-opacity-5 transition-all">
       <div className="space-y-5 bg-white p-5 px-7 shadow-sm">
-        <div className="space-y-3">
-          <LocaleSwitcher />
-          <button className="w-full rounded-full bg-gray-200 py-3 px-6 text-center text-gray-900">
-            <Link href={"login"}>
-              <span className="flex items-center justify-center gap-3">
-                <Icon id={"lock"} size={20} className="text-gray-400" />
-                {t("navbar.sign in")}
-              </span>
-            </Link>
-          </button>
-          <button className="w-full cursor-pointer rounded-full bg-primary-P300 py-3 px-6 text-center text-white">
-            <Link href={"signup"}>{t("navbar.sign up")}</Link>
-          </button>
-        </div>
+        {auth ? (
+          <UserIconName />
+        ) : (
+          <div className="space-y-3">
+            <LocaleSwitcher />
+            <button className="w-full rounded-full bg-gray-200 py-3 px-6 text-center text-gray-900">
+              <Link href={"login"}>
+                <span className="flex items-center justify-center gap-3">
+                  <Icon id={"lock"} size={20} className="text-gray-400" />
+                  {t("navbar.sign in")}
+                </span>
+              </Link>
+            </button>
+            <button className="w-full cursor-pointer rounded-full bg-primary-P300 py-3 px-6 text-center text-white">
+              <Link href={"signup"}>{t("navbar.sign up")}</Link>
+            </button>
+          </div>
+        )}
         <ul className="space-y-4">
           <li className="w-full cursor-pointer">
             <Link href="/">

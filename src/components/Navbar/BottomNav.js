@@ -8,9 +8,14 @@ import { BsCart3 } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { isLoggedIn } from "../../utils/auth";
+import UserIconName from "../UserIconName";
+import { getFirstLetters } from "../../utils/helpers";
+import { profileDetailsVar } from "../../graphql/state";
+import { useReactiveVar } from "@apollo/client";
 
 const BottomNav = () => {
   const { t } = useTranslation("index");
+  const profileDetails = useReactiveVar(profileDetailsVar);
   const auth = isLoggedIn();
 
   return (
@@ -36,31 +41,34 @@ const BottomNav = () => {
           placeholder={t("navbar.search placeholder")}
         />
       </div>
-
       {auth ? (
         // {/* show this if user is authenticated */}
         <div className="flex items-center gap-10">
           <ul className="flex gap-5 text-[#D5D5D5]">
-            <li>
-              <BsCart3 size={30} />
+            <li className="cursor-pointer">
+              <Link href="/" passHref legacyBehavior>
+                <a>
+                  <BsCart3 size={30} />
+                </a>
+              </Link>
             </li>
             <li className="h-[30px] w-[2px] bg-[#D5D5D5]"></li>
-            <li>
-              <AiOutlineHeart size={30} />
+            <li className="cursor-pointer">
+              <Link href="/">
+                <a>
+                  <AiOutlineHeart size={30} />
+                </a>
+              </Link>
             </li>
-            <li>
-              <IoNotificationsOutline size={30} />
+            <li className="cursor-pointer">
+              <Link href={"/"} legacyBehavior>
+                <a>
+                  <IoNotificationsOutline size={30} />
+                </a>
+              </Link>
             </li>
           </ul>
-          <div className="flex items-center gap-4">
-            <p className="rounded-full bg-primary-P300 p-4 text-center font-bold">
-              AS
-            </p>
-            <div className="flex items-center">
-              عبد الله ...
-              <Icon id={"chevron-down"} className="px-3" size={25} />
-            </div>
-          </div>
+          <UserIconName username={profileDetails?.username} />
         </div>
       ) : (
         <div className="flex items-center justify-evenly gap-6 font-bold">
