@@ -7,26 +7,26 @@ import { getUser } from "../utils/auth";
 const useGetProfile = () => {
   const profileDetails = useReactiveVar(profileDetailsVar);
   const [fetchSuccess, setFetchSuccess] = useState(false);
-  if (getUser) {
-    const {
-      data: studentProfileResponse,
-      error: studentProfileError,
-      loading: studentProfileLoading,
-    } = useQuery(STUDENT_PROFILE, {
-      onCompleted: (data) => handleProfileCompleted(data),
-      onError: (error) => handleVerificationError(error),
+  const {
+    data: studentProfileResponse,
+    error: studentProfileError,
+    loading: studentProfileLoading,
+  } = useQuery(STUDENT_PROFILE, {
+    onCompleted: (data) => handleProfileCompleted(data),
+    onError: (error) => handleVerificationError(error),
+  });
+  const handleProfileCompleted = (data) => {
+    const userProfile = data;
+
+    profileDetailsVar({
+      ...profileDetails,
+      ...userProfile.student,
     });
+    setFetchSuccess(true);
+    console.log({ profileDetails, userProfile });
+  };
 
-    const handleProfileCompleted = (data) => {
-      const userProfile = data;
-
-      profileDetailsVar({
-        ...profileDetails,
-        ...userProfile.student,
-      });
-      setFetchSuccess(true);
-      console.log({ profileDetails, userProfile });
-    };
+  if (getUser) {
     return [
       profileDetails,
       studentProfileResponse,
@@ -35,7 +35,6 @@ const useGetProfile = () => {
       fetchSuccess,
     ];
   }
-
   return [profileDetails, fetchSuccess];
 };
 

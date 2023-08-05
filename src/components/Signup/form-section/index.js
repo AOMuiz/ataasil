@@ -101,7 +101,7 @@ export const FormSection = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <h1 className="py-4 text-3xl font-bold">{t("sign up page.title")}</h1>
-      <div>
+      <div className="space-y-3">
         <label htmlFor="fullName" className="py-4 capitalize">
           {t("sign up page.full name")}
         </label>
@@ -115,7 +115,7 @@ export const FormSection = () => {
         />
         {errors.fullName && <p tw="text-red-400">{errors.fullName?.message}</p>}
       </div>
-      <div className="py-6">
+      <div className="space-y-3 py-6">
         <label htmlFor="nationality" className="py-4 capitalize">
           {t("sign up page.nationality")}
         </label>
@@ -133,7 +133,7 @@ export const FormSection = () => {
           )}
         </div>
       </div>
-      <div className="py-6">
+      <div className="space-y-3 py-6">
         <label htmlFor="jobSector" className="py-4 capitalize">
           {t("sign up page.job")}
         </label>
@@ -157,7 +157,7 @@ export const FormSection = () => {
           <p tw="text-red-400">{errors.jobSector?.message}</p>
         )}
       </div>
-      <div className="py-2">
+      <div className="space-y-3 py-2">
         <label htmlFor="contact" className="py-4 capitalize">
           {t("sign up page.number")}
         </label>
@@ -170,7 +170,7 @@ export const FormSection = () => {
       </div>
       <p className="py-4 capitalize">{t("sign up page.date")}</p>
       <div className="flex gap-6 py-2 sm:flex-wrap">
-        <div className="sm:w-full">
+        <div className="space-y-3 sm:w-full ">
           <input
             type="number"
             id="day"
@@ -179,7 +179,7 @@ export const FormSection = () => {
             className="h-[60px]	w-full rounded-md border  bg-primary-P700 p-4"
           />
         </div>
-        <div className="sm:w-full">
+        <div className="sm:w-full ">
           <input
             type="number"
             id="month"
@@ -188,7 +188,7 @@ export const FormSection = () => {
             {...register("month")}
           />
         </div>
-        <div className="sm:w-full">
+        <div className=" sm:w-full">
           <input
             id="year"
             type="number"
@@ -199,7 +199,7 @@ export const FormSection = () => {
         </div>
       </div>
       <div className="flex w-full flex-wrap gap-10">
-        <div className="flex-1 py-2">
+        <div className="flex-1 space-y-3 py-2 ">
           <label className="py-4 capitalize">
             {t("sign up page.phone number")}
           </label>
@@ -210,7 +210,7 @@ export const FormSection = () => {
             className="h-[60px] w-full rounded-md border bg-primary-P700 p-4 "
           />
         </div>
-        <div className="flex-1 py-2">
+        <div className="flex-1 space-y-3 py-2 ">
           <label htmlFor="" className="py-4 capitalize">
             {t("sign up page.code")}
           </label>
@@ -221,7 +221,7 @@ export const FormSection = () => {
           />
         </div>
       </div>
-      <div className="py-6">
+      <div className="space-y-3 py-6 ">
         <label htmlFor="email" className="py-4 capitalize">
           {t("sign up page.email")}
         </label>
@@ -236,7 +236,7 @@ export const FormSection = () => {
         />
         {errors.email && <p tw="text-red-400">{errors.email?.message}</p>}
       </div>
-      <div className="py-6">
+      <div className="space-y-3 py-6 ">
         <label htmlFor="emailConfirmation" className="py-4 capitalize">
           {t("sign up page.email confirmation")}
         </label>
@@ -253,7 +253,7 @@ export const FormSection = () => {
           <p tw="text-red-400">{errors.emailConfirmation?.message}</p>
         )}
       </div>
-      <div className="py-6">
+      <div className="space-y-3 py-6 ">
         <label htmlFor="password" className="py-4 capitalize">
           {t("sign up page.password")}
         </label>
@@ -268,7 +268,7 @@ export const FormSection = () => {
         />
         {errors.password && <p tw="text-red-400">{errors.password?.message}</p>}
       </div>
-      <div className="py-6">
+      <div className="space-y-3 py-6 ">
         <label htmlFor="passwordConfirmation" className="py-4 capitalize">
           {t("sign up page.password confirmation")}
         </label>

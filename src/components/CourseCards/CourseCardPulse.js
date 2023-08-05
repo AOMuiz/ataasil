@@ -2,7 +2,7 @@ import React from "react";
 
 const CourseCardPulse = () => {
   return (
-    <div className="group h-full min-w-[270px] flex-1  overflow-hidden rounded-[30px] border-2 bg-white">
+    <div className="group h-full min-w-[270px] flex-1 overflow-hidden rounded-[30px] border-2 bg-white">
       <div className="aspect-square min-h-[200px] animate-pulse bg-gray-300"></div>
       <div className="animate-pulse space-y-5 p-6">
         <div className="flex justify-between">
