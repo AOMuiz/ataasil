@@ -7,6 +7,9 @@ const withTwin = require("./withTwin.js");
 
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    domains: ["upload.wikimedia.org", "images.unsplash.com"],
+  },
   swcMinify: true,
   compiler: {
     styledComponents: true,

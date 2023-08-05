@@ -6,8 +6,14 @@ import UnstyledButton from "../../components/UnstyledButton/UnstyledButton";
 import Icon from "../../components/Icon/Icon";
 import CourseCard from "../../components/CourseCards/CourseCard";
 import tw, { styled } from "twin.macro";
+import useFetchCourses from "../../hooks/useFetchCourses";
 
 const TrainingPrograms = () => {
+  const [pagination, setPagination] = useState({
+    limit: 10,
+    page: 1,
+  });
+  const [data, error, loading] = useFetchCourses({ pagination });
   return (
     <main>
       <section className="flex items-center justify-between gap-10 bg-neutral-N20 py-14 px-20 sm:flex-wrap sm:px-14">

@@ -1,3 +1,5 @@
+import { gql } from "@apollo/client";
+
 export const COURSES = gql`
   query Courses($pagination: PaginationInput!) {
     courses(pagination: $pagination) {
@@ -5,6 +7,7 @@ export const COURSES = gql`
       title
       description
       banner
+      category
       liveSessions {
         link
         time

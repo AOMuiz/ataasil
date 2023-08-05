@@ -17,7 +17,7 @@ import CtaButton from "../CtaButton";
 import FormInput from "./LoginFormInput";
 
 import { AUTHENTICATE_STUDENT } from "../../graphql/mutations/studentAuth";
-import { authStateVar, profileDetailsVar } from "../../graphql/state";
+import { profileDetailsVar } from "../../graphql/state";
 import { saveToken, saveUser } from "../../utils/auth";
 
 const LoginPage = () => {
@@ -28,7 +28,6 @@ const LoginPage = () => {
       onError: (error) => handleLoginError(error),
     });
   const router = useRouter();
-  const authState = useReactiveVar(authStateVar);
   const profileDetailsState = useReactiveVar(profileDetailsVar);
 
   const schema = yup.object().shape({
