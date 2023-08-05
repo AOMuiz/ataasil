@@ -10,7 +10,7 @@ import {
 } from "../../graphql/mutations/studentAuth";
 import CtaButton from "../CtaButton";
 import { saveToken, saveUser } from "../../utils/auth";
-import { authStateVar } from "../../graphql/state";
+import { authStateVar, profileDetailsVar } from "../../graphql/state";
 
 const VerifyEmail = () => {
   const router = useRouter();
@@ -47,6 +47,11 @@ const VerifyEmail = () => {
     authStateVar({
       ...authState,
       verificationCode: verificationCodeField,
+    });
+    profileDetailsVar({
+      ...profileDetailsVar,
+      username: user.username,
+      email: user.email,
     });
     saveToken(token);
     saveUser(user._id);

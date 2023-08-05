@@ -9,9 +9,13 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { isLoggedIn } from "../../utils/auth";
 import UserIconName from "../UserIconName";
+import { getFirstLetters } from "../../utils/helpers";
+import { profileDetailsVar } from "../../graphql/state";
+import { useReactiveVar } from "@apollo/client";
 
 const BottomNav = () => {
   const { t } = useTranslation("index");
+  const profileDetails = useReactiveVar(profileDetailsVar);
   const auth = isLoggedIn();
 
   return (
@@ -37,7 +41,6 @@ const BottomNav = () => {
           placeholder={t("navbar.search placeholder")}
         />
       </div>
-
       {auth ? (
         // {/* show this if user is authenticated */}
         <div className="flex items-center gap-10">
@@ -51,9 +54,11 @@ const BottomNav = () => {
             </li>
             <li className="h-[30px] w-[2px] bg-[#D5D5D5]"></li>
             <li className="cursor-pointer">
-              <a href="/">
-                <AiOutlineHeart size={30} />
-              </a>
+              <Link href="/">
+                <a>
+                  <AiOutlineHeart size={30} />
+                </a>
+              </Link>
             </li>
             <li className="cursor-pointer">
               <Link href={"/"} legacyBehavior>
@@ -63,7 +68,7 @@ const BottomNav = () => {
               </Link>
             </li>
           </ul>
-          <UserIconName />
+          <UserIconName username={profileDetails?.username} />
         </div>
       ) : (
         <div className="flex items-center justify-evenly gap-6 font-bold">

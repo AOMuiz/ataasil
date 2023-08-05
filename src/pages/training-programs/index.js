@@ -5,20 +5,21 @@ import SectionCategory from "../../components/CourseCards/SectionCategory";
 import UnstyledButton from "../../components/UnstyledButton/UnstyledButton";
 import Icon from "../../components/Icon/Icon";
 import CourseCard from "../../components/CourseCards/CourseCard";
+import tw, { styled } from "twin.macro";
 
 const TrainingPrograms = () => {
   return (
     <main>
-      <section className="flex items-center justify-between bg-neutral-N20 py-14 px-20">
+      <section className="flex items-center justify-between gap-10 bg-neutral-N20 py-14 px-20 sm:flex-wrap sm:px-14">
         <h1 className="text-5xl font-bold">البرامج التدريبية</h1>
         <div>
           <Image src={masjid} alt="" />
         </div>
       </section>
-      <section className="py-10 px-20">
-        <h2 className="text-3xl font-bold"> فئة الموضوع</h2>
-        <div className="flex justify-between">
-          <div className="flex gap-5">
+      <section className="py-10 px-20 sm:px-14">
+        <h2 className="text-3xl font-bold">فئة الموضوع</h2>
+        <div className="flex justify-between sm:flex-wrap">
+          <div className="flex gap-5 sm:w-full sm:overflow-auto">
             <SectionCategory active content={"الكل"} />
             <SectionCategory content={"للمبتدئين"} />
             <SectionCategory content={"للمحترفين"} />
@@ -42,7 +43,7 @@ const TrainingPrograms = () => {
             </UnstyledButton>
           </div>
         </div>
-        <section className="my-10 grid grid-cols-4 gap-8 lg:grid-cols-3 2md:grid-cols-2 sm:grid-cols-1">
+        <CourseList>
           <CourseCard />
           <CourseCard />
           <CourseCard />
@@ -51,10 +52,15 @@ const TrainingPrograms = () => {
           <CourseCard />
           <CourseCard />
           <CourseCard />
-        </section>
+        </CourseList>
       </section>
     </main>
   );
 };
 
 export default TrainingPrograms;
+
+const CourseList = styled.section(({}) => [
+  tw`my-10 grid gap-8 `,
+  `grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); `,
+]);
