@@ -32,7 +32,8 @@ const Switch = styled.div`
   position: relative; /* <-- Add relative positioning */
   width: 40px;
   height: 18px;
-  background: #5fc7fa;
+  /* background: #5fc7fa; */
+  background: lightgray;
   border-radius: 32px;
   padding: 4px; /* <!-- Add padding */
   transition: 300ms all;
@@ -58,7 +59,7 @@ const Input = styled.input`
   position: absolute;
 
   &:checked + ${Switch} {
-    background: green;
+    background: #016fd0;
 
     &:before {
       /* transform: translate(20px, -50%); */

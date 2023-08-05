@@ -5,7 +5,6 @@ import { getFirstLetters } from "../utils/helpers";
 
 const UserIconName = ({ username }) => {
   const letters = getFirstLetters(username);
-  console.log({ letters });
 
   return (
     <div className="flex items-center gap-4">

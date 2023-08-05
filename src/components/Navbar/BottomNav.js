@@ -9,7 +9,6 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { isLoggedIn } from "../../utils/auth";
 import UserIconName from "../UserIconName";
-import { getFirstLetters } from "../../utils/helpers";
 import { profileDetailsVar } from "../../graphql/state";
 import { useReactiveVar } from "@apollo/client";
 
@@ -46,7 +45,7 @@ const BottomNav = () => {
         <div className="flex items-center gap-10">
           <ul className="flex gap-5 text-[#D5D5D5]">
             <li className="cursor-pointer">
-              <Link href="/" passHref legacyBehavior>
+              <Link href="/cart" passHref legacyBehavior>
                 <a>
                   <BsCart3 size={30} />
                 </a>

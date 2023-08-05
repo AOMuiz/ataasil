@@ -92,7 +92,7 @@ export const FormSection = () => {
     authStateVar({
       verificationToken: response.student_register_sendCode.token,
     });
-    return <VerifyEmail response={response} />;
+    return <VerifyEmail />;
   }
 
   return (
