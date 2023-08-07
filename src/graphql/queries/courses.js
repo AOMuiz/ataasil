@@ -29,25 +29,7 @@ export const COURSES_SECTIONS = gql`
   query Course_getSections($courseId: ID!) {
     course_getSections(courseId: $courseId) {
       _id
-      course {
-        _id
-        title
-        description
-        banner
-        liveSessions {
-          link
-          time
-          timezone
-          description
-        }
-        createdAt
-        teacher {
-          _id
-          email
-          username
-          isAccountActivated
-        }
-      }
+      course
       title
       banner
       notes

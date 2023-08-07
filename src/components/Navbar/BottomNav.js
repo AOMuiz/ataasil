@@ -21,7 +21,7 @@ const BottomNav = () => {
   return (
     <div className="relative flex items-center justify-between px-20 py-5 shadow-sm 2md:hidden">
       <div className="flex items-center gap-6">
-        <Link href={"/"} passHref legacyBehavior>
+        <Link href={"/"}>
           <a>
             <Logo width={80} height={60} className="cursor-pointer" />
           </a>
@@ -46,7 +46,7 @@ const BottomNav = () => {
         <div className="flex items-center gap-10">
           <ul className="flex gap-5 text-[#D5D5D5]">
             <li className="cursor-pointer">
-              <Link href="/cart" passHref legacyBehavior>
+              <Link href="/cart">
                 <a>
                   <BsCart3 size={30} />
                 </a>
@@ -54,14 +54,14 @@ const BottomNav = () => {
             </li>
             <li className="h-[30px] w-[2px] bg-[#D5D5D5]">{""}</li>
             <li className="cursor-pointer">
-              <Link href="/" passHref legacyBehavior>
+              <Link href="/">
                 <a>
                   <AiOutlineHeart size={30} />
                 </a>
               </Link>
             </li>
             <li className="cursor-pointer">
-              <Link href={"/"} passHref legacyBehavior>
+              <Link href={"/"}>
                 <a>
                   <IoNotificationsOutline size={30} />
                 </a>

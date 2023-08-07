@@ -7,15 +7,15 @@ import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 
-const CourseCard = ({ _id, title, description, banner, category, teacher }) => {
+const CourseCard = ({ id, title, description, banner, category, teacher }) => {
   const { t } = useTranslation("index");
 
   return (
     <>
       <article className="group min-w-[270px] flex-1 rounded-[30px] bg-white shadow-md transition-all hover:-translate-y-2">
-        <Link href="/course">
+        <Link href={`/course/${id}/${title}`}>
           <div className=" relative w-full cursor-pointer overflow-hidden rounded-t-[30px] leading-none">
-            <div className="aspect-square min-h-[200px]">
+            <div className="relative aspect-square min-h-[200px]">
               <Image src={banner ? banner : cardImage} alt="" layout="fill" />
             </div>
 

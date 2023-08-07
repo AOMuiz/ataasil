@@ -60,6 +60,7 @@ const TrainingPrograms = () => {
             data.courses.map((course) => (
               <CourseCard
                 key={course._id}
+                id={course._id}
                 title={course.title}
                 category={course.category}
                 description={course.description}
