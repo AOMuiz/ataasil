@@ -5,6 +5,7 @@ import dots2 from "/public/assets/images/Group 58.png";
 import useTranslation from "next-translate/useTranslation";
 import SectionHeader from "./SectionHeader";
 import SectionListCard from "./SectionListCard";
+import ReactPlayer from "react-player/youtube";
 
 const WhyUs = () => {
   const { t } = useTranslation("index");
@@ -42,19 +43,13 @@ const WhyUs = () => {
             <Image src={dots1} alt="dots" className="pb-1" />
           </div>
           <div className="mb-1 basis-full rounded-md">
-            {/* <Image
-              src={videoImg}
-              alt="why us video"
-              layout="responsive"
-              className="h-full "
-            /> */}
-            <iframe
-              className="h-full w-full leading-[0]"
-              src="https://www.youtube.com/embed/sPxy6kwUCNE"
-              title="why us video player"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope;"
-              allowFullScreen
-            ></iframe>
+            <div className="h-full w-full leading-[0]">
+              <ReactPlayer
+                url="https://www.youtube.com/watch?v=sPxy6kwUCNE"
+                title="why us video player"
+                width={"100%"}
+              />
+            </div>
           </div>
           <div className="self-end leading-[0]">
             <Image src={dots2} alt="dots" className="h-full" />

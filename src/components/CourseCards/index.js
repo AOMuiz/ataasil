@@ -27,9 +27,9 @@ const CourseCards = () => {
   });
   const [data, error, loading] = useFetchCourses({ pagination });
   const pulseArray = new Array(4).fill(1);
-  console.log({ pulseArray });
+  console.log({ loading, error, data });
   return (
-    <div className="flex w-full flex-col bg-neutral-N20 py-10 px-20 pt-28 2md:px-10 2md:py-20 md:px-6">
+    <div className="flex w-full flex-col bg-neutral-N20 px-20 py-10 pt-28 2md:px-10 2md:py-20 md:px-6">
       <div>
         <SectionHeader title={t("coursecards.main topic")} />
       </div>
@@ -55,6 +55,7 @@ const CourseCards = () => {
               />
             ))}
           {data && <CourseCard />}
+          {error && <h3>Error Fetching courses. Please refresh.</h3>}
         </div>
         <div>
           <div className="flex flex-row-reverse gap-2 py-10">
