@@ -3,14 +3,14 @@ import Sidebar from "../components/Profile/Sidebar";
 import useGetProfile from "../hooks/useGetProfile";
 
 const ProfileLayout = ({ children }) => {
-  // const [profileDetails, studentProfileLoading, studentProfileError] =
-  //   useGetProfile();
+  const [profileDetails, studentProfileLoading, studentProfileError] =
+    useGetProfile();
 
-  // useEffect(() => {
-  //   if (!studentProfileLoading) {
-  //     console.log(profileDetails);
-  //   }
-  // }, [studentProfileLoading]);
+  useEffect(() => {
+    if (!studentProfileLoading) {
+      console.log(profileDetails);
+    }
+  }, [profileDetails]);
 
   // if (studentProfileLoading)
   //   return (

@@ -3,6 +3,8 @@ import * as Tabs from "@radix-ui/react-tabs";
 import tw, { styled } from "twin.macro";
 import CtaButton from "../CtaButton";
 import Icon from "../Icon/Icon";
+import ownerIcon from "/public/assets/images/edit_fill.png";
+import Image from "next/image";
 
 const Sidebar = () => {
   return (
@@ -23,11 +25,13 @@ const Sidebar = () => {
           </TabsTrigger>
         </Tabs.List>
         <Tabs.Content className="TabsContent" value="tab1">
-          <div className="flex items-center gap-3 border-b-2 border-gray-200 py-3 px-5">
-            <p className="h-16 w-16 rounded-full bg-[#EA9F0080]"></p>
+          <div className="flex items-center gap-3 border-b-2 border-gray-200 px-5 py-3">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#EA9F0080]">
+              <Image src={ownerIcon} alt="" height={40} width={40} />
+            </div>
             أ. فواز بن متعب الهباس
           </div>
-          <div className="py-3 px-5">
+          <div className="px-5 py-3">
             <p className="my-3 font-bold">نظرة عامة</p>
             <p className="text-lg">
               تكمن أهمية اكتساب المتدربين لمهارات بناء ثقافة تنظيمية فعالة في
@@ -39,7 +43,7 @@ const Sidebar = () => {
             </p>
           </div>
         </Tabs.Content>
-        <Tabs.Content className="TabsContent space-y-4 py-3 px-5" value="tab2">
+        <Tabs.Content className="TabsContent space-y-4 px-5 py-3" value="tab2">
           <p className=" flex items-center justify-between ">
             <p className="items-center rounded-md border border-gray-G30 p-2 ">
               <Icon

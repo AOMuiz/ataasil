@@ -1,4 +1,5 @@
 import { useState } from "react";
+import * as RadixSwitch from "@radix-ui/react-switch";
 import { styled } from "twin.macro";
 import Icon from "./Icon";
 
@@ -13,8 +14,14 @@ const ToggleSwitch = ({ content, iconId }) => {
         <Icon id={iconId} size={24} />
         {checked ? content : content}
       </div>
-      <Input type="checkbox" onChange={handleChange} />
-      <Switch />
+      <RadixSwitch.Root
+        className="relative flex  h-[25px] w-[42px] cursor-default items-center rounded-full outline-none focus:shadow-[0_0_0_2px] focus:shadow-black data-[state=checked]:bg-[#5FC7FA] data-[state=unchecked]:bg-gray-300"
+        id="airplane-mode"
+      >
+        <RadixSwitch.Thumb className="block h-[21px] w-[21px] translate-x-0.5 rounded-full bg-[#016FD0] shadow-[0_2px_2px] shadow-black transition-transform duration-100 will-change-transform data-[state=checked]:translate-x-[19px] rtl:-translate-x-0.5 rtl:data-[state=checked]:-translate-x-[19px]" />
+      </RadixSwitch.Root>
+      {/* <Input type="checkbox" onChange={handleChange} /> */}
+      {/* <Switch /> */}
     </Label>
   );
 };
@@ -26,6 +33,7 @@ const Label = styled.label`
   align-items: center;
   gap: 30px;
   cursor: pointer;
+  width: fit-content;
 `;
 
 const Switch = styled.div`

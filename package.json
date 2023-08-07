@@ -13,6 +13,7 @@
     "@apollo/client": "^3.7.16",
     "@hookform/resolvers": "^3.1.1",
     "@radix-ui/react-menubar": "^1.0.2",
+    "@radix-ui/react-switch": "^1.0.3",
     "@radix-ui/react-tabs": "^1.0.3",
     "@reduxjs/toolkit": "^1.8.6",
     "@splidejs/react-splide": "^0.7.12",
