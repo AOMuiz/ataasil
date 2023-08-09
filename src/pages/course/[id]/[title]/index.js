@@ -9,7 +9,7 @@ import { COURSES_SECTIONS } from "../../../../graphql/queries/courses";
 import ReactPlayer from "react-player/lazy";
 import { presentCourseDataVar } from "../../../../graphql/state";
 
-const index = () => {
+const Index = () => {
   const { query } = useRouter();
   const courseSectionData = useReactiveVar(presentCourseDataVar);
   const [getCourseSection, { data, error, loading }] = useLazyQuery(
@@ -42,7 +42,7 @@ const index = () => {
         <div className="aspect-video w-full leading-none">
           <ReactPlayer
             controls
-            url={"https://youtu.be/MfLeba4Dv-Q"}
+            url={"https://www.youtube.com/watch?v=MfLeba4Dv-Q"}
             width="100%"
             height="100%"
             // light={
@@ -79,4 +79,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
