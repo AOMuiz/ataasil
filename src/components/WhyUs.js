@@ -48,6 +48,11 @@ const WhyUs = () => {
                 url="https://www.youtube.com/watch?v=sPxy6kwUCNE"
                 title="why us video player"
                 width={"100%"}
+                config={{
+                  youtube: {
+                    playerVars: { showinfo: 1 },
+                  },
+                }}
               />
             </div>
           </div>

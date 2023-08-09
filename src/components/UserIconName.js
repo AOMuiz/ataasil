@@ -9,7 +9,7 @@ const UserIconName = () => {
   const { username } = useReactiveVar(profileDetailsVar);
   const letters = getFirstLetters(username);
 
-  console.log({ letters, username });
+  // console.log({ letters, username });
   let firstLetter = letters[0] ? letters[0] : "";
   let seccondLetter = letters[1] ? letters[1] : "";
 

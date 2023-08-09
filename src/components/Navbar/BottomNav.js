@@ -11,12 +11,18 @@ import Logo from "../Svg/Logo";
 import DesktopMenuBar from "./DesktopMenuBar";
 import { isLoggedIn } from "../../utils/auth";
 import UserIconName from "../UserIconName";
-import { profileDetailsVar } from "../../graphql/state";
+import { authStateVar, profileDetailsVar } from "../../graphql/state";
+import { useEffect } from "react";
 
 const BottomNav = () => {
   const { t } = useTranslation("index");
   const profileDetails = useReactiveVar(profileDetailsVar);
+  // const {authenticated} = useReactiveVar(authStateVar);
   const auth = isLoggedIn();
+
+  useEffect(() => {
+    console.log(auth);
+  }, [auth]);
 
   return (
     <div className="relative flex items-center justify-between px-20 py-5 shadow-sm 2md:hidden">
@@ -41,8 +47,8 @@ const BottomNav = () => {
           placeholder={t("navbar.search placeholder")}
         />
       </div>
+      {/* show this if user is authenticated */}
       {auth ? (
-        // {/* show this if user is authenticated */}
         <div className="flex items-center gap-10">
           <ul className="flex gap-5 text-[#D5D5D5]">
             <li className="cursor-pointer">
