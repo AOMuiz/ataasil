@@ -11,3 +11,5 @@ export const profileDetailsVar = makeVar({
   phoneCountryCode: "",
   phoneRelevant: "",
 });
+
+export const presentCourseDataVar = makeVar([]);

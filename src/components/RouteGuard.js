@@ -20,7 +20,6 @@ const RouteGuard = ({ children, excludedRoutes }) => {
     if (!excludedRoutes?.includes(router.pathname)) {
       refetch();
     }
-    console.log(authenticated);
   }, [router.pathname, refetch, excludedRoutes]);
 
   useEffect(() => {

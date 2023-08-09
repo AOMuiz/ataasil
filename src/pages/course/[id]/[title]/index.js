@@ -3,26 +3,37 @@ import Sidebar from "../../../../components/Course/Sidebar";
 import CtaButton from "../../../../components/CtaButton";
 import Image from "next/image";
 import player from "/public/assets/images/vid-player.png";
-import { useLazyQuery } from "@apollo/client";
+import { useLazyQuery, useReactiveVar } from "@apollo/client";
 import { useRouter } from "next/router";
 import { COURSES_SECTIONS } from "../../../../graphql/queries/courses";
 import ReactPlayer from "react-player/lazy";
+import { presentCourseDataVar } from "../../../../graphql/state";
 
 const index = () => {
   const { query } = useRouter();
+  const courseSectionData = useReactiveVar(presentCourseDataVar);
   const [getCourseSection, { data, error, loading }] = useLazyQuery(
     COURSES_SECTIONS,
     {
-      onCompleted: (data) => console.log({ courses: data }),
+      onCompleted: (data) => onGetCourseSectionComplete(data),
       onError: (error) => console.log({ error, pagination }),
     }
   );
+
+  const onGetCourseSectionComplete = (data) => {
+    presentCourseDataVar([...data.course_getSections]);
+    console.log({
+      coursesSection: data,
+      courseSectionData,
+      error,
+    });
+  };
 
   useEffect(() => {
     if (query.id) {
       getCourseSection({ variables: { courseId: query.id } });
     }
-    console.log({ query, data });
+    console.log({ query });
   }, [query]);
 
   return (
@@ -34,23 +45,23 @@ const index = () => {
             url={"https://youtu.be/MfLeba4Dv-Q"}
             width="100%"
             height="100%"
-            light={
-              <div className="relative aspect-video w-fit">
-                <Image
-                  src={
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Maerefat_Al-Hadith.png/424px-Maerefat_Al-Hadith.png?20140925080457"
-                  }
-                  alt="thumbnail"
-                  layout="fill"
-                  priority
-                />
-              </div>
-            }
+            // light={
+            //   <div className="relative aspect-video w-fit">
+            //     <Image
+            //       src={
+            //         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Maerefat_Al-Hadith.png/424px-Maerefat_Al-Hadith.png?20140925080457"
+            //       }
+            //       alt="thumbnail"
+            //       layout="fill"
+            //       priority
+            //     />
+            //   </div>
+            // }
           />
         </div>
         <div className="flex justify-between gap-3 bg-white p-4 md:flex-col">
           <div className="space-y-4">
-            <p className="text-2xl font-bold">كتاب التوحيد للشيخ عثيمين</p>
+            <p className="text-2xl font-bold">{courseSectionData[0]?.title}</p>
             <p className="flex gap-3 font-semibold">
               <span>عدد التقييمات 30544</span>
               <span className="h-full w-[2px] text-gray-500"></span>

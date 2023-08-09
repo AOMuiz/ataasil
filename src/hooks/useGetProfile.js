@@ -23,6 +23,10 @@ const useGetProfile = () => {
     console.log({ profileDetails, userProfile });
   };
 
+  const handleVerificationError = (error) => {
+    console.log({ error, message: error.message });
+  };
+
   return {
     profileDetails,
     studentProfileResponse,

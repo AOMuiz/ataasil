@@ -7,8 +7,8 @@ import { profileDetailsVar } from "../../graphql/state";
 
 const Sidebar = () => {
   const router = useRouter();
-  const userProfile = useReactiveVar(profileDetailsVar);
-  const letters = getFirstLetters(userProfile.username);
+  const { username } = useReactiveVar(profileDetailsVar);
+  const letters = getFirstLetters(username);
   return (
     <div className="h-full basis-[20vw] bg-neutral-N20 py-6">
       <div className="mx-2 my-3 flex items-center justify-center">
@@ -17,7 +17,7 @@ const Sidebar = () => {
             letters[1].length ? letters[1] : null
           }`}</span>
         </p>
-        <p className="mx-4 my-4 text-lg font-bold">عبد الله عبد الرحمان</p>
+        <p className="mx-4 my-4 text-lg font-bold capitalize">{username}</p>
       </div>
       <ul className="flex flex-col gap-4">
         {sideMenu.map((item, key) => (

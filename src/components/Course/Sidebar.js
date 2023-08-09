@@ -5,8 +5,13 @@ import CtaButton from "../CtaButton";
 import Icon from "../Icon/Icon";
 import ownerIcon from "/public/assets/images/edit_fill.png";
 import Image from "next/image";
+import { useReactiveVar } from "@apollo/client";
+import { presentCourseDataVar } from "../../graphql/state";
+import Topic from "./Topic";
 
 const Sidebar = () => {
+  const courseData = useReactiveVar(presentCourseDataVar);
+
   return (
     <div className="max-w-sm bg-gray-50 py-2 md:mt-2 md:max-w-full">
       <Tabs.Root dir="rtl" className="TabsRoot " defaultValue="tab1">
@@ -60,43 +65,7 @@ const Sidebar = () => {
             />
           </p>
           <h6 className="text-2xl text-gray-G30">القائمة</h6>
-          <ul className="space-y-5 text-lg text-gray-G30">
-            <li className="flex items-center justify-between">
-              <Icon id="play" /> <span>مقدمة عن البرنامج</span>
-              <span>01:30</span>
-            </li>
-            <li className="flex items-center justify-between">
-              <Icon id="lock" /> <span>مقدمة عن البرنامج</span>
-              <span>01:30</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <Icon id="FileText" />
-              <span>هدف البرنامج</span>
-            </li>
-            <li className="flex items-center justify-between gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white p-2">
-                1
-              </span>
-              <span>التدريب الأول: ماهية مقدمة عن البرنامج</span>
-              <Icon
-                id="chevron-up"
-                as="span"
-                className="rounded-full border border-gray-G30 "
-              />
-            </li>
-            <li className="flex items-center justify-between">
-              <Icon id="video" /> <span>مقدمة عن البرنامج</span>
-              <span>01:30</span>
-            </li>
-            <li className="flex items-center justify-between">
-              <Icon id="lock" /> <span>مقدمة عن البرنامج</span>
-              <span>01:30</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <Icon id="FileText" />
-              <span>هدف البرنامج</span>
-            </li>
-          </ul>
+          <Topic />
         </Tabs.Content>
         <Tabs.Content className="TabsContent space-y-4 p-3" value="tab3">
           <ul className="space-y-3">
