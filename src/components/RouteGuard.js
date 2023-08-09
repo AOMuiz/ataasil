@@ -31,7 +31,7 @@ const RouteGuard = ({ children, excludedRoutes }) => {
       });
       client.resetStore();
     }
-  }, [authenticated, router, excludedRoutes]);
+  }, [authenticated, router, excludedRoutes, studentProfileError]);
 
   return (
     <>
