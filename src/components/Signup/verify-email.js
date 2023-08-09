@@ -9,7 +9,7 @@ import {
   VERIFY_STUDENT_EMAIL,
 } from "../../graphql/mutations/studentAuth";
 import CtaButton from "../CtaButton";
-import { saveToken, saveUser } from "../../utils/auth";
+import { isLoggedIn, saveToken, saveUser } from "../../utils/auth";
 import { authStateVar, profileDetailsVar } from "../../graphql/state";
 
 const VerifyEmail = () => {
@@ -44,20 +44,21 @@ const VerifyEmail = () => {
 
   const handleVerificationCompleted = (data) => {
     const { token, data: user } = data.student_register_verifyCode;
+    saveToken(token);
+    saveUser(user._id);
     authStateVar({
       ...authState,
       verificationCode: verificationCodeField,
+      authenticated: isLoggedIn(),
     });
     profileDetailsVar({
       ...profileDetailsVar,
       username: user.username,
       email: user.email,
     });
-    saveToken(token);
-    saveUser(user._id);
     router.push("/dashboard");
     toast.success("Verified: Registration completed", {
-      autoClose: 4000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,

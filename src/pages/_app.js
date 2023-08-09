@@ -11,6 +11,7 @@ import { ApolloProvider } from "@apollo/client";
 import { client } from "../apollo-client";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import RouteGuard from "../components/RouteGuard";
 
 function MyApp({ Component, pageProps }) {
   const { locale } = useRouter();
@@ -35,7 +36,16 @@ function MyApp({ Component, pageProps }) {
         <Provider store={store}>
           <GlobalStyles />
           <ToastContainer rtl={dir === "rtl"} />
-          <>
+          <RouteGuard
+            excludedRoutes={[
+              "/",
+              "/login",
+              "/signup",
+              "/contact",
+              "/course",
+              "/training-programs",
+            ]}
+          >
             <Navbar />
             {Component.PageLayout ? (
               <Component.PageLayout>
@@ -48,7 +58,7 @@ function MyApp({ Component, pageProps }) {
             <Component {...pageProps} />
           </Layout> */}
             <Footer />
-          </>
+          </RouteGuard>
         </Provider>
       </ApolloProvider>
     </>

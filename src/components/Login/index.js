@@ -17,11 +17,12 @@ import CtaButton from "../CtaButton";
 import FormInput from "./LoginFormInput";
 
 import { AUTHENTICATE_STUDENT } from "../../graphql/mutations/studentAuth";
-import { profileDetailsVar } from "../../graphql/state";
-import { saveToken, saveUser } from "../../utils/auth";
+import { authStateVar, profileDetailsVar } from "../../graphql/state";
+import { isLoggedIn, saveToken, saveUser } from "../../utils/auth";
 
 const LoginPage = () => {
   const { t } = useTranslation("index");
+  const authState = useReactiveVar(authStateVar);
   const [authenticateAccount, { data: response, loading, error, reset }] =
     useMutation(AUTHENTICATE_STUDENT, {
       onCompleted: (data) => handleLoginCompleted(data),
@@ -46,13 +47,15 @@ const LoginPage = () => {
 
   const handleLoginCompleted = (data) => {
     const { token, data: user } = data.student_login;
+    saveToken(token);
+    saveUser(user._id);
+    authStateVar({ ...authState, authenticated: isLoggedIn() });
     profileDetailsVar({
       ...profileDetailsState,
       username: user.username,
       email: user.email,
     });
-    saveToken(token);
-    saveUser(user._id);
+
     toast.success("Succesfully Logged In", {
       autoClose: 3000,
       hideProgressBar: false,
@@ -64,7 +67,7 @@ const LoginPage = () => {
 
   const handleLoginError = (error) => {
     toast.error(error.message, {
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
