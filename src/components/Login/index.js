@@ -76,10 +76,6 @@ const LoginPage = () => {
 
   const onSubmit = async (data) => {
     const { email, password } = data;
-    console.log({
-      email,
-      password,
-    });
     const loginInfo = {
       email,
       password,

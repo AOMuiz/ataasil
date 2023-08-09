@@ -20,7 +20,7 @@ const useGetProfile = () => {
       ...profileDetails,
       ...userProfile.student,
     });
-    console.log({ profileDetails, userProfile });
+    // console.log({ profileDetails, userProfile });
   };
 
   const handleVerificationError = (error) => {

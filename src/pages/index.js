@@ -11,11 +11,6 @@ import { useEffect } from "react";
 
 export default function Home() {
   const { t } = useTranslation("index");
-  const { studentProfile, studentProfileResponse, studentProfileLoading } =
-    useGetProfile();
-  useEffect(() => {
-    console.log(studentProfile);
-  }, [studentProfile]);
 
   return (
     <div>

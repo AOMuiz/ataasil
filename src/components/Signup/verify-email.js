@@ -39,7 +39,6 @@ const VerifyEmail = () => {
 
   const setVerificationCode = (e) => {
     setverificationCodeField(e.target.value);
-    console.log(verificationCodeField);
   };
 
   const handleVerificationCompleted = (data) => {
@@ -78,7 +77,6 @@ const VerifyEmail = () => {
     try {
       await reverifyCode({ variables: { token: authState.verificationToken } });
     } catch (error) {
-      // console.log({ response, verificationToken });
       toast.error(error.message, {
         autoClose: 5000,
         hideProgressBar: false,

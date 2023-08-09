@@ -27,7 +27,7 @@ const CourseCards = () => {
   });
   const [data, error, loading] = useFetchCourses({ pagination });
   const pulseArray = new Array(4).fill(1);
-  console.log({ loading, error, data });
+  // console.log({ loading, error, data });
   return (
     <div className="flex w-full flex-col bg-neutral-N20 px-20 py-10 pt-28 2md:px-10 2md:py-20 md:px-6">
       <div>
