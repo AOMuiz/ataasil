@@ -1,21 +1,39 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
 import * as yup from "yup";
-
+import { useMutation, useReactiveVar } from "@apollo/client";
 import Image from "next/image";
-import Frame from "../../public/assets/images/Frame.png";
+import { useRouter } from "next/router";
+import Link from "next/link";
+
+import Frame from "../../../public/assets/images/Frame.png";
 import useTranslation from "next-translate/useTranslation";
-import Icon from "../components/Icon";
-import SectionHeader from "./SectionHeader";
-import CourseCard from "./CourseCards/CourseCard";
-import CtaButton from "./CtaButton";
+import Icon from "../Icon";
+import SectionHeader from "../SectionHeader";
+import CourseCard from "../CourseCards/CourseCard";
+import CtaButton from "../CtaButton";
+import FormInput from "./LoginFormInput";
+
+import { AUTHENTICATE_STUDENT } from "../../graphql/mutations/studentAuth";
+import { authStateVar, profileDetailsVar } from "../../graphql/state";
+import { isLoggedIn, saveToken, saveUser } from "../../utils/auth";
 
 const LoginPage = () => {
   const { t } = useTranslation("index");
+  const authState = useReactiveVar(authStateVar);
+  const [authenticateAccount, { data: response, loading, error, reset }] =
+    useMutation(AUTHENTICATE_STUDENT, {
+      onCompleted: (data) => handleLoginCompleted(data),
+      onError: (error) => handleLoginError(error),
+    });
+  const router = useRouter();
+  const profileDetailsState = useReactiveVar(profileDetailsVar);
+
   const schema = yup.object().shape({
     email: yup.string().email().required("email is required"),
-    password: yup.string().min(5).max(25).required(),
+    password: yup.string().max(25).required(),
   });
 
   const {
@@ -27,8 +45,50 @@ const LoginPage = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const handleLoginCompleted = (data) => {
+    const { token, data: user } = data.student_login;
+    saveToken(token);
+    saveUser(user._id);
+    authStateVar({ ...authState, authenticated: isLoggedIn() });
+    profileDetailsVar({
+      ...profileDetailsState,
+      username: user.username,
+      email: user.email,
+    });
+
+    toast.success("Succesfully Logged In", {
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+    });
+    router.push("/dashboard");
+  };
+
+  const handleLoginError = (error) => {
+    toast.error(error.message, {
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+    });
+  };
+
+  const onSubmit = async (data) => {
+    const { email, password } = data;
+    const loginInfo = {
+      email,
+      password,
+    };
+    try {
+      await authenticateAccount({ variables: loginInfo });
+    } catch (error) {
+      toast.error(error.message, {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "light",
+      });
+    }
   };
 
   return (
@@ -49,42 +109,24 @@ const LoginPage = () => {
               className="pr-20 ltr:pl-5 md:pr-4"
               onSubmit={handleSubmit(onSubmit)}
             >
-              <label
-                htmlFor="email"
-                className="pb-4 text-sm font-bold text-gray-G30"
-              >
-                {t("login.identity")}
-              </label>
-              <div className="pb-20 md:pb-6">
-                <input
-                  {...register("email")}
-                  id="email"
-                  type="text"
-                  placeholder={t("login.identity")}
-                  className="w-full rounded-lg border-2 bg-primary-P700 p-4 text-gray-G30 outline-none placeholder:text-lg placeholder:placeholder-gray-G30 2md:w-2/3 md:w-full"
-                />
-                {errors.email && (
-                  <p tw="text-red-400">{errors.email?.message}</p>
-                )}
-              </div>
-              <label
-                htmlFor="password"
-                className="pb-4 text-sm font-bold text-gray-G30"
-              >
-                {t("login.password")}
-              </label>
-              <div className="pb-16 md:pb-6">
-                <input
-                  {...register("password")}
-                  id="password"
-                  type="password"
-                  placeholder={t("login.password")}
-                  className="w-full rounded-lg border-2 bg-primary-P700 p-4 outline-none placeholder:text-lg placeholder:placeholder-gray-G30 2md:w-2/3 md:w-full"
-                />
-                {errors.password && (
-                  <p tw="text-red-400">{errors.password?.message}</p>
-                )}
-              </div>
+              <FormInput
+                register={register}
+                errors={errors.email}
+                label={t("login.identity")}
+                placeholder={t("login.identity")}
+                type={"email"}
+                id="email"
+              />
+
+              <FormInput
+                register={register}
+                errors={errors.password}
+                label={t("login.password")}
+                placeholder={t("login.password")}
+                type={"password"}
+                id="password"
+              />
+
               <div className="flex items-center justify-start gap-16 text-center md:flex-wrap md:gap-8">
                 <CtaButton className="w-fit font-bold" btnType="submit">
                   {t("login.sign in")}
@@ -95,9 +137,12 @@ const LoginPage = () => {
                       {t("login.forgot password")}
                     </span>
                     &nbsp; {t("login.or")} &nbsp;
-                    <span className="cursor-pointer hover:underline">
+                    <Link
+                      href="/signup"
+                      className="cursor-pointer hover:underline"
+                    >
                       {t("login.create")}
-                    </span>
+                    </Link>
                   </p>
                 </div>
               </div>

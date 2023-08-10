@@ -29,7 +29,6 @@ const UserProfile = () => {
       ...profileDetails,
       ...userProfile.student,
     });
-    console.log({ profileDetails, userProfile });
   };
 
   const onChange = (e) => {

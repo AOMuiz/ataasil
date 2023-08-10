@@ -11,13 +11,30 @@ import { ApolloProvider } from "@apollo/client";
 import { client } from "../apollo-client";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import RouteGuard from "../components/RouteGuard";
+import { pdfjs } from "react-pdf";
 
 function MyApp({ Component, pageProps }) {
   const { locale } = useRouter();
   const dir = locale === "ar" ? "rtl" : "ltr";
   const lang = locale == "ar" ? "ar" : "en";
+  const excludedRoutes = [
+    "/",
+    "/login",
+    "/signup",
+    "/contact",
+    "/course",
+    "/training-programs",
+  ];
 
   // const Layout = Component.Layout || IndexLayout;
+
+  useEffect(() => {
+    pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+      "pdfjs-dist/build/pdf.worker.min.js",
+      import.meta.url
+    ).toString();
+  }, []);
 
   useEffect(() => {
     document.documentElement.dir = dir;
@@ -35,7 +52,7 @@ function MyApp({ Component, pageProps }) {
         <Provider store={store}>
           <GlobalStyles />
           <ToastContainer rtl={dir === "rtl"} />
-          <>
+          <RouteGuard excludedRoutes={excludedRoutes}>
             <Navbar />
             {Component.PageLayout ? (
               <Component.PageLayout>
@@ -48,7 +65,7 @@ function MyApp({ Component, pageProps }) {
             <Component {...pageProps} />
           </Layout> */}
             <Footer />
-          </>
+          </RouteGuard>
         </Provider>
       </ApolloProvider>
     </>

@@ -6,6 +6,8 @@ import Hero from "../components/Hero";
 import Help from "../components/Help";
 import Testimonials from "../components/Testimonials";
 import WhyUs from "../components/WhyUs";
+import useGetProfile from "../hooks/useGetProfile";
+import { useEffect } from "react";
 
 export default function Home() {
   const { t } = useTranslation("index");
