@@ -1,17 +1,24 @@
 import React, { useEffect } from "react";
-import Sidebar from "../../../../components/Course/Sidebar";
-import CtaButton from "../../../../components/CtaButton";
 import Image from "next/image";
-import player from "/public/assets/images/vid-player.png";
 import { useLazyQuery, useReactiveVar } from "@apollo/client";
 import { useRouter } from "next/router";
-import { COURSES_SECTIONS } from "../../../../graphql/queries/courses";
 import ReactPlayer from "react-player/lazy";
-import { presentCourseDataVar } from "../../../../graphql/state";
+
+import player from "/public/assets/images/vid-player.png";
+import { COURSES_SECTIONS } from "../../../../graphql/queries/courses";
+import Sidebar from "../../../../components/Course/Sidebar";
+import CtaButton from "../../../../components/CtaButton";
+import {
+  presentCourseDataVar,
+  presentCourseFileDetail,
+} from "../../../../graphql/state";
+import AllPagesPDFViewer from "../../../../components/Pdf/AllPages";
+import SinglePage from "../../../../components/Pdf/SinglePage";
 
 const Index = () => {
   const { query } = useRouter();
   const courseSectionData = useReactiveVar(presentCourseDataVar);
+  const courseDataFile = useReactiveVar(presentCourseFileDetail);
   const [getCourseSection, { data, error, loading }] = useLazyQuery(
     COURSES_SECTIONS,
     {
@@ -33,23 +40,46 @@ const Index = () => {
     if (query.id) {
       getCourseSection({ variables: { courseId: query.id } });
     }
-    console.log({ query });
-  }, [query]);
+    console.log({ query, courseDataFile });
+  }, [query, courseDataFile]);
+
+  useEffect(() => {
+    presentCourseFileDetail({});
+  }, []);
 
   return (
     <div className="flex  md:flex-col">
       <div className="h-full flex-1">
-        <div className="aspect-video w-full leading-none">
-          <ReactPlayer
-            controls
-            url={"https://www.youtube.com/watch?v=MfLeba4Dv-Q"}
-            width="100%"
-            height="100%"
-          />
-        </div>
+        {(courseDataFile.fileUrl === "" ||
+          Object.keys(courseDataFile).length === 0) && (
+          <div className="h-full">
+            <Image src={player} />
+          </div>
+        )}
+        {courseDataFile.fileType === "Document" && (
+          <div>
+            <AllPagesPDFViewer pdf={courseDataFile.fileUrl} />
+          </div>
+        )}
+
+        {courseDataFile.fileType === "Video" && (
+          <div className="aspect-video w-full leading-none">
+            <ReactPlayer
+              controls
+              url={
+                courseDataFile.fileUrl
+                  ? courseDataFile.fileUrl
+                  : "https://www.youtube.com/watch?v=hrxL31QubZQ"
+              }
+              width="100%"
+              height="100%"
+            />
+          </div>
+        )}
         <div className="flex justify-between gap-3 bg-white p-4 md:flex-col">
           <div className="space-y-4">
-            <p className="text-2xl font-bold">{courseSectionData[0]?.title}</p>
+            {/* <p className="text-2xl font-bold">{courseSectionData[0]?.title}</p> */}
+            <p className="text-2xl font-bold">{courseDataFile?.fileTitle}</p>
             <p className="flex gap-3 font-semibold">
               <span>عدد التقييمات 30544</span>
               <span className="h-full w-[2px] text-gray-500"></span>

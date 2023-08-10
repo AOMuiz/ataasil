@@ -13,3 +13,10 @@ export const profileDetailsVar = makeVar({
 });
 
 export const presentCourseDataVar = makeVar([]);
+
+export const presentCourseFileDetail = makeVar({
+  fileType: "",
+  fileUrl: "",
+  fileTitle: "",
+  fileDescription: "",
+});

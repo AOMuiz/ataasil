@@ -14,7 +14,7 @@ const Topic = () => {
     <ul className="space-y-5 text-lg text-gray-G30">
       {courseData?.map((sections, i) => (
         <div key={sections._id}>
-          <div className="mb-2 flex items-center justify-between gap-2 bg-[#DCECF3] px-3 py-3 font-bold text-gray-G30">
+          <div className="mb-2 flex items-center justify-between gap-3 bg-[#DCECF3] px-3 py-3 font-bold text-gray-G30">
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white p-2">
               {i + 1}
             </span>

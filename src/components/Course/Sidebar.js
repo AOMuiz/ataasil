@@ -1,6 +1,5 @@
 import React from "react";
 import * as Tabs from "@radix-ui/react-tabs";
-import * as ScrollArea from "@radix-ui/react-scroll-area";
 import tw, { styled } from "twin.macro";
 import Image from "next/image";
 import { useReactiveVar } from "@apollo/client";
@@ -18,7 +17,7 @@ const Sidebar = () => {
     <div className="max-w-sm bg-gray-50 py-2 md:mt-2 md:max-w-full">
       <Tabs.Root dir="rtl" className="TabsRoot " defaultValue="tab1">
         <Tabs.List
-          className="TabsList flex justify-between gap-4 border-b border-gray-300 px-4 px-5 text-lg"
+          className="TabsList flex justify-between gap-4 border-b border-gray-300  px-5 text-lg"
           aria-label="Manage your account"
         >
           <TabsTrigger className="TabsTrigger" value="tab1">
@@ -63,7 +62,7 @@ const Sidebar = () => {
             <Icon
               as="span"
               id={"less-than"}
-              className="flex items-center rounded-md border border-gray-G30 p-2 text-primary-P300 "
+              className="flex items-center rounded-md border border-gray-G30 p-2 text-primary-P300"
             />
           </p>
           <h6 className="my-6 text-2xl text-gray-G30">القائمة</h6>
