@@ -37,7 +37,7 @@ const Index = () => {
   }, [query]);
 
   return (
-    <div className="flex md:flex-col">
+    <div className="flex  md:flex-col">
       <div className="h-full flex-1">
         <div className="aspect-video w-full leading-none">
           <ReactPlayer
@@ -45,18 +45,6 @@ const Index = () => {
             url={"https://www.youtube.com/watch?v=MfLeba4Dv-Q"}
             width="100%"
             height="100%"
-            // light={
-            //   <div className="relative aspect-video w-fit">
-            //     <Image
-            //       src={
-            //         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Maerefat_Al-Hadith.png/424px-Maerefat_Al-Hadith.png?20140925080457"
-            //       }
-            //       alt="thumbnail"
-            //       layout="fill"
-            //       priority
-            //     />
-            //   </div>
-            // }
           />
         </div>
         <div className="flex justify-between gap-3 bg-white p-4 md:flex-col">

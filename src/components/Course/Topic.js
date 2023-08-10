@@ -1,15 +1,17 @@
 import React from "react";
+import { useReactiveVar } from "@apollo/client";
+import * as Collapsible from "@radix-ui/react-collapsible";
+
 import TopicResource from "./TopicResource";
 import Icon from "../Icon/Icon";
-import { useReactiveVar } from "@apollo/client";
 import { presentCourseDataVar } from "../../graphql/state";
 
 const Topic = () => {
   const courseData = useReactiveVar(presentCourseDataVar);
+  const [open, setOpen] = React.useState(false);
 
   return (
     <ul className="space-y-5 text-lg text-gray-G30">
-      <TopicResource />
       {courseData?.map((sections, i) => (
         <div key={sections._id}>
           <div className="mb-2 flex items-center justify-between gap-2 bg-[#DCECF3] px-3 py-3 font-bold text-gray-G30">

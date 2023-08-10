@@ -78,10 +78,10 @@ const icons = {
   sort: FaSort,
   rightArrow: HiOutlineArrowRight,
   lock: BiLock,
-  star: GiJusticeStar,
+  starMulti: GiJusticeStar,
   video: BiVideo,
   FileText: AiOutlineFileText,
-  play:AiOutlinePlayCircle
+  play: AiOutlinePlayCircle,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
