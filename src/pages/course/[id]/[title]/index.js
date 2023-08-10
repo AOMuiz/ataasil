@@ -53,7 +53,7 @@ const Index = () => {
         {(courseDataFile.fileUrl === "" ||
           Object.keys(courseDataFile).length === 0) && (
           <div className="h-full">
-            <Image src={player} />
+            <Image src={player} alt="player thumbnail" layout="responsive" />
           </div>
         )}
         {courseDataFile.fileType === "Document" && (
@@ -79,7 +79,11 @@ const Index = () => {
         <div className="flex justify-between gap-3 bg-white p-4 md:flex-col">
           <div className="space-y-4">
             {/* <p className="text-2xl font-bold">{courseSectionData[0]?.title}</p> */}
-            <p className="text-2xl font-bold">{courseDataFile?.fileTitle}</p>
+            <p className="text-2xl font-bold">
+              {courseDataFile?.fileTitle
+                ? courseDataFile?.fileTitle
+                : courseSectionData[0]?.title}
+            </p>
             <p className="flex gap-3 font-semibold">
               <span>عدد التقييمات 30544</span>
               <span className="h-full w-[2px] text-gray-500"></span>
