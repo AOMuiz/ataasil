@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useLazyQuery, useReactiveVar } from "@apollo/client";
 import { useRouter } from "next/router";
 import ReactPlayer from "react-player/lazy";
+import dynamic from "next/dynamic";
 
 import player from "/public/assets/images/vid-player.png";
 import { COURSES_SECTIONS } from "../../../../graphql/queries/courses";
@@ -12,7 +13,14 @@ import {
   presentCourseDataVar,
   presentCourseFileDetail,
 } from "../../../../graphql/state";
-import AllPagesPDFViewer from "../../../../components/Pdf/AllPages";
+// import  from "";
+
+const AllPagesPDFViewer = dynamic(
+  () => import("../../../../components/Pdf/AllPages"),
+  {
+    ssr: false,
+  }
+);
 
 const Index = () => {
   const { query } = useRouter();

@@ -13,7 +13,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RouteGuard from "../components/RouteGuard";
 import { pdfjs } from "react-pdf";
-// import "react-pdf/dist/Page/TextLayer.css";
 
 function MyApp({ Component, pageProps }) {
   const { locale } = useRouter();
