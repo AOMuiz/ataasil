@@ -84,6 +84,7 @@
   },
   "sign up page": {
     "title": "Sign Up",
+    "full name": "Full Name",
     "nationality": "choose your nationality",
     "job": "job selection",
     "number": "national identification number",

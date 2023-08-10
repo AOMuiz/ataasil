@@ -20,10 +20,10 @@ const TestimonialCard = () => {
         </div>
         <div>
           <div className="mb-2 flex gap-1">
-            <Icon id={"star"} className="text-amber-500" />
-            <Icon id={"star"} className="text-amber-500" />
-            <Icon id={"star"} className="text-amber-500" />
-            <Icon id={"star"} className="text-amber-500" />
+            <Icon id={"starMulti"} className="text-amber-500" />
+            <Icon id={"starMulti"} className="text-amber-500" />
+            <Icon id={"starMulti"} className="text-amber-500" />
+            <Icon id={"starMulti"} className="text-amber-500" />
           </div>
           <p className="font-bold text-black">
             ياسر عبدالله بن عبيدالله اللحياني

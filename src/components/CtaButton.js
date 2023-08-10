@@ -1,8 +1,8 @@
 import tw, { styled } from "twin.macro";
 
-const CtaButton = ({ children, disabled, className }) => {
+const CtaButton = ({ children, disabled, className, ...rest }) => {
   return (
-    <CTA disabled={disabled} className={className}>
+    <CTA disabled={disabled} className={className} {...rest}>
       {children}
     </CTA>
   );
