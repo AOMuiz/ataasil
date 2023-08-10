@@ -13,7 +13,6 @@ import {
   presentCourseFileDetail,
 } from "../../../../graphql/state";
 import AllPagesPDFViewer from "../../../../components/Pdf/AllPages";
-import SinglePage from "../../../../components/Pdf/SinglePage";
 
 const Index = () => {
   const { query } = useRouter();

@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Document, Page } from "react-pdf";
 import CtaButton from "../CtaButton";
 
-const options = {
-  cMapUrl: "/cmaps/",
-  // workerSrc: "/pdf.worker.js"
-};
+// const options = {
+//   cMapUrl: "/cmaps/",
+//   // workerSrc: "/pdf.worker.js"
+// };
 
 export default function SinglePage(props) {
   const [numPages, setNumPages] = useState(null);
@@ -34,15 +34,10 @@ export default function SinglePage(props) {
     <div className="max-h-screen overflow-auto">
       <Document
         file={pdf}
-        options={options}
+        // options={options}
         onLoadSuccess={onDocumentLoadSuccess}
       >
-        <Page
-          pageNumber={pageNumber}
-          scale={1}
-          //   width={600}
-          className="mx-auto"
-        />
+        <Page pageNumber={pageNumber} scale={1} className="mx-auto" />
       </Document>
       <div className="">
         <p>

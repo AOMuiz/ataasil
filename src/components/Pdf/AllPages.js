@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Document, Page } from "react-pdf";
 
-const options = {
-  cMapUrl: "/cmaps/",
-  // workerSrc: "/pdf.worker.js"
-};
+// const options = {
+//   cMapUrl: "/cmaps/",
+//   // workerSrc: "/pdf.worker.js"
+// };
 
 export default function AllPages(props) {
   const [numPages, setNumPages] = useState(null);
@@ -22,7 +22,7 @@ export default function AllPages(props) {
       </p>
       <Document
         file={pdf}
-        options={options}
+        // options={options}
         scale={1}
         onLoadSuccess={onDocumentLoadSuccess}
       >
