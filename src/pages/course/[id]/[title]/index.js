@@ -59,7 +59,7 @@ const Index = () => {
       <div className="h-full flex-1">
         {(courseDataFile.fileUrl === "" ||
           Object.keys(courseDataFile).length === 0) && (
-          <div className="h-full">
+          <div className="h-full w-full">
             <Image src={player} alt="player thumbnail" layout="responsive" />
           </div>
         )}
