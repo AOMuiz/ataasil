@@ -66,7 +66,7 @@ const VerifyEmail = () => {
 
   const handleVerificationError = (error) => {
     toast.error(error.message, {
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -78,7 +78,7 @@ const VerifyEmail = () => {
       await reverifyCode({ variables: { token: authState.verificationToken } });
     } catch (error) {
       toast.error(error.message, {
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -88,7 +88,16 @@ const VerifyEmail = () => {
 
   return (
     <div className="w-1/2 bg-white px-20 py-20 shadow-lg 2md:w-full sm:px-10">
-      <h1 className="py-4 text-3xl font-bold">Verify Code Sent</h1>
+      <div className="mb-3">
+        <h1 className="py-4 text-3xl font-bold">
+          Lets&apos;s do a quick verification
+        </h1>
+        <p className="text-lg">
+          To finish your account creation, please enter the verification code we
+          sent to your email address.
+        </p>
+      </div>
+
       <input
         type="text"
         name="verificationCode"
