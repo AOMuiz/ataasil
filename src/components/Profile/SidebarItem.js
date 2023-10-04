@@ -11,10 +11,10 @@ const SidebarItem = ({ item, active }) => {
   return (
     <StyledSidebarItem active={active}>
       <Link href={`${item.slug}`}>
-        <p className="flex w-full items-center gap-3">
+        <div className="flex w-full items-center gap-3">
           <Icon id={`${item.icon}`} size={35} />
           <span>{item.label}</span>
-        </p>
+        </div>
       </Link>
     </StyledSidebarItem>
   );

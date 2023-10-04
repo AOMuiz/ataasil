@@ -1,3 +1,5 @@
+import { gql } from "@apollo/client";
+
 export const COURSES = gql`
   query Courses($pagination: PaginationInput!) {
     courses(pagination: $pagination) {
@@ -5,6 +7,7 @@ export const COURSES = gql`
       title
       description
       banner
+      category
       liveSessions {
         link
         time
@@ -26,25 +29,7 @@ export const COURSES_SECTIONS = gql`
   query Course_getSections($courseId: ID!) {
     course_getSections(courseId: $courseId) {
       _id
-      course {
-        _id
-        title
-        description
-        banner
-        liveSessions {
-          link
-          time
-          timezone
-          description
-        }
-        createdAt
-        teacher {
-          _id
-          email
-          username
-          isAccountActivated
-        }
-      }
+      course
       title
       banner
       notes

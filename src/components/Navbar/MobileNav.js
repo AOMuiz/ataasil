@@ -4,9 +4,8 @@ import { useState } from "react";
 
 import Icon from "../Icon";
 import Logo from "../Svg/Logo";
-import LocaleSwitcher from "../LocaleSwitcher/LocaleSwitcher";
 import MobileMenuBar from "./MobileMenuBar";
-import { useToggle } from "simplified-hooks";
+import { BsCart3 } from "react-icons/bs";
 
 const MobileNav = () => {
   const { t } = useTranslation("index");
@@ -18,7 +17,7 @@ const MobileNav = () => {
 
   return (
     <nav className="relative hidden 2md:block">
-      <div className="flex items-center justify-between  gap-3 py-3 py-2 px-10 shadow-sm md:px-5">
+      <div className="flex items-center justify-between gap-3 px-10 py-3 shadow-sm md:px-5">
         <div className="flex items-center gap-6">
           <Link href={"/"} passHref legacyBehavior>
             <a>
@@ -39,13 +38,16 @@ const MobileNav = () => {
             placeholder={t("navbar.search placeholder")}
           />
         </div>
+        <button className="text-[#D5D5D5]">
+          <BsCart3 size={30} />
+        </button>
         <button
           type="button"
           onClick={handleShowNav}
-          className="flex h-auto cursor-pointer items-center justify-center gap-3 rounded-md border-2 border-primary-P300 bg-primary-P300 py-2 px-2"
+          className="flex h-auto cursor-pointer items-center justify-center rounded-md border-2 border-primary-P300 bg-primary-P300  px-2 py-2"
         >
           <span>
-            <Icon id={showNav ? "cancel" : "menu"} color="white" />
+            <Icon id={showNav ? "cancel" : "menu"} />
           </span>
         </button>
       </div>

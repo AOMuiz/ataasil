@@ -34,11 +34,25 @@ export function saveUser(userObj) {
   localStorage.setItem("user", JSON.stringify(userObj));
 }
 
+export function getUser() {
+  return JSON.parse(localStorage.getItem("user"));
+}
+
 export function isLoggedIn() {
-  const token = getToken();
-  const user = JSON.parse(localStorage.getItem("user"));
+  let token;
+  let user;
+  if (typeof window !== "undefined") {
+   token = getToken();
+  user = JSON.parse(localStorage.getItem("user"));
+  }
+
   if (token && user) {
     return true;
   }
   return false;
+}
+
+export function logoutTask() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
 }

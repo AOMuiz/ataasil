@@ -1,110 +1,139 @@
 import React from "react";
-import * as Menubar from "@radix-ui/react-menubar";
-import Icon from "../Icon";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import Icon from "../Icon/Icon";
 
-const DesktopMenuBar = () => {
+const DropdownMenuDemo = () => {
+  const [bookmarksChecked, setBookmarksChecked] = React.useState(true);
+  const [urlsChecked, setUrlsChecked] = React.useState(false);
+  const [person, setPerson] = React.useState("pedro");
+
   return (
-    <div className="absolute left-0 right-0 top-full z-10 h-full w-max bg-white">
-      <Menubar.Root className="flex flex-col">
-        <Menubar.Menu className="flex gap-2 p-4">
-          <Menubar.Trigger className="space-y-3 text-lg">File</Menubar.Trigger>
-          <Menubar.Portal className="w-max  bg-black p-2">
-            <Menubar.Content
-              side="left"
-              className="MenubarContent w-max bg-black p-2 text-white"
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger asChild>
+        <button
+          className="text-violet11 shadow-blackA7 hover:bg-violet3 inline-flex h-[35px] w-[35px] items-center justify-center rounded-full bg-white shadow-[0_2px_10px] outline-none focus:shadow-[0_0_0_2px] focus:shadow-black"
+          aria-label="Customise options"
+        >
+          <Icon id={"menu"} />
+        </button>
+      </DropdownMenu.Trigger>
+
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content
+          className="data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade min-w-[220px] rounded-md bg-white p-[5px] shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform]"
+          sideOffset={5}
+        >
+          <DropdownMenu.Item className="text-violet11 data-[disabled]:text-mauve8 data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 group relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-none data-[disabled]:pointer-events-none">
+            New Tab{" "}
+            <div className="text-mauve11 group-data-[disabled]:text-mauve8 ml-auto pl-[20px] group-data-[highlighted]:text-white">
+              ⌘+T
+            </div>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item className="text-violet11 data-[disabled]:text-mauve8 data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 group relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-none data-[disabled]:pointer-events-none">
+            New Window{" "}
+            <div className="text-mauve11 group-data-[disabled]:text-mauve8 ml-auto pl-[20px] group-data-[highlighted]:text-white">
+              ⌘+N
+            </div>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item
+            className="text-violet11 data-[disabled]:text-mauve8 data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 group relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-none data-[disabled]:pointer-events-none"
+            disabled
+          >
+            New Private Window{" "}
+            <div className="text-mauve11 group-data-[disabled]:text-mauve8 ml-auto pl-[20px] group-data-[highlighted]:text-white">
+              ⇧+⌘+N
+            </div>
+          </DropdownMenu.Item>
+          <DropdownMenu.Sub>
+            <DropdownMenu.SubTrigger className="text-violet11 data-[state=open]:bg-violet4 data-[state=open]:text-violet11 data-[disabled]:text-mauve8 data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 data-[highlighted]:data-[state=open]:bg-violet9 data-[highlighted]:data-[state=open]:text-violet1 group relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-none data-[disabled]:pointer-events-none">
+              More Tools
+              <div className="text-mauve11 group-data-[disabled]:text-mauve8 ml-auto pl-[20px] group-data-[highlighted]:text-white">
+                {/* <ChevronRightIcon /> */}
+              </div>
+            </DropdownMenu.SubTrigger>
+            <DropdownMenu.Portal>
+              <DropdownMenu.SubContent
+                className="data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade min-w-[220px] rounded-md bg-white p-[5px] shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform]"
+                sideOffset={2}
+                alignOffset={-5}
+              >
+                <DropdownMenu.Item className="text-violet11 data-[disabled]:text-mauve8 data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 group relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-none data-[disabled]:pointer-events-none">
+                  Save Page As…{" "}
+                  <div className="text-mauve11 group-data-[disabled]:text-mauve8 ml-auto pl-[20px] group-data-[highlighted]:text-white">
+                    ⌘+S
+                  </div>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className="text-violet11 data-[disabled]:text-mauve8 data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-none data-[disabled]:pointer-events-none">
+                  Create Shortcut…
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className="text-violet11 data-[disabled]:text-mauve8 data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-none data-[disabled]:pointer-events-none">
+                  Name Window…
+                </DropdownMenu.Item>
+                <DropdownMenu.Separator className="bg-violet6 m-[5px] h-[1px]" />
+                <DropdownMenu.Item className="text-violet11 data-[disabled]:text-mauve8 data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-none data-[disabled]:pointer-events-none">
+                  Developer Tools
+                </DropdownMenu.Item>
+              </DropdownMenu.SubContent>
+            </DropdownMenu.Portal>
+          </DropdownMenu.Sub>
+
+          <DropdownMenu.Separator className="bg-violet6 m-[5px] h-[1px]" />
+
+          <DropdownMenu.CheckboxItem
+            className="text-violet11 data-[disabled]:text-mauve8 data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 group relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-none data-[disabled]:pointer-events-none"
+            checked={bookmarksChecked}
+            onCheckedChange={setBookmarksChecked}
+          >
+            <DropdownMenu.ItemIndicator className="absolute left-0 inline-flex w-[25px] items-center justify-center">
+              {/* <CheckIcon /> */}
+            </DropdownMenu.ItemIndicator>
+            Show Bookmarks{" "}
+            <div className="text-mauve11 group-data-[disabled]:text-mauve8 ml-auto pl-[20px] group-data-[highlighted]:text-white">
+              ⌘+B
+            </div>
+          </DropdownMenu.CheckboxItem>
+          <DropdownMenu.CheckboxItem
+            className="text-violet11 data-[disabled]:text-mauve8 data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-none data-[disabled]:pointer-events-none"
+            checked={urlsChecked}
+            onCheckedChange={setUrlsChecked}
+          >
+            <DropdownMenu.ItemIndicator className="absolute left-0 inline-flex w-[25px] items-center justify-center">
+              {/* <CheckIcon /> */}
+            </DropdownMenu.ItemIndicator>
+            Show Full URLs
+          </DropdownMenu.CheckboxItem>
+
+          <DropdownMenu.Separator className="bg-violet6 m-[5px] h-[1px]" />
+
+          <DropdownMenu.Label className="text-mauve11 pl-[25px] text-xs leading-[25px]">
+            People
+          </DropdownMenu.Label>
+          <DropdownMenu.RadioGroup value={person} onValueChange={setPerson}>
+            <DropdownMenu.RadioItem
+              className="text-violet11 data-[disabled]:text-mauve8 data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-none data-[disabled]:pointer-events-none"
+              value="pedro"
             >
-              <Menubar.Item className="MenubarItem flex gap-2">
-                New Tab <div className="RightSlot">⌘ T</div>
-              </Menubar.Item>
-              <Menubar.Item className="MenubarItem flex gap-2">
-                New Window <div className="RightSlot">⌘ N</div>
-              </Menubar.Item>
-              <Menubar.Item className="MenubarItem flex gap-2" disabled>
-                New Incognito Window
-              </Menubar.Item>
-              <Menubar.Separator className="MenubarSeparator" />
-              <Menubar.Sub>
-                <Menubar.SubTrigger className="MenubarSubTrigger">
-                  Share
-                  <div className="RightSlot">
-                    <Icon id={"less-than"} className="cursor-pointer" />
-                  </div>
-                </Menubar.SubTrigger>
-                <Menubar.Portal>
-                  <Menubar.SubContent
-                    className="MenubarSubContent"
-                    alignOffset={-5}
-                  >
-                    <Menubar.Item className="MenubarItem flex gap-2">
-                      Email Link
-                    </Menubar.Item>
-                    <Menubar.Item className="MenubarItem flex gap-2">
-                      Messages
-                    </Menubar.Item>
-                    <Menubar.Item className="MenubarItem flex gap-2">
-                      Notes
-                    </Menubar.Item>
-                  </Menubar.SubContent>
-                </Menubar.Portal>
-              </Menubar.Sub>
-              <Menubar.Separator className="MenubarSeparator" />
-              <Menubar.Item className="MenubarItem flex gap-2">
-                Print… <div className="RightSlot">⌘ P</div>
-              </Menubar.Item>
-            </Menubar.Content>
-          </Menubar.Portal>
-        </Menubar.Menu>
+              <DropdownMenu.ItemIndicator className="absolute left-0 inline-flex w-[25px] items-center justify-center">
+                {/* <DotFilledIcon /> */}
+              </DropdownMenu.ItemIndicator>
+              Pedro Duarte
+            </DropdownMenu.RadioItem>
+            <DropdownMenu.RadioItem
+              className="text-violet11 data-[disabled]:text-mauve8 data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none outline-none data-[disabled]:pointer-events-none"
+              value="colm"
+            >
+              <DropdownMenu.ItemIndicator className="absolute left-0 inline-flex w-[25px] items-center justify-center">
+                {/* <DotFilledIcon /> */}
+              </DropdownMenu.ItemIndicator>
+              Colm Tuite
+            </DropdownMenu.RadioItem>
+          </DropdownMenu.RadioGroup>
 
-        <Menubar.Menu className="flex">
-          <Menubar.Trigger className="space-y-3 text-lg">Edit</Menubar.Trigger>
-          <Menubar.Portal>
-            <Menubar.Content side="left" className="bg-black p-2 text-white">
-              <Menubar.Item className="MenubarItem flex gap-2">
-                Undo <div className="RightSlot">⌘ Z</div>
-              </Menubar.Item>
-              <Menubar.Item className="MenubarItem flex gap-2">
-                Redo <div className="RightSlot">⇧ ⌘ Z</div>
-              </Menubar.Item>
-              <Menubar.Separator className="MenubarSeparator" />
-              <Menubar.Sub>
-                <Menubar.SubTrigger className="MenubarSubTrigger">
-                  Find
-                  <div className="RightSlot">
-                    <Icon id={"less-than"} className="cursor-pointer" />
-                  </div>
-                </Menubar.SubTrigger>
-
-                <Menubar.Portal>
-                  <Menubar.SubContent
-                    className="MenubarSubContent"
-                    alignOffset={-5}
-                  >
-                    <Menubar.Item className="MenubarItem flex gap-2">
-                      Search the web…
-                    </Menubar.Item>
-                    <Menubar.Separator className="MenubarSeparator" />
-                    <Menubar.Item className="MenubarItem flex gap-2">
-                      Find…
-                    </Menubar.Item>
-                    <Menubar.Item className="MenubarItem flex gap-2">
-                      Find Next
-                    </Menubar.Item>
-                    <Menubar.Item className="MenubarItem flex gap-2">
-                      Find Previous
-                    </Menubar.Item>
-                  </Menubar.SubContent>
-                </Menubar.Portal>
-              </Menubar.Sub>
-              <Menubar.Separator className="MenubarSeparator" />
-              <Menubar.Item className="MenubarItem">Cut</Menubar.Item>
-              <Menubar.Item className="MenubarItem">Copy</Menubar.Item>
-              <Menubar.Item className="MenubarItem">Paste</Menubar.Item>
-            </Menubar.Content>
-          </Menubar.Portal>
-        </Menubar.Menu>
-      </Menubar.Root>
-    </div>
+          <DropdownMenu.Arrow className="fill-white" />
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
   );
 };
 
-export default DesktopMenuBar;
+export default DropdownMenuDemo;

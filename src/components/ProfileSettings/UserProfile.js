@@ -1,19 +1,65 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import tw, { styled } from "twin.macro";
 import FormInput from "../../components/FormInput";
-import CtaButton from "../CtaButton";
-import Icon from "../Icon";
 import SectionDivider from "../SectionDivider";
 import testimonialImg from "/public/assets/images/content-img.png";
+import Icon from "../Icon";
+import { ChangeProfileInput } from "./ChangeProfileInput";
+import { useReactiveVar, useMutation, useQuery } from "@apollo/client";
+import { profileDetailsVar } from "../../graphql/state";
+import { STUDENT_PROFILE } from "../../graphql/queries/studentProfile";
+import { toast } from "react-toastify";
 
 const UserProfile = () => {
+  const [changeDetails, setChangeDetails] = useState(false);
+  const profileDetails = useReactiveVar(profileDetailsVar);
+  const {
+    data: studentProfileResponse,
+    error: studentProfileError,
+    loading,
+  } = useQuery(STUDENT_PROFILE, {
+    onCompleted: (data) => handleProfileCompleted(data),
+    // onError: (error) => handleVerificationError(error),
+  });
+
+  const handleProfileCompleted = (data) => {
+    const userProfile = data;
+    profileDetailsVar({
+      ...profileDetails,
+      ...userProfile.student,
+    });
+  };
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
+  };
+
+  useEffect(() => {
+    if (!loading) {
+      console.log(profileDetails);
+    }
+  }, [profileDetails]);
+
+  if (loading)
+    return (
+      <div className="h-screen">
+        <h1 className="text-center text-4xl font-bold">Loading...</h1>
+      </div>
+    );
+
+  if (studentProfileError) return `Error! ${studentProfileError.message}`;
+
   return (
     <div>
-      <p className="text-2xl font-bold my-7">الملف الشخصي</p>
+      <p className="my-7 text-2xl font-bold">الملف الشخصي</p>
       <SectionDivider />
-      <div className="grid grid-flow-col my-6 gap-6">
-        <div className="h-80 bg-neutral-N20 rounded-md p-8 flex flex-col gap-8 items-center justify-center">
-          <div className="border-spacing-5 border-white border-[6px] bg-primary-P300 rounded-full h-28 w-28 flex items-center justify-center">
+      <div className="my-6 grid grid-flow-col gap-6">
+        <div className="flex h-80 flex-col items-center justify-center gap-8 rounded-md bg-neutral-N20 p-8">
+          <div className="flex h-28 w-28 border-spacing-5 items-center justify-center rounded-full border-[6px] border-white bg-primary-P300">
             <Image
               src={testimonialImg}
               alt="testimonial image"
@@ -21,7 +67,7 @@ const UserProfile = () => {
               className=""
             />
           </div>
-          <button className="flex items-center gap-3 rounded-full w-auto text-center text-white px-6 py-3 border-white border-4 bg-primary-P300 cursor-pointer">
+          <button className="flex w-auto cursor-pointer items-center gap-3 rounded-full border-4 border-white bg-primary-P300 px-6 py-3 text-center text-white">
             <span>رفع صورة جديدة</span>
             <Icon id={"upload"} size={25} />
           </button>
@@ -29,69 +75,72 @@ const UserProfile = () => {
         <InfoContainer className="h-80 overflow-y-scroll">
           <div className="mx-4 flex flex-col gap-5">
             <ChangeProfileInput
-              defaultValue={"الاسم الكامل"}
+              placeholder={"الاسم الكامل"}
               label={"الاسم الكامل"}
+              disabled={!changeDetails}
+              value={profileDetails.username && profileDetails?.username}
+              onChange={onChange}
             />
             <ChangeProfileInput
-              defaultValue={"الاسم الكامل بالانجليزية"}
+              placeholder={"الاسم الكامل بالانجليزية"}
               label={"الاسم الكامل بالانجليزية"}
+              disabled={!changeDetails}
+              value={profileDetails.username && profileDetails?.username}
+              onChange={onChange}
             />
             <ChangeProfileInput
-              defaultValue={"البريد الإلكتروني"}
+              placeholder={"البريد الإلكتروني"}
               label={"البريد الإلكتروني"}
+              disabled={!changeDetails}
+              value={profileDetails?.email && profileDetails?.email}
+              onChange={onChange}
             />
             <div>
               <label
                 htmlFor=""
-                className="text-gray-G30 inline-block mb-3 text-sm text-gray-G3 font-bold"
+                className="text-gray-G3 mb-3 inline-block text-sm font-bold text-gray-G30"
               >
                 قطاع الوظيفة
               </label>
-              <div className="flex items-center rounded border-2 bg-[#F9F9F9] gap-2 p-2">
-                <select className="flex-1 text-neutral-N70 px-2 py-1 bg-[#F9F9F9] outline-none">
+              <div className="flex items-center gap-2 rounded border-2 bg-[#F9F9F9] p-2">
+                <select className="flex-1 bg-[#F9F9F9] px-2 py-1 text-neutral-N70 outline-none">
                   <option value="قطاع الوظيفة">قطاع الوظيفة</option>
                 </select>
               </div>
             </div>
           </div>
         </InfoContainer>
-        <div className="grid grid-cols-2 gap-x-2 w-3/4">
+        <div className="grid w-3/4 grid-cols-2 gap-x-2">
           <div className="flex flex-col">
-            <FormInput label="الجوال" placeholder="رقم الجوال" />
+            <FormInput
+              label="الجوال"
+              placeholder="رقم الجوال"
+              disabled={true}
+              value={profileDetails.phoneRelevant}
+            />
           </div>
           <div className="flex flex-col">
-            <FormInput label="الكود" placeholder="00234" />
+            <FormInput
+              label="الكود"
+              placeholder="+234"
+              disabled={true}
+              value={profileDetails.phoneCountryCode}
+            />
           </div>
           <div className="flex flex-col">
-            <FormInput type="date" placeholder="00234" label="تاريخ الميلاد" />
+            <FormInput
+              type="date"
+              disabled={true}
+              placeholder="2010-12-12"
+              label="تاريخ الميلاد"
+              value={profileDetails.dateOfBirth}
+            />
           </div>
         </div>
       </div>
     </div>
   );
 };
-
-const ChangeProfileInput = ({ label, value, ...otherAttributes }) => (
-  <div>
-    <label
-      htmlFor=""
-      className="inline-block mb-3 font-bold text-sm text-gray-G30"
-    >
-      {label}
-    </label>
-    <div className="flex items-center rounded border-2 bg-[#F9F9F9] ">
-      <input
-        type="text"
-        className="placeholder:py-1 text-neutral-N70 px-2 py-1 bg-[#F9F9F9] outline-none"
-        value={value}
-        {...otherAttributes}
-      />
-      <span className="bg-[#F9F9F9] h-full p-2 border-r-2 ltr:border-l-2 ltr:border-r-0">
-        <Icon id={"pencil"} size={20} />
-      </span>
-    </div>
-  </div>
-);
 
 export default UserProfile;
 

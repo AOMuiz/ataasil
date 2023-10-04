@@ -1,4 +1,8 @@
+import { useEffect } from "react";
 import Sidebar from "../components/Profile/Sidebar";
+import useGetProfile from "../hooks/useGetProfile";
+import { useReactiveVar } from "@apollo/client";
+import { profileDetailsVar } from "../graphql/state";
 
 const ProfileLayout = ({ children }) => {
   return (
@@ -6,7 +10,7 @@ const ProfileLayout = ({ children }) => {
       <aside>
         <Sidebar />
       </aside>
-      <main className="px-6 flex-1">{children}</main>
+      <main className="flex-1 px-6">{children}</main>
     </div>
   );
 };

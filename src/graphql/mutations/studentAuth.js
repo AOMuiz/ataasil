@@ -28,10 +28,13 @@ export const VERIFY_STUDENT_EMAIL = gql`
     student_register_verifyCode(token: $token, code: $code) {
       code
       success
-      token
       error
+      token
       data {
         _id
+        email
+        username
+        isAccountApproved
       }
     }
   }
@@ -49,13 +52,21 @@ export const REVERIFY_STUDENT_EMAIL = gql`
 `;
 
 export const AUTHENTICATE_STUDENT = gql`
-  mutation Auth_student_login($email: String!, $password: String!) {
-    auth_student_login(email: $email, password: $password) {
+  mutation Student_login($email: String!, $password: String!) {
+    student_login(email: $email, password: $password) {
       code
       success
       error
       data {
+        _id
+        email
+        username
+        jobSector
+        dateOfBirth
         isAccountApproved
+        phone
+        phoneCountryCode
+        phoneRelevant
       }
       token
     }
