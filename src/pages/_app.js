@@ -29,12 +29,12 @@ function MyApp({ Component, pageProps }) {
 
   // const Layout = Component.Layout || IndexLayout;
 
-  useEffect(() => {
-    pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-      "pdfjs-dist/build/pdf.worker.min.js",
-      import.meta.url
-    ).toString();
-  }, []);
+  // useEffect(() => {
+  //   pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  //     "pdfjs-dist/build/pdf.worker.min.js",
+  //     import.meta.url
+  //   ).toString();
+  // }, []);
 
   useEffect(() => {
     document.documentElement.dir = dir;
