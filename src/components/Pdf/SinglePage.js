@@ -8,7 +8,14 @@ import "react-pdf/dist/Page/TextLayer.css";
 import { cn } from "../../utils/helpers";
 import Icon from "../Icon";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  "pdfjs-dist/build/pdf.worker.min.js",
+  import.meta.url
+).toString();
+
+// pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
+//TODO: chnage pdf canvas and config condition to previous one
 
 export default function SinglePage(props) {
   const [numPages, setNumPages] = useState(null);
