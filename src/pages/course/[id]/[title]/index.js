@@ -13,10 +13,9 @@ import {
   presentCourseDataVar,
   presentCourseFileDetail,
 } from "../../../../graphql/state";
-// import  from "";
 
-const AllPagesPDFViewer = dynamic(
-  () => import("../../../../components/Pdf/AllPages"),
+const SinglePage = dynamic(
+  () => import("../../../../components/Pdf/SinglePage"),
   {
     ssr: false,
   }
@@ -55,7 +54,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="flex  md:flex-col">
+    <div className="flex md:flex-col">
       <div className="h-full flex-1">
         {(courseDataFile.fileUrl === "" ||
           Object.keys(courseDataFile).length === 0) && (
@@ -64,8 +63,8 @@ const Index = () => {
           </div>
         )}
         {courseDataFile.fileType === "Document" && (
-          <div>
-            <AllPagesPDFViewer pdf={courseDataFile.fileUrl} />
+          <div className="flex max-h-screen w-full items-center justify-center">
+            <SinglePage pdf={courseDataFile.fileUrl} />
           </div>
         )}
 
