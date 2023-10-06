@@ -47,7 +47,7 @@ export default function SinglePage(props) {
   const { pdf } = props;
 
   return (
-    <div className="all-page-container relative flex-1">
+    <div className="all-page-container relative">
       <div className="sticky top-0 z-[5] flex h-10 w-full items-center justify-between border-b border-zinc-200 bg-white px-2 py-[30px] shadow-sm">
         <div className="rounded-md border border-gray-300 px-2">
           <p>

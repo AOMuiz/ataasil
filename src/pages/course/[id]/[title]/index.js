@@ -63,9 +63,7 @@ const Index = () => {
           </div>
         )}
         {courseDataFile.fileType === "Document" && (
-          <div className="flex max-h-screen w-full items-center justify-center">
-            <SinglePage pdf={courseDataFile.fileUrl} />
-          </div>
+          <SinglePage pdf={courseDataFile.fileUrl} />
         )}
 
         {courseDataFile.fileType === "Video" && (
