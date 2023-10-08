@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import Icon from "../Icon/Icon";
 import { useReactiveVar } from "@apollo/client";
 import { presentCourseFileDetail } from "../../graphql/state";
+import { cn } from "../../utils/helpers";
 
 const TopicResource = ({ topicFile }) => {
   const courseDataFile = useReactiveVar(presentCourseFileDetail);
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState("");
 
   const setPresentFile = () => {
     presentCourseFileDetail({
@@ -17,37 +18,48 @@ const TopicResource = ({ topicFile }) => {
         fileDescription: topicFile.description,
       },
     });
-    setActive(true);
   };
 
-  const activeClassName = "border-primary-P100 border-[3px]  animate-pulse";
-
   useEffect(() => {
-    console.log(courseDataFile);
-  }, [courseDataFile]);
+    setActive(courseDataFile.fileTitle);
+  }, [active, courseDataFile.fileTitle, courseDataFile.fileType]);
 
   const getIconName = (type) => {
     switch (type) {
       case "Video":
         return (
           <Icon
-            id="play"
-            className={`rounded-full text-gray-G30 group-hover:text-primary-P100`}
+            id={topicFile?.title === active ? "play" : "video"}
+            className={cn(
+              "rounded-full text-gray-G30 group-hover:text-primary-P100",
+              topicFile?.title === active &&
+                topicFile?.format === "Video" &&
+                "animate-pulse border-[3px] border-primary-P100"
+            )}
           />
         );
       case "test":
         return (
           <Icon
             id="lock"
-            className={`text-gray-G30 group-hover:text-primary-P100`}
+            className={cn(
+              `text-gray-G30 group-hover:text-primary-P100`,
+              topicFile?.title === active &&
+                topicFile?.format === "test" &&
+                iconActiveClassName
+            )}
           />
         );
       case "Document":
         return (
           <Icon
             id="FileText"
-            // color="#5A5A5A"
-            className={`text-gray-G30 group-hover:text-primary-P100`}
+            className={cn(
+              "text-gray-G30 group-hover:text-primary-P100",
+              topicFile?.title === active &&
+                topicFile?.format === "Document" &&
+                "animate-pulse text-primary-P100"
+            )}
           />
         );
     }
@@ -60,7 +72,13 @@ const TopicResource = ({ topicFile }) => {
         className="group flex cursor-pointer items-center justify-between gap-4 border-b border-gray-G20 pb-4"
       >
         {getIconName(topicFile?.format)}
-        {<span>{topicFile?.title}</span>}
+        {
+          <span
+            className={cn(topicFile?.title === active && "text-primary-P200")}
+          >
+            {topicFile?.title}
+          </span>
+        }
         <span className="font-bold">01:30</span>
       </li>
     </>

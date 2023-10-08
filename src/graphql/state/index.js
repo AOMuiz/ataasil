@@ -12,7 +12,7 @@ export const profileDetailsVar = makeVar({
   phoneRelevant: "",
 });
 
-export const presentCourseDataVar = makeVar([]);
+export const presentCourseDetailVar = makeVar([]);
 
 export const presentCourseFileDetail = makeVar({
   fileType: "",

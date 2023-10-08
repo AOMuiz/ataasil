@@ -1,13 +1,13 @@
 import React from "react";
 import { useReactiveVar } from "@apollo/client";
-import * as Collapsible from "@radix-ui/react-collapsible";
+// import * as Accordion from '@radix-ui/react-accordion';
 
 import TopicResource from "./TopicResource";
 import Icon from "../Icon/Icon";
-import { presentCourseDataVar } from "../../graphql/state";
+import { presentCourseDetailVar } from "../../graphql/state";
 
 const Topic = () => {
-  const courseData = useReactiveVar(presentCourseDataVar);
+  const courseData = useReactiveVar(presentCourseDetailVar);
   const [open, setOpen] = React.useState(false);
 
   return (

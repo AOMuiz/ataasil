@@ -6,12 +6,12 @@ import { useReactiveVar } from "@apollo/client";
 
 import Icon from "../Icon/Icon";
 import ownerIcon from "/public/assets/images/edit_fill.png";
-import { presentCourseDataVar } from "../../graphql/state";
+import { presentCourseDetailVar } from "../../graphql/state";
 import Topic from "./Topic";
 import { reviews } from "./data";
 
 const Sidebar = () => {
-  const courseData = useReactiveVar(presentCourseDataVar);
+  const courseData = useReactiveVar(presentCourseDetailVar);
 
   useEffect(() => {
     console.log({ courseData });

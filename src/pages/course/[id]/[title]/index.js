@@ -10,7 +10,7 @@ import { COURSES_SECTIONS } from "../../../../graphql/queries/courses";
 import Sidebar from "../../../../components/Course/Sidebar";
 import CtaButton from "../../../../components/CtaButton";
 import {
-  presentCourseDataVar,
+  presentCourseDetailVar,
   presentCourseFileDetail,
 } from "../../../../graphql/state";
 
@@ -23,7 +23,7 @@ const SinglePage = dynamic(
 
 const Index = () => {
   const { query } = useRouter();
-  const courseSectionData = useReactiveVar(presentCourseDataVar);
+  const courseSectionData = useReactiveVar(presentCourseDetailVar);
   const courseDataFile = useReactiveVar(presentCourseFileDetail);
   const [getCourseSection, { data, error, loading }] = useLazyQuery(
     COURSES_SECTIONS,
@@ -34,7 +34,7 @@ const Index = () => {
   );
 
   const onGetCourseSectionComplete = (data) => {
-    presentCourseDataVar([...data.course_getSections]);
+    presentCourseDetailVar([...data.course_getSections]);
     console.log({
       coursesSection: data,
       courseSectionData,
