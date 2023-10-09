@@ -69,9 +69,7 @@ const TopicResource = ({ topicFile, format, sectionId, testDetail }) => {
             size={20}
             className={cn(
               `text-gray-G30 group-hover:text-primary-P100`,
-              topicFile?.title === active &&
-                topicFile?.format === "test" &&
-                iconActiveClassName
+              sectionId === courseSectionTest.sectionId && "text-primary-P200"
             )}
           />
         );
@@ -119,8 +117,7 @@ const TopicResource = ({ topicFile, format, sectionId, testDetail }) => {
           {getIconName("test")}
           <span
             className={cn(
-              sectionId === presentCourseSectionTest.sectionId &&
-                "text-primary-P200"
+              sectionId === courseSectionTest.sectionId && "text-primary-P200"
             )}
           >
             تقييم

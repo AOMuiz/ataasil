@@ -45,6 +45,7 @@ const Topic = () => {
               <TopicResource
                 topicFile={sectionFile}
                 key={sectionFile.title}
+                sectionId={sections._id}
                 format={"file"}
               />
             ))}

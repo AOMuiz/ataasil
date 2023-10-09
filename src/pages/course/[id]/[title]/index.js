@@ -46,7 +46,14 @@ const Index = () => {
   };
 
   useEffect(() => {
-    presentCourseFileDetail({});
+    presentCourseFileDetail({
+      sectionId: "",
+      fileType: "",
+      fileUrl: "",
+      fileTitle: "",
+      fileDescription: "",
+    });
+    presentCourseSectionTest({ sectionId: "", test: [] });
     if (query.id) {
       getCourseSection({ variables: { courseId: query.id } });
     }

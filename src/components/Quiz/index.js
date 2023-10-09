@@ -77,7 +77,7 @@ const Quiz = () => {
   };
 
   return (
-    <div>
+    <div className="">
       {!quizStarted ? (
         <QuizSynopsis
           totalQuestions={quizData.length}

@@ -30,7 +30,7 @@ const Sidebar = () => {
 
   return (
     <div className="max-w-sm bg-gray-50 py-2 md:mt-2 md:max-w-full">
-      <Tabs.Root dir="rtl" className="TabsRoot " defaultValue="tab1">
+      <Tabs.Root dir="rtl" className="TabsRoot" defaultValue="tab1">
         <Tabs.List
           className="TabsList flex justify-between gap-4 border-b border-gray-300  px-5 text-lg"
           aria-label="Manage your account"
@@ -45,7 +45,7 @@ const Sidebar = () => {
             الآراء
           </TabsTrigger>
         </Tabs.List>
-        <Tabs.Content className="" value="tab1">
+        <Tabs.Content className="min-w-[150px]" value="tab1">
           <div className="flex items-center gap-3 border-b-2 border-gray-200 px-5 py-3">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#EA9F0080]">
               <Image src={ownerIcon} alt="" height={40} width={40} />
@@ -117,7 +117,10 @@ const Sidebar = () => {
             </ul>
           </div>
         </Tabs.Content>
-        <Tabs.Content className="space-y-4 px-5 py-3" value="tab2">
+        <Tabs.Content
+          className="min-w-[150px] space-y-4 px-5 py-3"
+          value="tab2"
+        >
           <p className=" flex items-center justify-between ">
             <p className="items-center rounded-md border border-gray-G30 p-2">
               <Icon
