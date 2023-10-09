@@ -7,6 +7,7 @@ const QuizSummary = ({
   quizAnswers,
   correctAnswers,
   wrongAnswers,
+  showExplanation,
 }) => {
   return (
     <div className="px-10 py-5">
@@ -21,14 +22,17 @@ const QuizSummary = ({
       </div>
       <div className="my-10 space-y-10">
         <h2 className="text-3xl font-bold">ملخص الاختبار</h2>
-        <div className="mb-5 mt-10 flex gap-8">
+        <div className="mb-5 mt-10 flex gap-8 text-lg">
           <p className="font-bold">
             تم النجاح:
-            <span className="font-normal text-[#32A071]">{correctAnswers}</span>
+            <span className="font-normal text-[#32A071]">
+              {" "}
+              {correctAnswers}
+            </span>
           </p>
           <p className="font-bold text-gray-G30">
             فشل:{" "}
-            <span className="font-normal text-red-400">{wrongAnswers}</span>
+            <span className="font-normal text-red-400"> {wrongAnswers}</span>
           </p>
           <p className="font-bold text-gray-G30">
             النسبة المئوية:{" "}
@@ -38,18 +42,17 @@ const QuizSummary = ({
           </p>
         </div>
         <div className="flex items-center gap-8">
-          <CtaButton>عرض التعليقات</CtaButton>
-          <p className="border-b-2"> عرض التعليقات</p>
+          <CtaButton
+            className={"font-bold"}
+            onClick={() => showExplanation(true)}
+          >
+            عرض التعليقات
+          </CtaButton>
+          <p className="cursor-pointer border-b-2 font-bold text-gray-G30">
+            حاول ثانية
+          </p>
         </div>
       </div>
-
-      {quizData.map((question, index) => (
-        <div key={index}>
-          <p>{question.question}</p>
-          <p>Your Answer(s): {quizAnswers[index].join(", ")}</p>
-          <p>Correct Answer(s): {question.answer.join(", ")}</p>
-        </div>
-      ))}
     </div>
   );
 };
