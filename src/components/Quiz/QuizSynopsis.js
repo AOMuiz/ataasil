@@ -12,9 +12,12 @@ const QuizSynopsis = ({ totalQuestions, passScore, onStartQuiz }) => {
       </div>
       <div className="mb-6 flex items-end justify-between border-b-2 border-gray-300 pb-10">
         <div className="space-y-2">
-          <h4 className="font-bold">أرسل مهمتك</h4>
+          <h4 className="mb-3 font-bold">أرسل مهمتك</h4>
           <p className="text-gray-G30">
             <span className="font-bold">الوقت:</span> 10 ساعات و 30 دقيقة
+          </p>
+          <p className="text-gray-G30">
+            <span className="font-bold">عدد الأسئلة:</span> {totalQuestions}
           </p>
         </div>
         <CtaButton onClick={onStartQuiz} className="bg-[#039BE5]">
@@ -23,9 +26,10 @@ const QuizSynopsis = ({ totalQuestions, passScore, onStartQuiz }) => {
       </div>
       <div className="flex items-end justify-between border-b-2 border-gray-300 pb-6">
         <div className="space-y-2">
-          <h4 className="font-bold">الحصول على الدرجة</h4>
+          <h4 className="mb-3 font-bold">الحصول على الدرجة</h4>
+
           <p className="text-gray-G30">
-            <span className="font-bold">النجاح:</span> 70% فما فوق
+            <span className="font-bold">النجاح:</span> {passScore}% فما فوق
           </p>
         </div>
         <div className="border-r border-gray-200 pl-8 pr-4">
@@ -33,8 +37,6 @@ const QuizSynopsis = ({ totalQuestions, passScore, onStartQuiz }) => {
           <p className="fonnt-bold"> - </p>
         </div>
       </div>
-      <p>Total Questions: {totalQuestions}</p>
-      <p>Pass Score: {passScore}</p>
     </div>
   );
 };

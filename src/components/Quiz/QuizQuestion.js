@@ -23,7 +23,7 @@ const QuizQuestion = ({
   };
 
   return (
-    <div className="px-4 py-5">
+    <div className="px-6 py-5">
       <div className="mb-2 border-b-2 border-gray-300 pb-3">
         <p className="mb-5 text-gray-G30">
           <span className="font-bold">الوقت:</span> 10 ساعات و 30 دقيقة
