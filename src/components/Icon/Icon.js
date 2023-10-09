@@ -37,7 +37,11 @@ import {
 import { BsArrowRight, BsArrowLeft, BsBookmark } from "react-icons/bs";
 import { IoOptionsOutline } from "react-icons/io5";
 import { FaFacebookF, FaGreaterThan, FaLessThan, FaSort } from "react-icons/fa";
-import { MdOutlineDashboard, MdOutlineCancel } from "react-icons/md";
+import {
+  MdOutlineDashboard,
+  MdOutlineCancel,
+  MdOutlineAssignmentTurnedIn,
+} from "react-icons/md";
 import { TbNotes } from "react-icons/tb";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { GiJusticeStar } from "react-icons/gi";
@@ -82,6 +86,7 @@ const icons = {
   video: BiVideo,
   FileText: AiOutlineFileText,
   play: AiOutlinePlayCircle,
+  assignment: MdOutlineAssignmentTurnedIn,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {

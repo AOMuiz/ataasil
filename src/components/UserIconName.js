@@ -17,7 +17,7 @@ const UserIconName = () => {
     <div className="flex items-center gap-4">
       <Link href="/dashboard" className="cursor-pointer">
         <p className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-primary-P300 text-center  text-2xl font-bold uppercase">
-          {letters.length ? `${firstLetter}${seccondLetter}` : "AS"}
+          {letters.length ? `${firstLetter}${seccondLetter}` : null}
         </p>
       </Link>
       <div className="flex items-center">

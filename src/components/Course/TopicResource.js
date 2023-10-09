@@ -1,53 +1,89 @@
 import React, { useEffect, useState } from "react";
 import Icon from "../Icon/Icon";
 import { useReactiveVar } from "@apollo/client";
-import { presentCourseFileDetail } from "../../graphql/state";
+import {
+  presentCourseFileDetail,
+  presentCourseSectionTest,
+} from "../../graphql/state";
+import { cn } from "../../utils/helpers";
 
-const TopicResource = ({ topicFile }) => {
+const TopicResource = ({ topicFile, format, sectionId, testDetail }) => {
   const courseDataFile = useReactiveVar(presentCourseFileDetail);
-  const [active, setActive] = useState(false);
+  const courseSectionTest = useReactiveVar(presentCourseSectionTest);
+  const [active, setActive] = useState("");
 
   const setPresentFile = () => {
+    presentCourseSectionTest({
+      sectionId: "",
+      test: [],
+    });
     presentCourseFileDetail({
       ...courseDataFile,
       ...{
+        sectionId,
         fileType: topicFile.format,
         fileUrl: topicFile.src,
         fileTitle: topicFile.title,
         fileDescription: topicFile.description,
       },
     });
-    setActive(true);
   };
 
-  const activeClassName = "border-primary-P100 border-[3px]  animate-pulse";
+  const setPresentTest = () => {
+    presentCourseFileDetail({
+      sectionId: "",
+      fileType: "",
+      fileUrl: "",
+      fileTitle: "",
+      fileDescription: "",
+    });
+    presentCourseSectionTest({
+      ...courseSectionTest,
+      ...{ sectionId, test: testDetail },
+    });
+  };
 
   useEffect(() => {
-    console.log(courseDataFile);
-  }, [courseDataFile]);
+    setActive(courseDataFile.fileTitle);
+  }, [active, courseDataFile.fileTitle, courseDataFile.fileType]);
 
   const getIconName = (type) => {
     switch (type) {
       case "Video":
         return (
           <Icon
-            id="play"
-            className={`rounded-full text-gray-G30 group-hover:text-primary-P100`}
+            id={topicFile?.title === active ? "play" : "video"}
+            size={20}
+            className={cn(
+              "rounded-full text-gray-G30 group-hover:text-primary-P100",
+              topicFile?.title === active &&
+                topicFile?.format === "Video" &&
+                "animate-pulse border-[3px] border-primary-P100"
+            )}
           />
         );
       case "test":
         return (
           <Icon
-            id="lock"
-            className={`text-gray-G30 group-hover:text-primary-P100`}
+            id="assignment"
+            size={20}
+            className={cn(
+              `text-gray-G30 group-hover:text-primary-P100`,
+              sectionId === courseSectionTest.sectionId && "text-primary-P200"
+            )}
           />
         );
       case "Document":
         return (
           <Icon
             id="FileText"
-            // color="#5A5A5A"
-            className={`text-gray-G30 group-hover:text-primary-P100`}
+            size={20}
+            className={cn(
+              "text-gray-G30 group-hover:text-primary-P100",
+              topicFile?.title === active &&
+                topicFile?.format === "Document" &&
+                "animate-pulse text-primary-P100"
+            )}
           />
         );
     }
@@ -55,14 +91,39 @@ const TopicResource = ({ topicFile }) => {
 
   return (
     <>
-      <li
-        onClick={() => setPresentFile()}
-        className="group flex cursor-pointer items-center justify-between gap-4 border-b border-gray-G20 pb-4"
-      >
-        {getIconName(topicFile?.format)}
-        {<span>{topicFile?.title}</span>}
-        <span className="font-bold">01:30</span>
-      </li>
+      {format === "file" ? (
+        <li
+          onClick={() => setPresentFile()}
+          className="group flex cursor-pointer items-center  gap-4 border-b border-gray-G20 pb-4"
+        >
+          {getIconName(topicFile?.format)}
+          {
+            <span
+              className={cn(
+                topicFile?.title === active && "text-primary-P200",
+                "flex-1"
+              )}
+            >
+              {topicFile?.title}
+            </span>
+          }
+          <span className="self-end font-bold">01:30</span>
+        </li>
+      ) : (
+        <li
+          onClick={() => setPresentTest()}
+          className="group flex cursor-pointer items-center  gap-4 border-b border-gray-G20 pb-4"
+        >
+          {getIconName("test")}
+          <span
+            className={cn(
+              sectionId === courseSectionTest.sectionId && "text-primary-P200"
+            )}
+          >
+            تقييم
+          </span>
+        </li>
+      )}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 import tw, { styled } from "twin.macro";
 import Image from "next/image";
@@ -6,16 +6,31 @@ import { useReactiveVar } from "@apollo/client";
 
 import Icon from "../Icon/Icon";
 import ownerIcon from "/public/assets/images/edit_fill.png";
-import { presentCourseDataVar } from "../../graphql/state";
+import {
+  presentCourseDetailVar,
+  presentCourseFileDetail,
+} from "../../graphql/state";
 import Topic from "./Topic";
 import { reviews } from "./data";
 
 const Sidebar = () => {
-  const courseData = useReactiveVar(presentCourseDataVar);
+  const courseData = useReactiveVar(presentCourseDetailVar);
+
+  useEffect(() => {
+    if (courseData.length > 0) {
+      presentCourseFileDetail({
+        sectionId: courseData[0]?._id,
+        fileType: courseData[0]?.files[0].format,
+        fileUrl: courseData[0]?.files[0].src,
+        fileTitle: courseData[0]?.files[0].title,
+        fileDescription: courseData[0]?.files[0].description,
+      });
+    }
+  }, [courseData]);
 
   return (
     <div className="max-w-sm bg-gray-50 py-2 md:mt-2 md:max-w-full">
-      <Tabs.Root dir="rtl" className="TabsRoot " defaultValue="tab1">
+      <Tabs.Root dir="rtl" className="TabsRoot" defaultValue="tab1">
         <Tabs.List
           className="TabsList flex justify-between gap-4 border-b border-gray-300  px-5 text-lg"
           aria-label="Manage your account"
@@ -30,26 +45,82 @@ const Sidebar = () => {
             الآراء
           </TabsTrigger>
         </Tabs.List>
-        <Tabs.Content className="" value="tab1">
+        <Tabs.Content className="min-w-[150px]" value="tab1">
           <div className="flex items-center gap-3 border-b-2 border-gray-200 px-5 py-3">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#EA9F0080]">
               <Image src={ownerIcon} alt="" height={40} width={40} />
             </div>
             أ. فواز بن متعب الهباس
           </div>
-          <div className="px-5 py-3">
+          <div className="border-b-2 border-gray-200 px-5 py-3">
             <p className="my-3 font-bold">نظرة عامة</p>
-            <p className="text-lg">
-              تكمن أهمية اكتساب المتدربين لمهارات بناء ثقافة تنظيمية فعالة في
-              جميع المنظمات فيما يلي: • تمنح الموظفين هوية وتساعدهم على فهم
-              متطلبات المنظمة. • تعمل على تشجيع الالتزام الجماعي والاستقرار
-              الاجتماعي. • تعتبر كدليل للقادة بالمنظمة والعاملين بها بحيث تشكل
-              لهم نماذج سلوكية يجب إتباعها. • تهيئة إطار فكري وتنظيمي لتوجيه
-              أفراد المنظمة.
-            </p>
+            <div className="space-y-3">
+              <p>
+                <em className="font-bold">ملاحظات: </em>
+                {courseData[0]?.notes}
+              </p>
+              <p>
+                <em className="font-bold">بيان مختصر: </em>
+                {courseData[0]?.description}
+              </p>
+            </div>
+          </div>
+          <div className="border-b-2 border-gray-200 px-5 py-3">
+            <ul className="w-2/3 space-y-3">
+              <li className="flex justify-between gap-4">
+                <span className="font-bold">المدة</span>
+                <span>01h 01m</span>
+              </li>
+              <li className="flex justify-between gap-4">
+                <span className="font-bold">تاريخ النشر</span>
+                <span>03/11/2019</span>
+              </li>
+              <li className="flex justify-between gap-4">
+                <span className="font-bold">المستوى</span>
+                <span>Hadith</span>
+              </li>
+            </ul>
+          </div>
+          <div className="px-5 py-3">
+            <p className="font-bold">مشاركة عبر :</p>
+            <ul className="mt-6 flex gap-4">
+              <li className="rounded-full bg-primary-P200 p-2">
+                <Icon
+                  id={"youtube"}
+                  className="cursor-pointer text-2xl text-white"
+                />
+              </li>
+              <li className="rounded-full bg-primary-P200 p-2">
+                <Icon
+                  id={"linkedIn"}
+                  className="cursor-pointer text-2xl text-white"
+                />
+              </li>
+              <li className="rounded-full bg-primary-P200 p-2">
+                <Icon
+                  id={"facebook"}
+                  className="cursor-pointer text-2xl text-white"
+                />
+              </li>
+              <li className="rounded-full bg-primary-P200 p-2">
+                <Icon
+                  id={"instagram"}
+                  className="cursor-pointer text-2xl text-white"
+                />
+              </li>
+              <li className="rounded-full bg-primary-P200 p-2">
+                <Icon
+                  id={"twitter"}
+                  className="cursor-pointer text-2xl text-white"
+                />
+              </li>
+            </ul>
           </div>
         </Tabs.Content>
-        <Tabs.Content className="space-y-4 px-5 py-3" value="tab2">
+        <Tabs.Content
+          className="min-w-[150px] space-y-4 px-5 py-3"
+          value="tab2"
+        >
           <p className=" flex items-center justify-between ">
             <p className="items-center rounded-md border border-gray-G30 p-2">
               <Icon

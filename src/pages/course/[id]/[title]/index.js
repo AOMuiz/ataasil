@@ -10,13 +10,14 @@ import { COURSES_SECTIONS } from "../../../../graphql/queries/courses";
 import Sidebar from "../../../../components/Course/Sidebar";
 import CtaButton from "../../../../components/CtaButton";
 import {
-  presentCourseDataVar,
+  presentCourseDetailVar,
   presentCourseFileDetail,
+  presentCourseSectionTest,
 } from "../../../../graphql/state";
-// import  from "";
+import Quiz from "../../../../components/Quiz";
 
-const AllPagesPDFViewer = dynamic(
-  () => import("../../../../components/Pdf/AllPages"),
+const SinglePage = dynamic(
+  () => import("../../../../components/Pdf/SinglePage"),
   {
     ssr: false,
   }
@@ -24,8 +25,9 @@ const AllPagesPDFViewer = dynamic(
 
 const Index = () => {
   const { query } = useRouter();
-  const courseSectionData = useReactiveVar(presentCourseDataVar);
+  const courseSectionData = useReactiveVar(presentCourseDetailVar);
   const courseDataFile = useReactiveVar(presentCourseFileDetail);
+  const courseSectionTest = useReactiveVar(presentCourseSectionTest);
   const [getCourseSection, { data, error, loading }] = useLazyQuery(
     COURSES_SECTIONS,
     {
@@ -35,7 +37,7 @@ const Index = () => {
   );
 
   const onGetCourseSectionComplete = (data) => {
-    presentCourseDataVar([...data.course_getSections]);
+    presentCourseDetailVar([...data.course_getSections]);
     console.log({
       coursesSection: data,
       courseSectionData,
@@ -44,45 +46,49 @@ const Index = () => {
   };
 
   useEffect(() => {
+    presentCourseFileDetail({
+      sectionId: "",
+      fileType: "",
+      fileUrl: "",
+      fileTitle: "",
+      fileDescription: "",
+    });
+    presentCourseSectionTest({ sectionId: "", test: [] });
     if (query.id) {
       getCourseSection({ variables: { courseId: query.id } });
     }
-    console.log({ query, courseDataFile });
-  }, [query, courseDataFile]);
-
-  useEffect(() => {
-    presentCourseFileDetail({});
-  }, []);
+  }, [query.id]);
 
   return (
-    <div className="flex  md:flex-col">
+    <div className="flex md:flex-col">
       <div className="h-full flex-1">
-        {(courseDataFile.fileUrl === "" ||
+        {/* {(courseSectionTest.test.length === 0 ||
           Object.keys(courseDataFile).length === 0) && (
           <div className="h-full w-full">
             <Image src={player} alt="player thumbnail" layout="responsive" />
           </div>
-        )}
+        )} */}
+
         {courseDataFile.fileType === "Document" && (
-          <div>
-            <AllPagesPDFViewer pdf={courseDataFile.fileUrl} />
-          </div>
+          <SinglePage pdf={courseDataFile.fileUrl} />
         )}
 
         {courseDataFile.fileType === "Video" && (
           <div className="aspect-video w-full leading-none">
             <ReactPlayer
               controls
-              url={
-                courseDataFile.fileUrl
-                  ? courseDataFile.fileUrl
-                  : "https://www.youtube.com/watch?v=hrxL31QubZQ"
-              }
+              light={true}
+              url={courseDataFile.fileUrl && courseDataFile.fileUrl}
               width="100%"
               height="100%"
             />
           </div>
         )}
+
+        {courseSectionTest.test.length !== 0 && (
+          <Quiz quizData={courseSectionTest.test} />
+        )}
+
         <div className="flex justify-between gap-3 bg-white p-4 md:flex-col">
           <div className="space-y-4">
             {/* <p className="text-2xl font-bold">{courseSectionData[0]?.title}</p> */}

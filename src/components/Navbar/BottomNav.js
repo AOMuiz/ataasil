@@ -20,10 +20,6 @@ const BottomNav = () => {
   // const {authenticated} = useReactiveVar(authStateVar);
   const auth = isLoggedIn();
 
-  useEffect(() => {
-    console.log(auth);
-  }, [auth]);
-
   return (
     <div className="relative flex items-center justify-between px-20 py-5 shadow-sm 2md:hidden">
       <div className="flex items-center gap-6">
