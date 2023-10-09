@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useReactiveVar } from "@apollo/client";
 // import * as Accordion from '@radix-ui/react-accordion';
 
 import TopicResource from "./TopicResource";
 import Icon from "../Icon/Icon";
-import { presentCourseDetailVar } from "../../graphql/state";
+import {
+  presentCourseDetailVar,
+  presentCourseFileDetail,
+  presentCourseSectionTest,
+} from "../../graphql/state";
+import { cn } from "../../utils/helpers";
 
 const Topic = () => {
   const courseData = useReactiveVar(presentCourseDetailVar);
+  const courseDataFile = useReactiveVar(presentCourseFileDetail);
+  const courseSectionTest = useReactiveVar(presentCourseSectionTest);
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -15,7 +22,14 @@ const Topic = () => {
       {courseData?.map((sections, i) => (
         <div key={sections._id}>
           <div className="mb-2 flex items-center justify-between gap-3 bg-[#DCECF3] px-3 py-3 font-bold text-gray-G30">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white p-2">
+            <span
+              className={cn(
+                "flex h-8 w-8 items-center justify-center rounded-full bg-white p-2",
+                (sections._id === courseDataFile.sectionId ||
+                  sections._id === courseSectionTest.sectionId) &&
+                  "bg-primary-P300 text-white"
+              )}
+            >
               {i + 1}
             </span>
             <p>{sections?.title}</p>
@@ -28,8 +42,19 @@ const Topic = () => {
           </div>
           <ul className="space-y-3">
             {sections.files.map((sectionFile) => (
-              <TopicResource topicFile={sectionFile} key={sectionFile.title} />
+              <TopicResource
+                topicFile={sectionFile}
+                key={sectionFile.title}
+                format={"file"}
+              />
             ))}
+            {sections.test && (
+              <TopicResource
+                format={"test"}
+                sectionId={sections._id}
+                testDetail={sections.test}
+              />
+            )}
           </ul>
         </div>
       ))}

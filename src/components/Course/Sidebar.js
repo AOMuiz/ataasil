@@ -6,7 +6,10 @@ import { useReactiveVar } from "@apollo/client";
 
 import Icon from "../Icon/Icon";
 import ownerIcon from "/public/assets/images/edit_fill.png";
-import { presentCourseDetailVar } from "../../graphql/state";
+import {
+  presentCourseDetailVar,
+  presentCourseFileDetail,
+} from "../../graphql/state";
 import Topic from "./Topic";
 import { reviews } from "./data";
 
@@ -14,7 +17,15 @@ const Sidebar = () => {
   const courseData = useReactiveVar(presentCourseDetailVar);
 
   useEffect(() => {
-    console.log({ courseData });
+    if (courseData.length > 0) {
+      presentCourseFileDetail({
+        sectionId: courseData[0]?._id,
+        fileType: courseData[0]?.files[0].format,
+        fileUrl: courseData[0]?.files[0].src,
+        fileTitle: courseData[0]?.files[0].title,
+        fileDescription: courseData[0]?.files[0].description,
+      });
+    }
   }, [courseData]);
 
   return (

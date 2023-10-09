@@ -12,7 +12,9 @@ import CtaButton from "../../../../components/CtaButton";
 import {
   presentCourseDetailVar,
   presentCourseFileDetail,
+  presentCourseSectionTest,
 } from "../../../../graphql/state";
+import Quiz from "../../../../components/Quiz";
 
 const SinglePage = dynamic(
   () => import("../../../../components/Pdf/SinglePage"),
@@ -25,6 +27,7 @@ const Index = () => {
   const { query } = useRouter();
   const courseSectionData = useReactiveVar(presentCourseDetailVar);
   const courseDataFile = useReactiveVar(presentCourseFileDetail);
+  const courseSectionTest = useReactiveVar(presentCourseSectionTest);
   const [getCourseSection, { data, error, loading }] = useLazyQuery(
     COURSES_SECTIONS,
     {
@@ -43,25 +46,22 @@ const Index = () => {
   };
 
   useEffect(() => {
+    presentCourseFileDetail({});
     if (query.id) {
       getCourseSection({ variables: { courseId: query.id } });
     }
-    console.log({ query, courseDataFile });
-  }, [query, courseDataFile]);
-
-  useEffect(() => {
-    presentCourseFileDetail({});
-  }, []);
+  }, [query.id]);
 
   return (
     <div className="flex md:flex-col">
       <div className="h-full flex-1">
-        {(courseDataFile.fileUrl === "" ||
+        {/* {(courseSectionTest.test.length === 0 ||
           Object.keys(courseDataFile).length === 0) && (
           <div className="h-full">
             <Image src={player} alt="player thumbnail" layout="responsive" />
           </div>
-        )}
+        )} */}
+
         {courseDataFile.fileType === "Document" && (
           <SinglePage pdf={courseDataFile.fileUrl} />
         )}
@@ -70,16 +70,18 @@ const Index = () => {
           <div className="aspect-video w-full leading-none">
             <ReactPlayer
               controls
-              url={
-                courseDataFile.fileUrl
-                  ? courseDataFile.fileUrl
-                  : "https://www.youtube.com/watch?v=hrxL31QubZQ"
-              }
+              light={true}
+              url={courseDataFile.fileUrl && courseDataFile.fileUrl}
               width="100%"
               height="100%"
             />
           </div>
         )}
+
+        {courseSectionTest.test.length !== 0 && (
+          <Quiz quizData={courseSectionTest.test} />
+        )}
+
         <div className="flex justify-between gap-3 bg-white p-4 md:flex-col">
           <div className="space-y-4">
             {/* <p className="text-2xl font-bold">{courseSectionData[0]?.title}</p> */}
