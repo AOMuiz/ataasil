@@ -4,11 +4,13 @@ import CtaButton from "../CtaButton";
 const QuizSynopsis = ({ totalQuestions, passScore, onStartQuiz }) => {
   return (
     <div className="px-6 py-4">
-      <p className="mb-6 font-bold text-gray-G30">اختبار</p>
-      <h2 className="text-3xl font-bold">
-        التدريب الأول: ماهية مقدمة عن البرنامج
-      </h2>
-      <div className="mb-4 mt-10  flex items-end justify-between border-b-2 border-gray-300 pb-6">
+      <div className="mb-16">
+        <p className="mb-6 font-bold text-gray-G30">اختبار</p>
+        <h2 className="text-3xl font-bold">
+          التدريب الأول: ماهية مقدمة عن البرنامج
+        </h2>
+      </div>
+      <div className="mb-6 flex items-end justify-between border-b-2 border-gray-300 pb-10">
         <div className="space-y-2">
           <h4 className="font-bold">أرسل مهمتك</h4>
           <p className="text-gray-G30">
