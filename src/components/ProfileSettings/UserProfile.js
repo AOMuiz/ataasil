@@ -69,6 +69,11 @@ const UserProfile = () => {
     setEditMode(!editMode);
   };
 
+  const cancleEdit = () => {
+    setEditMode(false);
+    setFormData({ ...profileDetails });
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -111,7 +116,7 @@ const UserProfile = () => {
             <Icon id={"upload"} size={23} />
           </button>
         </div>
-        <InfoContainer className="h-80 space-y-2 overflow-y-scroll px-3">
+        <InfoContainer className="h-80 space-y-2 overflow-y-scroll border-l-2 border-l-primary-P200 px-3">
           <ChangeProfileInput
             name="username"
             htmlFor="username"
@@ -121,20 +126,19 @@ const UserProfile = () => {
             value={formData.username}
             onChange={handleChange}
             autoFocus={true}
+            required
           />
           <ChangeProfileInput
             placeholder={"الاسم الكامل بالانجليزية"}
             label={"الاسم الكامل بالانجليزية"}
             disabled={true}
             value={formData.username && formData?.username}
-            onChange={handleChange}
           />
           <ChangeProfileInput
             placeholder={"البريد الإلكتروني"}
             label={"البريد الإلكتروني"}
             disabled={true}
             value={formData?.email && formData?.email}
-            onChange={handleChange}
           />
           <ChangeProfileInput
             placeholder={"قطاع الوظيفة"}
@@ -155,13 +159,13 @@ const UserProfile = () => {
               type="tel"
               value={formData.phoneRelevant}
               onChange={handleChange}
+              required
             />
-
             <div>
               <ChangeProfileInput
                 label="الكود"
                 placeholder="+234"
-                disabled={!editMode}
+                disabled={true}
                 value={formData.phoneCountryCode}
               />
             </div>
@@ -176,6 +180,7 @@ const UserProfile = () => {
               label="تاريخ الميلاد"
               value={formData.dateOfBirth}
               onChange={handleChange}
+              required
             />
           </div>
         </div>
@@ -188,7 +193,7 @@ const UserProfile = () => {
             </CtaButton>
             <button
               className="rounded-full border-2 border-red-300 bg-slate-50 px-3 py-3 transition hover:bg-red-200"
-              onClick={handleToggleEditMode}
+              onClick={cancleEdit}
             >
               Cancel
             </button>

@@ -7,6 +7,7 @@ export const ChangeProfileInput = ({
   htmlFor,
   name,
   type,
+  autoFocus,
   ...otherAttributes
 }) => (
   <div className="max-w-[200px]">
@@ -21,15 +22,17 @@ export const ChangeProfileInput = ({
         <input
           className="w-full rounded border-2 bg-[#F9F9F9] p-2 text-neutral-N70"
           value={value}
+          disabled={disabled}
         />
       ) : (
         <input
-          type={type ? type : "text"}
-          className="w-full rounded border-2 bg-[#fbfbfb]  p-2 text-gray-G30  placeholder:py-1"
-          value={value}
           name={name}
+          value={value}
           htmlFor={htmlFor}
+          type={type ? type : "text"}
+          className="w-full rounded border-2 bg-[#fbfbfb] p-2 text-gray-G30 outline-none  placeholder:py-1"
           onChange={onChange}
+          autoFocus={autoFocus}
           {...otherAttributes}
         />
       )}

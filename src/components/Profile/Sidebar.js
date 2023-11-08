@@ -4,6 +4,7 @@ import SidebarItem from "./SidebarItem";
 import { useReactiveVar } from "@apollo/client";
 import { getFirstLetters, isNotNullOrUndefined } from "../../utils/helpers";
 import { profileDetailsVar } from "../../graphql/state";
+import * as Avatar from "@radix-ui/react-avatar";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -15,11 +16,13 @@ const Sidebar = () => {
   return (
     <div className="h-full min-w-[250px] basis-[20vw] bg-neutral-N20 py-6 ">
       <div className="mx-2 my-3 flex items-center">
-        <p className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-P300 text-center text-lg font-semibold uppercase">
-          {firstLetter && <span>{firstLetter}</span>}
-          {secondLetter && <span>{secondLetter}</span>}
-        </p>
-        <p className="mx-4 my-4 text-lg font-bold capitalize">{username}</p>
+        <Avatar.Root className="inline-flex h-12 w-12 select-none items-center justify-center overflow-hidden rounded-full bg-primary-P300 align-middle">
+          <Avatar.Fallback className="leading-1 flex h-full w-full items-center justify-center  bg-primary-P300 text-lg  font-semibold uppercase">
+            {firstLetter && <span>{firstLetter}</span>}
+            {secondLetter && <span>{secondLetter}</span>}
+          </Avatar.Fallback>
+        </Avatar.Root>
+        <p className="mx-4 my-4 text-lg  capitalize">{username}</p>
       </div>
       <ul className="flex flex-col gap-4">
         {sideMenu.map((item, key) => (
