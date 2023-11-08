@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import QuizSynopsis from "./QuizSynopsis";
 import QuizQuestion from "./QuizQuestion";
 import QuizSummary from "./QuizSummary";
-import QuizExplanation from "./QuizExplanation";
 
 const quizData = [
   {
@@ -29,7 +28,6 @@ const Quiz = () => {
   const [quizStarted, setQuizStarted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState([]);
-  const [showExplanation, setShowExplanation] = useState(false);
 
   const handleStartQuiz = () => {
     setQuizStarted(true);
@@ -93,11 +91,8 @@ const Quiz = () => {
             quizAnswers={quizAnswers}
             correctAnswers={correctAnswers}
             wrongAnswers={wrongAnswers}
-            showExplanation={setShowExplanation}
           />
         </div>
-      ) : showExplanation === true ? (
-        <QuizExplanation quizData={quizData} quizAnswers={quizAnswers} />
       ) : (
         <QuizQuestion
           questionData={quizData[currentQuestionIndex]}

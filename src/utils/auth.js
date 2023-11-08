@@ -1,13 +1,37 @@
+// Function to save a token with a timestamp
 export function saveToken(token) {
-  localStorage.setItem("token", JSON.stringify(token));
+  const currentTime = new Date().getTime();
+  const tokenData = {
+    token: token,
+    timestamp: currentTime,
+  };
+  localStorage.setItem("tokenData", JSON.stringify(tokenData));
+}
+
+// Function to get and check the token's expiration
+export function getToken() {
+  const tokenData = localStorage.getItem("tokenData");
+  if (tokenData) {
+    const parsedData = JSON.parse(tokenData);
+    const currentTime = new Date().getTime();
+    const tokenAgeInMilliseconds = currentTime - parsedData.timestamp;
+    const oneMonthInMilliseconds = 30 * 24 * 60 * 60 * 1000; // Assuming a month has 30 days
+
+    if (tokenAgeInMilliseconds >= oneMonthInMilliseconds) {
+      // Token has expired, remove it
+      localStorage.removeItem("tokenData");
+      return null;
+    } else {
+      // Token is still valid, return it
+      return parsedData.token;
+    }
+  } else {
+    return null;
+  }
 }
 
 export function saveUser(userObj) {
   localStorage.setItem("user", JSON.stringify(userObj));
-}
-
-export function getToken() {
-  return JSON.parse(localStorage.getItem("token"));
 }
 
 export function getUser() {
@@ -18,8 +42,8 @@ export function isLoggedIn() {
   let token;
   let user;
   if (typeof window !== "undefined") {
-    token = JSON.parse(localStorage.getItem("token"));
-    user = JSON.parse(localStorage.getItem("user"));
+   token = getToken();
+  user = JSON.parse(localStorage.getItem("user"));
   }
 
   if (token && user) {
