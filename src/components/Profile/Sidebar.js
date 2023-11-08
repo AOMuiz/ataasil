@@ -13,9 +13,9 @@ const Sidebar = () => {
   let secondLetter = isNotNullOrUndefined(letters[1]) && letters[1];
 
   return (
-    <div className="h-full basis-[20vw] bg-neutral-N20 py-6">
-      <div className="mx-2 my-3 flex items-center justify-center">
-        <p className="flex h-12 w-12  items-center justify-center rounded-full bg-primary-P300 text-center text-lg font-semibold uppercase">
+    <div className="h-full min-w-[250px] basis-[20vw] bg-neutral-N20 py-6 ">
+      <div className="mx-2 my-3 flex items-center">
+        <p className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-P300 text-center text-lg font-semibold uppercase">
           {firstLetter && <span>{firstLetter}</span>}
           {secondLetter && <span>{secondLetter}</span>}
         </p>
