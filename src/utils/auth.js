@@ -21,10 +21,9 @@ export function getToken() {
       if (tokenAgeInMilliseconds >= oneMonthInMilliseconds) {
         // Token has expired, remove it
         logoutTask();
-        localStorage.removeItem("tokenData");
+        // localStorage.removeItem("tokenData");
         return null;
       } else {
-        console.log({ parsedData: parsedData.token });
         // Token is still valid, return it
         return parsedData.token;
       }
