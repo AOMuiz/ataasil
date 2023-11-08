@@ -9,14 +9,13 @@ const UserIconName = () => {
   const { username } = useReactiveVar(profileDetailsVar);
   const letters = getFirstLetters(username);
 
-  // console.log({ letters, username });
   let firstLetter = letters[0] ? letters[0] : "";
   let seccondLetter = letters[1] ? letters[1] : "";
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex cursor-pointer items-center gap-4">
       <Link href="/dashboard" className="cursor-pointer">
-        <p className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-primary-P300 text-center  text-2xl font-bold uppercase">
+        <p className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-P300 text-center  text-xl font-bold uppercase">
           {letters.length ? `${firstLetter}${seccondLetter}` : null}
         </p>
       </Link>
