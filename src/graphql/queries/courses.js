@@ -8,13 +8,13 @@ export const COURSES = gql`
       description
       banner
       category
+      createdAt
       liveSessions {
         link
         time
         timezone
         description
       }
-      createdAt
       teacher {
         _id
         email

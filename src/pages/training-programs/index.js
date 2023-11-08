@@ -71,10 +71,6 @@ const TrainingPrograms = () => {
           {data && (
             <>
               <CourseCard />
-              <CourseCard />
-              <CourseCard />
-              <CourseCard />
-              <CourseCard />
             </>
           )}
         </CourseList>
