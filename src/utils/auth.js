@@ -12,18 +12,26 @@ export function saveToken(token) {
 export function getToken() {
   const tokenData = localStorage.getItem("tokenData");
   if (tokenData) {
-    const parsedData = JSON.parse(tokenData);
-    const currentTime = new Date().getTime();
-    const tokenAgeInMilliseconds = currentTime - parsedData.timestamp;
-    const oneMonthInMilliseconds = 30 * 24 * 60 * 60 * 1000; // Assuming a month has 30 days
+    try {
+      const parsedData = JSON.parse(tokenData);
+      const currentTime = new Date().getTime();
+      const tokenAgeInMilliseconds = currentTime - parsedData.timestamp;
+      const oneMonthInMilliseconds = 30 * 24 * 60 * 60 * 1000; // Assuming a month has 30 days
 
-    if (tokenAgeInMilliseconds >= oneMonthInMilliseconds) {
-      // Token has expired, remove it
+      if (tokenAgeInMilliseconds >= oneMonthInMilliseconds) {
+        // Token has expired, remove it
+        logoutTask();
+        // localStorage.removeItem("tokenData");
+        return null;
+      } else {
+        // Token is still valid, return it
+        return parsedData.token;
+      }
+    } catch (error) {
+      console.error("Error parsing token data:", error);
+      // Handle the error, e.g., remove the invalid data
       localStorage.removeItem("tokenData");
       return null;
-    } else {
-      // Token is still valid, return it
-      return parsedData.token;
     }
   } else {
     return null;
@@ -42,8 +50,8 @@ export function isLoggedIn() {
   let token;
   let user;
   if (typeof window !== "undefined") {
-   token = getToken();
-  user = JSON.parse(localStorage.getItem("user"));
+    token = getToken();
+    user = JSON.parse(localStorage.getItem("user"));
   }
 
   if (token && user) {
@@ -53,6 +61,6 @@ export function isLoggedIn() {
 }
 
 export function logoutTask() {
-  localStorage.removeItem("token");
+  localStorage.removeItem("tokenData");
   localStorage.removeItem("user");
 }

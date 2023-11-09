@@ -9,10 +9,12 @@ const Programs = () => {
     <Container>
       <div className="my-10">
         <SectionHeader title={"المنتجات"} />
-        <p className="text-2xl my-10">البرامج التدريبية</p>
+        <p className="my-10 text-2xl">البرامج التدريبية</p>
       </div>
       <SectionDivider />
-      <div className="mt-4">
+      <div className="mt-4 flex gap-5">
+        <CourseCard />
+        <CourseCard />
         <CourseCard />
       </div>
     </Container>
