@@ -62,13 +62,6 @@ const BottomNav = () => {
                 </a>
               </Link>
             </li>
-            <li className="cursor-pointer">
-              <Link href={"/"}>
-                <a>
-                  <IoNotificationsOutline size={30} />
-                </a>
-              </Link>
-            </li>
           </ul>
           <UserIconName username={profileDetails?.username} />
         </div>

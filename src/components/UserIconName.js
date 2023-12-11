@@ -13,16 +13,18 @@ const UserIconName = () => {
   let seccondLetter = letters[1] ? letters[1] : "";
 
   return (
-    <div className="flex cursor-pointer items-center gap-4">
-      <Link href="/dashboard" className="cursor-pointer">
+    <div className="flex cursor-pointer items-center gap-4 ">
+      <Link href="/dashboard">
         <p className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-P300 text-center  text-xl font-bold uppercase">
           {letters.length ? `${firstLetter}${seccondLetter}` : null}
         </p>
       </Link>
-      <div className="flex items-center">
-        <p className="capitalize">{username}</p>
-        <Icon id={"chevron-down"} className="px-3" size={25} />
-      </div>
+      <Link href="/dashboard">
+        <div className="flex items-center">
+          <p className="capitalize">{username}</p>
+          <Icon id={"chevron-down"} className="px-3" size={25} />
+        </div>
+      </Link>
     </div>
   );
 };

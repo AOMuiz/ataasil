@@ -22,6 +22,7 @@ import {
   HiOutlineLocationMarker,
   HiOutlineBell,
   HiOutlinePencil,
+  HiOutlineArrowRight,
 } from "react-icons/hi";
 
 import {
@@ -34,17 +35,21 @@ import {
   BiVideo,
 } from "react-icons/bi";
 
-import { BsArrowRight, BsArrowLeft, BsBookmark } from "react-icons/bs";
-import { IoOptionsOutline } from "react-icons/io5";
-import { FaFacebookF, FaGreaterThan, FaLessThan, FaSort } from "react-icons/fa";
 import {
   MdOutlineDashboard,
   MdOutlineCancel,
   MdOutlineAssignmentTurnedIn,
 } from "react-icons/md";
+
+import { BsArrowRight, BsArrowLeft, BsBookmark } from "react-icons/bs";
+
+import { FaRegCalendarCheck } from "react-icons/fa";
+import { PiStudentLight, PiCertificateLight } from "react-icons/pi";
+import { IoOptionsOutline } from "react-icons/io5";
+import { FaFacebookF, FaGreaterThan, FaLessThan, FaSort } from "react-icons/fa";
 import { TbNotes } from "react-icons/tb";
-import { HiOutlineArrowRight } from "react-icons/hi";
 import { GiJusticeStar } from "react-icons/gi";
+import { CiWallet, CiTrophy, CiMobile2, CiVideoOn } from "react-icons/ci";
 
 const icons = {
   search: BiSearchAlt,
@@ -87,6 +92,13 @@ const icons = {
   FileText: AiOutlineFileText,
   play: AiOutlinePlayCircle,
   assignment: MdOutlineAssignmentTurnedIn,
+  student: PiStudentLight,
+  calender: FaRegCalendarCheck,
+  wallet: CiWallet,
+  trophy: CiTrophy,
+  mobile: CiMobile2,
+  certificateLight: PiCertificateLight,
+  videolight: CiVideoOn,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {

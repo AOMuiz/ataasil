@@ -41,9 +41,9 @@ const Sidebar = () => {
           <TabsTrigger className="TabsTrigger" value="tab2">
             المحتوى
           </TabsTrigger>
-          <TabsTrigger className="TabsTrigger" value="tab3">
+          {/* <TabsTrigger className="TabsTrigger" value="tab3">
             الآراء
-          </TabsTrigger>
+          </TabsTrigger> */}
         </Tabs.List>
         <Tabs.Content className="min-w-[150px]" value="tab1">
           <div className="flex items-center gap-3 border-b-2 border-gray-200 px-5 py-3">
@@ -139,7 +139,7 @@ const Sidebar = () => {
           <h6 className="my-6 text-2xl text-gray-G30">القائمة</h6>
           <Topic />
         </Tabs.Content>
-        <Tabs.Content className="TabsContent space-y-4 p-3" value="tab3">
+        {/* <Tabs.Content className="TabsContent space-y-4 p-3" value="tab3">
           <ul className="space-y-3">
             {reviews.map((content, i) => (
               <li
@@ -162,7 +162,7 @@ const Sidebar = () => {
               </li>
             ))}
           </ul>
-        </Tabs.Content>
+        </Tabs.Content> */}
       </Tabs.Root>
     </div>
   );

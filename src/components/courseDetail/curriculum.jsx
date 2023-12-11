@@ -1,0 +1,101 @@
+import React from "react";
+import * as Accordion from "@radix-ui/react-accordion";
+import { cn } from "../../utils/helpers";
+import Icon from "../Icon";
+import TopicResource from "../Course/TopicResource";
+
+const Curriculum = ({ curriculum }) => {
+  return (
+    <Accordion.Root
+      className="rounded-md border shadow-neutral-200"
+      type="single"
+      defaultValue={curriculum.course_getSections[0]._id}
+      collapsible
+    >
+      {curriculum &&
+        curriculum.course_getSections.map((section) => (
+          <AccordionItem value={section._id} key={section._id}>
+            <AccordionTrigger>{section.title}</AccordionTrigger>
+            <AccordionContent>
+              <ul className="space-y-2">
+                {section.files.map((file) => (
+                  <TopicResource
+                    topicFile={file}
+                    key={file.title}
+                    sectionId={section._id}
+                    format={"file"}
+                  />
+
+                  //   <li key={file.title}>{file.title}</li>
+                ))}
+                {section.test && (
+                  <TopicResource
+                    format={"test"}
+                    sectionId={section._id}
+                    testDetail={section.test}
+                  />
+                )}
+              </ul>
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+    </Accordion.Root>
+  );
+};
+
+// eslint-disable-next-line react/display-name
+const AccordionItem = React.forwardRef(
+  ({ children, className, ...props }, forwardedRef) => (
+    <Accordion.Item
+      className={cn(
+        `mt-px overflow-hidden first:mt-0 first:rounded-t last:rounded-b focus-within:relative focus-within:z-10 focus-within:shadow-[0_0_0_2px] focus-within:shadow-neutral-N60`,
+        className && `${className}`
+      )}
+      {...props}
+      ref={forwardedRef}
+    >
+      {children}
+    </Accordion.Item>
+  )
+);
+
+// eslint-disable-next-line react/display-name
+const AccordionTrigger = React.forwardRef(
+  ({ children, className, ...props }, forwardedRef) => (
+    <Accordion.Header className="flex bg-[#f7f9fa]">
+      <Accordion.Trigger
+        className={cn(
+          "shadow-mauve6 hover:bg-mauve2 group flex h-[45px] flex-1 cursor-default items-center justify-between px-5 text-[15px]  font-bold leading-none text-gray-950 shadow-[0_1px_0] outline-none",
+          className
+        )}
+        {...props}
+        ref={forwardedRef}
+      >
+        {children}
+        <Icon
+          id="chevron-down"
+          className="text-violet10 transition-transform duration-300 ease-[cubic-bezier(0.87,_0,_0.13,_1)] group-data-[state=open]:rotate-180"
+          aria-hidden
+        />
+      </Accordion.Trigger>
+    </Accordion.Header>
+  )
+);
+
+// eslint-disable-next-line react/display-name
+const AccordionContent = React.forwardRef(
+  ({ children, className, ...props }, forwardedRef) => (
+    <Accordion.Content
+      className={cn(
+        "text-mauve11 bg-mauve2 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-hidden text-[15px]",
+        className
+      )}
+      {...props}
+      ref={forwardedRef}
+    >
+      <div className="px-5 py-[15px]">{children}</div>
+    </Accordion.Content>
+  )
+);
+
+export default Curriculum;

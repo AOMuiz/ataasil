@@ -7,7 +7,15 @@ import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 
-const CourseCard = ({ id, title, description, banner, category, teacher }) => {
+const CourseCard = ({
+  id,
+  title,
+  description,
+  banner,
+  category,
+  teacher,
+  price,
+}) => {
   const { t } = useTranslation("index");
 
   return (
@@ -16,9 +24,12 @@ const CourseCard = ({ id, title, description, banner, category, teacher }) => {
         <Link href={`/course/${id}/${title}`}>
           <div className=" relative w-full cursor-pointer overflow-hidden rounded-t-[30px] leading-none">
             <div className="relative aspect-square min-h-[200px]">
-              <Image src={banner ? banner : cardImage} alt="" layout="fill" />
+              <Image
+                src={banner ? banner : cardImage}
+                alt="banner"
+                layout="fill"
+              />
             </div>
-
             <div className="hidden h-fit items-center justify-center bg-primary-P300 opacity-50 group-hover:absolute group-hover:inset-0 group-hover:flex group-hover:h-full ">
               <BsFillPlayCircleFill size={80} color="" />
             </div>
@@ -28,7 +39,7 @@ const CourseCard = ({ id, title, description, banner, category, teacher }) => {
           <div className="flex justify-between">
             <div className="flex items-center gap-2">
               <Icon id={"book"} className="cursor-pointer" size="20" />
-              <p>{category ? category : t("coursecards.topic")}</p>
+              <p>{category && category}</p>
             </div>
             <div className="flex items-center gap-2">
               <Icon id={"clock"} size="20" />
@@ -36,17 +47,15 @@ const CourseCard = ({ id, title, description, banner, category, teacher }) => {
             </div>
           </div>
 
-          <p className=" py-3 text-lg font-bold">
-            {title ? title : t("coursecards.title")}
-          </p>
-          <p>{description ? description : t("coursecards.summary")}</p>
+          <p className=" py-3 text-lg font-bold">{title && title}</p>
+          <p>{description && description}</p>
           <div className="flex items-center justify-between py-3">
             <div className="flex  items-center gap-2 ">
               <Image src={ownerIcon} alt="" />
-              <p>{teacher ? teacher : t("coursecards.owner")}</p>
+              <p>{teacher && teacher}</p>
             </div>
             <p className="cursor-pointer text-primary-P300">
-              {t("coursecards.amount")}
+              {price && `$ ${price}`}
             </p>
           </div>
         </div>

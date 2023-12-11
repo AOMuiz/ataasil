@@ -1,20 +1,17 @@
 import React, { useEffect } from "react";
-import Image from "next/image";
 import { useLazyQuery, useReactiveVar } from "@apollo/client";
 import { useRouter } from "next/router";
 import ReactPlayer from "react-player/lazy";
 import dynamic from "next/dynamic";
-
-import player from "/public/assets/images/vid-player.png";
 import { COURSES_SECTIONS } from "../../../../graphql/queries/courses";
-import Sidebar from "../../../../components/Course/Sidebar";
-import CtaButton from "../../../../components/CtaButton";
+import Sidebar from "../../components/Course/Sidebar";
+import CtaButton from "../../components/CtaButton";
+import Quiz from "../../components/Quiz";
 import {
   presentCourseDetailVar,
   presentCourseFileDetail,
   presentCourseSectionTest,
-} from "../../../../graphql/state";
-import Quiz from "../../../../components/Quiz";
+} from "../../graphql/state";
 
 const SinglePage = dynamic(
   () => import("../../../../components/Pdf/SinglePage"),

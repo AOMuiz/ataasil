@@ -107,7 +107,9 @@ const TopicResource = ({ topicFile, format, sectionId, testDetail }) => {
               {topicFile?.title}
             </span>
           }
-          <span className="self-end font-bold">01:30</span>
+          {topicFile?.format === "Video" && (
+            <span className="self-end font-medium">01:30</span>
+          )}
         </li>
       ) : (
         <li
@@ -117,10 +119,15 @@ const TopicResource = ({ topicFile, format, sectionId, testDetail }) => {
           {getIconName("test")}
           <span
             className={cn(
-              sectionId === courseSectionTest.sectionId && "text-primary-P200"
+              sectionId === courseSectionTest.sectionId && "text-primary-P200",
+              "flex-1"
             )}
           >
             تقييم
+          </span>
+
+          <span className="self-end font-medium">
+            questions {courseSectionTest.test.length}
           </span>
         </li>
       )}

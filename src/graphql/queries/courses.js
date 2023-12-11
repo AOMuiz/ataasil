@@ -1,5 +1,35 @@
 import { gql } from "@apollo/client";
 
+export const COURSE = gql`
+  query Course($courseId: ID!) {
+    course(courseId: $courseId) {
+      _id
+      title
+      description
+      banner
+      liveSessions {
+        link
+        time
+        timezone
+        description
+      }
+      createdAt
+      teacher {
+        _id
+        email
+        username
+        isAccountActivated
+      }
+      category
+      price
+      hasAccess
+      progress
+      sectionCount
+      studentCount
+    }
+  }
+`;
+
 export const COURSES = gql`
   query Courses($pagination: PaginationInput!) {
     courses(pagination: $pagination) {
@@ -7,20 +37,16 @@ export const COURSES = gql`
       title
       description
       banner
-      category
       createdAt
-      liveSessions {
-        link
-        time
-        timezone
-        description
-      }
+      category
+      price
       teacher {
-        _id
-        email
         username
-        isAccountActivated
       }
+      hasAccess
+      progress
+      sectionCount
+      studentCount
     }
   }
 `;
@@ -41,12 +67,17 @@ export const COURSES_SECTIONS = gql`
         size
         description
         title
+        isPreview
       }
       test {
+        _id
         question
         options
-        answer
+        answers
+        isAnswerMultiple
+        score
       }
+      isCompleted
     }
   }
 `;

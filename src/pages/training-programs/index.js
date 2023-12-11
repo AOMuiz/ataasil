@@ -68,11 +68,6 @@ const TrainingPrograms = () => {
                 teacher={course.teacher.username}
               />
             ))}
-          {data && (
-            <>
-              <CourseCard />
-            </>
-          )}
         </CourseList>
         <Pagination />
       </section>

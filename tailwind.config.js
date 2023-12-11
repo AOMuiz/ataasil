@@ -88,6 +88,7 @@ module.exports = {
         },
         gray: {
           G10: "#f4f4f4",
+          G15: "#F5F5F5",
           G20: "#E7E7E7",
           G30: "#5A5A5A",
         },
