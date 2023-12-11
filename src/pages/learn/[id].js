@@ -3,7 +3,7 @@ import { useLazyQuery, useReactiveVar } from "@apollo/client";
 import { useRouter } from "next/router";
 import ReactPlayer from "react-player/lazy";
 import dynamic from "next/dynamic";
-import { COURSES_SECTIONS } from "../../../../graphql/queries/courses";
+import { COURSES_SECTIONS } from "../../graphql/queries/courses";
 import Sidebar from "../../components/Course/Sidebar";
 import CtaButton from "../../components/CtaButton";
 import Quiz from "../../components/Quiz";
@@ -13,12 +13,9 @@ import {
   presentCourseSectionTest,
 } from "../../graphql/state";
 
-const SinglePage = dynamic(
-  () => import("../../../../components/Pdf/SinglePage"),
-  {
-    ssr: false,
-  }
-);
+const SinglePage = dynamic(() => import("../../components/Pdf/SinglePage"), {
+  ssr: false,
+});
 
 const Index = () => {
   const { query } = useRouter();

@@ -8,7 +8,7 @@ const Curriculum = ({ curriculum }) => {
   return (
     <Accordion.Root
       className="rounded-md border shadow-neutral-200"
-      type="single"
+      type="multiple"
       defaultValue={curriculum.course_getSections[0]._id}
       collapsible
     >
@@ -25,8 +25,6 @@ const Curriculum = ({ curriculum }) => {
                     sectionId={section._id}
                     format={"file"}
                   />
-
-                  //   <li key={file.title}>{file.title}</li>
                 ))}
                 {section.test && (
                   <TopicResource
@@ -65,7 +63,7 @@ const AccordionTrigger = React.forwardRef(
     <Accordion.Header className="flex bg-[#f7f9fa]">
       <Accordion.Trigger
         className={cn(
-          "shadow-mauve6 hover:bg-mauve2 group flex h-[45px] flex-1 cursor-default items-center justify-between px-5 text-[15px]  font-bold leading-none text-gray-950 shadow-[0_1px_0] outline-none",
+          "hover:bg-mauve2 group flex h-[45px] flex-1 cursor-default items-center justify-between px-5 text-[15px] font-bold  leading-none text-gray-950 shadow-[0_1px_0] shadow-gray-200 outline-none",
           className
         )}
         {...props}
@@ -87,7 +85,7 @@ const AccordionContent = React.forwardRef(
   ({ children, className, ...props }, forwardedRef) => (
     <Accordion.Content
       className={cn(
-        "text-mauve11 bg-mauve2 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-hidden text-[15px]",
+        "text-mauve11 bg-mauve2 overflow-hidden text-[15px] data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown",
         className
       )}
       {...props}
