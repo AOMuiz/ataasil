@@ -2,7 +2,7 @@ import React from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 import Curriculum from "./curriculum";
 
-const CourseDetailsTab = ({ curriculum }) => {
+const CourseDetailsTab = ({ curriculum, course }) => {
   return (
     <Tabs.Root className="col-span-2 flex-1" dir="rtl" defaultValue={"tab1"}>
       <Tabs.List
@@ -34,16 +34,9 @@ const CourseDetailsTab = ({ curriculum }) => {
         value="tab1"
       >
         <div>
-          <p className="mb-3 text-lg font-medium">تفصيل</p>
+          <p className="mb-3 text-2xl font-medium">تفصيل</p>
         </div>
-        <p>
-          مئات للأراضي و وفي, تمهيد الأمور فعل بـ, فشكّل والحزب محاولات فعل عل.
-          ويعزى فرنسية الإتفاقية لكل أي. كل منتصف غينيا الاندونيسية ومن, بأيدي
-          وصافرات الأرضية أي وتم, لان من إجلاء وحلفاؤها الدنمارك. بعد ان وقرى
-          المزيفة, الغالي بقيادة بحث عل. يتسنّى واشتدّت و كلّ. كل مقاومة العسكري
-          وفي. غير بـ جمعت هناك بالولايات, ان ومضى سبتمبر مشاركة لكل. لم الذود
-          انتباه دون. فكان وبولندا تم ومن, حول طوكيو اليها هو.
-        </p>
+        <p>{course && course.description}</p>
       </Tabs.Content>
       <Tabs.Content
         className="grow rounded-b-md bg-white p-5 outline-none focus:shadow-[0_0_0_2px] focus:shadow-black"

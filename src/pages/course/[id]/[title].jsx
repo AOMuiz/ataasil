@@ -26,14 +26,16 @@ const Index = () => {
   });
 
   useEffect(() => {
-    getCourse({ variables: { courseId: query.id } });
-    getSections({ variables: { courseId: "64c4bf9965f2333a8cfa780b" } });
+    if (query.id) {
+      getCourse({ variables: { courseId: query.id } });
+      getSections({ variables: { courseId: query.id } });
+    }
   }, [query.id]);
 
   return (
     <>
       {courseloading ? (
-        <div className="h-screen">
+        <div className="h-screen p-10">
           <p>Loading...</p>
         </div>
       ) : (
@@ -64,7 +66,10 @@ const Index = () => {
             </div>
           </section>
           <section className="mt-2 grid h-full grid-cols-3 gap-5 p-10">
-            <CourseDetailsTab curriculum={courseSection} />
+            <CourseDetailsTab
+              curriculum={courseSection}
+              course={courseDetail?.course}
+            />
             <DetailsCard courseDetail={courseDetail} />
           </section>
         </div>
