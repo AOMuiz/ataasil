@@ -25,6 +25,7 @@ const TopicResource = ({ topicFile, format, sectionId, testDetail }) => {
         fileUrl: topicFile.src,
         fileTitle: topicFile.title,
         fileDescription: topicFile.description,
+        isPreview: topicFile.isPreview,
       },
     });
   };
@@ -92,29 +93,48 @@ const TopicResource = ({ topicFile, format, sectionId, testDetail }) => {
   return (
     <>
       {format === "file" ? (
-        <li
-          onClick={() => setPresentFile()}
-          className="group flex cursor-pointer items-center  gap-4 border-b border-gray-G20 pb-4"
-        >
-          {getIconName(topicFile?.format)}
-          {
-            <span
-              className={cn(
-                topicFile?.title === active && "text-primary-P200",
-                "flex-1"
-              )}
-            >
-              {topicFile?.title}
-            </span>
-          }
-          {topicFile?.format === "Video" && (
-            <span className="self-end font-medium">01:30</span>
-          )}
+        <li>
+          <button
+            disabled={topicFile.isPreview === false}
+            onClick={() => setPresentFile()}
+            className={cn(
+              "group flex w-full cursor-pointer items-center justify-between gap-4 border-b border-gray-G20 pb-4"
+            )}
+          >
+            <p className="flex gap-4">
+              {getIconName(topicFile?.format)}
+              {
+                <span
+                  className={cn(
+                    topicFile?.title === active && "text-primary-P200",
+                    topicFile.isPreview && "text-primary-P600 underline",
+                    "flex-1"
+                  )}
+                >
+                  {topicFile?.title}
+                </span>
+              }
+            </p>
+
+            {topicFile?.format === "Video" && (
+              <p className={cn("space-x-1 self-end font-medium")}>
+                <span
+                  className={cn(
+                    "self-end font-medium",
+                    topicFile.isPreview && "text-primary-P600 underline"
+                  )}
+                >
+                  {topicFile.isPreview && "Preview"}
+                </span>
+                <span>01:30</span>
+              </p>
+            )}
+          </button>
         </li>
       ) : (
         <li
           onClick={() => setPresentTest()}
-          className="group flex cursor-pointer items-center  gap-4 border-b border-gray-G20 pb-4"
+          className="group flex cursor-pointer items-center gap-4 border-b border-gray-G20 pb-4"
         >
           {getIconName("test")}
           <span
@@ -127,7 +147,7 @@ const TopicResource = ({ topicFile, format, sectionId, testDetail }) => {
           </span>
 
           <span className="self-end font-medium">
-            questions {courseSectionTest.test.length}
+            Questions {testDetail.length}
           </span>
         </li>
       )}

@@ -19,7 +19,7 @@ const DetailsCard = ({ courseDetail }) => {
         <p className="text-2xl font-bold">${courseDetail?.course.price}</p>
         <div className="space-y-4">
           <CtaButton className="w-full rounded-md bg-[#35CCBC] font-semibold">
-            Add to Cart
+            إضافة الى السلة
           </CtaButton>
           <CtaButton className="w-full rounded-md border-2 border-gray-500 bg-transparent font-semibold text-neutral-600">
             Buy Now

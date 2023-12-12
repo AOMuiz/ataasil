@@ -22,4 +22,5 @@ export const presentCourseFileDetail = makeVar({
   fileUrl: "",
   fileTitle: "",
   fileDescription: "",
+  isPreview: false,
 });

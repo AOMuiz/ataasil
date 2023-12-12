@@ -116,7 +116,8 @@ const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.span`
+  display: block;
   & > svg {
     display: block;
     stroke-width: ${(p) =>

@@ -81,3 +81,33 @@ export const COURSES_SECTIONS = gql`
     }
   }
 `;
+
+export const COURSES_GET_CART = gql`
+  query Courses_getFromCart {
+    courses_getFromCart {
+      _id
+      title
+      description
+      banner
+      liveSessions {
+        link
+        time
+        timezone
+        description
+      }
+      createdAt
+      teacher {
+        _id
+        email
+        username
+        isAccountActivated
+      }
+      category
+      price
+      hasAccess
+      progress
+      sectionCount
+      studentCount
+    }
+  }
+`;

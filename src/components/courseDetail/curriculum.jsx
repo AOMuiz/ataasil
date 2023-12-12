@@ -9,7 +9,11 @@ const Curriculum = ({ curriculum }) => {
     <Accordion.Root
       className="rounded-md border shadow-neutral-200"
       type="multiple"
-      defaultValue={curriculum.course_getSections[0]._id}
+      defaultValue={
+        curriculum.course_getSections.length > 1
+          ? curriculum.course_getSections[0]._id
+          : ""
+      }
       collapsible
     >
       {curriculum &&
