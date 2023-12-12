@@ -16,6 +16,12 @@ const RouteGuard = ({ children, excludedRoutes }) => {
   const { authenticated } = useReactiveVar(authStateVar);
   const router = useRouter();
 
+  // TODO:
+  /**
+   * if there's an auth token check expiry
+   * if it has expired, redirect to auth page
+   */
+
   useEffect(() => {
     if (!excludedRoutes?.includes(router.pathname)) {
       refetch();
