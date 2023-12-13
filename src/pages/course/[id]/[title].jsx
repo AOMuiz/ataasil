@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLazyQuery } from "@apollo/client";
+import { useLazyQuery, useReactiveVar } from "@apollo/client";
 import { useRouter } from "next/router";
 
 import { COURSES_SECTIONS, COURSE } from "../../../graphql/queries/courses";
@@ -7,9 +7,11 @@ import Icon from "../../../components/Icon";
 import CourseDetailsTab from "../../../components/courseDetail/courseDetailsTab";
 import DetailsCard from "../../../components/courseDetail/detailsCard";
 import Spinner from "../../../components/spinner";
+import { cartItemsVar } from "../../../graphql/state";
 
 const Index = () => {
   const { query } = useRouter();
+  const courseFromCartData = useReactiveVar(cartItemsVar);
 
   const [
     getSections,

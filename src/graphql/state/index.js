@@ -24,3 +24,4 @@ export const presentCourseFileDetail = makeVar({
   fileDescription: "",
   isPreview: false,
 });
+export const cartItemsVar = makeVar([]);

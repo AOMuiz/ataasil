@@ -9,7 +9,7 @@ import Logo from "../Svg/Logo";
 import DesktopMenuBar from "./DesktopMenuBar";
 import { isLoggedIn } from "../../utils/auth";
 import UserIconName from "../UserIconName";
-import { authStateVar, profileDetailsVar } from "../../graphql/state";
+import { profileDetailsVar, cartItemsVar } from "../../graphql/state";
 import { useEffect } from "react";
 import { useGetCart } from "../../hooks/useCart";
 import PopoverDemo from "../popover";
@@ -18,6 +18,7 @@ import Image from "next/image";
 const BottomNav = () => {
   const { t } = useTranslation("index");
   const profileDetails = useReactiveVar(profileDetailsVar);
+  const courseFromCartData = useReactiveVar(cartItemsVar);
   // const {authenticated} = useReactiveVar(authStateVar);
   const auth = isLoggedIn();
   const [cartData, error, loading] = useGetCart();
@@ -50,9 +51,9 @@ const BottomNav = () => {
         <div className="flex items-center gap-10">
           <ul className="flex items-center gap-5 text-[#D5D5D5]">
             <li className="relative cursor-pointer">
-              {cartData?.courses_getFromCart.length > 0 && (
+              {courseFromCartData && courseFromCartData.length > 0 && (
                 <span className="absolute top-0 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 p-2 text-center text-sm text-white">
-                  {cartData?.courses_getFromCart.length}
+                  {courseFromCartData.length}
                 </span>
               )}
               <PopoverDemo
@@ -67,26 +68,30 @@ const BottomNav = () => {
                 }
               >
                 <div className="mt-8 ">
-                  <p className="mb-2.5 border-b-2 border-[#E7E7E7] px-4 pb-2 text-lg font-medium leading-[19px]">
+                  <p className="mb-2.5 border-b-2 border-[#E7E7E7] px-4 pb-3 text-lg font-medium leading-[19px]">
                     سلّة التسوق
                   </p>
                   <div className="border-b-2 border-[#E7E7E7] pb-2">
                     <div className="mx-4 grid gap-4">
-                      {cartData?.courses_getFromCart.map((course) => (
-                        <div className="flex gap-2.5" key={course._id}>
+                      {courseFromCartData?.slice(0, 3).map((course) => (
+                        <div className="flex gap-2.5" key={course?._id}>
                           <Image
-                            src={course.banner}
+                            src={course?.banner}
                             height={78}
                             width={80}
                             alt="course banner"
                             className="rounded-lg"
                           />
                           <div className="flex flex-col gap-1">
-                            <p className="text-lg font-light">{course.title}</p>
-                            <p className="text-gray-500">
-                              {course.teacher.username}
+                            <p className="text-lg font-light">
+                              {course?.title}
                             </p>
-                            <p className="text-md">{course.price} ر.س</p>
+                            <p className="text-gray-500">
+                              {course?.teacher.username}
+                            </p>
+                            <p className="text-md font-bold">
+                              {course?.price} ر.س
+                            </p>
                           </div>
                         </div>
                       ))}
