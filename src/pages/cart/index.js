@@ -14,7 +14,9 @@ const Index = () => {
   return (
     <div className="mx-12">
       <div className="mx-32 my-16 flex gap-x-2 font-bold">
-        <h1 className="text-2xl">سلة التسوىق(1)</h1>
+        <h1 className="text-2xl">
+          سلة التسوىق({`${cartData?.courses_getFromCart.length}`})
+        </h1>
         <button
           onClick={() => removeFromCartFn([])}
           className="flex items-center gap-2 rounded-md bg-danger-D10 p-1 text-white"

@@ -116,19 +116,17 @@ const TopicResource = ({ topicFile, format, sectionId, testDetail }) => {
               }
             </p>
 
-            {topicFile?.format === "Video" && (
-              <p className={cn("space-x-1 self-end font-medium")}>
-                <span
-                  className={cn(
-                    "self-end font-medium",
-                    topicFile.isPreview && "text-primary-P600 underline"
-                  )}
-                >
-                  {topicFile.isPreview && "Preview"}
-                </span>
-                <span>01:30</span>
-              </p>
-            )}
+            <p className={cn("space-x-1 self-end font-medium")}>
+              <span
+                className={cn(
+                  "self-end font-medium",
+                  topicFile.isPreview && "text-primary-P600 underline"
+                )}
+              >
+                {topicFile.isPreview && "Preview"}
+              </span>
+              {topicFile?.format === "Video" && <span>01:30</span>}
+            </p>
           </button>
         </li>
       ) : (

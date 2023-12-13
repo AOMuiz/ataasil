@@ -52,14 +52,14 @@ const BottomNav = () => {
           <ul className="flex items-center gap-5 text-[#D5D5D5]">
             <li className="relative cursor-pointer">
               {courseFromCartData && courseFromCartData.length > 0 && (
-                <span className="absolute top-0 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 p-2 text-center text-sm text-white">
+                <span className="absolute -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 p-2 text-center text-sm text-white">
                   {courseFromCartData.length}
                 </span>
               )}
               <PopoverDemo
                 trigger={
                   <button
-                    aria-label="Update dimensions"
+                    aria-label="Cart overview"
                     className="flex"
                     disabled={loading}
                   >
