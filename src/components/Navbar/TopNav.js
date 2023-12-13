@@ -1,7 +1,6 @@
 import useTranslation from "next-translate/useTranslation";
 import Icon from "../Icon";
 import LocaleSwitcher from "../LocaleSwitcher/LocaleSwitcher";
-import MobileNav from "./MobileNav";
 import Link from "next/link";
 
 const TopNav = () => {
@@ -10,7 +9,7 @@ const TopNav = () => {
     <>
       <div className="flex  justify-between border-b-2 border-gray-G20 bg-white px-20 py-4 font-bold 2md:hidden">
         <ul className="flex items-center justify-between gap-4 text-gray-G30">
-          <li className="cursor-pointer">{t("navbar.Join us")}</li>
+          <li className="cursor-pointer">{t("navbar.confrences")}</li>
           <li className="cursor-pointer">
             <Link href="/training-programs">
               {t("navbar.corporate training")}

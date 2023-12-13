@@ -1,5 +1,4 @@
 import { useQuery, useReactiveVar } from "@apollo/client";
-import { useState } from "react";
 import { profileDetailsVar } from "../graphql/state";
 import { STUDENT_PROFILE } from "../graphql/queries/studentProfile";
 

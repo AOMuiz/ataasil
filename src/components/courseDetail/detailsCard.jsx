@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import CtaButton from "../CtaButton";
 import Icon from "../Icon";
+import { useAddToCart, useGetCart } from "../../hooks/useCart";
+import { useEffect } from "react";
 
 const DetailsCard = ({ courseDetail }) => {
+  const [addToCartFn, data, error, loading] = useAddToCart();
+  const [cartData, cartError, cartLoading] = useGetCart();
+  const [isProductInCart, setIsProductInCart] = useState(true);
+
+  useEffect(() => {
+    if (cartData?.courses_getFromCart) {
+      const inCart = cartData?.courses_getFromCart.find(
+        (cart) => cart._id === courseDetail?.course._id
+      );
+      setIsProductInCart(!!inCart);
+    }
+  }, [cartData?.courses_getFromCart, courseDetail?.course._id]);
+
   return (
     <div className="min-w-[300px] space-y-3 rounded-md p-3 shadow-xl">
       <div className="relative aspect-square overflow-hidden rounded-md border-b">
@@ -18,10 +33,21 @@ const DetailsCard = ({ courseDetail }) => {
       <div className="space-y-2 border-b pb-3">
         <p className="text-2xl font-bold">${courseDetail?.course.price}</p>
         <div className="space-y-4">
-          <CtaButton className="w-full rounded-md bg-[#35CCBC] font-semibold">
+          <CtaButton
+            className="w-full rounded-md bg-[#35CCBC] font-semibold"
+            onClick={() =>
+              addToCartFn({
+                variables: { courseIds: [courseDetail?.course._id] },
+              })
+            }
+            disabled={isProductInCart}
+          >
             إضافة الى السلة
           </CtaButton>
-          <CtaButton className="w-full rounded-md border-2 border-gray-500 bg-transparent font-semibold text-neutral-600">
+          <CtaButton
+            onClick={() => {}}
+            className="w-full rounded-md border-2 border-gray-500 bg-transparent font-semibold text-neutral-600"
+          >
             Buy Now
           </CtaButton>
         </div>

@@ -20,7 +20,7 @@ const MobileMenuBar = () => {
         ) : (
           <div className="space-y-3">
             <LocaleSwitcher />
-            <button className="w-full rounded-full bg-gray-200 py-3 px-6 text-center text-gray-900">
+            <button className="w-full rounded-full bg-gray-200 px-6 py-3 text-center text-gray-900">
               <Link href={"login"}>
                 <span className="flex items-center justify-center gap-3">
                   <Icon id={"lock"} size={20} className="text-gray-400" />
@@ -28,14 +28,14 @@ const MobileMenuBar = () => {
                 </span>
               </Link>
             </button>
-            <button className="w-full cursor-pointer rounded-full bg-primary-P300 py-3 px-6 text-center text-white">
+            <button className="w-full cursor-pointer rounded-full bg-primary-P300 px-6 py-3 text-center text-white">
               <Link href={"signup"}>{t("navbar.sign up")}</Link>
             </button>
           </div>
         )}
         <ul className="space-y-4">
           <li className="w-full cursor-pointer">
-            <Link href="/">
+            <Link href="/training-programs">
               <p className="flex items-center gap-2">
                 <span className="rounded-md bg-primary-P600 p-1">
                   <Icon
@@ -46,7 +46,7 @@ const MobileMenuBar = () => {
                   />
                 </span>
                 <span className="flex flex-1 items-center justify-between">
-                  كلية القرآن وعلومه
+                  التدريب المؤسسي
                   <Icon
                     as={"span"}
                     id={"left"}
@@ -69,7 +69,7 @@ const MobileMenuBar = () => {
                   />
                 </span>
                 <span className="flex flex-1 items-center justify-between">
-                  كلية القرآن وعلومه
+                  دورات
                   <Icon
                     as={"span"}
                     id={"left"}
@@ -92,7 +92,7 @@ const MobileMenuBar = () => {
                   />
                 </span>
                 <span className="flex flex-1 items-center justify-between">
-                  كلية القرآن وعلومه
+                  المدونة
                   <Icon
                     as={"span"}
                     id={"left"}

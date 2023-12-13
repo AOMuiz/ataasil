@@ -28,7 +28,7 @@
     "title": "About the address"
   },
   "header": {
-    "Home": "residence",
+    "Home": "Home",
     "about": "Around"
   },
   "navbar": {
@@ -38,7 +38,8 @@
     "menu": "Menu",
     "sign in": "Sign In",
     "sign up": "Join Ataasil",
-    "search placeholder": "Search the platform"
+    "search placeholder": "Search the platform",
+    "confrences": "conferences"
   },
   "coursecards": {
     "title": "The book of Tawheed of Shaikh Al-Uthaymeen",

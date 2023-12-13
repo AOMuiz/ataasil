@@ -1,17 +1,19 @@
-import { useQuery, useLazyQuery } from "@apollo/client";
+import { useEffect } from "react";
+import { useLazyQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+
 import { COURSES_SECTIONS, COURSE } from "../../../graphql/queries/courses";
 import Icon from "../../../components/Icon";
-import { useEffect } from "react";
 import CourseDetailsTab from "../../../components/courseDetail/courseDetailsTab";
 import DetailsCard from "../../../components/courseDetail/detailsCard";
+import Spinner from "../../../components/spinner";
 
 const Index = () => {
   const { query } = useRouter();
 
   const [
     getSections,
-    { data: courseSection, error: courseSectionError, loading, refetch },
+    { data: courseSection, error: courseSectionError, loading },
   ] = useLazyQuery(COURSES_SECTIONS, {
     onCompleted: (data) => console.log({ courseSectionData: data }),
     onError: (error) => console.log({ courseSectionError: error }),
@@ -26,17 +28,15 @@ const Index = () => {
   });
 
   useEffect(() => {
-    if (query.id) {
-      getCourse({ variables: { courseId: query.id } });
-      getSections({ variables: { courseId: query.id } });
-    }
+    getCourse({ variables: { courseId: query.id } });
+    getSections({ variables: { courseId: query.id } });
   }, [query.id]);
 
   return (
-    <>
+    <main>
       {courseloading ? (
         <div className="h-screen p-10">
-          <p>Loading...</p>
+          <Spinner />
         </div>
       ) : (
         <div className="min-h-screen">
@@ -74,7 +74,7 @@ const Index = () => {
           </section>
         </div>
       )}
-    </>
+    </main>
   );
 };
 

@@ -14,6 +14,7 @@ import {
   AiOutlineEye,
   AiOutlineFileText,
   AiOutlinePlayCircle,
+  AiOutlineDelete,
 } from "react-icons/ai";
 
 import {
@@ -41,7 +42,7 @@ import {
   MdOutlineAssignmentTurnedIn,
 } from "react-icons/md";
 
-import { BsArrowRight, BsArrowLeft, BsBookmark } from "react-icons/bs";
+import { BsArrowRight, BsArrowLeft, BsBookmark, BsCart3 } from "react-icons/bs";
 
 import { FaRegCalendarCheck } from "react-icons/fa";
 import { PiStudentLight, PiCertificateLight } from "react-icons/pi";
@@ -99,6 +100,8 @@ const icons = {
   mobile: CiMobile2,
   certificateLight: PiCertificateLight,
   videolight: CiVideoOn,
+  delete: AiOutlineDelete,
+  cart: BsCart3,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
