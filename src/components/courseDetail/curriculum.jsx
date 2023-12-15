@@ -40,6 +40,7 @@ const Curriculum = ({ curriculum }) => {
                       format={"test"}
                       sectionId={section._id}
                       testDetail={section.test}
+                      preview={true}
                     />
                   )}
                 </ul>

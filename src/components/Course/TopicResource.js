@@ -144,23 +144,29 @@ const TopicResource = ({
           </button>
         </li>
       ) : (
-        <li
-          onClick={() => setPresentTest()}
-          className="group flex cursor-pointer items-center gap-4 border-b border-gray-G20 pb-4"
-        >
-          {getIconName("test")}
-          <span
+        <li>
+          <button
+            disabled={preview}
+            onClick={() => setPresentTest()}
             className={cn(
-              sectionId === courseSectionTest.sectionId && "text-primary-P200",
-              "flex-1"
+              "group flex w-full cursor-pointer items-center justify-between gap-4 border-b border-gray-G20 pb-4"
             )}
           >
-            تقييم
-          </span>
+            <p className="flex gap-4">
+              {getIconName("test")}
+              <span
+                className={cn(
+                  sectionId === courseSectionTest.sectionId &&
+                    "text-primary-P200",
+                  "flex-1"
+                )}
+              >
+                تقييم
+              </span>
+            </p>
 
-          <span className="self-end font-medium">
-            أسئلة {testDetail.length}
-          </span>
+            <span className="font-medium">أسئلة {testDetail.length}</span>
+          </button>
         </li>
       )}
     </>
