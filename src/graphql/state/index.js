@@ -16,6 +16,11 @@ export const presentCourseDetailVar = makeVar([]);
 
 export const presentCourseSectionTest = makeVar({ sectionId: "", test: [] });
 
+export const coursePreviewVar = makeVar({
+  openPreview: false,
+  setOpenPreview: () => null,
+});
+
 export const presentCourseFileDetail = makeVar({
   sectionId: "",
   fileType: "",

@@ -53,6 +53,9 @@ const Index = () => {
                     onClick={() =>
                       removeFromCartFn({
                         variables: { courseIds: [course?._id] },
+                        refetchQueries: [
+                          "Courses_getFromCart", // Query name
+                        ],
                       })
                     }
                     className="flex w-fit items-center gap-2 font-bold text-primary-P600"

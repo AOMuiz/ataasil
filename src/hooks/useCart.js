@@ -33,7 +33,13 @@ export const useAddToCart = () => {
       });
       console.log({ courses: data });
     },
-    onError: (error) => console.log({ error }),
+    onError: (error) => {
+      toast.error(`error:${error}`, {
+        autoClose: 3000,
+        hideProgressBar: false,
+      });
+      console.log({ error });
+    },
   });
 
   return [addToCartFn, data, error, loading];
@@ -53,7 +59,7 @@ export const useRemoveFromCart = () => {
         console.log({ courses: data, courseFromCartData });
       },
       onError: (error) => {
-        toast.error(`error`, {
+        toast.error(`error:${error}`, {
           autoClose: 3000,
           hideProgressBar: false,
         });

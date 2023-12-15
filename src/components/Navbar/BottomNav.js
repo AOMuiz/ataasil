@@ -67,7 +67,7 @@ const BottomNav = () => {
                   </button>
                 }
               >
-                <div className="mt-8 ">
+                <div className="mt-8">
                   <p className="mb-2.5 border-b-2 border-[#E7E7E7] px-4 pb-3 text-lg font-medium leading-[19px]">
                     سلّة التسوق
                   </p>

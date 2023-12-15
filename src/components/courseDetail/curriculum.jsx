@@ -28,6 +28,7 @@ const Curriculum = ({ curriculum }) => {
                     key={file.title}
                     sectionId={section._id}
                     format={"file"}
+                    preview={true}
                   />
                 ))}
                 {section.test && (

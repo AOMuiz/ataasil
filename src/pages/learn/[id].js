@@ -51,7 +51,7 @@ const Index = () => {
     if (query.id) {
       getCourseSection({ variables: { courseId: query.id } });
     }
-  }, [query.id]);
+  }, [getCourseSection, query.id]);
 
   return (
     <div className="flex md:flex-col">

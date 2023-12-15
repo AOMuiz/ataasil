@@ -42,12 +42,19 @@ import {
   MdOutlineAssignmentTurnedIn,
 } from "react-icons/md";
 
+import {
+  FaFacebookF,
+  FaGreaterThan,
+  FaLessThan,
+  FaSort,
+  FaChalkboardTeacher,
+  FaRegCalendarCheck,
+} from "react-icons/fa";
+
 import { BsArrowRight, BsArrowLeft, BsBookmark, BsCart3 } from "react-icons/bs";
 
-import { FaRegCalendarCheck } from "react-icons/fa";
 import { PiStudentLight, PiCertificateLight } from "react-icons/pi";
 import { IoOptionsOutline } from "react-icons/io5";
-import { FaFacebookF, FaGreaterThan, FaLessThan, FaSort } from "react-icons/fa";
 import { TbNotes } from "react-icons/tb";
 import { GiJusticeStar } from "react-icons/gi";
 import { CiWallet, CiTrophy, CiMobile2, CiVideoOn } from "react-icons/ci";
@@ -102,6 +109,7 @@ const icons = {
   videolight: CiVideoOn,
   delete: AiOutlineDelete,
   cart: BsCart3,
+  teacher: FaChalkboardTeacher,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {

@@ -4,12 +4,22 @@ import { useReactiveVar } from "@apollo/client";
 import {
   presentCourseFileDetail,
   presentCourseSectionTest,
+  coursePreviewVar,
 } from "../../graphql/state";
 import { cn } from "../../utils/helpers";
 
-const TopicResource = ({ topicFile, format, sectionId, testDetail }) => {
+const TopicResource = ({
+  topicFile,
+  format,
+  sectionId,
+  testDetail,
+  preview,
+}) => {
   const courseDataFile = useReactiveVar(presentCourseFileDetail);
   const courseSectionTest = useReactiveVar(presentCourseSectionTest);
+  const previewState = useReactiveVar(coursePreviewVar);
+
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
   const [active, setActive] = useState("");
 
   const setPresentFile = () => {
@@ -44,9 +54,19 @@ const TopicResource = ({ topicFile, format, sectionId, testDetail }) => {
     });
   };
 
+  // Function to update both reactive variable and local state
+  const updatePreviewState = (newOpenPreview) => {
+    console.log(previewState);
+    coursePreviewVar({
+      openPreview: newOpenPreview,
+      setOpenPreview: () => setShowPreviewModal(newOpenPreview),
+    });
+    setShowPreviewModal(newOpenPreview);
+  };
+
   useEffect(() => {
     setActive(courseDataFile.fileTitle);
-  }, [active, courseDataFile.fileTitle, courseDataFile.fileType]);
+  }, [active, courseDataFile.fileTitle]);
 
   const getIconName = (type) => {
     switch (type) {
@@ -96,7 +116,10 @@ const TopicResource = ({ topicFile, format, sectionId, testDetail }) => {
         <li>
           <button
             disabled={topicFile.isPreview === false}
-            onClick={() => setPresentFile()}
+            onClick={() => {
+              setPresentFile();
+              preview && updatePreviewState(showPreviewModal);
+            }}
             className={cn(
               "group flex w-full cursor-pointer items-center justify-between gap-4 border-b border-gray-G20 pb-4"
             )}
@@ -106,9 +129,9 @@ const TopicResource = ({ topicFile, format, sectionId, testDetail }) => {
               {
                 <span
                   className={cn(
+                    "flex-1",
                     topicFile?.title === active && "text-primary-P200",
-                    topicFile.isPreview && "text-primary-P600 underline",
-                    "flex-1"
+                    topicFile.isPreview && "text-primary-P600 underline"
                   )}
                 >
                   {topicFile?.title}
@@ -116,14 +139,14 @@ const TopicResource = ({ topicFile, format, sectionId, testDetail }) => {
               }
             </p>
 
-            <p className={cn("space-x-1 self-end font-medium")}>
+            <p className={cn("self-end font-medium")}>
               <span
                 className={cn(
-                  "self-end font-medium",
+                  "self-end pe-2 font-medium",
                   topicFile.isPreview && "text-primary-P600 underline"
                 )}
               >
-                {topicFile.isPreview && "Preview"}
+                {topicFile.isPreview && "العَرْض المُسَبَّق"}
               </span>
               {topicFile?.format === "Video" && <span>01:30</span>}
             </p>
@@ -145,7 +168,7 @@ const TopicResource = ({ topicFile, format, sectionId, testDetail }) => {
           </span>
 
           <span className="self-end font-medium">
-            Questions {testDetail.length}
+            أسئلة {testDetail.length}
           </span>
         </li>
       )}

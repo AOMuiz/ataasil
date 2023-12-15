@@ -4,10 +4,11 @@ import CtaButton from "../CtaButton";
 import Icon from "../Icon";
 import { useAddToCart, useGetCart } from "../../hooks/useCart";
 import { useEffect } from "react";
+import { cn } from "../../utils/helpers";
 
 const DetailsCard = ({ courseDetail }) => {
-  const [addToCartFn, data, error, loading] = useAddToCart();
-  const [cartData, cartError, cartLoading] = useGetCart();
+  const [addToCartFn, addToCartdata, error, loading] = useAddToCart();
+  const [cartData, getCart] = useGetCart();
   const [isProductInCart, setIsProductInCart] = useState(true);
 
   useEffect(() => {
@@ -31,16 +32,21 @@ const DetailsCard = ({ courseDetail }) => {
         )}
       </div>
       <div className="space-y-2 border-b pb-3">
-        <p className="text-2xl font-bold">${courseDetail?.course.price}</p>
+        <p className="text-2xl font-bold">{courseDetail?.course.price} ر.س</p>
         <div className="space-y-4">
           <CtaButton
-            className="w-full rounded-md bg-[#35CCBC] font-semibold"
-            onClick={() =>
+            className={cn("w-full rounded-md bg-[#35CCBC] font-semibold")}
+            onClick={() => {
               addToCartFn({
                 variables: { courseIds: [courseDetail?.course._id] },
-              })
-            }
-            disabled={isProductInCart}
+                refetchQueries: [
+                  "Courses_getFromCart", // Query name
+                ],
+              });
+              addToCartdata?.courses_addToCart.success &&
+                setIsProductInCart(true);
+            }}
+            disabled={isProductInCart || loading}
           >
             إضافة الى السلة
           </CtaButton>
@@ -48,7 +54,7 @@ const DetailsCard = ({ courseDetail }) => {
             onClick={() => {}}
             className="w-full rounded-md border-2 border-gray-500 bg-transparent font-semibold text-neutral-600"
           >
-            Buy Now
+            اشتري الآن
           </CtaButton>
         </div>
       </div>
