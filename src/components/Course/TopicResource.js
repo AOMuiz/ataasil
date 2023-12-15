@@ -14,12 +14,13 @@ const TopicResource = ({
   sectionId,
   testDetail,
   preview,
+  showPreviewModal,
+  setShowPreviewModal,
 }) => {
   const courseDataFile = useReactiveVar(presentCourseFileDetail);
   const courseSectionTest = useReactiveVar(presentCourseSectionTest);
   const previewState = useReactiveVar(coursePreviewVar);
 
-  const [showPreviewModal, setShowPreviewModal] = useState(false);
   const [active, setActive] = useState("");
 
   const setPresentFile = () => {
@@ -52,16 +53,6 @@ const TopicResource = ({
       ...courseSectionTest,
       ...{ sectionId, test: testDetail },
     });
-  };
-
-  // Function to update both reactive variable and local state
-  const updatePreviewState = (newOpenPreview) => {
-    console.log(previewState);
-    coursePreviewVar({
-      openPreview: newOpenPreview,
-      setOpenPreview: () => setShowPreviewModal(newOpenPreview),
-    });
-    setShowPreviewModal(newOpenPreview);
   };
 
   useEffect(() => {
@@ -118,7 +109,7 @@ const TopicResource = ({
             disabled={topicFile.isPreview === false}
             onClick={() => {
               setPresentFile();
-              preview && updatePreviewState(showPreviewModal);
+              preview && setShowPreviewModal(true);
             }}
             className={cn(
               "group flex w-full cursor-pointer items-center justify-between gap-4 border-b border-gray-G20 pb-4"

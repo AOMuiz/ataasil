@@ -3,46 +3,52 @@ import * as Accordion from "@radix-ui/react-accordion";
 import { cn } from "../../utils/helpers";
 import Icon from "../Icon";
 import TopicResource from "../Course/TopicResource";
+import PreviewModal from "./PreviewModal";
 
 const Curriculum = ({ curriculum }) => {
+  const [open, setOpen] = React.useState(false);
   return (
-    <Accordion.Root
-      className="rounded-md border shadow-neutral-200"
-      type="multiple"
-      defaultValue={
-        curriculum.course_getSections.length > 1
-          ? curriculum.course_getSections[0]._id
-          : ""
-      }
-      collapsible
-    >
-      {curriculum &&
-        curriculum.course_getSections.map((section) => (
-          <AccordionItem value={section._id} key={section._id}>
-            <AccordionTrigger>{section.title}</AccordionTrigger>
-            <AccordionContent>
-              <ul className="space-y-2">
-                {section.files.map((file) => (
-                  <TopicResource
-                    topicFile={file}
-                    key={file.title}
-                    sectionId={section._id}
-                    format={"file"}
-                    preview={true}
-                  />
-                ))}
-                {section.test && (
-                  <TopicResource
-                    format={"test"}
-                    sectionId={section._id}
-                    testDetail={section.test}
-                  />
-                )}
-              </ul>
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-    </Accordion.Root>
+    <>
+      <Accordion.Root
+        className="rounded-md border shadow-neutral-200"
+        type="multiple"
+        defaultValue={
+          curriculum.course_getSections.length > 1
+            ? curriculum.course_getSections[0]._id
+            : ""
+        }
+        collapsible
+      >
+        {curriculum &&
+          curriculum.course_getSections.map((section) => (
+            <AccordionItem value={section._id} key={section._id}>
+              <AccordionTrigger>{section.title}</AccordionTrigger>
+              <AccordionContent>
+                <ul className="space-y-2">
+                  {section.files.map((file) => (
+                    <TopicResource
+                      topicFile={file}
+                      key={file.title}
+                      sectionId={section._id}
+                      format={"file"}
+                      preview={true}
+                      setShowPreviewModal={setOpen}
+                    />
+                  ))}
+                  {section.test && (
+                    <TopicResource
+                      format={"test"}
+                      sectionId={section._id}
+                      testDetail={section.test}
+                    />
+                  )}
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+      </Accordion.Root>
+      <PreviewModal open={open} setOpen={setOpen} />
+    </>
   );
 };
 
