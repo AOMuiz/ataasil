@@ -11,13 +11,13 @@ const Curriculum = ({ curriculum }) => {
     <>
       <Accordion.Root
         className="rounded-md border shadow-neutral-200"
-        type="multiple"
+        type={curriculum.course_getSections.length > 1 ? "multiple" : "single"}
         defaultValue={
           curriculum.course_getSections.length > 1
             ? curriculum.course_getSections[0]._id
             : ""
         }
-        collapsible
+        collapsible="true"
       >
         {curriculum &&
           curriculum.course_getSections.map((section) => (

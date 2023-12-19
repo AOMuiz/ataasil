@@ -1,15 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Icon from "../../components/Icon";
 import CtaButton from "../../components/CtaButton";
 import { useGetCart, useRemoveFromCart } from "../../hooks/useCart";
 import { cartItemsVar } from "../../graphql/state";
 import { useReactiveVar } from "@apollo/client";
+import Spinner from "../../components/spinner";
+import { useCreatePayment } from "../../hooks/usePayment";
+import { cn } from "../../utils/helpers";
+
 const Index = () => {
   const courseFromCartVar = useReactiveVar(cartItemsVar);
-  const [cartData, error, loading] = useGetCart();
+  const [cartData, cartError, cartLoading] = useGetCart();
   const [removeFromCartFn, removeData, removeError, removeLoading] =
     useRemoveFromCart();
+  const [totalPrice, setTotalPrice] = useState();
+  const [createPaymentFn, createPayment] = useCreatePayment();
+  const idsArray = cartData?.courses_getFromCart.map((course) => course._id);
+
+  useEffect(() => {
+    const calculatePrice = cartData?.courses_getFromCart.reduce(
+      (total, course) => total + (course.price || 0),
+      0
+    );
+    setTotalPrice(calculatePrice);
+  }, [cartData, totalPrice]);
+
+  if (cartLoading)
+    return (
+      <div className="h-screen p-10">
+        <Spinner />
+      </div>
+    );
+
+  if (cartError) return `Fetching Data error! ${courseDetailError.message}`;
 
   return (
     <div className="mx-12">
@@ -18,14 +42,21 @@ const Index = () => {
           سلة التسوىق({`${cartData?.courses_getFromCart.length}`})
         </h1>
         <button
-          onClick={() => removeFromCartFn([])}
+          onClick={() =>
+            removeFromCartFn({
+              variables: { courseIds: idsArray },
+              refetchQueries: [
+                "Courses_getFromCart", // Query name
+              ],
+            })
+          }
           className="flex items-center gap-2 rounded-md bg-danger-D10 p-1 text-white"
         >
           <Icon id={"delete"} />
           حذف الكل
         </button>
       </div>
-      <div className="mx-auto  flex  justify-center gap-4 rounded-3xl bg-neutral-N20 p-5">
+      <div className="mx-auto flex items-start justify-center gap-4 rounded-3xl bg-neutral-N20 p-5">
         <div className="flex-1 rounded-3xl border bg-white p-6 ">
           <div className=" mx-4 grid gap-4">
             {courseFromCartVar?.map((course) => (
@@ -73,19 +104,34 @@ const Index = () => {
           <div className="space-y-5">
             <p className="flex items-center justify-between gap-5">
               <span className="font-light">المجموع للمنتجات</span>
-              <span>94.35 ر.س</span>
+              <span>{totalPrice} ر.س</span>
             </p>
             <p className="flex items-center justify-between gap-5">
               <span className="font-light">قيمة الخصم (ان وجد)</span>
-              <span>94.35 ر.س</span>
+              <span>0 ر.س</span>
             </p>
             <p className="flex items-center justify-between gap-5">
               <span>المجموع النهائي</span>
-              <span className="font-bold">100 ر.س</span>
+              <span className="font-bold">{totalPrice} ر.س</span>
             </p>
           </div>
-          <CtaButton className=" w-full rounded-lg bg-primary-P200 p-4 text-lg text-white">
-            تأكيد الشراء
+          <CtaButton
+            onClick={() =>
+              createPaymentFn({
+                variables: {
+                  successUrl: "https://jaamiah.cloudhacks.net/payment-success",
+                  cancelUrl: "https://jaamiah.cloudhacks.net/payment-cancel",
+                  purpose: "Courses_Purchase",
+                },
+              })
+            }
+            disabled={createPayment.loading}
+            className={cn(
+              "w-full rounded-lg bg-primary-P200 p-4 text-lg text-white",
+              createPayment.loading && "bg-slate-200"
+            )}
+          >
+            {createPayment.loading ? "تحميل..." : " تأكيد الشراء"}{" "}
           </CtaButton>
         </div>
       </div>

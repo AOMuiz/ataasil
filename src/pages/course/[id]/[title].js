@@ -12,8 +12,6 @@ import PreviewModal from "../../../components/courseDetail/PreviewModal";
 
 const Index = () => {
   const { query } = useRouter();
-  const courseDataFile = useReactiveVar(presentCourseFileDetail);
-  const [preview, setPreview] = useState(false);
 
   const [
     getSections,

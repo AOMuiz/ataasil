@@ -33,30 +33,38 @@ const DetailsCard = ({ courseDetail }) => {
       </div>
       <div className="space-y-2 border-b pb-3">
         <p className="text-2xl font-bold">{courseDetail?.course.price} ر.س</p>
-        <div className="space-y-4">
+        {courseDetail?.course.hasAccess ? (
           <CtaButton
             className={cn("w-full rounded-md bg-[#35CCBC] font-semibold")}
-            onClick={() => {
-              addToCartFn({
-                variables: { courseIds: [courseDetail?.course._id] },
-                refetchQueries: [
-                  "Courses_getFromCart", // Query name
-                ],
-              });
-              addToCartdata?.courses_addToCart.success &&
-                setIsProductInCart(true);
-            }}
-            disabled={isProductInCart || loading}
           >
-            إضافة الى السلة
+            View Course
           </CtaButton>
-          <CtaButton
-            onClick={() => {}}
-            className="w-full rounded-md border-2 border-gray-500 bg-transparent font-semibold text-neutral-600"
-          >
-            اشتري الآن
-          </CtaButton>
-        </div>
+        ) : (
+          <div className="space-y-4">
+            <CtaButton
+              className={cn("w-full rounded-md bg-[#35CCBC] font-semibold")}
+              onClick={() => {
+                addToCartFn({
+                  variables: { courseIds: [courseDetail?.course._id] },
+                  refetchQueries: [
+                    "Courses_getFromCart", // Query name
+                  ],
+                });
+                addToCartdata?.courses_addToCart.success &&
+                  setIsProductInCart(true);
+              }}
+              disabled={isProductInCart || loading}
+            >
+              إضافة الى السلة
+            </CtaButton>
+            <CtaButton
+              onClick={() => {}}
+              className="w-full rounded-md border-2 border-gray-500 bg-transparent font-semibold text-neutral-600"
+            >
+              اشتري الآن
+            </CtaButton>
+          </div>
+        )}
       </div>
       <div className="mb-2 border-b pb-3">
         <p className="mb-3 text-lg font-semibold">تتضمن هذه الدورة</p>
