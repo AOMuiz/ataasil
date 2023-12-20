@@ -11,7 +11,7 @@ const Curriculum = ({ curriculum }) => {
     <>
       <Accordion.Root
         className="rounded-md border shadow-neutral-200"
-        type={curriculum.course_getSections.length > 1 ? "multiple" : "single"}
+        type={curriculum?.course_getSections.length > 1 ? "multiple" : "single"}
         defaultValue={
           curriculum.course_getSections.length > 1
             ? curriculum.course_getSections[0]._id
@@ -31,7 +31,7 @@ const Curriculum = ({ curriculum }) => {
                       key={file.title}
                       sectionId={section._id}
                       format={"file"}
-                      preview={true}
+                      previewMode={true}
                       setShowPreviewModal={setOpen}
                     />
                   ))}
@@ -40,7 +40,7 @@ const Curriculum = ({ curriculum }) => {
                       format={"test"}
                       sectionId={section._id}
                       testDetail={section.test}
-                      preview={true}
+                      previewMode={true}
                     />
                   )}
                 </ul>

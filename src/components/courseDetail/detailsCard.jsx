@@ -5,6 +5,7 @@ import Icon from "../Icon";
 import { useAddToCart, useGetCart } from "../../hooks/useCart";
 import { useEffect } from "react";
 import { cn } from "../../utils/helpers";
+import Link from "next/link";
 
 const DetailsCard = ({ courseDetail }) => {
   const [addToCartFn, addToCartdata, error, loading] = useAddToCart();
@@ -34,11 +35,15 @@ const DetailsCard = ({ courseDetail }) => {
       <div className="space-y-2 border-b pb-3">
         <p className="text-2xl font-bold">{courseDetail?.course.price} ر.س</p>
         {courseDetail?.course.hasAccess ? (
-          <CtaButton
-            className={cn("w-full rounded-md bg-[#35CCBC] font-semibold")}
-          >
-            View Course
-          </CtaButton>
+          <Link href={`/learn/${courseDetail.course._id}`}>
+            <a className="block h-full w-full">
+              <CtaButton
+                className={cn("w-full rounded-md bg-[#35CCBC] font-semibold")}
+              >
+                View Course
+              </CtaButton>
+            </a>
+          </Link>
         ) : (
           <div className="space-y-4">
             <CtaButton

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import masjid from "/public/assets/images/masjid.png";
 import SectionCategory from "../../components/CourseCards/SectionCategory";
 import UnstyledButton from "../../components/UnstyledButton/UnstyledButton";
@@ -9,14 +9,46 @@ import tw, { styled } from "twin.macro";
 import useFetchCourses from "../../hooks/useFetchCourses";
 import CourseCardPulse from "../../components/CourseCards/CourseCardPulse";
 import Pagination from "../../components/Pagination";
+import { COURSES_COUNT } from "../../graphql/queries/courses";
+import { useQuery } from "@apollo/client";
 
 const TrainingPrograms = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalCourses, setTotalCourses] = useState(0);
   const [pagination, setPagination] = useState({
     limit: 10,
     page: 1,
   });
+  const [filter, setFilter] = useState({
+    category: null,
+    title: null,
+  });
+
   const [data, error, loading] = useFetchCourses({ pagination });
+  const { data: countData } = useQuery(COURSES_COUNT, {
+    variables: { filter },
+    onCompleted: (data) => {
+      setTotalCourses(data?.courses_count);
+      console.log({ courses: data, totalCourses });
+    },
+  });
   const pulseArray = new Array(4).fill(1);
+
+  const handlePageChange = (page) => {
+    if (page === "next") {
+      setCurrentPage((prevPage) => prevPage + 1);
+    } else if (page === "prev") {
+      setCurrentPage((prevPage) => prevPage - 1);
+    } else {
+      setCurrentPage(page);
+    }
+  };
+
+  // useEffect(() => {
+  //   if (countData) {
+  //     setTotalCourses(countData?.courses_count); // Update totalCourses with count from the server
+  //   }
+  // }, [countData]);
 
   return (
     <main>
@@ -69,7 +101,13 @@ const TrainingPrograms = () => {
               />
             ))}
         </CourseList>
-        <Pagination />
+        {totalCourses < pagination.limit ? null : (
+          <Pagination
+            totalPages={totalCourses / pagination.limit}
+            currentPage={pagination.page}
+            onPageChange={handlePageChange}
+          />
+        )}
       </section>
     </main>
   );

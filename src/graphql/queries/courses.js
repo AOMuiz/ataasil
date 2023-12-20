@@ -51,6 +51,12 @@ export const COURSES = gql`
   }
 `;
 
+export const COURSES_COUNT = gql`
+  query Courses_count($filter: CourseFilter) {
+    courses_count(filter: $filter)
+  }
+`;
+
 export const COURSES_SECTIONS = gql`
   query Course_getSections($courseId: ID!) {
     course_getSections(courseId: $courseId) {

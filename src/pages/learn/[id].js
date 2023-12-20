@@ -56,13 +56,6 @@ const Index = () => {
   return (
     <div className="flex md:flex-col">
       <div className="h-full flex-1">
-        {/* {(courseSectionTest.test.length === 0 ||
-          Object.keys(courseDataFile).length === 0) && (
-          <div className="h-full w-full">
-            <Image src={player} alt="player thumbnail" layout="responsive" />
-          </div>
-        )} */}
-
         {courseDataFile.fileType === "Document" && (
           <SinglePage pdf={courseDataFile.fileUrl} />
         )}
@@ -92,14 +85,8 @@ const Index = () => {
                 : courseSectionData[0]?.title}
             </p>
             <p className="flex gap-3 font-semibold">
-              <span>عدد التقييمات 30544</span>
-              <span className="h-full w-[2px] text-gray-500"></span>
-              <span>عدد المتدربين المسجلين 106585</span>
+              <span>عدد المتدربين المسجلين {106585}</span>
             </p>
-          </div>
-          <div className="space-y-4">
-            <CtaButton>إضافة الى السلة (100 ر.س)</CtaButton>
-            <p>* شاملا ضريبة القيمة المضافة</p>
           </div>
         </div>
       </div>

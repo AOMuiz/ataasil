@@ -13,7 +13,7 @@ const TopicResource = ({
   format,
   sectionId,
   testDetail,
-  preview,
+  previewMode,
   showPreviewModal,
   setShowPreviewModal,
 }) => {
@@ -65,7 +65,7 @@ const TopicResource = ({
         return (
           <Icon
             id={topicFile?.title === active ? "play" : "video"}
-            size={20}
+            size={22}
             className={cn(
               "rounded-full text-gray-G30 group-hover:text-primary-P100",
               topicFile?.title === active &&
@@ -106,10 +106,10 @@ const TopicResource = ({
       {format === "file" ? (
         <li>
           <button
-            disabled={topicFile.isPreview === false}
+            disabled={previewMode && topicFile.isPreview === false}
             onClick={() => {
               setPresentFile();
-              preview && setShowPreviewModal(true);
+              previewMode && setShowPreviewModal(true);
             }}
             className={cn(
               "group flex w-full cursor-pointer items-center justify-between gap-4 border-b border-gray-G20 pb-4"
@@ -122,7 +122,9 @@ const TopicResource = ({
                   className={cn(
                     "flex-1",
                     topicFile?.title === active && "text-primary-P200",
-                    topicFile.isPreview && "text-primary-P600 underline"
+                    previewMode &&
+                      topicFile.isPreview &&
+                      "text-primary-P600 underline"
                   )}
                 >
                   {topicFile?.title}
@@ -131,14 +133,16 @@ const TopicResource = ({
             </p>
 
             <p className={cn("self-end font-medium")}>
-              <span
-                className={cn(
-                  "self-end pe-2 font-medium",
-                  topicFile.isPreview && "text-primary-P600 underline"
-                )}
-              >
-                {topicFile.isPreview && "العَرْض المُسَبَّق"}
-              </span>
+              {previewMode && (
+                <span
+                  className={cn(
+                    "self-end pe-2 font-medium",
+                    topicFile.isPreview && "text-primary-P600 underline"
+                  )}
+                >
+                  {topicFile.isPreview && "العَرْض المُسَبَّق"}
+                </span>
+              )}
               {topicFile?.format === "Video" && <span>01:30</span>}
             </p>
           </button>
@@ -146,7 +150,7 @@ const TopicResource = ({
       ) : (
         <li>
           <button
-            disabled={preview}
+            disabled={previewMode}
             onClick={() => setPresentTest()}
             className={cn(
               "group flex w-full cursor-pointer items-center justify-between gap-4 border-b border-gray-G20 pb-4"

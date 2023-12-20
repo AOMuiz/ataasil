@@ -71,32 +71,36 @@ const BottomNav = () => {
                   <p className="mb-2.5 border-b-2 border-[#E7E7E7] px-4 pb-3 text-lg font-medium leading-[19px]">
                     سلّة التسوق
                   </p>
-                  <div className="border-b-2 border-[#E7E7E7] pb-2">
-                    <div className="mx-4 grid gap-4">
-                      {courseFromCartData?.slice(0, 3).map((course) => (
-                        <div className="flex gap-2.5" key={course?._id}>
-                          <Image
-                            src={course?.banner}
-                            height={78}
-                            width={80}
-                            alt="course banner"
-                            className="rounded-lg"
-                          />
-                          <div className="flex flex-col gap-1">
-                            <p className="text-lg font-light">
-                              {course?.title}
-                            </p>
-                            <p className="text-gray-500">
-                              {course?.teacher.username}
-                            </p>
-                            <p className="text-md font-bold">
-                              {course?.price} ر.س
-                            </p>
+                  {courseFromCartData.length <= 0 ? (
+                    <p className="mx-4">Cart is empty</p>
+                  ) : (
+                    <div className="border-b-2 border-[#E7E7E7] pb-2">
+                      <div className="mx-4 grid gap-4">
+                        {courseFromCartData?.slice(0, 3).map((course) => (
+                          <div className="flex gap-2.5" key={course?._id}>
+                            <Image
+                              src={course?.banner}
+                              height={78}
+                              width={80}
+                              alt="course banner"
+                              className="rounded-lg"
+                            />
+                            <div className="flex flex-col gap-1">
+                              <p className="text-lg font-light">
+                                {course?.title}
+                              </p>
+                              <p className="text-gray-500">
+                                {course?.teacher.username}
+                              </p>
+                              <p className="text-md font-bold">
+                                {course?.price} ر.س
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
                 <div className="mx-4 mt-3">
                   <Link href="/cart">
