@@ -20,7 +20,7 @@ const QuizExplanation = ({ quizData, quizAnswers }) => {
               {index + 1}. {question.question}
             </p>
             <p>Your Answer(s): {quizAnswers[index].join(", ")}</p>
-            <p>Correct Answer(s): {question.answer.join(", ")}</p>
+            <p>Correct Answer(s): {question.answers.join(", ")}</p>
           </div>
         ))}
       </div>

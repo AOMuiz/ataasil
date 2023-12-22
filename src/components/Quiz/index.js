@@ -1,5 +1,5 @@
 // Quiz.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QuizSynopsis from "./QuizSynopsis";
 import QuizQuestion from "./QuizQuestion";
 import QuizSummary from "./QuizSummary";
@@ -8,7 +8,7 @@ const quizData = [
   {
     question: "ما المصدر الذي يقدم آيات التوحيد؟",
     options: ["مجموعات الحديث", "آيات التوحيد", "سيرة النبي", "الفقه الإسلامي"],
-    answer: ["آيات التوحيد"],
+    answers: ["آيات التوحيد"],
     multiple: false,
   },
   {
@@ -19,18 +19,30 @@ const quizData = [
       "فهم الشرك",
       "تأكيد التوحيد في القرآن",
     ],
-    answer: ["تأكيد التوحيد في القرآن"],
+    answers: ["تأكيد التوحيد في القرآن"],
     multiple: false,
   },
 ];
 
-const Quiz = () => {
+const Quiz = ({ quizData: initialQuizData }) => {
   const [quizStarted, setQuizStarted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState([]);
+  const [calculatedAnswer, setCalculatedAnswer] = useState({
+    correctAnswers: 0,
+    wrongAnswers: 0,
+  });
+  const [quizData, setQuizData] = useState(initialQuizData);
 
   const handleStartQuiz = () => {
     setQuizStarted(true);
+  };
+
+  const handleResetQuiz = () => {
+    setQuizStarted(false);
+    setCurrentQuestionIndex(0);
+    setQuizAnswers([]);
+    setCalculatedAnswer({ correctAnswers: 0, wrongAnswers: 0 });
   };
 
   const handlePreviousQuestion = () => {
@@ -45,7 +57,7 @@ const Quiz = () => {
 
     quizData.forEach((question, index) => {
       const selectedOptions = quizAnswers[index];
-      const correctOptions = question.answer;
+      const correctOptions = question.answers;
 
       if (
         selectedOptions?.length === correctOptions?.length &&
@@ -76,8 +88,13 @@ const Quiz = () => {
     }
   };
 
+  useEffect(() => {
+    // Reset quiz-related states when quizData changes
+    handleResetQuiz();
+  }, [initialQuizData]);
+
   return (
-    <div className="">
+    <div>
       {!quizStarted ? (
         <QuizSynopsis
           totalQuestions={quizData.length}
@@ -91,10 +108,12 @@ const Quiz = () => {
             quizAnswers={quizAnswers}
             correctAnswers={correctAnswers}
             wrongAnswers={wrongAnswers}
+            handleResetQuiz={handleResetQuiz}
           />
         </div>
       ) : (
         <QuizQuestion
+          totalQuestions={quizData.length}
           questionData={quizData[currentQuestionIndex]}
           onAnswerSubmit={handleAnswerSubmit}
           currentQuestionIndex={currentQuestionIndex}

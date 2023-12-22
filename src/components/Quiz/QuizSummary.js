@@ -8,6 +8,7 @@ const QuizSummary = ({
   quizAnswers,
   correctAnswers,
   wrongAnswers,
+  handleResetQuiz,
 }) => {
   const [showExplanation, setShowExplanation] = useState(false);
   return (
@@ -56,9 +57,12 @@ const QuizSummary = ({
               >
                 عرض التعليقات
               </CtaButton>
-              <p className="cursor-pointer border-b-2 font-bold text-gray-G30">
+              <button
+                onClick={handleResetQuiz}
+                className="cursor-pointer border-b-2 font-bold text-gray-G30"
+              >
                 حاول ثانية
-              </p>
+              </button>
             </div>
           </div>
         </div>

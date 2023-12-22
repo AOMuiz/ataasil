@@ -6,6 +6,7 @@ import cardImage from "/public/assets/images/card-img.png";
 import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 import { BsFillPlayCircleFill } from "react-icons/bs";
+import ProgressDemo from "../ProgressBar";
 
 const CourseCard = ({
   id,
@@ -15,6 +16,7 @@ const CourseCard = ({
   category,
   teacher,
   price,
+  hasAccess,
 }) => {
   const { t } = useTranslation("index");
 
@@ -58,6 +60,14 @@ const CourseCard = ({
               {price && `$ ${price}`}
             </p>
           </div>
+          {/* {hasAccess && (
+            <div>
+              <ProgressDemo />
+              <p className="mt-1 text-sm font-medium text-[#A8A8A8]">
+                30% complete
+              </p>
+            </div>
+          )} */}
         </div>
       </article>
     </>

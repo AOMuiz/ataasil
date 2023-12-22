@@ -7,6 +7,7 @@ const QuizQuestion = ({
   onAnswerSubmit,
   onPreviousQuestion,
   currentQuestionIndex,
+  totalQuestions,
 }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
@@ -29,7 +30,12 @@ const QuizQuestion = ({
           <span className="font-bold">الوقت:</span> 10 ساعات و 30 دقيقة
         </p>
         <p className="mb-5 text-gray-G30">
-          <span className="font-bold">الأسئلة:</span> 1 من 20
+          <span className="font-bold">الأسئلة:</span> {currentQuestionIndex + 1}
+          من {totalQuestions}
+        </p>
+        <p className="mb-5 text-gray-G30">
+          <span className="font-bold">مجموع النقاط السؤال:</span>{" "}
+          {questionData.score}
         </p>
       </div>
       <h3 className="mb-5 mt-7 font-bold">
@@ -41,7 +47,7 @@ const QuizQuestion = ({
             <label className="flex w-fit cursor-pointer items-center gap-5 space-x-3 text-lg">
               <input
                 className="h-5 w-5"
-                type={questionData.multiple ? "checkbox" : "radio"}
+                type={questionData.isAnswerMultiple ? "checkbox" : "radio"}
                 name="quiz-option"
                 value={option}
                 checked={selectedOptions.includes(option)}
@@ -62,7 +68,11 @@ const QuizQuestion = ({
         >
           السابق
         </CtaButton>
-        <CtaButton onClick={handleSubmit} className={"bg-[#039BE5] font-bold"}>
+        <CtaButton
+          disabled={selectedOptions.length === 0}
+          onClick={handleSubmit}
+          className={"bg-[#039BE5] font-bold"}
+        >
           التالي
         </CtaButton>
       </div>

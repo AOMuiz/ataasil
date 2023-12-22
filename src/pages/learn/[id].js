@@ -22,7 +22,7 @@ const Index = () => {
   const courseSectionData = useReactiveVar(presentCourseDetailVar);
   const courseDataFile = useReactiveVar(presentCourseFileDetail);
   const courseSectionTest = useReactiveVar(presentCourseSectionTest);
-  const [getCourseSection, { data, error, loading }] = useLazyQuery(
+  const [getCourseSection, courseSectionResul] = useLazyQuery(
     COURSES_SECTIONS,
     {
       onCompleted: (data) => onGetCourseSectionComplete(data),
@@ -32,11 +32,6 @@ const Index = () => {
 
   const onGetCourseSectionComplete = (data) => {
     presentCourseDetailVar([...data.course_getSections]);
-    console.log({
-      coursesSection: data,
-      courseSectionData,
-      error,
-    });
   };
 
   useEffect(() => {
@@ -78,14 +73,13 @@ const Index = () => {
 
         <div className="flex justify-between gap-3 bg-white p-4 md:flex-col">
           <div className="space-y-4">
-            {/* <p className="text-2xl font-bold">{courseSectionData[0]?.title}</p> */}
             <p className="text-2xl font-bold">
               {courseDataFile?.fileTitle
                 ? courseDataFile?.fileTitle
                 : courseSectionData[0]?.title}
             </p>
             <p className="flex gap-3 font-semibold">
-              <span>عدد المتدربين المسجلين {106585}</span>
+              <span>عدد المتدربين المسجلين {1065}</span>
             </p>
           </div>
         </div>

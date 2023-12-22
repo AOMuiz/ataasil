@@ -20,7 +20,7 @@ const Topic = () => {
     <div>
       {courseData?.map((sections, i) => (
         <div key={sections._id}>
-          <div className="mb-4 flex items-center justify-between gap-3 bg-[#DCECF3] px-3 py-3 font-bold text-gray-G30">
+          <div className="mb-4 flex items-center  gap-3 bg-[#DCECF3] px-3 py-3 font-bold text-gray-G30">
             <span
               className={cn(
                 "flex h-8 w-8 items-center justify-center rounded-full bg-white p-2",
@@ -31,15 +31,15 @@ const Topic = () => {
             >
               {i + 1}
             </span>
-            <p>{sections?.title}</p>
+            <p className="me-auto">{sections?.title}</p>
             <Icon
               id="chevron-up"
               as="span"
-              className="rounded-full border-[2px] border-gray-G30"
+              className="self-end rounded-full border-[2px] border-gray-G30"
               size={27}
             />
           </div>
-          <ul className="space-y-3">
+          <ul className="space-y-3 px-5">
             {sections.files.map((sectionFile) => (
               <TopicResource
                 topicFile={sectionFile}

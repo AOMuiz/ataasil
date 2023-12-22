@@ -53,6 +53,7 @@ const CourseCards = () => {
                 banner={course.banner}
                 teacher={course.teacher.username}
                 price={course.price}
+                hasAccess={course.hasAccess}
               />
             ))}
           {error && <h3>Error Fetching courses. Please refresh.</h3>}

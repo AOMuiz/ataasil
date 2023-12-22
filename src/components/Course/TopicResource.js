@@ -19,7 +19,6 @@ const TopicResource = ({
 }) => {
   const courseDataFile = useReactiveVar(presentCourseFileDetail);
   const courseSectionTest = useReactiveVar(presentCourseSectionTest);
-  const previewState = useReactiveVar(coursePreviewVar);
 
   const [active, setActive] = useState("");
 

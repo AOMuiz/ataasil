@@ -76,10 +76,14 @@ export default function SinglePage(props) {
           </button>
         </div>
       </div>
-      <div ref={ref} className="max-h-[calc(100vh-10rem)]">
+      <div
+        // ref={ref}
+        className="max-h-[calc(100vh-10rem)]"
+      >
         <Document
           file={pdf}
           // options={options}
+
           loading={
             <div className="flex aspect-video items-center justify-center">
               <div
@@ -103,14 +107,15 @@ export default function SinglePage(props) {
                 <Page
                   key={`page_${index + 1} ${el}`}
                   pageNumber={index + 1}
-                  width={width ? width : 1}
+                  // width={width ? width : 1}
+                  className={"w-full"}
                 />
               ))
             : null}
 
           <Page
-            className={cn(isLoading ? "hidden" : "")}
-            width={width ? width : 1}
+            className={cn(isLoading ? "hidden" : "w-full")}
+            // width={width ? width : 1}
             pageNumber={currPage}
             scale={scale}
             rotate={rotation}
