@@ -9,20 +9,20 @@ const ChangePassword = () => {
       <SubHeading content={"تغيير كلمة المرور"} />
       <SectionDivider />
       <div>
-        <div className="flex gap-4 my-6">
-          <div className="flex-1 flex flex-col">
+        <div className="my-6 flex gap-4 lg:flex-wrap">
+          <div className="flex flex-1 flex-col">
             <FormInput
               label="كلمة المرور الحالية"
               placeholder="كلمة المرور الحالية"
             />
           </div>
-          <div className="flex-1 flex flex-col">
+          <div className="flex flex-1 flex-col">
             <FormInput
               label="كلمة المرور الجديدة"
               placeholder="كلمة المرور الجديدة"
             />
           </div>
-          <div className="flex-1 flex flex-col">
+          <div className="flex flex-1 flex-col">
             {/* <input
               type="text"
               placeholder=""
@@ -33,7 +33,7 @@ const ChangePassword = () => {
               placeholder="تثبيت كلمة المرور الجديدة"
             />
           </div>
-          <div className="self-end mb-1">
+          <div className="mb-1 self-end">
             <CtaButton>إعادة تعيين</CtaButton>
           </div>
         </div>

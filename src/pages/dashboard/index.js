@@ -36,7 +36,7 @@ const Profile = () => {
               <Icon id={"left"} />
             </p>
           </div>
-          <div className="flex gap-6 overflow-x-auto py-2">
+          <div className="flex gap-6 overflow-x-auto py-2 md:flex-wrap">
             <CourseCard />
             <CourseCard />
             <CourseCard />

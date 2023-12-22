@@ -20,8 +20,21 @@ const UserProfile = () => {
     STUDENT_UPDATE_PROFILE,
     {
       onCompleted: (result) => {
-        console.log({ complete: result });
+        toast.success(`Profile update successful`, {
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+        });
+        console.log({ complete: result, data });
       },
+      onError: (error) =>
+        toast.error(`Error: ${error.message}`, {
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+        }),
     }
   );
 
@@ -32,7 +45,7 @@ const UserProfile = () => {
     refetch,
   } = useQuery(STUDENT_PROFILE, {
     onCompleted: (data) => handleProfileCompleted(data),
-    // onError: (error) => handleVerificationError(error),
+    onError: (error) => handleVerificationError(error),
   });
 
   const handleProfileCompleted = (data) => {
@@ -44,22 +57,22 @@ const UserProfile = () => {
   };
 
   const handleSubmit = () => {
-    const { username, jobSector, dateOfBirth, phone } = formData;
+    const {
+      username,
+      jobSector,
+      dateOfBirth,
+      phoneRelevant,
+      phoneCountryCode,
+    } = formData;
     updateProfile({
       variables: {
         username,
         jobSector,
         dateOfBirth,
-        phone,
+        phone: `+${phoneCountryCode}${phoneRelevant}`,
       },
     }).then((result) => {
       setEditMode(false);
-      toast.success(`Profile update successful`, {
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-      });
       refetch();
       console.log({ result, profileDetails });
     });
@@ -101,8 +114,8 @@ const UserProfile = () => {
     <div>
       <p className="my-7 text-2xl font-bold">الملف الشخصي</p>
       <SectionDivider />
-      <div className="my-6 flex gap-4 md:flex-wrap">
-        <div className="flex h-80 max-w-[250px] flex-1 flex-col items-center justify-center gap-8 rounded-md bg-neutral-N20 p-8">
+      <div className="my-6 flex gap-4 lg:flex-wrap">
+        <div className="flex h-80 max-w-[250px] flex-1 flex-col items-center justify-center gap-8 rounded-md bg-neutral-N20 p-8 md:max-w-full">
           <div className="flex h-28 w-28 border-spacing-5 items-center justify-center rounded-full border-[6px] border-white bg-primary-P300">
             <Image
               src={testimonialImg}
@@ -111,13 +124,14 @@ const UserProfile = () => {
               className=""
             />
           </div>
-          <button className="flex w-auto cursor-pointer items-center gap-3 rounded-full border-4 border-white bg-primary-P300 px-4 py-3 text-center font-bold text-white">
+          <button className="flex w-auto cursor-pointer items-center gap-3 rounded-full border-4 border-white bg-primary-P300 px-4 py-3 text-center font-bold text-white  lg:text-sm">
             <span>رفع صورة جديدة</span>
             <Icon id={"upload"} size={23} />
           </button>
         </div>
-        <InfoContainer className="h-80 space-y-2 overflow-y-scroll border-l-2 border-l-primary-P200 px-3">
+        <InfoContainer className="h-80 space-y-2 overflow-y-scroll border-l-2 border-l-primary-P200 px-3 md:w-full">
           <ChangeProfileInput
+            containerStyle="md:max-w-full"
             name="username"
             htmlFor="username"
             placeholder={"الاسم الكامل"}
@@ -129,18 +143,21 @@ const UserProfile = () => {
             required
           />
           <ChangeProfileInput
+            containerStyle="md:max-w-full"
             placeholder={"الاسم الكامل بالانجليزية"}
             label={"الاسم الكامل بالانجليزية"}
             disabled={true}
             value={formData.username && formData?.username}
           />
           <ChangeProfileInput
+            containerStyle="md:max-w-full"
             placeholder={"البريد الإلكتروني"}
             label={"البريد الإلكتروني"}
             disabled={true}
             value={formData?.email && formData?.email}
           />
           <ChangeProfileInput
+            containerStyle="md:max-w-full"
             placeholder={"قطاع الوظيفة"}
             label={"قطاع الوظيفة"}
             disabled={true}
@@ -151,6 +168,7 @@ const UserProfile = () => {
         <div className="w-fit  space-y-5">
           <div className="flex gap-5">
             <ChangeProfileInput
+              containerStyle="md:max-w-full"
               name="phoneRelevant"
               htmlFor="phoneRelevant"
               label="الجوال"
@@ -202,7 +220,7 @@ const UserProfile = () => {
           <CtaButton onClick={handleToggleEditMode}>Edit Profile</CtaButton>
         )}
 
-        {error && <p>Error: {error.message}</p>}
+        {/* {error && <p>Error: {error.message}</p>} */}
       </div>
     </div>
   );

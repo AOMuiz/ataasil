@@ -1,3 +1,5 @@
+import { cn } from "../../utils/helpers";
+
 export const ChangeProfileInput = ({
   label,
   value,
@@ -8,9 +10,10 @@ export const ChangeProfileInput = ({
   name,
   type,
   autoFocus,
+  containerStyle,
   ...otherAttributes
 }) => (
-  <div className="max-w-[200px]">
+  <div className={cn("max-w-[200px]", containerStyle && containerStyle)}>
     <label
       htmlFor={htmlFor}
       className="mb-3 inline-block text-sm font-bold text-gray-G30"
