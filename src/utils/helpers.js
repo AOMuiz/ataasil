@@ -20,7 +20,8 @@ export function isNotNullOrUndefined(value) {
 
 export function absoluteUrl(path) {
   // if (typeof window !== "undefined") return path;
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}${path}`;
+  if (process.env.NEXT_PUBLIC_VERCEL_URL)
+    return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}${path}`;
   return `http://localhost:${process.env.PORT ?? 3000}${path}`;
 }
 
