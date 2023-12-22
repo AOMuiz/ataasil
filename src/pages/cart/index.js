@@ -49,8 +49,8 @@ const Index = () => {
   if (cartError) return `Fetching Data error! ${courseDetailError.message}`;
 
   return (
-    <div className="mx-12">
-      <div className="mx-32 my-16 flex gap-x-2 font-bold">
+    <div className="mx-12 md:mx-8">
+      <div className="mx-32 my-16 flex gap-x-2 font-bold md:mx-12">
         <h1 className="text-2xl">
           سلة التسوىق({`${cartData?.courses_getFromCart.length}`})
         </h1>
@@ -69,15 +69,15 @@ const Index = () => {
           حذف الكل
         </button>
       </div>
-      <div className="mx-auto flex items-start justify-center gap-4 rounded-3xl bg-neutral-N20 p-5">
-        <div className="flex-1 rounded-3xl border bg-white p-6 ">
+      <div className="mx-auto flex items-start justify-center gap-4 rounded-3xl bg-neutral-N20 p-5 md:flex-col">
+        <div className="flex-1 rounded-3xl border bg-white p-6 md:w-full">
           <div className="mx-4 grid gap-4">
             {courseFromCartVar.length === 0 ? (
               <p className="text-center font-bold">No Courses in Cart</p>
             ) : (
               courseFromCartVar?.map((course) => (
                 <div
-                  className="flex gap-4 border-b-2 border-[#E7E7E7] pb-2"
+                  className="flex gap-4 border-b-2 border-[#E7E7E7] pb-2 sm:flex-col"
                   key={course?._id}
                 >
                   <div className="relative aspect-video">
@@ -89,7 +89,7 @@ const Index = () => {
                     />
                   </div>
                   <div className="flex w-full flex-col gap-1">
-                    <div className="flex w-full items-center justify-between">
+                    <div className="flex w-full items-center justify-between md:flex-col md:items-start">
                       <p className="text-lg font-light">{course?.title}</p>
                       <p className="text-md font-bold">{course?.price} ر.س</p>
                     </div>
@@ -116,7 +116,7 @@ const Index = () => {
             )}
           </div>
         </div>
-        <div className="w-1/3 flex-col space-y-12 rounded-3xl border bg-white px-6 py-8">
+        <div className="w-1/3 flex-col space-y-12 rounded-3xl border bg-white px-6 py-8 md:w-full">
           <p className="text-lg font-bold">ملخص</p>
           <div className="space-y-5">
             <p className="flex items-center justify-between gap-5">
