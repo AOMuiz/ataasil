@@ -23,7 +23,7 @@ export function absoluteUrl(path) {
   if (process.env.NODE_ENV === "development")
     return `http://localhost:${process.env.PORT ?? 3000}${path}`;
 
-  return `https://${process.env.VERCEL_URL}${path}`;
+  return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}${path}`;
 }
 
 export function constructMetadata({
