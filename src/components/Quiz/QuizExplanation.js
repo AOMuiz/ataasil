@@ -19,7 +19,7 @@ const QuizExplanation = ({ quizData, quizAnswers }) => {
             <p className="my-4 text-lg font-bold">
               {index + 1}. {question.question}
             </p>
-            <p>Your Answer(s): {quizAnswers[index].join(", ")}</p>
+            <p>Your Answer(s): {quizAnswers[question._id].join(", ")}</p>
             <p>Correct Answer(s): {question.answers.join(", ")}</p>
           </div>
         ))}

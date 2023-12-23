@@ -1,7 +1,8 @@
 // QuizSummary.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CtaButton from "../CtaButton";
 import QuizExplanation from "./QuizExplanation";
+import {} from "react";
 
 const QuizSummary = ({
   quizData,
@@ -11,9 +12,14 @@ const QuizSummary = ({
   handleResetQuiz,
 }) => {
   const [showExplanation, setShowExplanation] = useState(false);
+
+  useEffect(() => {
+    setShowExplanation(false);
+  }, [quizData, quizAnswers]);
+
   return (
     <>
-      {showExplanation ? (
+      {showExplanation && quizAnswers && Object.keys(quizAnswers).length > 0 ? (
         <QuizExplanation quizData={quizData} quizAnswers={quizAnswers} />
       ) : (
         <div className="px-10 py-5">

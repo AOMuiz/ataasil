@@ -22,11 +22,11 @@ const Index = () => {
   const courseSectionData = useReactiveVar(presentCourseDetailVar);
   const courseDataFile = useReactiveVar(presentCourseFileDetail);
   const courseSectionTest = useReactiveVar(presentCourseSectionTest);
-  const [getCourseSection, courseSectionResul] = useLazyQuery(
+  const [getCourseSection, courseSectionResult] = useLazyQuery(
     COURSES_SECTIONS,
     {
       onCompleted: (data) => onGetCourseSectionComplete(data),
-      onError: (error) => console.log({ error, pagination }),
+      onError: (error) => console.log({ error }),
     }
   );
 
@@ -68,7 +68,11 @@ const Index = () => {
         )}
 
         {courseSectionTest.test.length !== 0 && (
-          <Quiz quizData={courseSectionTest.test} />
+          <Quiz
+            testData={courseSectionTest.test}
+            sectionId={courseSectionTest.sectionId}
+            courseId={query.id}
+          />
         )}
 
         <div className="flex justify-between gap-3 bg-white p-4 md:flex-col">

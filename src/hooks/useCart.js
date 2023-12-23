@@ -5,7 +5,6 @@ import { cartItemsVar } from "../graphql/state";
 import { toast } from "react-toastify";
 
 export const useGetCart = () => {
-  const courseFromCartData = useReactiveVar(cartItemsVar);
   const {
     data: cartData,
     error,
@@ -13,7 +12,6 @@ export const useGetCart = () => {
   } = useQuery(COURSES_GET_CART, {
     onCompleted: (data) => {
       cartItemsVar(data.courses_getFromCart);
-      console.log({ courses: data, courseFromCartData });
     },
     onError: (error) => {
       console.log({ error, pagination });
@@ -31,14 +29,12 @@ export const useAddToCart = () => {
         autoClose: 3000,
         hideProgressBar: false,
       });
-      console.log({ courses: data });
     },
     onError: (error) => {
-      toast.error(`error:${error}`, {
+      toast.error(`error:${error.message}`, {
         autoClose: 3000,
         hideProgressBar: false,
       });
-      console.log({ error });
     },
   });
 
@@ -59,7 +55,7 @@ export const useRemoveFromCart = () => {
         console.log({ courses: data, courseFromCartData });
       },
       onError: (error) => {
-        toast.error(`error:${error}`, {
+        toast.error(`Error: ${error.message}`, {
           autoClose: 3000,
           hideProgressBar: false,
         });

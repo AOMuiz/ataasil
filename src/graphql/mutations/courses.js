@@ -68,3 +68,66 @@ export const REMOVE_FROM_CART = gql`
     }
   }
 `;
+
+export const COURSES_SECTIONS_SOLVE_TEST = gql`
+  mutation CourseSection_solveTest(
+    $courseId: ID!
+    $sectionId: ID!
+    $questionId: ID!
+    $answers: [String!]!
+  ) {
+    courseSection_solveTest(
+      courseId: $courseId
+      sectionId: $sectionId
+      questionId: $questionId
+      answers: $answers
+    ) {
+      code
+      success
+      error
+      data {
+        courseSection {
+          _id
+          course
+          title
+          banner
+          notes
+          description
+          files {
+            format
+            src
+            contentType
+            size
+            description
+            title
+            isPreview
+          }
+          test {
+            _id
+            question
+            options
+            answers
+            isAnswerMultiple
+            score
+          }
+          isCompleted
+        }
+        quizData {
+          testResult {
+            _id
+            score
+            defaultScore
+          }
+          score
+          scorePercent
+          obtainableScore
+        }
+        recentQuestionData {
+          studentScore
+          wrongAnswers
+          correctAnswers
+        }
+      }
+    }
+  }
+`;

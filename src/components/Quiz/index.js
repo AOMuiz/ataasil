@@ -1,8 +1,11 @@
 // Quiz.js
 import React, { useState, useEffect } from "react";
+import { useMutation, useReactiveVar } from "@apollo/client";
+
 import QuizSynopsis from "./QuizSynopsis";
 import QuizQuestion from "./QuizQuestion";
 import QuizSummary from "./QuizSummary";
+import { COURSES_SECTIONS_SOLVE_TEST } from "../../graphql/mutations/courses";
 
 const quizData = [
   {
@@ -28,15 +31,32 @@ const quizData = [
   },
 ];
 
-const Quiz = ({ quizData: initialQuizData }) => {
+const Quiz = ({ testData, sectionId, courseId }) => {
   const [quizStarted, setQuizStarted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [quizAnswers, setQuizAnswers] = useState([]);
+  const [quizAnswers, setQuizAnswers] = useState({});
   const [calculatedAnswer, setCalculatedAnswer] = useState({
     correctAnswers: 0,
     wrongAnswers: 0,
   });
-  const [quizData, setQuizData] = useState(initialQuizData);
+
+  const [solvetestFn, solveTest] = useMutation(COURSES_SECTIONS_SOLVE_TEST, {
+    onCompleted: (data) => {
+      cartItemsVar(data?.courses_addToCart.data);
+      toast.success(`success`, {
+        autoClose: 3000,
+        hideProgressBar: false,
+      });
+      console.log({ courses: data });
+    },
+    onError: (error) => {
+      toast.error(`error:${error}`, {
+        autoClose: 3000,
+        hideProgressBar: false,
+      });
+      console.log({ error });
+    },
+  });
 
   const handleStartQuiz = () => {
     setQuizStarted(true);
@@ -45,7 +65,7 @@ const Quiz = ({ quizData: initialQuizData }) => {
   const handleResetQuiz = () => {
     setQuizStarted(false);
     setCurrentQuestionIndex(0);
-    setQuizAnswers([]);
+    setQuizAnswers({});
     setCalculatedAnswer({ correctAnswers: 0, wrongAnswers: 0 });
   };
 
@@ -59,7 +79,7 @@ const Quiz = ({ quizData: initialQuizData }) => {
     let correctAnswers = 0;
     let wrongAnswers = 0;
 
-    quizData.forEach((question, index) => {
+    testData.forEach((question, index) => {
       const selectedOptions = quizAnswers[question._id];
       const correctOptions = question.answers;
 
@@ -77,18 +97,20 @@ const Quiz = ({ quizData: initialQuizData }) => {
   };
 
   const handleAnswerSubmit = (selectedOptions) => {
+    console.log({ selectedOptions });
     const updatedAnswers = { ...quizAnswers };
-    const questionId = quizData[currentQuestionIndex]._id;
+    const questionId = testData[currentQuestionIndex]._id;
 
+    // solvetestFn({variables:{ courseId, sectionId, questionId, answers: selectedOptions }})
+    console.log({ courseId, sectionId, questionId, answers: selectedOptions });
     updatedAnswers[questionId] = selectedOptions ? [...selectedOptions] : [];
 
     // Move to the next question or display the summary
-    if (currentQuestionIndex < quizData.length - 1) {
+    if (currentQuestionIndex < testData.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
       setCurrentQuestionIndex(-1); // Quiz is complete, show the result summary
     }
-    console.log({ updatedAnswers, calculatedAnswer });
 
     setQuizAnswers(updatedAnswers);
   };
@@ -97,22 +119,24 @@ const Quiz = ({ quizData: initialQuizData }) => {
     calculateTotalCorrectAndWrongAnswers();
 
   useEffect(() => {
-    // Reset quiz-related states when quizData changes
+    // Reset quiz-related states when testData changes
     handleResetQuiz();
-  }, [initialQuizData]);
+  }, [testData]);
 
   return (
     <div>
-      {!quizStarted ? (
+      {quizStarted === false ? (
         <QuizSynopsis
-          totalQuestions={quizData.length}
-          passScore={Math.ceil(quizData.length * 0.7)} // Example pass score (70%)
+          totalQuestions={testData.length}
+          passScore={Math.ceil(testData.length * 0.7)} // Example pass score (70%)
           onStartQuiz={handleStartQuiz}
         />
-      ) : currentQuestionIndex === -1 ? (
+      ) : currentQuestionIndex === -1 &&
+        quizAnswers &&
+        Object.keys(quizAnswers).length > 0 ? (
         <div>
           <QuizSummary
-            quizData={quizData}
+            quizData={testData}
             quizAnswers={quizAnswers}
             correctAnswers={correctAnswers}
             wrongAnswers={wrongAnswers}
@@ -121,8 +145,8 @@ const Quiz = ({ quizData: initialQuizData }) => {
         </div>
       ) : (
         <QuizQuestion
-          totalQuestions={quizData.length}
-          questionData={quizData[currentQuestionIndex]}
+          totalQuestions={testData.length}
+          questionData={testData[currentQuestionIndex]}
           onAnswerSubmit={handleAnswerSubmit}
           currentQuestionIndex={currentQuestionIndex}
           onPreviousQuestion={handlePreviousQuestion}
