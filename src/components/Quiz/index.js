@@ -6,12 +6,15 @@ import QuizSummary from "./QuizSummary";
 
 const quizData = [
   {
+    _id: "64c4c56d65f2333a8cfa7818",
     question: "ما المصدر الذي يقدم آيات التوحيد؟",
     options: ["مجموعات الحديث", "آيات التوحيد", "سيرة النبي", "الفقه الإسلامي"],
     answers: ["آيات التوحيد"],
-    multiple: false,
+    isAnswerMultiple: true,
+    score: 5,
   },
   {
+    _id: "64c4c56d65f2333a8cfa7819",
     question: "ما هو تركيز هذا الفصل؟",
     options: [
       "تاريخ التوحيد",
@@ -20,7 +23,8 @@ const quizData = [
       "تأكيد التوحيد في القرآن",
     ],
     answers: ["تأكيد التوحيد في القرآن"],
-    multiple: false,
+    isAnswerMultiple: false,
+    score: 5,
   },
 ];
 
@@ -56,7 +60,7 @@ const Quiz = ({ quizData: initialQuizData }) => {
     let wrongAnswers = 0;
 
     quizData.forEach((question, index) => {
-      const selectedOptions = quizAnswers[index];
+      const selectedOptions = quizAnswers[question._id];
       const correctOptions = question.answers;
 
       if (
@@ -72,21 +76,25 @@ const Quiz = ({ quizData: initialQuizData }) => {
     return { correctAnswers, wrongAnswers };
   };
 
-  const { correctAnswers, wrongAnswers } =
-    calculateTotalCorrectAndWrongAnswers();
-
   const handleAnswerSubmit = (selectedOptions) => {
-    const updatedAnswers = [...quizAnswers];
-    updatedAnswers[currentQuestionIndex] = selectedOptions;
-    setQuizAnswers(updatedAnswers);
+    const updatedAnswers = { ...quizAnswers };
+    const questionId = quizData[currentQuestionIndex]._id;
 
+    updatedAnswers[questionId] = selectedOptions ? [...selectedOptions] : [];
+
+    // Move to the next question or display the summary
     if (currentQuestionIndex < quizData.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      // Quiz is complete, show the result summary
-      setCurrentQuestionIndex(-1); // Reset currentQuestionIndex
+      setCurrentQuestionIndex(-1); // Quiz is complete, show the result summary
     }
+    console.log({ updatedAnswers, calculatedAnswer });
+
+    setQuizAnswers(updatedAnswers);
   };
+
+  const { correctAnswers, wrongAnswers } =
+    calculateTotalCorrectAndWrongAnswers();
 
   useEffect(() => {
     // Reset quiz-related states when quizData changes

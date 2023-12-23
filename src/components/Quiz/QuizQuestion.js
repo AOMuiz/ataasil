@@ -1,5 +1,5 @@
 // QuizQuestion.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CtaButton from "../CtaButton";
 
 const QuizQuestion = ({
@@ -22,6 +22,11 @@ const QuizQuestion = ({
   const handleSubmit = () => {
     onAnswerSubmit(selectedOptions);
   };
+
+  useEffect(() => {
+    // Reset selectedOptions when the current question changes
+    setSelectedOptions([]);
+  }, [currentQuestionIndex]);
 
   return (
     <div className="px-6 py-5">
