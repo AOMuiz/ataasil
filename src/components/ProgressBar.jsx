@@ -20,11 +20,11 @@ const ProgressDemo = ({ progressCovered, height }) => {
         // https://gist.github.com/domske/b66047671c780a238b51c51ffde8d3a0
         transform: "translateZ(0)",
       }}
-      value={progress}
+      value={progressCovered}
     >
       <Progress.Indicator
         className="ease-[cubic-bezier(0.65, 0, 0.35, 1)] h-full w-full bg-[#35CCBC] transition-transform duration-[660ms]"
-        style={{ transform: `translateX(-${100 - progress}%)` }}
+        style={{ transform: `translateX(-${100 - progressCovered}%)` }}
       />
     </Progress.Root>
   );

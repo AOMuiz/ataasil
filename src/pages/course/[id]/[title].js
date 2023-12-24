@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLazyQuery, useReactiveVar } from "@apollo/client";
 import { useRouter } from "next/router";
 
@@ -7,7 +7,6 @@ import Icon from "../../../components/Icon";
 import CourseDetailsTab from "../../../components/courseDetail/courseDetailsTab";
 import DetailsCard from "../../../components/courseDetail/detailsCard";
 import Spinner from "../../../components/spinner";
-import { presentCourseFileDetail } from "../../../graphql/state";
 import PreviewModal from "../../../components/courseDetail/PreviewModal";
 
 const Index = () => {
@@ -72,7 +71,7 @@ const Index = () => {
             </div>
           </div>
         </section>
-        <section className="mt-2 grid h-full grid-cols-3 gap-5 p-10">
+        <section className="mt-2 grid h-full grid-cols-3 gap-5 p-10 md:flex md:flex-col md:flex-col-reverse">
           <CourseDetailsTab
             curriculum={courseSection}
             course={courseDetail?.course}

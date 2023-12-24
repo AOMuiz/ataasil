@@ -17,6 +17,7 @@ const CourseCard = ({
   teacher,
   price,
   hasAccess,
+  progress,
 }) => {
   const { t } = useTranslation("index");
 
@@ -57,17 +58,17 @@ const CourseCard = ({
               <p>{teacher && teacher}</p>
             </div>
             <p className="cursor-pointer text-primary-P300">
-              {price && `$ ${price}`}
+              {price && `${price} ر.س`}
             </p>
           </div>
-          {/* {hasAccess && (
+          {hasAccess && (
             <div>
-              <ProgressDemo />
+              <ProgressDemo progressCovered={progress} />
               <p className="mt-1 text-sm font-medium text-[#A8A8A8]">
-                30% complete
+                {progress}% complete
               </p>
             </div>
-          )} */}
+          )}
         </div>
       </article>
     </>

@@ -41,6 +41,7 @@ export const COURSES = gql`
       category
       price
       teacher {
+        _id
         username
       }
       hasAccess
@@ -110,6 +111,31 @@ export const COURSES_GET_CART = gql`
       }
       category
       price
+      hasAccess
+      progress
+      sectionCount
+      studentCount
+    }
+  }
+`;
+
+export const COURSES_SUBSCRIBED = gql`
+  query Courses_subscribed(
+    $pagination: PaginationInput!
+    $filter: CourseFilter
+  ) {
+    courses_subscribed(pagination: $pagination, filter: $filter) {
+      _id
+      title
+      description
+      banner
+      createdAt
+      category
+      price
+      teacher {
+        _id
+        username
+      }
       hasAccess
       progress
       sectionCount

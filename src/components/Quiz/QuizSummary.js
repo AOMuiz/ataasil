@@ -1,8 +1,7 @@
 // QuizSummary.js
 import React, { useState, useEffect } from "react";
-import CtaButton from "../CtaButton";
 import QuizExplanation from "./QuizExplanation";
-import {} from "react";
+import CtaButton from "../CtaButton";
 
 const QuizSummary = ({
   quizData,

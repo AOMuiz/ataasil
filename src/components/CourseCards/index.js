@@ -7,18 +7,6 @@ import SectionHeader from "../SectionHeader";
 import useFetchCourses from "../../hooks/useFetchCourses";
 import CourseCardPulse from "./CourseCardPulse";
 
-const courses = [
-  {
-    title: "كتاب التوحيد للشيخ العثيمين",
-    date: "3 أشهر",
-    topic: "التوحيد",
-    summary:
-      "لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك الت",
-    amount: "$120",
-    owner: "الشيخ المدخلي",
-  },
-];
-
 const CourseCards = () => {
   const { t } = useTranslation("index");
   const [pagination, setPagination] = useState({
@@ -53,7 +41,7 @@ const CourseCards = () => {
                 banner={course.banner}
                 teacher={course.teacher.username}
                 price={course.price}
-                hasAccess={course.hasAccess}
+                // hasAccess={course.hasAccess}
               />
             ))}
           {error && <h3>Error Fetching courses. Please refresh.</h3>}

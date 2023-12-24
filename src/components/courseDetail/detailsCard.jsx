@@ -23,7 +23,7 @@ const DetailsCard = ({ courseDetail }) => {
 
   return (
     <div className="min-w-[300px] space-y-3 rounded-md p-3 shadow-xl">
-      <div className="relative aspect-square overflow-hidden rounded-md border-b">
+      <div className="relative aspect-square overflow-hidden rounded-md border-b md:aspect-video">
         {courseDetail && (
           <Image
             src={`${courseDetail?.course.banner}`}
