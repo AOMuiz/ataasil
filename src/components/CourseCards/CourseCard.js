@@ -57,9 +57,12 @@ const CourseCard = ({
               <Image src={ownerIcon} alt="" />
               <p>{teacher && teacher}</p>
             </div>
-            <p className="cursor-pointer text-primary-P300">
-              {price && `${price} ر.س`}
-            </p>
+
+            {hasAccess === false && (
+              <p className="cursor-pointer text-primary-P300">
+                {price && `${price} ر.س`}
+              </p>
+            )}
           </div>
           {hasAccess && (
             <div>

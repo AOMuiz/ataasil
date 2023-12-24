@@ -129,7 +129,7 @@ const UserProfile = () => {
             <Icon id={"upload"} size={23} />
           </button>
         </div>
-        <InfoContainer className="h-80 space-y-2 overflow-y-scroll border-l-2 border-l-primary-P200 px-3 md:w-full">
+        <InfoContainer className="h-80 space-y-2 overflow-y-scroll border-l-2 border-l-primary-P200 px-3 md:h-full md:w-full">
           <ChangeProfileInput
             containerStyle="md:max-w-full"
             name="username"

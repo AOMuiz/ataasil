@@ -54,7 +54,7 @@ const Profile = () => {
               <Icon id={"left"} />
             </p>
           </div>
-          <div className="flex gap-6 overflow-x-auto py-2 md:flex-wrap">
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(270px,1fr))] gap-6 py-2">
             {loading &&
               pulseArray.map((course, i) => <CourseCardPulse key={i} />)}
             {data &&
@@ -73,22 +73,6 @@ const Profile = () => {
                 />
               ))}
             {error && <h3>Error Fetching courses. Please refresh.</h3>}
-          </div>
-          <div>
-            <div className="flex flex-row-reverse gap-2 py-10">
-              <Icon
-                id={"left"}
-                color={"white"}
-                size={25}
-                className="h-12 w-12 cursor-pointer rounded-md bg-[#35CCBC80] p-3"
-              />
-              <Icon
-                id={"right"}
-                color={"white"}
-                size={25}
-                className="h-12 w-12 rounded-md bg-[#35CCBC] p-3"
-              />
-            </div>
           </div>
         </div>
       </div>
