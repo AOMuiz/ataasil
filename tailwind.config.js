@@ -33,6 +33,11 @@ module.exports = {
       fontFamily: {
         sans: ["Almarai", "sans-serif"],
       },
+      gridTemplateColumns: {
+        // added new 4 column grid as new4
+        repeat4: "repeat(4, minmax(100px, 500px))",
+        responsive270: "repeat(auto-fill,minmax(270px,1fr))",
+      },
       colors: {
         transparent: "transparent",
         current: "currentColor",
@@ -126,10 +131,9 @@ module.exports = {
           to: { opacity: 1 },
         },
         contentShow: {
-          from: { opacity: 0, transform: 'translate(-50%, -48%) scale(0.96)' },
-          to: { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
+          from: { opacity: 0, transform: "translate(-50%, -48%) scale(0.96)" },
+          to: { opacity: 1, transform: "translate(-50%, -50%) scale(1)" },
         },
-
       },
       animation: {
         slideDown: "slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1)",

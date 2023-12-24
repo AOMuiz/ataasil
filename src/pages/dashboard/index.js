@@ -54,7 +54,7 @@ const Profile = () => {
               <Icon id={"left"} />
             </p>
           </div>
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(270px,1fr))] gap-6 py-2">
+          <div className="grid grid-cols-responsive270 gap-6 py-2">
             {loading &&
               pulseArray.map((course, i) => <CourseCardPulse key={i} />)}
             {data &&
