@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLazyQuery, useReactiveVar } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 
 import { COURSES_SECTIONS, COURSE } from "../../../graphql/queries/courses";

@@ -89,6 +89,59 @@ export const COURSES_SECTIONS = gql`
   }
 `;
 
+export const COURSE_SECTION = gql`
+  query CourseSection($sectionId: ID!) {
+    courseSection(sectionId: $sectionId) {
+      code
+      success
+      error
+      data {
+        courseSection {
+          _id
+          course
+          title
+          banner
+          notes
+          description
+          files {
+            format
+            src
+            contentType
+            size
+            description
+            title
+            isPreview
+          }
+          test {
+            _id
+            question
+            options
+            answers
+            isAnswerMultiple
+            score
+          }
+          isCompleted
+        }
+        quizData {
+          testResult {
+            _id
+            score
+            defaultScore
+          }
+          score
+          scorePercent
+          obtainableScore
+        }
+        recentQuestionData {
+          studentScore
+          wrongAnswers
+          correctAnswers
+        }
+      }
+    }
+  }
+`;
+
 export const COURSES_GET_CART = gql`
   query Courses_getFromCart {
     courses_getFromCart {

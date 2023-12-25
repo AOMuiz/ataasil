@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css/core";
+
 import CourseCard from "./CourseCard";
 import SectionCategory from "./SectionCategory";
 import Icon from "../Icon";
@@ -26,43 +29,74 @@ const CourseCards = () => {
         <SectionCategory content={"فقه"} />
         <SectionCategory content={"اللغة العربية"} />
       </div>
-      <section>
-        <div className="flex gap-6 overflow-x-auto py-2">
+      <Splide
+        hasTrack={false}
+        options={{
+          direction: "rtl",
+          gap: "1rem",
+          drag: true,
+          snap: true,
+          autoHeight: true,
+          fixedWidth: "270px",
+
+          // breakpoints: {
+          //  perPage: 4,
+          //   1000: {
+          //     perPage: 3,
+          //     gap: 20,
+          //   },
+          //   600: {
+          //     perPage: 2,
+          //     gap: 10,
+          //   },
+          //   400: {
+          //     perPage: 1,
+          //     gap: 5,
+          //   },
+          // },
+        }}
+      >
+        <SplideTrack className="gap-6 py-2">
           {loading &&
             pulseArray.map((course, i) => <CourseCardPulse key={i} />)}
           {data &&
             data.courses.map((course) => (
-              <CourseCard
-                key={course._id}
-                id={course._id}
-                title={course.title}
-                category={course.category}
-                description={course.description}
-                banner={course.banner}
-                teacher={course.teacher.username}
-                price={course.price}
-                // hasAccess={course.hasAccess}
-              />
+              <SplideSlide key={course._id}>
+                <CourseCard
+                  id={course._id}
+                  title={course.title}
+                  category={course.category}
+                  description={course.description}
+                  banner={course.banner}
+                  teacher={course.teacher.username}
+                  price={course.price}
+                  // hasAccess={course.hasAccess}
+                />
+              </SplideSlide>
             ))}
           {error && <h3>Error Fetching courses. Please refresh.</h3>}
-        </div>
+        </SplideTrack>
         <div>
-          <div className="flex flex-row-reverse gap-2 py-10">
-            <Icon
-              id={"left"}
-              color={"white"}
-              size={25}
-              className="h-12 w-12 cursor-pointer rounded-md bg-[#35CCBC80] p-3"
-            />
-            <Icon
-              id={"right"}
-              color={"white"}
-              size={25}
-              className="h-12 w-12 rounded-md bg-[#35CCBC] p-3"
-            />
+          <div className="splide__arrows flex flex-row-reverse gap-2 py-10">
+            <button className="splide_arrow splide__arrow--next">
+              <Icon
+                id={"left"}
+                color={"white"}
+                size={25}
+                className="h-12 w-12 cursor-pointer rounded-md bg-[#35CCBC80] p-3 "
+              />
+            </button>
+            <button className="splide_arrow splide__arrow--prev">
+              <Icon
+                id={"right"}
+                color={"white"}
+                size={25}
+                className="h-12 w-12 rounded-md bg-[#35CCBC] p-3"
+              />
+            </button>
           </div>
         </div>
-      </section>
+      </Splide>
     </div>
   );
 };
