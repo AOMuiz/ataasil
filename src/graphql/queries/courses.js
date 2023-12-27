@@ -31,8 +31,8 @@ export const COURSE = gql`
 `;
 
 export const COURSES = gql`
-  query Courses($pagination: PaginationInput!) {
-    courses(pagination: $pagination) {
+  query Courses($pagination: PaginationInput!, $filter: CourseFilter) {
+    courses(pagination: $pagination, filter: $filter) {
       _id
       title
       description

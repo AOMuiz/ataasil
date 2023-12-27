@@ -85,9 +85,8 @@ const Quiz = ({ testData, sectionId, courseId }) => {
     const questionId = testData[currentQuestionIndex]._id;
 
     solvetestFn({
-      variables: { courseId, sectionId, questionId, answers: selectedOptions },
+      variables: { sectionId, courseId, questionId, answers: selectedOptions },
     });
-    console.log({ courseId, sectionId, questionId, answers: selectedOptions });
     updatedAnswers[questionId] = selectedOptions ? [...selectedOptions] : [];
 
     // Move to the next question or display the summary

@@ -8,9 +8,12 @@ import CourseCard from "../../components/CourseCards/CourseCard";
 import tw, { styled } from "twin.macro";
 import useFetchCourses from "../../hooks/useFetchCourses";
 import CourseCardPulse from "../../components/CourseCards/CourseCardPulse";
+import PopoverDemo from "../../components/popover";
+import AppDropdownMenu from "../../components/dropdownmenu";
 import Pagination from "../../components/Pagination";
 import { COURSES_COUNT } from "../../graphql/queries/courses";
 import { useQuery } from "@apollo/client";
+import { cn } from "../../utils/helpers";
 
 const TrainingPrograms = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,19 +23,38 @@ const TrainingPrograms = () => {
     page: 1,
   });
   const [filter, setFilter] = useState({
-    category: null,
-    title: null,
+    category: "",
+    title: "",
+  });
+  const pulseArray = new Array(4).fill(1);
+
+  const [data, error, loading, refetch] = useFetchCourses({
+    pagination,
+    filter,
   });
 
-  const [data, error, loading] = useFetchCourses({ pagination });
   const { data: countData } = useQuery(COURSES_COUNT, {
-    variables: { filter },
+    variables: { filter: { ...filter } },
     onCompleted: (data) => {
       setTotalCourses(data?.courses_count);
       console.log({ courses: data, totalCourses });
     },
   });
-  const pulseArray = new Array(4).fill(1);
+
+  function handleOptionChange(e) {
+    setFilter((prev) => ({
+      ...prev,
+      category: e.target.value,
+    }));
+    console.log({ option: filter });
+  }
+
+  function handleSearchChange(e) {
+    setFilter((prev) => ({
+      ...prev,
+      title: e.target.value,
+    }));
+  }
 
   const handlePageChange = (page) => {
     if (page === "next") {
@@ -43,6 +65,31 @@ const TrainingPrograms = () => {
       setCurrentPage(page);
     }
   };
+
+  const handleFilter = (type) => {
+    if (type === "filter") {
+      refetch({
+        pagination: { ...pagination },
+        filter: { ...filter },
+      });
+    }
+    if (type === "clear") {
+      setFilter((prev) => ({
+        ...prev,
+        category: "",
+        title: "",
+      }));
+
+      refetch({
+        pagination: { ...pagination },
+        filter: { category: "", title: "" },
+      });
+    }
+  };
+
+  useEffect(() => {
+    console.log({ option: filter, loading }); // Log the updated state here
+  }, [filter, loading]);
 
   // useEffect(() => {
   //   if (countData) {
@@ -67,22 +114,111 @@ const TrainingPrograms = () => {
             <SectionCategory content={"للمحترفين"} />
           </div>
           <div className="flex items-center justify-between gap-4">
-            <UnstyledButton>
-              <Icon
-                id={"options"}
-                size={24}
-                className="rounded-full bg-gray-G20 p-2"
-                color="#5A5A5A"
-              />
-            </UnstyledButton>
-            <UnstyledButton>
-              <Icon
-                id={"sort"}
-                size={24}
-                className="rounded-full bg-gray-G20 p-2"
-                color="#5A5A5A"
-              />
-            </UnstyledButton>
+            <PopoverDemo
+              trigger={
+                <UnstyledButton>
+                  <Icon
+                    id={"options"}
+                    size={24}
+                    className="rounded-full bg-gray-G20 p-2"
+                    color="#5A5A5A"
+                  />
+                </UnstyledButton>
+              }
+            >
+              <div className="mt-8 px-2">
+                <div className="mb-3">
+                  <p>بحث</p>{" "}
+                  <input
+                    type="search"
+                    className="rounded-sm border border-primary-P300 px-2"
+                    value={filter.title}
+                    onChange={handleSearchChange}
+                  />
+                </div>
+                <div>
+                  <p className="mb-3 font-semibold">نوع المؤتمر</p>
+                  <div className="flex flex-col">
+                    <label>
+                      <input
+                        checked={filter.category === ""}
+                        onChange={handleOptionChange}
+                        name="category-filter"
+                        type="radio"
+                        value=""
+                        className="me-2"
+                      />
+                      <span>الكل</span>
+                    </label>
+                    <label className="space-x-2">
+                      <input
+                        checked={filter.category === "Arobiyyah"}
+                        onChange={handleOptionChange}
+                        name="category-filter"
+                        type="radio"
+                        value="Arobiyyah"
+                        className="me-2"
+                      />
+                      <span>العربية</span>
+                    </label>
+                    <label className="space-x-2">
+                      <input
+                        checked={filter.category === "Hadith"}
+                        onChange={handleOptionChange}
+                        name="category-filter"
+                        type="radio"
+                        value="Hadith"
+                        className="me-2"
+                      />
+                      الحديث
+                    </label>
+                    <label className="space-x-2">
+                      <input
+                        checked={filter.category === "Aqeedah"}
+                        onChange={handleOptionChange}
+                        name="category-filter"
+                        type="radio"
+                        value="Aqeedah"
+                        className="me-2"
+                      />
+                      العقيدة
+                    </label>
+                  </div>
+                </div>
+                <div className="mt-4 flex justify-between">
+                  <button
+                    disabled={loading}
+                    onClick={() => handleFilter("filter")}
+                    className={cn(
+                      "rounded-md bg-primary-P300 p-3 font-semibold text-white",
+                      loading && "bg-gray-300 text-black"
+                    )}
+                  >
+                    تصفية
+                  </button>
+                  <button
+                    onClick={() => handleFilter("clear")}
+                    className="rounded-md bg-neutral-400 p-3 font-semibold"
+                  >
+                    إعادة ضبط
+                  </button>
+                </div>
+              </div>
+            </PopoverDemo>
+            <AppDropdownMenu
+              trigger={
+                <UnstyledButton>
+                  <Icon
+                    id={"sort"}
+                    size={24}
+                    className="rounded-full bg-gray-G20 p-2"
+                    color="#5A5A5A"
+                  />
+                </UnstyledButton>
+              }
+            >
+              <p>sort</p>
+            </AppDropdownMenu>
           </div>
         </div>
         <CourseList>
