@@ -8,6 +8,7 @@ const QuizQuestion = ({
   onPreviousQuestion,
   currentQuestionIndex,
   totalQuestions,
+  testSubmitLoading,
 }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
@@ -74,11 +75,11 @@ const QuizQuestion = ({
           السابق
         </CtaButton>
         <CtaButton
-          disabled={selectedOptions.length === 0}
+          disabled={testSubmitLoading || selectedOptions.length === 0}
           onClick={handleSubmit}
           className={"bg-[#039BE5] font-bold"}
         >
-          التالي
+          {testSubmitLoading ? "submitinng..." : "التالي"}
         </CtaButton>
       </div>
     </div>

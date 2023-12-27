@@ -9,6 +9,7 @@ const QuizSummary = ({
   correctAnswers,
   wrongAnswers,
   handleResetQuiz,
+  testSubmitLoading,
 }) => {
   const [showExplanation, setShowExplanation] = useState(false);
 

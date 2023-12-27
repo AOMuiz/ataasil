@@ -110,7 +110,7 @@ export const COURSES_SECTIONS_SOLVE_TEST = gql`
             isAnswerMultiple
             score
           }
-          isCompleted
+          # isCompleted
         }
         quizData {
           testResult {

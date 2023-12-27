@@ -38,22 +38,6 @@ const CourseCards = () => {
           snap: true,
           autoHeight: true,
           fixedWidth: "270px",
-
-          // breakpoints: {
-          //  perPage: 4,
-          //   1000: {
-          //     perPage: 3,
-          //     gap: 20,
-          //   },
-          //   600: {
-          //     perPage: 2,
-          //     gap: 10,
-          //   },
-          //   400: {
-          //     perPage: 1,
-          //     gap: 5,
-          //   },
-          // },
         }}
       >
         <SplideTrack className="gap-6 py-2">

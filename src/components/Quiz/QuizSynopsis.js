@@ -1,7 +1,13 @@
 import React from "react";
 import CtaButton from "../CtaButton";
 
-const QuizSynopsis = ({ totalQuestions, passScore, onStartQuiz }) => {
+const QuizSynopsis = ({
+  totalQuestions,
+  passScore,
+  onStartQuiz,
+  scorePercent,
+  totalAnswered,
+}) => {
   return (
     <div className="px-6 py-4">
       <div className="mb-16">
@@ -14,10 +20,11 @@ const QuizSynopsis = ({ totalQuestions, passScore, onStartQuiz }) => {
         <div className="space-y-2">
           <h4 className="mb-3 font-bold">أرسل مهمتك</h4>
           <p className="text-gray-G30">
-            <span className="font-bold">الوقت:</span> 10 ساعات و 30 دقيقة
+            <span className="font-bold">عدد الأسئلة:</span> {totalQuestions}
           </p>
           <p className="text-gray-G30">
-            <span className="font-bold">عدد الأسئلة:</span> {totalQuestions}
+            <span className="font-bold">تمت الإجابة على الأسئلة:</span>
+            {totalAnswered} من {totalQuestions}
           </p>
         </div>
         <CtaButton onClick={onStartQuiz} className="bg-[#039BE5]">
@@ -34,7 +41,11 @@ const QuizSynopsis = ({ totalQuestions, passScore, onStartQuiz }) => {
         </div>
         <div className="border-r border-gray-200 pl-8 pr-4">
           <p className="font-bold">درجتك</p>
-          <p className="fonnt-bold"> - </p>
+          {scorePercent ? (
+            <p className="fonnt-bold text-green-600"> {scorePercent}% </p>
+          ) : (
+            <p className="fonnt-bold"> - </p>
+          )}
         </div>
       </div>
     </div>

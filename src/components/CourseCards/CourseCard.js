@@ -51,7 +51,7 @@ const CourseCard = ({
           </div>
 
           <p className=" py-3 text-lg font-bold">{title && title}</p>
-          <p>{description && description}</p>
+          {!hasAccess && <p>{description && description}</p>}
           <div className="flex items-center justify-between py-3">
             <div className="flex  items-center gap-2 ">
               <Image src={ownerIcon} alt="" />
@@ -67,9 +67,16 @@ const CourseCard = ({
           {hasAccess && (
             <div>
               <ProgressDemo progressCovered={progress} />
-              <p className="mt-1 text-sm font-medium text-[#A8A8A8]">
-                {progress}% complete
-              </p>
+              <div className="flex justify-between">
+                <p className="mt-1 text-sm font-medium text-[#A8A8A8]">
+                  {progress}% complete
+                </p>
+                <p>
+                  <p className="mt-1 text-sm font-medium text-[#A8A8A8]">
+                    الدرس 4 من 9
+                  </p>
+                </p>
+              </div>
             </div>
           )}
         </div>

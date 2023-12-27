@@ -1,35 +1,13 @@
 // Quiz.js
 import React, { useState, useEffect } from "react";
-import { useMutation, useReactiveVar } from "@apollo/client";
+import { useMutation, useLazyQuery, useReactiveVar } from "@apollo/client";
+import { COURSE_SECTION } from "../../graphql/queries/courses";
+import { toast } from "react-toastify";
 
 import QuizSynopsis from "./QuizSynopsis";
 import QuizQuestion from "./QuizQuestion";
 import QuizSummary from "./QuizSummary";
 import { COURSES_SECTIONS_SOLVE_TEST } from "../../graphql/mutations/courses";
-
-const quizData = [
-  {
-    _id: "64c4c56d65f2333a8cfa7818",
-    question: "ما المصدر الذي يقدم آيات التوحيد؟",
-    options: ["مجموعات الحديث", "آيات التوحيد", "سيرة النبي", "الفقه الإسلامي"],
-    answers: ["آيات التوحيد"],
-    isAnswerMultiple: true,
-    score: 5,
-  },
-  {
-    _id: "64c4c56d65f2333a8cfa7819",
-    question: "ما هو تركيز هذا الفصل؟",
-    options: [
-      "تاريخ التوحيد",
-      "شرح المعتقدات الإسلامية",
-      "فهم الشرك",
-      "تأكيد التوحيد في القرآن",
-    ],
-    answers: ["تأكيد التوحيد في القرآن"],
-    isAnswerMultiple: false,
-    score: 5,
-  },
-];
 
 const Quiz = ({ testData, sectionId, courseId }) => {
   const [quizStarted, setQuizStarted] = useState(false);
@@ -40,14 +18,20 @@ const Quiz = ({ testData, sectionId, courseId }) => {
     wrongAnswers: 0,
   });
 
+  const [getSection, { data: testResult, error, loading, refetch }] =
+    useLazyQuery(COURSE_SECTION, {
+      onCompleted: (data) =>
+        console.log({ sectionData: data.courseSection.data.quizData }),
+      onError: (error) => console.log({ courseError: error }),
+    });
+
   const [solvetestFn, solveTest] = useMutation(COURSES_SECTIONS_SOLVE_TEST, {
     onCompleted: (data) => {
-      cartItemsVar(data?.courses_addToCart.data);
       toast.success(`success`, {
         autoClose: 3000,
         hideProgressBar: false,
       });
-      console.log({ courses: data });
+      console.log({ testData: data });
     },
     onError: (error) => {
       toast.error(`error:${error}`, {
@@ -80,7 +64,7 @@ const Quiz = ({ testData, sectionId, courseId }) => {
     let wrongAnswers = 0;
 
     testData.forEach((question, index) => {
-      const selectedOptions = quizAnswers[question._id];
+      const selectedOptions = quizAnswers[question?._id];
       const correctOptions = question.answers;
 
       if (
@@ -97,19 +81,24 @@ const Quiz = ({ testData, sectionId, courseId }) => {
   };
 
   const handleAnswerSubmit = (selectedOptions) => {
-    console.log({ selectedOptions });
     const updatedAnswers = { ...quizAnswers };
     const questionId = testData[currentQuestionIndex]._id;
 
-    // solvetestFn({variables:{ courseId, sectionId, questionId, answers: selectedOptions }})
+    solvetestFn({
+      variables: { courseId, sectionId, questionId, answers: selectedOptions },
+    });
     console.log({ courseId, sectionId, questionId, answers: selectedOptions });
     updatedAnswers[questionId] = selectedOptions ? [...selectedOptions] : [];
 
     // Move to the next question or display the summary
-    if (currentQuestionIndex < testData.length - 1) {
+    if (
+      currentQuestionIndex < testData.length - 1 &&
+      solveTest.loading === false
+    ) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      setCurrentQuestionIndex(-1); // Quiz is complete, show the result summary
+      setCurrentQuestionIndex(-1);
+      refetch(); // Quiz is complete, show the result summary
     }
 
     setQuizAnswers(updatedAnswers);
@@ -119,17 +108,30 @@ const Quiz = ({ testData, sectionId, courseId }) => {
     calculateTotalCorrectAndWrongAnswers();
 
   useEffect(() => {
-    // Reset quiz-related states when testData changes
+    if (sectionId) {
+      getSection({ variables: { sectionId } });
+      // Reset quiz-related states when testData chan
+    }
+    console.log(sectionId);
     handleResetQuiz();
-  }, [testData]);
+  }, [testData, sectionId, getSection]);
+
+  if (loading)
+    <div>
+      <p>loading...</p>
+    </div>;
 
   return (
     <div>
       {quizStarted === false ? (
         <QuizSynopsis
           totalQuestions={testData.length}
-          passScore={Math.ceil(testData.length * 0.7)} // Example pass score (70%)
+          passScore={Math.ceil((testData.length * 0.5) / testData.length) * 50} // Example pass score (70%)
           onStartQuiz={handleStartQuiz}
+          scorePercent={testResult?.courseSection.data.quizData.scorePercent}
+          totalAnswered={
+            testResult?.courseSection.data.quizData.testResult.length
+          }
         />
       ) : currentQuestionIndex === -1 &&
         quizAnswers &&
@@ -150,6 +152,7 @@ const Quiz = ({ testData, sectionId, courseId }) => {
           onAnswerSubmit={handleAnswerSubmit}
           currentQuestionIndex={currentQuestionIndex}
           onPreviousQuestion={handlePreviousQuestion}
+          testSubmitLoading={solveTest.loading}
         />
       )}
     </div>
