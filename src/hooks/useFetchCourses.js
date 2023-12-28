@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 const useFetchCourses = ({ pagination, filter }) => {
   const { data, error, loading, refetch } = useQuery(COURSES, {
     variables: {
-      pagination: { limit: 10, page: 1 },
+      pagination: { ...pagination },
       filter: { category: "", title: "" },
     },
     onCompleted: (data) => console.log({ courses: data }),

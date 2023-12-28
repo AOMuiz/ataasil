@@ -1,24 +1,34 @@
 import React from "react";
+import { usePagination, DOTS } from "../hooks/usePagination";
 
-const Pagination = ({ totalPages, currentPage, onPageChange }) => {
-  const generatePages = () => {
-    const pages = [];
-    const displayRange = 3; // Adjust this number to display more or fewer pages
+const Pagination = ({
+  onPageChange,
+  totalCount,
+  siblingCount = 1,
+  currentPage,
+  pageSize,
+  className,
+}) => {
+  const paginationRange = usePagination({
+    currentPage,
+    totalCount,
+    siblingCount,
+    pageSize,
+  });
+  // If there are less than 2 times in pagination range we shall not render the component
+  if (currentPage === 0 || paginationRange.length < 2) {
+    return null;
+  }
 
-    for (let i = 1; i <= totalPages; i++) {
-      if (
-        i === 1 ||
-        i === totalPages ||
-        (i >= currentPage - displayRange && i <= currentPage + displayRange)
-      ) {
-        pages.push(i);
-      }
-    }
-
-    return pages;
+  const onNext = () => {
+    onPageChange(currentPage + 1);
   };
 
-  const pages = generatePages();
+  const onPrevious = () => {
+    onPageChange(currentPage - 1);
+  };
+
+  let lastPage = paginationRange[paginationRange.length - 1];
 
   return (
     <nav aria-label="Page navigation" className="grid place-content-center">
@@ -26,34 +36,45 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
         <li>
           <button
             className="focus:shadow-outline h-10 rounded-r-lg bg-primary-P300 px-5  text-white transition-colors duration-150 hover:bg-primary-P400"
-            onClick={() => onPageChange("next")}
-            disabled={currentPage === totalPages}
+            onClick={onNext}
+            disabled={currentPage === lastPage}
           >
             Next
           </button>
         </li>
-        {pages.map((page) => (
-          <li key={page}>
-            <button
-              className={`focus:shadow-outline h-10 ${
-                currentPage === page
-                  ? "bg-primary-P300 text-white"
-                  : "bg-white text-gray-400 hover:bg-primary-P100"
-              } px-5 text-sm transition-colors duration-150`}
-              onClick={() => onPageChange(page)}
-              disabled={currentPage === page}
-            >
-              {page}
-            </button>
-          </li>
-        ))}
+        {paginationRange.map((pageNumber, index) => {
+          // If the pageItem is a DOT, render the DOTS unicode character
+          if (pageNumber === DOTS) {
+            return (
+              <li key={index}>
+                <button className="focus:shadow-outline h-10 bg-white px-5 text-sm text-gray-400 transition-colors duration-150 hover:bg-primary-P100">
+                  &#8230;
+                </button>
+              </li>
+            );
+          }
+          return (
+            <li key={pageNumber}>
+              <button
+                className={`focus:shadow-outline h-10 ${
+                  currentPage === pageNumber
+                    ? "bg-primary-P300 text-white"
+                    : "bg-white text-gray-400 hover:bg-primary-P100"
+                } px-5 text-sm transition-colors duration-150`}
+                onClick={() => onPageChange(pageNumber)}
+                disabled={currentPage === pageNumber}
+              >
+                {pageNumber}
+              </button>
+            </li>
+          );
+        })}
         <li>
-          <button className="focus:shadow-outline h-10 bg-white px-5 text-sm text-gray-400 transition-colors duration-150 hover:bg-primary-P100">
-            ...
-          </button>
-        </li>
-        <li>
-          <button className="focus:shadow-outline h-10 rounded-l-lg px-5 text-gray-400 transition-colors duration-150 hover:bg-primary-P100 active:bg-primary-P300 active:text-white">
+          <button
+            className="focus:shadow-outline h-10 rounded-l-lg px-5 text-gray-400 transition-colors duration-150 hover:bg-primary-P100 active:bg-primary-P300 active:text-white"
+            onClick={onPrevious}
+            disabled={currentPage === 1}
+          >
             Prev
           </button>
         </li>

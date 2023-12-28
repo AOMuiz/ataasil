@@ -15,13 +15,14 @@ import { COURSES_COUNT } from "../../graphql/queries/courses";
 import { useQuery } from "@apollo/client";
 import { cn } from "../../utils/helpers";
 
+let PAGINATION_ARG = {
+  limit: 1,
+  page: 1,
+};
+
 const TrainingPrograms = () => {
-  const [currentPage, setCurrentPage] = useState(1);
   const [totalCourses, setTotalCourses] = useState(0);
-  const [pagination, setPagination] = useState({
-    limit: 10,
-    page: 1,
-  });
+  const [pagination, setPagination] = useState(PAGINATION_ARG);
   const [filter, setFilter] = useState({
     category: "",
     title: "",
@@ -29,12 +30,12 @@ const TrainingPrograms = () => {
   const pulseArray = new Array(4).fill(1);
 
   const [data, error, loading, refetch] = useFetchCourses({
-    pagination,
+    pagination: PAGINATION_ARG,
     filter,
   });
 
   const { data: countData } = useQuery(COURSES_COUNT, {
-    variables: { filter: { ...filter } },
+    variables: { filter },
     onCompleted: (data) => {
       setTotalCourses(data?.courses_count);
       console.log({ courses: data, totalCourses });
@@ -46,7 +47,6 @@ const TrainingPrograms = () => {
       ...prev,
       category: e.target.value,
     }));
-    console.log({ option: filter });
   }
 
   function handleSearchChange(e) {
@@ -57,13 +57,10 @@ const TrainingPrograms = () => {
   }
 
   const handlePageChange = (page) => {
-    if (page === "next") {
-      setCurrentPage((prevPage) => prevPage + 1);
-    } else if (page === "prev") {
-      setCurrentPage((prevPage) => prevPage - 1);
-    } else {
-      setCurrentPage(page);
-    }
+    setPagination((prev) => ({
+      ...prev,
+      page,
+    }));
   };
 
   const handleFilter = (type) => {
@@ -73,6 +70,7 @@ const TrainingPrograms = () => {
         filter: { ...filter },
       });
     }
+
     if (type === "clear") {
       setFilter((prev) => ({
         ...prev,
@@ -88,14 +86,10 @@ const TrainingPrograms = () => {
   };
 
   useEffect(() => {
-    console.log({ option: filter, loading }); // Log the updated state here
-  }, [filter, loading]);
-
-  // useEffect(() => {
-  //   if (countData) {
-  //     setTotalCourses(countData?.courses_count); // Update totalCourses with count from the server
-  //   }
-  // }, [countData]);
+    if (countData) {
+      setTotalCourses(countData?.courses_count); // Update totalCourses with count from the server
+    }
+  }, [countData]);
 
   return (
     <main>
@@ -239,9 +233,10 @@ const TrainingPrograms = () => {
         </CourseList>
         {totalCourses < pagination.limit ? null : (
           <Pagination
-            totalPages={totalCourses / pagination.limit}
-            currentPage={pagination.page}
+            totalCount={totalCourses}
+            pageSize={pagination.limit}
             onPageChange={handlePageChange}
+            currentPage={pagination.page}
           />
         )}
       </section>
