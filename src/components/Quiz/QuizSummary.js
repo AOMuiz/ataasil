@@ -9,9 +9,13 @@ const QuizSummary = ({
   correctAnswers,
   wrongAnswers,
   handleResetQuiz,
-  testSubmitLoading,
+  currentQuestionIndex,
 }) => {
   const [showExplanation, setShowExplanation] = useState(false);
+
+  const isAnswered = (questionId) => {
+    return quizAnswers && quizAnswers[questionId] !== undefined;
+  };
 
   useEffect(() => {
     setShowExplanation(false);

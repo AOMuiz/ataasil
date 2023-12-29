@@ -34,7 +34,6 @@ const QuizSynopsis = ({
       <div className="flex items-end justify-between border-b-2 border-gray-300 pb-6">
         <div className="space-y-2">
           <h4 className="mb-3 font-bold">الحصول على الدرجة</h4>
-
           <p className="text-gray-G30">
             <span className="font-bold">النجاح:</span> {passScore}% فما فوق
           </p>

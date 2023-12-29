@@ -67,6 +67,7 @@ const Index = () => {
           </div>
         )}
 
+        {/* TODO:  SHOW SECTION TITLE IN TEST SYNOPSIS*/}
         {courseSectionTest.test.length !== 0 && (
           <Quiz
             testData={courseSectionTest.test}
@@ -82,6 +83,7 @@ const Index = () => {
                 ? courseDataFile?.fileTitle
                 : courseSectionData[0]?.title}
             </p>
+            {/* TODO:  SHOW SECTION CORREC STUDENT COUNT FOR COURSET*/}
             <p className="flex gap-3 font-semibold">
               <span>عدد المتدربين المسجلين {1065}</span>
             </p>

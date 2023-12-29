@@ -8,6 +8,7 @@ import QuizSynopsis from "./QuizSynopsis";
 import QuizQuestion from "./QuizQuestion";
 import QuizSummary from "./QuizSummary";
 import { COURSES_SECTIONS_SOLVE_TEST } from "../../graphql/mutations/courses";
+import Spinner from "../spinner";
 
 const Quiz = ({ testData, sectionId, courseId }) => {
   const [quizStarted, setQuizStarted] = useState(false);
@@ -27,14 +28,14 @@ const Quiz = ({ testData, sectionId, courseId }) => {
 
   const [solvetestFn, solveTest] = useMutation(COURSES_SECTIONS_SOLVE_TEST, {
     onCompleted: (data) => {
-      toast.success(`success`, {
-        autoClose: 3000,
+      toast.success(`Question submitted succesfully`, {
+        autoClose: 2000,
         hideProgressBar: false,
       });
       console.log({ testData: data });
     },
     onError: (error) => {
-      toast.error(`error:${error}`, {
+      toast.error(`error:${error.message}`, {
         autoClose: 3000,
         hideProgressBar: false,
       });
@@ -80,27 +81,41 @@ const Quiz = ({ testData, sectionId, courseId }) => {
     return { correctAnswers, wrongAnswers };
   };
 
-  const handleAnswerSubmit = (selectedOptions) => {
+  const handleAnswerSubmit = async (selectedOptions) => {
     const updatedAnswers = { ...quizAnswers };
-    const questionId = testData[currentQuestionIndex]._id;
+    const questionId = testData[currentQuestionIndex]?._id;
 
-    solvetestFn({
-      variables: { sectionId, courseId, questionId, answers: selectedOptions },
-    });
-    updatedAnswers[questionId] = selectedOptions ? [...selectedOptions] : [];
+    try {
+      const mutationResult = await solvetestFn({
+        variables: {
+          sectionId,
+          courseId,
+          questionId,
+          answers: selectedOptions,
+        },
+      });
 
-    // Move to the next question or display the summary
-    if (
-      currentQuestionIndex < testData.length - 1 &&
-      solveTest.loading === false
-    ) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-    } else {
-      setCurrentQuestionIndex(-1);
-      refetch(); // Quiz is complete, show the result summary
+      if (!mutationResult.errors) {
+        updatedAnswers[questionId] = selectedOptions
+          ? [...selectedOptions]
+          : [];
+
+        // Move to the next question after the mutation is successful
+        if (currentQuestionIndex < testData.length - 1 && !solveTest.loading) {
+          setCurrentQuestionIndex(currentQuestionIndex + 1);
+        } else {
+          setCurrentQuestionIndex(-1);
+          refetch(); // Quiz is complete, show the result summary
+        }
+
+        setQuizAnswers(updatedAnswers);
+      } else {
+        throw new Error("Mutation failed");
+      }
+    } catch (error) {
+      console.error("Mutation error:", error);
+      // Handle error state or retry logic if needed
     }
-
-    setQuizAnswers(updatedAnswers);
   };
 
   const { correctAnswers, wrongAnswers } =
@@ -111,14 +126,10 @@ const Quiz = ({ testData, sectionId, courseId }) => {
       getSection({ variables: { sectionId } });
       // Reset quiz-related states when testData chan
     }
-    console.log(sectionId);
     handleResetQuiz();
   }, [testData, sectionId, getSection]);
 
-  if (loading)
-    <div>
-      <p>loading...</p>
-    </div>;
+  if (loading) <Spinner />;
 
   return (
     <div>
@@ -142,6 +153,7 @@ const Quiz = ({ testData, sectionId, courseId }) => {
             correctAnswers={correctAnswers}
             wrongAnswers={wrongAnswers}
             handleResetQuiz={handleResetQuiz}
+            currentQuestionIndex={currentQuestionIndex}
           />
         </div>
       ) : (

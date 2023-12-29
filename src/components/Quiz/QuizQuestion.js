@@ -79,7 +79,7 @@ const QuizQuestion = ({
           onClick={handleSubmit}
           className={"bg-[#039BE5] font-bold"}
         >
-          {testSubmitLoading ? "submitinng..." : "التالي"}
+          {testSubmitLoading ? "تقديم  ..." : "التالي"}
         </CtaButton>
       </div>
     </div>
