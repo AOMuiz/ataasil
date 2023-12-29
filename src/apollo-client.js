@@ -36,6 +36,38 @@ const authLink = setContext((_, { headers }) => {
 });
 
 export const client = new ApolloClient({
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          courses: {
+            // Don't cache separate results based on
+
+            // any of this field's arguments.
+
+            keyArgs: ["filter"],
+
+            // Concatenate the incoming list items with
+
+            // the existing list items.
+
+            merge(existing, incoming, { args: { page = 1 } }) {
+              // Slicing is necessary because the existing data is
+
+              // immutable, and frozen in development.
+
+              const merged = existing ? existing.slice(0) : [];
+
+              for (let i = 0; i < incoming.length; ++i) {
+                merged[page + i] = incoming[i];
+              }
+
+              return merged;
+            },
+          },
+        },
+      },
+    },
+  }),
   link: from([errorLink, authLink.concat(httpLink)]),
 });

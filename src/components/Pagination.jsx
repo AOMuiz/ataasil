@@ -32,10 +32,10 @@ const Pagination = ({
 
   return (
     <nav aria-label="Page navigation" className="grid place-content-center">
-      <ul className="inline-flex">
+      <ul className="inline-flex gap-2">
         <li>
           <button
-            className="focus:shadow-outline h-10 rounded-r-lg bg-primary-P300 px-5  text-white transition-colors duration-150 hover:bg-primary-P400"
+            className="focus:shadow-outline h-10 cursor-pointer rounded-lg border border-gray-200 px-5 text-gray-500 transition-colors duration-150 hover:bg-primary-P400 hover:text-white"
             onClick={onNext}
             disabled={currentPage === lastPage}
           >
@@ -56,7 +56,7 @@ const Pagination = ({
           return (
             <li key={pageNumber}>
               <button
-                className={`focus:shadow-outline h-10 ${
+                className={`focus:shadow-outline h-10 rounded-md border border-gray-200 ${
                   currentPage === pageNumber
                     ? "bg-primary-P300 text-white"
                     : "bg-white text-gray-400 hover:bg-primary-P100"
@@ -71,7 +71,7 @@ const Pagination = ({
         })}
         <li>
           <button
-            className="focus:shadow-outline h-10 rounded-l-lg px-5 text-gray-400 transition-colors duration-150 hover:bg-primary-P100 active:bg-primary-P300 active:text-white"
+            className="focus:shadow-outline h-10 rounded-md rounded-l-lg border border-gray-200 px-5 text-gray-500 transition-colors duration-150 hover:bg-primary-P400 hover:text-white"
             onClick={onPrevious}
             disabled={currentPage === 1}
           >

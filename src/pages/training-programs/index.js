@@ -14,9 +14,10 @@ import Pagination from "../../components/Pagination";
 import { COURSES_COUNT } from "../../graphql/queries/courses";
 import { useQuery } from "@apollo/client";
 import { cn } from "../../utils/helpers";
+import Spinner from "../../components/spinner";
 
 let PAGINATION_ARG = {
-  limit: 1,
+  limit: 10,
   page: 1,
 };
 
@@ -29,7 +30,7 @@ const TrainingPrograms = () => {
   });
   const pulseArray = new Array(4).fill(1);
 
-  const [data, error, loading, refetch] = useFetchCourses({
+  const [data, error, loading, refetch, fetchMore] = useFetchCourses({
     pagination: PAGINATION_ARG,
     filter,
   });
@@ -90,6 +91,22 @@ const TrainingPrograms = () => {
       setTotalCourses(countData?.courses_count); // Update totalCourses with count from the server
     }
   }, [countData]);
+
+  useEffect(() => {
+    fetchMore({
+      variables: {
+        pagination: { ...pagination },
+      },
+    });
+    console.log({ fetchmore: data, pagination, data });
+  }, [data, fetchMore, pagination]);
+
+  if (loading)
+    return (
+      <div>
+        <Spinner />
+      </div>
+    );
 
   return (
     <main>

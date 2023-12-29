@@ -2,7 +2,7 @@ import { COURSES } from "../graphql/queries/courses";
 import { useQuery } from "@apollo/client";
 
 const useFetchCourses = ({ pagination, filter }) => {
-  const { data, error, loading, refetch } = useQuery(COURSES, {
+  const { data, error, loading, refetch, fetchMore } = useQuery(COURSES, {
     variables: {
       pagination: { ...pagination },
       filter: { category: "", title: "" },
@@ -11,7 +11,7 @@ const useFetchCourses = ({ pagination, filter }) => {
     onError: (error) => console.log({ error }),
   });
 
-  return [data, error, loading, refetch];
+  return [data, error, loading, refetch, fetchMore];
 };
 
 export default useFetchCourses;
