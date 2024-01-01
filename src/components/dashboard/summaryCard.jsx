@@ -6,7 +6,7 @@ const SummaryCard = ({ title, amount, iconName }) => {
     <div className="flex-1 rounded-md p-4 shadow-md">
       <div className="mb-4 flex justify-between gap-7">
         <p className="text-lg font-semibold">{title}</p>
-        <div className="rounded-md bg-black p-2">
+        <div className="h-fit rounded-md bg-black p-2">
           <Icon id={iconName} className="text-white" size={20} />
         </div>
       </div>

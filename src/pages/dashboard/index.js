@@ -8,6 +8,7 @@ import ProfileLayout from "../../layout/profileLayout";
 import SectionHeader from "../../components/SectionHeader";
 import CourseCard from "../../components/CourseCards/CourseCard";
 import SectionCategory from "../../components/CourseCards/SectionCategory";
+import CourseCards from "../../components/CourseCards/";
 import Icon from "../../components/Icon";
 import SectionDivider from "../../components/SectionDivider";
 import { COURSES_SUBSCRIBED } from "../../graphql/queries/courses";
@@ -65,18 +66,24 @@ const Profile = () => {
                 ? "المنتجات المشتراة"
                 : "المنتجات المقترحة"
             }
+            className={"text-lg"}
           />
           <p className="flex items-center gap-3 text-lg text-primary-P300">
             عرض الكل
             <Icon id={"left"} />
           </p>
         </div>
-
         <SectionDivider />
-        <p className="my-4 text-lg text-gray-G30">
-          لست مسجلًا في أي برنامج تدريبي حتى الآن. بإمكانك الاختيار من قائمة
-          البرامج التدريبية أدناه، المقترحة لك حسب اهتماماتك.
-        </p>
+        {data?.courses_subscribed?.length <= 0 && (
+          <div>
+            <p className="my-4 text-lg text-gray-G30">
+              لست مسجلًا في أي برنامج تدريبي حتى الآن. بإمكانك الاختيار من قائمة
+              البرامج التدريبية أدناه، المقترحة لك حسب اهتماماتك.
+            </p>
+            {/* FIXME:  STYLING OF THIS COURSESCARD ON THIS PAGE*/}
+            {/* <CourseCards /> */}
+          </div>
+        )}
         <div className="">
           <div className="grid grid-cols-responsive270 gap-6 py-2">
             {loading &&
