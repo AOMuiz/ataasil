@@ -44,19 +44,19 @@ export const sideMenu = [
       },
     ],
   },
-  {
-    slug: "/dashboard/notifications",
-    label: "الإشعارات",
-    icon: "bell",
-  },
-  {
-    slug: "/dashboard/favorites",
-    label: "المفضلة",
-    icon: "favorite",
-  },
-  {
-    slug: "/dashboard/bookmarks",
-    label: "الإشارات المرجعية",
-    icon: "bookmark",
-  },
+  // {
+  //   slug: "/dashboard/notifications",
+  //   label: "الإشعارات",
+  //   icon: "bell",
+  // },
+  // {
+  //   slug: "/dashboard/favorites",
+  //   label: "المفضلة",
+  //   icon: "favorite",
+  // },
+  // {
+  //   slug: "/dashboard/bookmarks",
+  //   label: "الإشارات المرجعية",
+  //   icon: "bookmark",
+  // },
 ];

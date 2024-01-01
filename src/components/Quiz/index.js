@@ -36,7 +36,7 @@ const Quiz = ({ testData, sectionId, courseId }) => {
     },
     onError: (error) => {
       toast.error(`error:${error.message}`, {
-        autoClose: 3000,
+        autoClose: 2000,
         hideProgressBar: false,
       });
       console.log({ error });

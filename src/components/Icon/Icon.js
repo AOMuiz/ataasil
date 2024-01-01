@@ -50,6 +50,7 @@ import {
   FaChalkboardTeacher,
   FaRegCalendarCheck,
 } from "react-icons/fa";
+import { FaRegCircleCheck } from "react-icons/fa6";
 
 import { BsArrowRight, BsArrowLeft, BsBookmark, BsCart3 } from "react-icons/bs";
 
@@ -110,6 +111,7 @@ const icons = {
   delete: AiOutlineDelete,
   cart: BsCart3,
   teacher: FaChalkboardTeacher,
+  checkCircle: FaRegCircleCheck,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {

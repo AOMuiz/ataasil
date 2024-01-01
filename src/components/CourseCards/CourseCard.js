@@ -69,7 +69,7 @@ const CourseCard = ({
               <ProgressDemo progressCovered={progress} />
               <div className="flex justify-between">
                 <p className="mt-1 text-sm font-medium text-[#A8A8A8]">
-                  {progress}% complete
+                  {progress}% مكتمل
                 </p>
                 <p>
                   <p className="mt-1 text-sm font-medium text-[#A8A8A8]">

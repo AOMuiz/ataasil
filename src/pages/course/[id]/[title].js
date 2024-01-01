@@ -71,7 +71,7 @@ const Index = () => {
             </div>
           </div>
         </section>
-        <section className="mt-2 grid h-full grid-cols-3 gap-5 p-10 md:flex md:flex-col md:flex-col-reverse">
+        <section className="mt-2 grid h-full grid-cols-3 gap-5 p-10 md:flex  md:flex-col-reverse">
           <CourseDetailsTab
             curriculum={courseSection}
             course={courseDetail?.course}

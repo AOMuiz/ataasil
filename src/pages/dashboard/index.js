@@ -11,6 +11,7 @@ import SectionCategory from "../../components/CourseCards/SectionCategory";
 import Icon from "../../components/Icon";
 import SectionDivider from "../../components/SectionDivider";
 import { COURSES_SUBSCRIBED } from "../../graphql/queries/courses";
+import SummaryCard from "../../components/dashboard/summaryCard";
 
 const Profile = () => {
   const profileDetails = useReactiveVar(profileDetailsVar);
@@ -19,41 +20,64 @@ const Profile = () => {
     limit: 10,
     page: 1,
   });
+
   const [filter, setFilter] = useState({
     category: null,
     title: null,
   });
+
   const { data, error, loading } = useQuery(COURSES_SUBSCRIBED, {
     variables: { pagination: { ...pagination }, filter: { ...filter } },
     onCompleted: (data) => console.log({ courses: data }),
     onError: (error) => console.log({ error, pagination }),
   });
+
   return (
     <Container>
       <div className="mb-20">
-        <p className="my-6 text-2xl capitalize">
+        <p className="my-6 text-2xl  capitalize">
           مرحبا {profileDetails.username}
         </p>
-        <p className="text-lg text-gray-G30">
+        <div className="flex flex-wrap justify-between gap-6">
+          <SummaryCard
+            title={"إجمالي المسجلين"}
+            iconName={"eyeOpen"}
+            amount={
+              data?.courses_subscribed?.length > 0
+                ? data?.courses_subscribed?.length
+                : "0"
+            }
+          />
+          <SummaryCard title={"مكتمل"} iconName={"checkCircle"} amount={"0"} />
+          <SummaryCard
+            title={"الشهادات"}
+            iconName={"certificateLight"}
+            amount={"0"}
+          />
+        </div>
+      </div>
+
+      <div>
+        <div className="flex items-start justify-between gap-4">
+          <SectionHeader
+            title={
+              data?.courses_subscribed?.length > 0
+                ? "المنتجات المشتراة"
+                : "المنتجات المقترحة"
+            }
+          />
+          <p className="flex items-center gap-3 text-lg text-primary-P300">
+            عرض الكل
+            <Icon id={"left"} />
+          </p>
+        </div>
+
+        <SectionDivider />
+        <p className="my-4 text-lg text-gray-G30">
           لست مسجلًا في أي برنامج تدريبي حتى الآن. بإمكانك الاختيار من قائمة
           البرامج التدريبية أدناه، المقترحة لك حسب اهتماماتك.
         </p>
-      </div>
-      <div>
-        <SectionHeader title={"المنتجات المقترحة"} />
-        <SectionDivider />
         <div className="">
-          <div className="flex items-center justify-between">
-            <div className="flex gap-4 overflow-x-auto">
-              <SectionCategory content={"التوحيد الإسلامي"} active />
-              <SectionCategory content={"التوحيد الإسلامي"} />
-              <SectionCategory content={"التوحيد الإسلامي"} />
-            </div>
-            <p className="flex items-center gap-3 text-lg text-primary-P300">
-              عرض الكل
-              <Icon id={"left"} />
-            </p>
-          </div>
           <div className="grid grid-cols-responsive270 gap-6 py-2">
             {loading &&
               pulseArray.map((course, i) => <CourseCardPulse key={i} />)}
@@ -84,4 +108,4 @@ Profile.PageLayout = ProfileLayout;
 
 export default Profile;
 
-export const Container = tw.section`py-12 px-2 h-full`;
+export const Container = tw.section`py-12 px-2 h-full md:py-8 md:px-0`;
