@@ -93,7 +93,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="bg-primary-P700 px-20 pt-16 2md:px-10 md:px-6">
+      <div className="bg-primary-P700 px-20 py-16 2md:px-10 md:px-6">
         <div className="flex flex-row items-center justify-between gap-2 bg-white 2md:px-3">
           <div className="py-4 2md:w-full">
             <div className="flex flex-row items-center gap-5 pr-7 ltr:pl-5 md:pr-0">
@@ -128,8 +128,8 @@ const LoginPage = () => {
               />
 
               <div className="flex items-center justify-start gap-16 text-center md:flex-wrap md:gap-8">
-                <CtaButton className="w-fit font-bold" btnType="submit">
-                  {t("login.sign in")}
+                <CtaButton className="min-w-fit font-bold" btnType="submit">
+                  {loading ? "loading" : t("login.sign in")}
                 </CtaButton>
                 <div>
                   <p className="text-sm font-bold text-gray-G30">
@@ -150,31 +150,6 @@ const LoginPage = () => {
           </div>
           <div className="self-stretch leading-none 2md:hidden">
             <Image src={Frame} alt="" />
-          </div>
-        </div>
-        <div className="py-28">
-          <div>
-            <p className="pb-10 text-3xl font-bold">{t("login.latest")}</p>
-          </div>
-          <div className="flex flex-row items-center gap-6 overflow-x-auto py-2">
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
-          </div>
-          <div className="flex flex-row gap-2 self-end py-10 pt-9">
-            <Icon
-              id={"right"}
-              color={"white"}
-              size={25}
-              className="h-12 w-12 cursor-pointer rounded-md bg-[#35CCBC] p-3"
-            />
-            <Icon
-              id={"left"}
-              color={"white"}
-              size={25}
-              className="h-12 w-12 cursor-pointer rounded-md bg-[#35CCBC80] p-3"
-            />
           </div>
         </div>
       </div>
